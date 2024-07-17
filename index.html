@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belgesel İzleme Sayfası</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        select {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #videoContainer {
+            margin-top: 20px;
+            width: 640px;
+            height: 360px;
+            background-color: black;
+            position: relative;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <select id="belgeselSelect">
+        <option value="" disabled selected>Belgesel Seçin</option>
+        <option value="ucak_kazasi_raporu">UÇAK KAZASI RAPORU</option>
+        <option value="felaket_anlari">FELAKET ANLARI</option>
+		<option value="kritik_anlar">KRİTİK ANLAR</option>
+        <!-- Diğer belgesel seçenekleri -->
+    </select>
+
+    <select id="sezonSelect" disabled>
+        <option value="" disabled selected>Sezon Seçin</option>
+    </select>
+
+    <select id="bolumSelect" disabled>
+        <option value="" disabled selected>Bölüm Seçin</option>
+    </select>
+
+    <div id="videoContainer">
+        <iframe id="videoPlayer" src="" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        const belgeselSelect = document.getElementById('belgeselSelect');
+        const sezonSelect = document.getElementById('sezonSelect');
+        const bolumSelect = document.getElementById('bolumSelect');
+        const videoPlayer = document.getElementById('videoPlayer');
+
+        const sezonVerileri = {
+            ucak_kazasi_raporu: [
+                { value: "ucak_kazasi_raporu_sezon1", text: "1. SEZON (2003)" },
+                { value: "ucak_kazasi_raporu_sezon2", text: "2. SEZON (2005)" },
+                // Diğer sezonlar...
+            ],
+            felaket_anlari: [
+                { value: "felaket_anlari_sezon1", text: "1. SEZON" },
+                { value: "felaket_anlari_sezon6", text: "6. SEZON" },
+                // Diğer sezonlar...
+            ],
+            kritik_anlar: [
+                { value: "kritik_anlar_sezon1", text: "1. SEZON" },
+                // Diğer sezonlar...
+            ]
+        };
+
+        const bolumVerileri = {
+            ucak_kazasi_raporu_sezon1: [
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/589205019152244", text: "1. Bölüm-(Unlocking Disaster)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/225360549453240", text: "2. Bölüm-(Racing the Storm)" },
+				{ value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/2900952230166820", text: "3. Bölüm-(Fire on Board)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/506595880428775", text: "4. Bölüm-(Flying Blind)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/864989791068787", text: "5. Bölüm-(Cutting Corners)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/2917503095231838", text: "6. Bölüm-(Flying on Empty)" },
+            ],
+            ucak_kazasi_raporu_sezon2: [
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/4074627935988296", text: "1. Bölüm-(Blowout)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/998936500932483", text: "2. Bölüm-(A Wounded Bird)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/993430674793696", text: "3. Bölüm-(The Killing Machine / Hijacked)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/527627308310840", text: "4. Bölüm-(Deadly Crossroads / Mid-Air Collision)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/3620459514845097", text: "5. Bölüm-(Lost / Crash on the Mountain)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1359065114508583", text: "6. Bölüm-(Missing Over New York / Deadly Delay)" },
+            ],
+            felaket_anlari_sezon1: [
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/111028349624285/", text: "1. Bölüm (Crash of the Concorde)" },			
+                // Diğer bölümler...
+            ],
+            felaket_anlari_sezon6: [
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/103730617020725/", text: "3. Bölüm (Kokpitte Yangın-Swiss Air Kazası)" },
+                // Diğer bölümler...
+            ],
+            kritik_anlar_sezon1: [
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/116959865697800/", text: "9. Bölüm (Ugandaya Kaçırılan Uçak)" },
+                // Diğer bölümler...
+            ],
+        };
+
+        belgeselSelect.addEventListener('change', function() {
+            sezonSelect.disabled = false;
+            const secilenBelgesel = belgeselSelect.value;
+            sezonSelect.innerHTML = '<option value="" disabled selected>Sezon Seçin</option>';
+
+            sezonVerileri[secilenBelgesel].forEach(sezon => {
+                const option = document.createElement('option');
+                option.value = sezon.value;
+                option.textContent = sezon.text;
+                sezonSelect.appendChild(option);
+            });
+        });
+
+        sezonSelect.addEventListener('change', function() {
+            bolumSelect.disabled = false;
+            const secilenSezon = sezonSelect.value;
+            bolumSelect.innerHTML = '<option value="" disabled selected>Bölüm Seçin</option>';
+
+            bolumVerileri[secilenSezon].forEach(bolum => {
+                const option = document.createElement('option');
+                option.value = bolum.value;
+                option.textContent = bolum.text;
+                bolumSelect.appendChild(option);
+            });
+        });
+
+        bolumSelect.addEventListener('change', function() {
+            const bolum = bolumSelect.value;
+            videoPlayer.src = bolum;
+        });
+    </script>
+
+</body>
+</html>
