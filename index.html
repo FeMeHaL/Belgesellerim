@@ -5,36 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Belgesel İzleme Sayfası</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-        select {
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 16px;
-        }
-        #videoContainer {
-            margin-top: 20px;
-            width: 640px;
-            height: 360px;
-            background-color: black;
-            position: relative;
-            overflow: hidden;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+select {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px; /* Köşeleri yuvarlatır */
+    border: 2px solid #007BFF; /* Kenar rengi ve kalınlığı */
+    width: 300px; /* Genişlik ayarı */
+    height: 40px; /* Yükseklik ayarı */
+    background-color: #e9ecef; /* Arka plan rengi */
+    color: #333; /* Yazı rengi */
+    font-weight: bold; /* Kalın yazı */
+}
+
+#videoContainer {
+    margin-top: 20px;
+    width: 640px;
+    height: 360px;
+    background-color: black;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px; /* Köşe yuvarlama */
+    border: 3px solid #007BFF; /* Kenar rengi */
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
     </style>
 </head>
 <body>
@@ -70,6 +83,8 @@
             ucak_kazasi_raporu: [
                 { value: "ucak_kazasi_raporu_sezon1", text: "1. SEZON (2003)" },
                 { value: "ucak_kazasi_raporu_sezon2", text: "2. SEZON (2005)" },
+				{ value: "ucak_kazasi_raporu_sezon3", text: "3. SEZON (2005)" },
+				{ value: "ucak_kazasi_raporu_sezon4", text: "4. SEZON (2007)" },
                 // Diğer sezonlar...
             ],
             felaket_anlari: [
@@ -103,6 +118,23 @@
                 { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/527627308310840", text: "4. Bölüm-(Deadly Crossroads / Mid-Air Collision)" },
                 { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/3620459514845097", text: "5. Bölüm-(Lost / Crash on the Mountain)" },
                 { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1359065114508583", text: "6. Bölüm-(Missing Over New York / Deadly Delay)" },
+            ],
+            ucak_kazasi_raporu_sezon3: [
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/352179808842470/", text: "1. Bölüm (Hanging by a Thread)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/117152315678555/", text: "2. Bölüm (Attack over Baghdad)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/5947053232039468/", text: "3. Bölüm-(Out of Control)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/122191368507983/", text: "4. Bölüm (Fight for Your Life)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/131037964289990/", text: "5. Bölüm (Bomb on Board)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/133639957363124/", text: "6. Bölüm (Mistaken Identity)" },
+				{ value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/876364806423965/", text: "7. Bölüm-(Helicopter Down)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/297908787602906/", text: "8. Bölüm (Death and Denial)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/846678336231688/", text: "9. Bölüm-(Runaway Train)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/136335797093540/", text: "10. Bölüm (Kid in the Cockpit)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/1025803388189189/", text: "12. Bölüm-(Head On Collision)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/294621911264927/", text: "13. Bölüm (Ocean Landing)" },
+            ],
+            ucak_kazasi_raporu_sezon4: [
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/137365516990568/", text: "1. Bölüm (Desperate Escape)" },
             ],
             felaket_anlari_sezon1: [
                 { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/111028349624285/", text: "1. Bölüm (Crash of the Concorde)" },			
