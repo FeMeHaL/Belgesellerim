@@ -7,104 +7,272 @@
     <style>
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 20vw; /* Sidebar genişliğini ekranın %20'si olarak ayarla */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.sidebar img {
+    width: 10vw; /* Resim genişliği ekran genişliğinin %10'u olarak ayarla */
+    height: auto; /* Yükseklik orantılı olarak ayarlanacak */
+    display: none; /* Varsayılan olarak gizle */
+}
+#solSidebar {
+    position: relative;
+}
+
+#sagSidebar {
+    position: relative;
+}
+
+.mainContent {
+    width: 65vw; /* Ana içeriğin genişliğini ekran genişliğinin %60'ı olarak ayarla */
+    padding: 1vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    margin: 0;
+    overflow: auto;
+    position: relative;
 }
 
-select {
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 10px; /* Köşeleri yuvarlatır */
-    border: 2px solid #007BFF; /* Kenar rengi ve kalınlığı */
-    width: 300px; /* Genişlik ayarı */
-    height: 40px; /* Yükseklik ayarı */
-    background-color: #e9ecef; /* Arka plan rengi */
-    color: #333; /* Yazı rengi */
-    font-weight: bold; /* Kalın yazı */
+/* Sağ ve sol reklam alanları */
+.sidebar-ad {
+    width: 15vw; /* Sağ ve sol reklam alanı toplamda 35vw olacak şekilde ayarlandı */
+    height: 200px; /* Reklam yüksekliği ihtiyaca göre ayarlanabilir */
+	    padding: 1vw;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Sol reklam */
+#solAd {
+    left: 0;
+}
+
+/* Sağ reklam */
+#sagAd {
+    right: 0%;
+}
+
+/* Reklam iframe'leri için stil */
+.sidebar-ad iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 #videoContainer {
-    margin-top: 20px;
-    width: 640px;
-    height: 360px;
+    width: 60vw; /* Video container genişliğini ekran genişliğinin %90'ı olarak ayarla */
+    height: 65vh; /* Yüksekliği ekran yüksekliğinin %50'si olarak ayarla */
     background-color: black;
     position: relative;
     overflow: hidden;
-    border-radius: 10px; /* Köşe yuvarlama */
-    border: 3px solid #007BFF; /* Kenar rengi */
+    border-radius: 1vw;
+    border: 0.2vw solid #007BFF;
+    margin-bottom: 2vw;
 }
 
 iframe {
     width: 100%;
     height: 100%;
     border: none;
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
-    </style>
+#aciklamaContainer {
+    width: 57vw; /* Açıklama container genişliğini ekran genişliğinin %90'ı olarak ayarla */
+    text-align: center;
+    color: #333;
+    background-color: #f8f9fa;
+    padding: 1vw;
+    border-radius: 1vw;
+    border: 0.2vw solid #007BFF;
+    display: none; /* Açıklama varsayılan olarak gizli */
+}
+
+/* Resimlerin konumlandırılması */
+.solUst, .solAlt, .sagUst, .sagAlt {
+    position: absolute;
+    width: 100px; /* Resim genişliği */
+    height: auto; /* Resim yüksekliği otomatik */
+}
+
+.solUst {
+    top: 10px;
+    left: 10px;
+}
+
+.solAlt {
+    bottom: 10px;
+    left: 10px;
+}
+
+.sagUst {
+    top: 10px;
+    right: 10px;
+}
+
+.sagAlt {
+    bottom: 10px;
+    right: 10px;
+}
+
+/* Select bölümleri için stil */
+select {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1.1vw; /* Genişlik orantılı yazı boyutu */
+    border-radius: 10px;
+    border: 2px solid #007BFF;
+    width: 30vw; /* Genişlik viewport genişliğine göre ayarlandı */
+    height: 6vh; /* Yükseklik viewport yüksekliğine göre ayarlandı */
+    background-color: #e9ecef;
+    color: #333;
+    font-weight: bold;
+    box-sizing: border-box; /* Padding ve border'ı genişlik ve yüksekliğe dahil et */
+}
+
+select:disabled {
+    background-color: #f0f0f0;
+    color: #999;
+    border: 2px solid #ccc;
+}
+
+    <title>Resim Örnekleri</title>
+.resim-konteyner {
+    width: 40vw; /* Resim konteyner genişliğini ekran genişliğinin %40'ı olarak ayarla */
+    height: 20vh; /* Yüksekliği ekran yüksekliğinin %20'si olarak ayarla */
+    overflow: hidden;
+    position: relative;
+    margin: 1vw;
+    display: inline-block;
+}
+
+.resim-konteyner img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover; /* Resmin konteynere uyum sağlamasını sağlar */
+    display: block;
+}
+
+    </style>	
 </head>
 <body>
-
-    <select id="belgeselSelect">
-        <option value="" disabled selected>Belgesel Seçin</option>
-        <option value="ucak_kazasi_raporu">UÇAK KAZASI RAPORU</option>
-        <option value="felaket_anlari">FELAKET ANLARI</option>
-		<option value="kritik_anlar">KRİTİK ANLAR</option>
-		<option value="interpol_arastirmalari">İNTERPOL ARAŞTIRMALARI</option>
-        <!-- Diğer belgesel seçenekleri -->
-    </select>
-
-    <select id="sezonSelect" disabled>
-        <option value="" disabled selected>Sezon Seçin</option>
-    </select>
-
-    <select id="bolumSelect" disabled>
-        <option value="" disabled selected>Bölüm Seçin</option>
-    </select>
-
-    <div id="videoContainer">
-        <iframe id="videoPlayer" src="" allowfullscreen></iframe>
+    <div class="container">
+    <div class="sidebar" id="solSidebar">
+        <div class="resim-konteyner">
+            <img id="solUst" src="" class="solUst" alt="">
+            <img id="solAlt" src="" class="solAlt" alt="">
+        </div>
     </div>
+
+    <div class="mainContent">
+	        <div id="solAd" class="sidebar-ad">
+            <iframe src="https://publisher.linkvertise.com/cdn/ads/LV-200x200/index.html" frameborder="0" height="200" width="200"></iframe>
+            <a href="https://publisher.linkvertise.com/ac/1204459" target="_blank" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"></a>
+        </div>
+        <select id="belgeselSelect">
+            <option value="" disabled selected>Belgesel Seçin</option>
+            <option value="ucak_kazasi_raporu">UÇAK KAZASI RAPORU</option>
+            <option value="felaket_anlari">FELAKET ANLARI</option>
+            <option value="kritik_anlar">KRİTİK ANLAR</option>
+            <option value="interpol_arastirmalari">İNTERPOL ARAŞTIRMALARI</option>
+        </select>
+
+        <select id="sezonSelect" disabled>
+            <option value="" disabled selected>Sezon Seçin</option>
+        </select>
+
+        <select id="bolumSelect" disabled>
+            <option value="" disabled selected>Bölüm Seçin</option>
+        </select>
+
+        <div id="videoContainer">
+            <iframe id="videoPlayer" src="" allowfullscreen></iframe>
+        </div>
+
+        <div id="aciklamaContainer">
+            <p id="aciklamaMetni"></p>
+        </div>
+
+        <div id="sagAd" class="sidebar-ad">
+            <iframe src="https://publisher.linkvertise.com/cdn/ads/LV-200x200/index.html" frameborder="0" height="200" width="200"></iframe>
+            <a href="https://publisher.linkvertise.com/ac/1204459" target="_blank" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"></a>
+        </div>
+    </div>
+
+    <div class="sidebar" id="sagSidebar">
+        <div class="resim-konteyner">
+            <img id="sagUst" src="" class="sagUst" alt="">
+            <img id="sagAlt" src="" class="sagAlt" alt="">
+        </div>
+    </div>
+</div>
+
 
     <script>
         const belgeselSelect = document.getElementById('belgeselSelect');
         const sezonSelect = document.getElementById('sezonSelect');
         const bolumSelect = document.getElementById('bolumSelect');
         const videoPlayer = document.getElementById('videoPlayer');
+        const aciklamaContainer = document.getElementById('aciklamaContainer');
+        const aciklamaMetni = document.getElementById('aciklamaMetni');
+
+        const solUst = document.getElementById('solUst');
+        const solAlt = document.getElementById('solAlt');
+        const sagUst = document.getElementById('sagUst');
+        const sagAlt = document.getElementById('sagAlt');
 
         const sezonVerileri = {
             ucak_kazasi_raporu: [
                 { value: "ucak_kazasi_raporu_sezon1", text: "1. SEZON (2003)" },
                 { value: "ucak_kazasi_raporu_sezon2", text: "2. SEZON (2005)" },
-				{ value: "ucak_kazasi_raporu_sezon3", text: "3. SEZON (2005)" },
-				{ value: "ucak_kazasi_raporu_sezon4", text: "4. SEZON (2007)" },
-                // Diğer sezonlar...
+                { value: "ucak_kazasi_raporu_sezon3", text: "3. SEZON (2005)" },
+                { value: "ucak_kazasi_raporu_sezon4", text: "4. SEZON (2007)" },
             ],
             felaket_anlari: [
                 { value: "felaket_anlari_sezon1", text: "1. SEZON" },
                 { value: "felaket_anlari_sezon6", text: "6. SEZON" },
-                // Diğer sezonlar...
             ],
             kritik_anlar: [
                 { value: "kritik_anlar_sezon1", text: "1. SEZON" },
-                // Diğer sezonlar...
             ],
             interpol_arastirmalari: [
                 { value: "interpol_arastirmalari_sezon1", text: "1. SEZON" },
-                // Diğer sezonlar...
             ]
         };
 
         const bolumVerileri = {
             ucak_kazasi_raporu_sezon1: [
-                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/589205019152244", text: "1. Bölüm-(Unlocking Disaster)" },
+               { 
+            value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/589205019152244", 
+            text: "1. Bölüm-(Unlocking Disaster)",
+            aciklama: "<b>İlk Vizyona girişi 10 Eylül 2003 :</b><br>24 Şubat 1989 tarihinde United Airlines'a ait Boeing 747 tipi uçağın Hawaii'den Yeni Zellanda'ya uçarken gerçekleşen uçak kazasıdır. Kargo bölümünün kapılarından birinin açılması sonucu uçaktaki 9 kişinin 23000 feet'te yerinden fırlayıp okyanusa serbest düşmesine neden olmuştur.",
+            resimler: {
+                "solUst": "https://static.thisdayinaviation.com/wp-content/uploads/tdia/2018/02/1524958993623.jpg",
+                "solAlt": "https://scontent.fayt2-3.fna.fbcdn.net/v/t39.30808-6/448870754_1523069151753524_5043348367881128943_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=zG3fQx0RtfUQ7kNvgHUWDUg&_nc_ht=scontent.fayt2-3.fna&oh=00_AYCiLX8roviQXyuS3ONhL-c1-LUoSvDW62PhccDtDxSZ6Q&oe=66A09788",
+                "sagUst": "https://www.faa.gov/sites/faa.gov/files/images/lessons_learned/N4713U/after_landing.jpg",
+                "sagAlt": "https://miro.medium.com/v2/resize:fit:720/format:webp/0*8VlOen4h02Pxs8N3.jpg"
+                 }
+    },
                 { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/225360549453240", text: "2. Bölüm-(Racing the Storm)" },
 				{ value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/2900952230166820", text: "3. Bölüm-(Fire on Board)" },
                 { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/506595880428775", text: "4. Bölüm-(Flying Blind)" },
@@ -113,23 +281,23 @@ iframe {
             ],
             ucak_kazasi_raporu_sezon2: [
                 { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/4074627935988296", text: "1. Bölüm-(Blowout)" },
-                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/998936500932483", text: "2. Bölüm-(A Wounded Bird)" },
-                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/993430674793696", text: "3. Bölüm-(The Killing Machine / Hijacked)" },
-                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/527627308310840", text: "4. Bölüm-(Deadly Crossroads / Mid-Air Collision)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/998936500932483", text: "2. Bölüm-(Yaralı Kuş-A Wounded Bird)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/993430674793696", text: "3. Bölüm-(Uçak Kaçırma-The Killing Machine / Hijacked)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/527627308310840", text: "4. Bölüm-(Havadaki Çarpışma-Deadly Crossroads / Mid-Air Collision)" },
                 { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/3620459514845097", text: "5. Bölüm-(Lost / Crash on the Mountain)" },
                 { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1359065114508583", text: "6. Bölüm-(Missing Over New York / Deadly Delay)" },
             ],
             ucak_kazasi_raporu_sezon3: [
                 { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/352179808842470/", text: "1. Bölüm (Hanging by a Thread)" },
-                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/117152315678555/", text: "2. Bölüm (Attack over Baghdad)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/117152315678555/", text: "2. Bölüm (Bağdat Üzerinde Saldırı-Attack over Baghdad)" },
                 { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/5947053232039468/", text: "3. Bölüm-(Out of Control)" },
-                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/122191368507983/", text: "4. Bölüm (Fight for Your Life)" },
-                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/131037964289990/", text: "5. Bölüm (Bomb on Board)" },
-                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/133639957363124/", text: "6. Bölüm (Mistaken Identity)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/122191368507983/", text: "4. Bölüm (İntihar Saldırısı-Fight for Your Life)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/131037964289990/", text: "5. Bölüm (Uçakta Bomba-Bomb on Board)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/133639957363124/", text: "6. Bölüm (Yanlış Kimlik-Mistaken Identity)" },
 				{ value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/876364806423965/", text: "7. Bölüm-(Helicopter Down)" },
                 { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/297908787602906/", text: "8. Bölüm (Death and Denial)" },
                 { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/846678336231688/", text: "9. Bölüm-(Runaway Train)" },
-                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/136335797093540/", text: "10. Bölüm (Kid in the Cockpit)" },
+                { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/136335797093540/", text: "10. Bölüm (Kokpitteki Çocuk-Kid in the Cockpit)" },
                 { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/1025803388189189/", text: "12. Bölüm-(Head On Collision)" },
                 { value: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/294621911264927/", text: "13. Bölüm (Ocean Landing)" },
             ],
@@ -154,37 +322,57 @@ iframe {
             ],
         };
 
-        belgeselSelect.addEventListener('change', function() {
-            sezonSelect.disabled = false;
-            const secilenBelgesel = belgeselSelect.value;
-            sezonSelect.innerHTML = '<option value="" disabled selected>Sezon Seçin</option>';
+belgeselSelect.addEventListener('change', function() {
+    sezonSelect.disabled = false;
+    sezonSelect.innerHTML = '<option value="" disabled selected>Sezon Seçin</option>';
 
-            sezonVerileri[secilenBelgesel].forEach(sezon => {
-                const option = document.createElement('option');
-                option.value = sezon.value;
-                option.textContent = sezon.text;
-                sezonSelect.appendChild(option);
-            });
+    const secilenBelgesel = belgeselSelect.value;
+    if (sezonVerileri[secilenBelgesel]) {
+        sezonVerileri[secilenBelgesel].forEach(sezon => {
+            const option = document.createElement('option');
+            option.value = sezon.value;
+            option.textContent = sezon.text;
+            sezonSelect.appendChild(option);
         });
+    }
+});
 
-        sezonSelect.addEventListener('change', function() {
-            bolumSelect.disabled = false;
-            const secilenSezon = sezonSelect.value;
-            bolumSelect.innerHTML = '<option value="" disabled selected>Bölüm Seçin</option>';
+sezonSelect.addEventListener('change', function() {
+    bolumSelect.disabled = false;
+    bolumSelect.innerHTML = '<option value="" disabled selected>Bölüm Seçin</option>';
 
-            bolumVerileri[secilenSezon].forEach(bolum => {
-                const option = document.createElement('option');
-                option.value = bolum.value;
-                option.textContent = bolum.text;
-                bolumSelect.appendChild(option);
-            });
+    const secilenSezon = sezonSelect.value;
+    if (bolumVerileri[secilenSezon]) {
+        bolumVerileri[secilenSezon].forEach(bolum => {
+            const option = document.createElement('option');
+            option.value = bolum.value;
+            option.textContent = bolum.text;
+            bolumSelect.appendChild(option);
         });
+    }
+});
 
-        bolumSelect.addEventListener('change', function() {
-            const bolum = bolumSelect.value;
-            videoPlayer.src = bolum;
-        });
+bolumSelect.addEventListener('change', function() {
+    const bolum = bolumSelect.value;
+    const bolumData = bolumVerileri[sezonSelect.value]?.find(b => b.value === bolum);
+
+    if (bolumData) {
+        videoPlayer.src = bolum;
+        aciklamaContainer.style.display = 'block';
+        aciklamaMetni.innerHTML = bolumData.aciklama;
+
+        if (bolumData.resimler) {
+            solUst.src = bolumData.resimler.solUst;
+            solUst.style.display = 'block';
+            solAlt.src = bolumData.resimler.solAlt;
+            solAlt.style.display = 'block';
+            sagUst.src = bolumData.resimler.sagUst;
+            sagUst.style.display = 'block';
+            sagAlt.src = bolumData.resimler.sagAlt;
+            sagAlt.style.display = 'block';
+        }
+    }
+});
     </script>
-
 </body>
 </html>
