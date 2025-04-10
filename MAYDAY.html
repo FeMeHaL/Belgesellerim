@@ -49,8 +49,12 @@
     }
 
     .episode img {
-      width: 100%;
+      width: 250px;      /* Sabit genişlik */
+      height: 200px;     /* Sabit yükseklik */
+      object-fit: cover; /* Resmi verilen kutuya orantılı şekilde sığdırırken keser */
       border-radius: 4px;
+      display: block;    /* Bloğa dönüştürülür */
+      margin: 0 auto;    /* Yatayda ortalamak için */
     }
 
     .episode-title {
@@ -113,11 +117,17 @@
           thumbnail: "./img/01S01E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/589205019152244/"
         },
-		        {
+        {
           title: "1. Sezon 2. Bölüm - (Racing the Storm) - Fırtınayla Yarış",
           date: "İlk Vizyona Girişi : 3 Eylül 2003",
           thumbnail: "./img/01S02E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/225360549453240/"
+        },
+        {
+          title: "1. Sezon 3. Bölüm - (Fire on Board) - Gizemli Yangın",
+          date: "İlk Vizyona Girişi : 22 Ekim 2003",
+          thumbnail: "./img/01S03E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/2900952230166820/"
         }
       ]
     };
