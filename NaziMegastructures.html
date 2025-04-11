@@ -95,8 +95,7 @@
 <body>
 
   <div class="sidebar">
-    <button class="season-button" onclick="loadSeason(2)">2. SEZON (2005)</button>
-	<button class="season-button" onclick="loadSeason(1)">1. SEZON (2003)</button>
+	<button class="season-button" onclick="loadSeason(1)">1. SEZON (2013)</button>
     <!-- Diğer sezonlar buraya gelecek -->
   </div>
 
@@ -111,51 +110,12 @@
 
   <script>
     const episodes = {
-      2: [
-        {
-          title: "2. Sezon 1. Bölüm - (Blowout) - Patlama",
-          date: "İlk Vizyona Girişi : 23 Ocak 2005",
-          thumbnail: "./img/02S01E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/4074627935988296"
-        }
-      ],
-	
       1: [
         {
-          title: "1. Sezon 1. Bölüm - (Unlocking Disaster) - Felakete Açılan Kilit",
-          date: "İlk Vizyona Girişi : 10 Eylül 2003",
-          thumbnail: "./img/01S01E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/589205019152244/"
-        },
-        {
-          title: "1. Sezon 2. Bölüm - (Racing the Storm) - 'Ölümcül İniş",
-          date: "İlk Vizyona Girişi : 3 Eylül 2003",
-          thumbnail: "./img/01S02E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/225360549453240/"
-        },
-        {
-          title: "1. Sezon 3. Bölüm - (Fire on Board) - Gökyüzünde Yangın",
-          date: "İlk Vizyona Girişi : 22 Ekim 2003",
-          thumbnail: "./img/01S03E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/2900952230166820/"
-        },
-        {
-          title: "1. Sezon 4. Bölüm - (Flying Blind) - Kör Uçuş",
-          date: "İlk Vizyona Girişi : 17 Eylül 2003",
-          thumbnail: "./img/01S04E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/506595880428775"
-        },
-        {
-          title: "1. Sezon 5. Bölüm - (Cutting Corners) - Kestirme Yoldan Halletmek",
-          date: "İlk Vizyona Girişi : 15 Ekim 2003",
-          thumbnail: "./img/01S05E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/864989791068787"
-        },
-        {
-          title: "1. Sezon 6. Bölüm - (Flying on Empty) - Gökyüzünde Süzülmek",
-          date: "İlk Vizyona Girişi : 8 Ekim 2003",
-          thumbnail: "./img/01S06E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/2917503095231838"
+          title: "1. Sezon 1. Bölüm - (Atlantic Wall) - Atlantik Duvarı / Savunma Hattı",
+          date: "İlk Vizyona Girişi : 1 Temmuz 2013",
+          thumbnail: "./img/NM01S01E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.986959495364495/233550168915635"
         }
       ]
     };
@@ -194,8 +154,8 @@
       video.src = '';  // Videoyu durdurmak için src'i temizliyoruz
     }
 
-    // Sayfa yüklenince 2. sezonu yükle
-    window.onload = () => loadSeason(2);
+    // Sayfa yüklenince 1. sezonu yükle
+    window.onload = () => loadSeason(1);
   </script>
 
 </body>
