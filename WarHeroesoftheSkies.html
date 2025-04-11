@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Dizi Bölümleri</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #1e1e1e;
+      color: white;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 25%;
+      background-color: #2e2e2e;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .season-button {
+      background-color: #ff4d4d;
+      color: #f1f1f1;
+      padding: 15px;
+      margin-bottom: 10px;
+      border: none;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .content {
+      width: 75%;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .episode {
+      background-color: #2b2b2b;
+      width: calc(33.333% - 20px);
+      padding: 10px;
+      box-sizing: border-box;
+      border-radius: 8px;
+    }
+
+    .episode img {
+      width: 350px;      /* Sabit genişlik */
+      height: 200px;     /* Sabit yükseklik */
+      object-fit: cover; /* Resmi verilen kutuya orantılı şekilde sığdırırken keser */
+      border-radius: 4px;
+      display: block;    /* Bloğa dönüştürülür */
+      margin: 0 auto;    /* Yatayda ortalamak için */
+    }
+
+    .episode-title {
+      color: #4da6ff;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .video-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .video-overlay iframe {
+      width: 80%;
+      height: 80%;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+	<button class="season-button" onclick="loadSeason(1)">1. SEZON (2012-2013)</button>
+    <!-- Diğer sezonlar buraya gelecek -->
+  </div>
+
+  <div class="content" id="episodeContainer">
+    <!-- Bölümler burada yüklenecek -->
+  </div>
+
+  <div class="video-overlay" id="videoOverlay">
+    <span class="close-btn" onclick="closeVideo()">×</span>
+    <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    const episodes = {
+      1: [
+        {
+          title: "1. Sezon 1. Bölüm - (Terror in the Skies) - Göklerdeki Terör",
+          date: "İlk Vizyona Girişi : 27 Eylül 2012",
+          thumbnail: "./img/GK01S01E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.122157421844711/122151625178624"
+        }
+      ]
+    };
+
+    function loadSeason(season) {
+      const container = document.getElementById('episodeContainer');
+      container.innerHTML = '';
+      if (!episodes[season]) {
+        container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
+        return;
+      }
+
+      episodes[season].forEach(ep => {
+        const epDiv = document.createElement('div');
+        epDiv.className = 'episode';
+        epDiv.innerHTML = `
+          <img src="${ep.thumbnail}" alt="${ep.title}">
+          <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+          <p>${ep.date}</p>
+        `;
+        container.appendChild(epDiv);
+      });
+    }
+
+    function playVideo(src) {
+      const overlay = document.getElementById('videoOverlay');
+      const video = document.getElementById('episodeVideo');
+      video.src = src;  // Facebook embed linkini buraya ekliyoruz
+      overlay.style.display = 'flex';
+    }
+
+    function closeVideo() {
+      const overlay = document.getElementById('videoOverlay');
+      const video = document.getElementById('episodeVideo');
+      overlay.style.display = 'none';
+      video.src = '';  // Videoyu durdurmak için src'i temizliyoruz
+    }
+
+    // Sayfa yüklenince 1. sezonu yükle
+    window.onload = () => loadSeason(1);
+  </script>
+
+</body>
+</html>
