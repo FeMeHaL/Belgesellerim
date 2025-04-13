@@ -51,16 +51,11 @@
     .episode {
       background-color: #2b2b2b;
       width: 100%;
-      max-width: 300px;
+      max-width: 275px;
       flex: 1 1 calc(33.333% - 20px); /* 1 satıra 5 bölüm yerleştiriyor */
       padding: 10px;
       box-sizing: border-box;
       border-radius: 8px;
-    }
-	
-	/* 3. sezon için özel CSS */
-      #episodeContainer.season-3 .episode {
-      flex: 1 1 calc(16.666% - 10px); /* 3. sezona özel, her satıra 5 bölüm yerleştir */
     }
 
     .episode img {
@@ -70,6 +65,12 @@
       border-radius: 4px;
       display: block;
       margin: 0 auto;
+    }
+
+    .episode-date {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
     }
 
     .episode-title {
@@ -270,6 +271,7 @@
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1359065114508583"
         }
       ],
+	  
       1: [
         {
           title: "1. Sezon 1. Bölüm - (Unlocking Disaster) - Felakete Açılan Kilit",
