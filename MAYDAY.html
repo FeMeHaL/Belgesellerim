@@ -51,7 +51,7 @@
     .episode {
       background-color: #2b2b2b;
       width: 100%;
-      max-width: 275px;
+      max-width: 295px;
       flex: 1 1 calc(33.333% - 20px); /* 1 satıra 5 bölüm yerleştiriyor */
       padding: 10px;
       box-sizing: border-box;
@@ -136,6 +136,7 @@
 <body>
 
   <div class="sidebar">
+    <button class="season-button" onclick="loadSeason(3)">4. SEZON (2007)</button>
     <button class="season-button" onclick="loadSeason(3)">3. SEZON (2005)</button>
     <button class="season-button" onclick="loadSeason(2)">2. SEZON (2005)</button>
     <button class="season-button" onclick="loadSeason(1)">1. SEZON (2003)</button>
@@ -152,6 +153,16 @@
 
   <script>
     const episodes = {
+		  
+      4: [
+        {
+          title: "4. Sezon 1. Bölüm - (Desperate Escape) - Çaresiz Kaçış",
+          date: "İlk Vizyona Girişi : 15 Nisan 2007",
+          thumbnail: "./img/04S01E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.137369176990202/137365516990568"
+        }
+      ],
+	  
       3: [
         {
           title: "3. Sezon 1. Bölüm <span class='subtitle'>(Alt Yazılı)</span> - (Hanging by a Thread) - Pamuk İpliğine Bağlı",
@@ -354,8 +365,8 @@
       video.src = '';  // Videoyu durdurmak için src'i temizle
     }
 
-    // Sayfa yüklenince 3. sezonu yükle
-    window.onload = () => loadSeason(3);
+    // Sayfa yüklenince 4. sezonu yükle
+    window.onload = () => loadSeason(4);
   </script>
 
 </body>
