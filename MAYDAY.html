@@ -42,6 +42,11 @@
       flex-wrap: wrap;
       gap: 20px;
     }
+	
+	.subtitle {
+      color: red;        /* Kırmızı renk */
+      font-weight: bold; /* Kalın yazı tipi */
+    }
 
     .episode {
       background-color: #2b2b2b;
@@ -144,13 +149,13 @@
     const episodes = {
       3: [
         {
-          title: "3. Sezon 1. Bölüm (Alt Yazılı) - (Hanging by a Thread) - Pamuk İpliğine Bağlı",
+          title: "3. Sezon 1. Bölüm <span class='subtitle'>(Alt Yazılı)</span> - (Hanging by a Thread) - Pamuk İpliğine Bağlı",
           date: "İlk Vizyona Girişi : 14 Eylül 2005",
           thumbnail: "./img/03S01E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/352179808842470/"
         }
-      ],
-	
+      ]
+	  
       2: [
         {
           title: "2. Sezon 1. Bölüm - (Blowout) - Patlama",
