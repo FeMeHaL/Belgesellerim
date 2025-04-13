@@ -141,6 +141,7 @@
 <body>
 
   <div class="sidebar">
+    <button class="season-button" onclick="loadSeason(5)">5. SEZON (2008)</button>
     <button class="season-button" onclick="loadSeason(4)">4. SEZON (2007)</button>
     <button class="season-button" onclick="loadSeason(3)">3. SEZON (2005)</button>
     <button class="season-button" onclick="loadSeason(2)">2. SEZON (2005)</button>
@@ -159,7 +160,16 @@
   <script>
     const episodes = {
 		  
-      4: [
+      5: [
+        {
+          title: "<span class='episode-number'>[036]</span> 5. Sezon 1. Bölüm - (Invisible Killer) - Görünmez Katil",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 7 Mayıs 2008</p>",
+          thumbnail: "./img/06S01E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.141906756536444/141884816538638"
+        }
+		],
+		
+		4: [
         {
           title: "<span class='episode-number'>[026]</span> 4. Sezon 1. Bölüm - (Desperate Escape) - Çaresiz Kaçış",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 15 Nisan 2007</p>",
@@ -207,6 +217,18 @@
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 3 Haziran 2007</p>",
           thumbnail: "./img/04S08E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.139962443397542/139957743398012"
+        },
+        {
+          title: "<span class='episode-number'>[034]</span> 4. Sezon 9. Bölüm - (Vertigo) - Vertigo",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 10 Haziran 2007</p>",
+          thumbnail: "./img/04S09E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.140622266664893/140601186667001"
+        },
+        {
+          title: "<span class='episode-number'>[035]</span> 4. Sezon 10. Bölüm - (Ghost Plane) - Hayalet Uçak",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 17 Haziran 2007</p>",
+          thumbnail: "./img/04S10E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1049751329099312"
         }
       ],
 	  
@@ -412,8 +434,8 @@
       video.src = '';  // Videoyu durdurmak için src'i temizle
     }
 
-    // Sayfa yüklenince 4. sezonu yükle
-    window.onload = () => loadSeason(4);
+    // Sayfa yüklenince 5. sezonu yükle
+    window.onload = () => loadSeason(5);
   </script>
 
 </body>
