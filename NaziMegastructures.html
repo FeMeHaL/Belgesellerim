@@ -43,10 +43,21 @@
       gap: 20px;
     }
 
+    .subtitle {
+      color: red;        /* Kırmızı renk */
+      font-weight: bold; /* Kalın yazı tipi */
+    }
+	
+	 .episode-number {
+      color: purple;  /* Mor renk */
+      font-weight: bold; /* Kalın yazı tipi */
+      display: inline;  /* Bu sayede sadece span etiketini etkiler */
+    }
+	
     .episode {
       background-color: #2b2b2b;
       width: 100%;
-      max-width: 300px;
+      max-width: 295px;
       flex: 1 1 calc(33.333% - 20px);
       padding: 10px;
       box-sizing: border-box;
@@ -66,7 +77,6 @@
       color: #4da6ff;
       font-weight: bold;
       cursor: pointer;
-      text-decoration: underline;
       text-align: center;
       margin-top: 10px;
     }
@@ -141,10 +151,16 @@
     const episodes = {
       1: [
         {
-          title: "1. Sezon 1. Bölüm - (Atlantic Wall) - Atlantik Duvarı / Savunma Hattı",
+          title: "<span class='episode-number'>[001]</span> 1. Sezon 1. Bölüm - (Atlantic Wall) - Atlantik Duvarı / Savunma Hattı",
           date: "İlk Vizyona Girişi : 1 Temmuz 2013",
           thumbnail: "./img/NM01S01E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.986959495364495/233550168915635"
+        },
+		{
+          title: "<span class='episode-number'>[002]</span> 1. Sezon 2. Bölüm - (U-Boat Base) - Denizaltı Üssü / Hitler'in Sığınakları",
+          date: "İlk Vizyona Girişi : 18 Kasım 2013",
+          thumbnail: "./img/NM01S02E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1322528934837042"
         }
       ]
     };
