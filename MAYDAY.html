@@ -10,13 +10,16 @@
       background-color: #1e1e1e;
       color: white;
       display: flex;
+      flex-wrap: wrap;
     }
 
     .sidebar {
-      width: 25%;
+      width: 100%;
+      max-width: 300px;
       background-color: #2e2e2e;
       padding: 20px;
       box-sizing: border-box;
+      flex-shrink: 0;
     }
 
     .season-button {
@@ -32,7 +35,7 @@
     }
 
     .content {
-      width: 75%;
+      flex: 1;
       padding: 20px;
       box-sizing: border-box;
       display: flex;
@@ -42,19 +45,21 @@
 
     .episode {
       background-color: #2b2b2b;
-      width: calc(33.333% - 20px);
+      width: 100%;
+      max-width: 300px;
+      flex: 1 1 calc(33.333% - 20px);
       padding: 10px;
       box-sizing: border-box;
       border-radius: 8px;
     }
 
     .episode img {
-      width: 350px;      /* Sabit genişlik */
-      height: 200px;     /* Sabit yükseklik */
-      object-fit: cover; /* Resmi verilen kutuya orantılı şekilde sığdırırken keser */
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
       border-radius: 4px;
-      display: block;    /* Bloğa dönüştürülür */
-      margin: 0 auto;    /* Yatayda ortalamak için */
+      display: block;
+      margin: 0 auto;
     }
 
     .episode-title {
@@ -62,6 +67,8 @@
       font-weight: bold;
       cursor: pointer;
       text-decoration: underline;
+      text-align: center;
+      margin-top: 10px;
     }
 
     .video-overlay {
@@ -90,11 +97,35 @@
       cursor: pointer;
     }
 
+    /* Responsive Ayarlar */
+    @media (max-width: 768px) {
+      .episode {
+        flex: 1 1 calc(50% - 20px); /* Tablet görünümü */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .episode {
+        flex: 1 1 100%; /* Telefon görünümü */
+      }
+
+      .sidebar {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .content {
+        padding: 10px;
+      }
+    }
+
   </style>
 </head>
+
 <body>
 
   <div class="sidebar">
+    <button class="season-button" onclick="loadSeason(3)">3. SEZON (2005)</button>
     <button class="season-button" onclick="loadSeason(2)">2. SEZON (2005)</button>
 	<button class="season-button" onclick="loadSeason(1)">1. SEZON (2003)</button>
     <!-- Diğer sezonlar buraya gelecek -->
@@ -111,6 +142,15 @@
 
   <script>
     const episodes = {
+      3: [
+        {
+          title: "3. Sezon 1. Bölüm (Alt Yazılı) - (Hanging by a Thread) - Pamuk İpliğine Bağlı",
+          date: "İlk Vizyona Girişi : 14 Eylül 2005",
+          thumbnail: "./img/03S01E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/352179808842470/"
+        }
+      ],
+	
       2: [
         {
           title: "2. Sezon 1. Bölüm - (Blowout) - Patlama",
@@ -119,28 +159,34 @@
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/4074627935988296"
         },
         {
-          title: "2. Sezon 2. Bölüm - (A Wounded Bird) - 'Yaralı Kuş",
+          title: "2. Sezon 2. Bölüm - (A Wounded Bird) - Yaralı Kuş",
           date: "İlk Vizyona Girişi : 30 Ocak 2005",
           thumbnail: "./img/02S02E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/998936500932483"
         },
         {
-          title: "2. Sezon 3. Bölüm - (The Killing Machine / Hijacked) - 'Uçak Kaçırma",
+          title: "2. Sezon 3. Bölüm - (The Killing Machine / Hijacked) - Uçak Kaçırma",
           date: "İlk Vizyona Girişi : 06 Şubat 2005",
           thumbnail: "./img/02S03E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/993430674793696"
         },
         {
-          title: "2. Sezon 4. Bölüm - (Deadly Crossroads / Mid-Air Collision) - 'Havada Çarpışma",
+          title: "2. Sezon 4. Bölüm - (Deadly Crossroads / Mid-Air Collision) - Havada Çarpışma",
           date: "İlk Vizyona Girişi : 13 Şubat 2005",
           thumbnail: "./img/02S04E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/527627308310840"
         },
         {
-          title: "2. Sezon 5. Bölüm - (Lost / Crash on the Mountain) - 'Kayıp / Dağda Uçak Kazası",
+          title: "2. Sezon 5. Bölüm - (Lost / Crash on the Mountain) - Kayıp / Dağda Uçak Kazası",
           date: "İlk Vizyona Girişi : 20 Şubat 2005",
           thumbnail: "./img/02S05E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/3620459514845097"
+        },
+        {
+          title: "2. Sezon 6. Bölüm - (Missing Over New York / Deadly Delay) - Ölümcül Gecikme",
+          date: "İlk Vizyona Girişi : 27 Şubat 2005",
+          thumbnail: "./img/02S06E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1359065114508583"
         }
       ],
 	
@@ -152,7 +198,7 @@
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/589205019152244/"
         },
         {
-          title: "1. Sezon 2. Bölüm - (Racing the Storm) - 'Ölümcül İniş",
+          title: "1. Sezon 2. Bölüm - (Racing the Storm) - Ölümcül İniş",
           date: "İlk Vizyona Girişi : 3 Eylül 2003",
           thumbnail: "./img/01S02E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/225360549453240/"
@@ -218,8 +264,8 @@
       video.src = '';  // Videoyu durdurmak için src'i temizliyoruz
     }
 
-    // Sayfa yüklenince 2. sezonu yükle
-    window.onload = () => loadSeason(2);
+    // Sayfa yüklenince 3. sezonu yükle
+    window.onload = () => loadSeason(3);
   </script>
 
 </body>
