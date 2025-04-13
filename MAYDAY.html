@@ -316,7 +316,15 @@
     function playVideo(src) {
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
-      video.src = src;  // Facebook embed linkini buraya ekliyoruz
+
+      // Eğer YouTube linki ise iframe'e embed formatı ekle
+      if (src.includes("youtube.com")) {
+        const videoId = src.split("v=")[1].split("&")[0];  // YouTube video ID'sini al
+        video.src = `https://www.youtube.com/embed/${videoId}`;  // YouTube embed linki
+      } else if (src.includes("facebook.com")) {
+        video.src = src;  // Facebook video linkini olduğu gibi kullan
+      }
+
       overlay.style.display = 'flex';
     }
 
@@ -324,7 +332,7 @@
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
       overlay.style.display = 'none';
-      video.src = '';  // Videoyu durdurmak için src'i temizliyoruz
+      video.src = '';  // Videoyu durdurmak için src'i temizle
     }
 
     // Sayfa yüklenince 3. sezonu yükle
