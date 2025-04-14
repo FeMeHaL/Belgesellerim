@@ -141,7 +141,9 @@
 <body>
 
   <div class="sidebar">
-    <button class="season-button" onclick="loadSeason(5)">5. SEZON (2008)</button>
+    <button class="season-button" onclick="loadSeason(7)">7. SEZON (2009)</button>
+	<button class="season-button" onclick="loadSeason(6)">6. SEZON (2007-2008)</button>
+	<button class="season-button" onclick="loadSeason(5)">5. SEZON (2008)</button>
     <button class="season-button" onclick="loadSeason(4)">4. SEZON (2007)</button>
     <button class="season-button" onclick="loadSeason(3)">3. SEZON (2005)</button>
     <button class="season-button" onclick="loadSeason(2)">2. SEZON (2005)</button>
@@ -160,15 +162,45 @@
   <script>
     const episodes = {
 		  
-      5: [
+      7: [
         {
-          title: "<span class='episode-number'>[036]</span> 5. Sezon 1. Bölüm - (Invisible Killer) - Görünmez Katil",
+          title: "<span class='episode-number'>[049]</span> 7. Sezon 1. Bölüm - (Scratching the Surface) - Saniyeler İçinde",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 18 Kasım 2009</p>",
+          thumbnail: "./img/07S01E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.147008906026229/147002749360178"
+        }
+		],
+		
+		6: [
+        {
+          title: "<span class='episode-number'>[046]</span> 6. Sezon 1. Bölüm - [Özel Gösterim] (Ripped Apart) - Paramparça/Parçalanmış Uçaklar",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 16 Aralık 2007</p>",
+          thumbnail: "./img/06S01E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/146082269452226"
+        },
+		{
+          title: "<span class='episode-number'>[047]</span> 6. Sezon 2. Bölüm - [Özel Gösterim] (Fatal Flaw/Fix) - Ölümcül Bakım",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 16 Aralık 2007</p>",
+          thumbnail: "./img/06S02E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/146377466089373"
+        },
+		{
+          title: "<span class='episode-number'>[048]</span> 6. Sezon 3. Bölüm - [Özel Gösterim] (Who's Flying the Plane?) - Uçağı Kim Kullanıyor",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 2 Mart 2008</p>",
+          thumbnail: "./img/06S03E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/146699476057172"
+        }
+		],
+
+		5: [
+        {
+          title: "<span class='episode-number'>[036]</span> 5. Sezon 1. Bölüm - (Invisible Killer) - Yere Çakılan Uçak",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 7 Mayıs 2008</p>",
           thumbnail: "./img/05S01E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.141906756536444/141884816538638"
         },
 		{
-          title: "<span class='episode-number'>[037]</span> 5. Sezon 2. Bölüm - (Gimli Glider) - Gimli Planörü",
+          title: "<span class='episode-number'>[037]</span> 5. Sezon 2. Bölüm - (Gimli Glider) - Mucize Uçuş",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 14 Mayıs 2008</p>",
           thumbnail: "./img/05S02E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.142231703170616/142219389838514"
@@ -180,7 +212,7 @@
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.142585393135247/142578063135980"
         },
 		{
-          title: "<span class='episode-number'>[039]</span> 5. Sezon 4. Bölüm - (Fanning the Flames) - Alevleri Körüklemek",
+          title: "<span class='episode-number'>[039]</span> 5. Sezon 4. Bölüm - (Fanning the Flames) - Gizemli Yangın",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 21 Mayıs 2008</p>",
           thumbnail: "./img/05S04E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.142886369771816/142880293105757"
@@ -208,30 +240,42 @@
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 4 Haziran 2008</p>",
           thumbnail: "./img/05S08E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.144425292951257/144422282951558"
+        },
+		{
+          title: "<span class='episode-number'>[044]</span> 5. Sezon 9. Bölüm - (Fatal Distraction) - Ölümcül Dalgınlık",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 28 Mayıs 2008</p>",
+          thumbnail: "./img/05S09E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.145005392893247/145003736226746"
+        },
+		{
+          title: "<span class='episode-number'>[045]</span> 5. Sezon 10. Bölüm - (Phantom Strike) - Uçak Neye Çarptı",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 11 Haziran 2008</p>",
+          thumbnail: "./img/05S10E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.145406096186510/145396049520848"
         }
 		],
 		
 		4: [
         {
-          title: "<span class='episode-number'>[026]</span> 4. Sezon 1. Bölüm - (Desperate Escape) - Çaresiz Kaçış",
+          title: "<span class='episode-number'>[026]</span> 4. Sezon 1. Bölüm - (Desperate Escape) - Mucize Kaçış",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 15 Nisan 2007</p>",
           thumbnail: "./img/04S01E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.137369176990202/137365516990568"
         },
         {
-          title: "<span class='episode-number'>[027]</span> 4. Sezon 2. Bölüm - (Falling from the Sky) - Gökyüzünden Düşmek",
+          title: "<span class='episode-number'>[027]</span> 4. Sezon 2. Bölüm - (Falling from the Sky) - Gökyüzünden Düşmek / Ani Düşüş",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 22 Nisan 2007</p>",
           thumbnail: "./img/04S02E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.137717510288702/137714746955645"
         },
         {
-          title: "<span class='episode-number'>[028]</span> 4. Sezon 3. Bölüm - (Fire Fight) - Yangınla Mücadele",
+          title: "<span class='episode-number'>[028]</span> 4. Sezon 3. Bölüm - (Fire Fight) - Alevler İçinde",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 29 Nisan 2007</p>",
           thumbnail: "./img/04S03E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.138030723590714/138027000257753"
         },
         {
-          title: "<span class='episode-number'>[029]</span> 4. Sezon 4. Bölüm - (Final Approach) - Son Yaklaşım",
+          title: "<span class='episode-number'>[029]</span> 4. Sezon 4. Bölüm - (Final Approach) - Kör Uçuş",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 6 Mayıs 2007</p>",
           thumbnail: "./img/04S04E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.138319236895196/138311306895989"
@@ -249,19 +293,19 @@
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.139274693466317/139271126800007"
         },
         {
-          title: "<span class='episode-number'>[032]</span> 4. Sezon 7. Bölüm - (Out of Sight) - Gözden Uzak",
+          title: "<span class='episode-number'>[032]</span> 4. Sezon 7. Bölüm - (Out of Sight) - Los Angeles'da Facia",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 27 Mayıs 2007</p>",
           thumbnail: "./img/04S07E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.139581350102318/139573043436482"
         },
         {
-          title: "<span class='episode-number'>[033]</span> 4. Sezon 8. Bölüm - (Fog of War) - Sisle Savaş",
+          title: "<span class='episode-number'>[033]</span> 4. Sezon 8. Bölüm - (Fog of War) - Hırvatistan'da Şüpheli Kaza",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 3 Haziran 2007</p>",
           thumbnail: "./img/04S08E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.139962443397542/139957743398012"
         },
         {
-          title: "<span class='episode-number'>[034]</span> 4. Sezon 9. Bölüm - (Vertigo) - Vertigo",
+          title: "<span class='episode-number'>[034]</span> 4. Sezon 9. Bölüm - (Vertigo) - Tatil Dönüşü Facia",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 10 Haziran 2007</p>",
           thumbnail: "./img/04S09E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.140622266664893/140601186667001"
@@ -282,7 +326,7 @@
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/352179808842470/"
         },
         {
-          title: "<span class='episode-number'>[014]</span> 3. Sezon 2. Bölüm - (Attack over Baghdad) - Bağdat'a Saldırı",
+          title: "<span class='episode-number'>[014]</span> 3. Sezon 2. Bölüm - (Attack over Baghdad) - Bağdat Üzerinde Saldırı",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 21 Eylül 2005</p>",
           thumbnail: "./img/03S02E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/478850685126840"
@@ -294,13 +338,13 @@
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/5947053232039468"
         },
         {
-          title: "<span class='episode-number'>[016]</span> 3. Sezon 4. Bölüm - (Fight for Your Life) - Hayatın İçin Mücadele Et",
+          title: "<span class='episode-number'>[016]</span> 3. Sezon 4. Bölüm - (Fight for Your Life) - İntihar Saldırısı",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 5 Ekim 2005</p>",
           thumbnail: "./img/03S04E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.122198191840634/122191368507983"
         },
         {
-          title: "<span class='episode-number'>[017]</span> 3. Sezon 5. Bölüm - (Bomb on Board) - Uçakta Bomba Var",
+          title: "<span class='episode-number'>[017]</span> 3. Sezon 5. Bölüm - (Bomb on Board) - Uçakta Bomba",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 12 Ekim 2005</p>",
           thumbnail: "./img/03S05E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.131045830955870/131037964289990"
@@ -476,8 +520,8 @@
       video.src = '';  // Videoyu durdurmak için src'i temizle
     }
 
-    // Sayfa yüklenince 5. sezonu yükle
-    window.onload = () => loadSeason(5);
+    // Sayfa yüklenince 7. sezonu yükle
+    window.onload = () => loadSeason(7);
   </script>
 
 </body>
