@@ -43,10 +43,21 @@
       gap: 20px;
     }
 
+    .subtitle {
+      color: red;        /* Kırmızı renk */
+      font-weight: bold; /* Kalın yazı tipi */
+    }
+	
+	 .episode-number {
+      color: purple;  /* Mor renk */
+      font-weight: bold; /* Kalın yazı tipi */
+      display: inline;  /* Bu sayede sadece span etiketini etkiler */
+    }
+	
     .episode {
       background-color: #2b2b2b;
       width: 100%;
-      max-width: 300px;
+      max-width: 295px;
       flex: 1 1 calc(33.333% - 20px);
       padding: 10px;
       box-sizing: border-box;
@@ -62,11 +73,16 @@
       margin: 0 auto;
     }
 
+    .episode-date {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+    }
+
     .episode-title {
       color: #4da6ff;
       font-weight: bold;
       cursor: pointer;
-      text-decoration: underline;
       text-align: center;
       margin-top: 10px;
     }
@@ -141,8 +157,8 @@
     const episodes = {
       1: [
         {
-          title: "1. Sezon 10. Bölüm - (Terror in the Skies) - Göklerdeki Terör",
-          date: "İlk Vizyona Girişi : 11 Kasım 2004",
+          title: "<span class='episode-number'>[010]</span> 1. Sezon 10. Bölüm - (Terror in the Skies) - Göklerdeki Terör",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 11 Kasım 2004</p>",
           thumbnail: "./img/II01S10E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937"
         }

@@ -43,10 +43,21 @@
       gap: 20px;
     }
 
+    .subtitle {
+      color: red;        /* Kırmızı renk */
+      font-weight: bold; /* Kalın yazı tipi */
+    }
+	
+	 .episode-number {
+      color: purple;  /* Mor renk */
+      font-weight: bold; /* Kalın yazı tipi */
+      display: inline;  /* Bu sayede sadece span etiketini etkiler */
+    }
+	
     .episode {
       background-color: #2b2b2b;
       width: 100%;
-      max-width: 300px;
+      max-width: 295px;
       flex: 1 1 calc(33.333% - 20px);
       padding: 10px;
       box-sizing: border-box;
@@ -62,11 +73,16 @@
       margin: 0 auto;
     }
 
+    .episode-date {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+    }
+
     .episode-title {
       color: #4da6ff;
       font-weight: bold;
       cursor: pointer;
-      text-decoration: underline;
       text-align: center;
       margin-top: 10px;
     }
@@ -141,8 +157,8 @@
     const episodes = {
       1: [
         {
-          title: "1. Sezon 1. Bölüm - (North Hollywood Shootout) - Kuzey Hollywood Çatışması / Film Gibi Soygun",
-          date: "İlk Vizyona Girişi : 18 Haziran 2007",
+          title: "<span class='episode-number'>[001]</span> 1. Sezon 1. Bölüm - (North Hollywood Shootout) - Kuzey Hollywood Çatışması / Film Gibi Soygun",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 18 Haziran 2007</p>",
           thumbnail: "./img/KA01S01E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/575188971570761"
         }
