@@ -141,6 +141,8 @@
 <body>
 
   <div class="sidebar">
+    <button class="season-button" onclick="loadSeason(9)">9. SEZON (2010)</button>
+    <button class="season-button" onclick="loadSeason(8)">8. SEZON (2009)</button>
     <button class="season-button" onclick="loadSeason(7)">7. SEZON (2009)</button>
 	<button class="season-button" onclick="loadSeason(6)">6. SEZON (2007-2008)</button>
 	<button class="season-button" onclick="loadSeason(5)">5. SEZON (2008)</button>
@@ -161,7 +163,32 @@
 
   <script>
     const episodes = {
-		  
+		
+		9: [
+        {
+          title: "<span class='episode-number'>[057]</span> 9. Sezon 1. Bölüm - (Panic on the Runway) - Pistte Panik",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 1 Mart 2010</p>",
+          thumbnail: "./img/09S01E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.155197825207337/155193671874419"
+        }
+		],
+		
+				
+		8: [
+        {
+          title: "<span class='episode-number'>[057]</span> 8. Sezon 1. Bölüm - [Özel Gösterim] (System Breakdown) - Sistemin Çöküşü",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 10 Haziran 2009</p>",
+          thumbnail: "./img/08S01E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/154181485308971"
+        },
+		{
+          title: "<span class='episode-number'>[058]</span> 8. Sezon 2. Bölüm - [Özel Gösterim] (Cruel Skies) - Acımasız Gökyüzü",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 17 Haziran 2009</p>",
+          thumbnail: "./img/08S02E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/154458088614644"
+        }
+		],
+
       7: [
         {
           title: "<span class='episode-number'>[049]</span> 7. Sezon 1. Bölüm - (Scratching the Surface) - Saniyeler İçinde",
@@ -174,6 +201,42 @@
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 17 Aralık 2009</p>",
           thumbnail: "./img/07S02E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.147287722665014/147283275998792"
+        },
+		{
+          title: "<span class='episode-number'>[051]</span> 7. Sezon 3. Bölüm - (Blown Apart) - Sahte Yedek Parça",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 25 Kasım 2009</p>",
+          thumbnail: "./img/07S03E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.151143655612754/151139448946508"
+        },
+		{
+          title: "<span class='episode-number'>[052]</span> 7. Sezon 4. Bölüm - (Sight Unseen) - Korkunç Çarpışma",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 11 Kasım 2009</p>",
+          thumbnail: "./img/07S04E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.151563952237391/151554548904998"
+        },
+		{
+          title: "<span class='episode-number'>[053]</span> 7. Sezon 5. Bölüm - (Operation Babylift) - Trajik Operasyon",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 2 Aralık 2009</p>",
+          thumbnail: "./img/07S05E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.152179022175884/152139365513183"
+        },
+		{
+          title: "<span class='episode-number'>[054]</span> 7. Sezon 6. Bölüm - (Falling Fast) - Akdeniz'in Üzerinde Facia",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 9 Aralık 2009</p>",
+          thumbnail: "./img/07S06E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.152844032109383/152835068776946"
+        },
+		{
+          title: "<span class='episode-number'>[055]</span> 7. Sezon 7. Bölüm - (Flight 574: Lost) - Kaybolan Uçak",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 16 Aralık 2009</p>",
+          thumbnail: "./img/07S07E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.153218965405223/153214525405667"
+        },
+		{
+          title: "<span class='episode-number'>[056]</span> 7. Sezon 8. Bölüm - (Frozen in Flight) - Uçuşta Buzlanma",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 16 Aralık 2009</p>",
+          thumbnail: "./img/07S08E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.153610442032742/153606358699817"
         }
 		],
 		
@@ -526,8 +589,8 @@
       video.src = '';  // Videoyu durdurmak için src'i temizle
     }
 
-    // Sayfa yüklenince 7. sezonu yükle
-    window.onload = () => loadSeason(7);
+    // Sayfa yüklenince 9. sezonu yükle
+    window.onload = () => loadSeason(9);
   </script>
 
 </body>
