@@ -141,7 +141,8 @@
 <body>
 
   <div class="sidebar">
-    <button class="season-button" onclick="loadSeason(10)">10. SEZON (2011)</button>
+    <button class="season-button" onclick="loadSeason(11)">11. SEZON (2011-2012)</button>
+	<button class="season-button" onclick="loadSeason(10)">10. SEZON (2011)</button>
     <button class="season-button" onclick="loadSeason(9)">9. SEZON (2010)</button>
     <button class="season-button" onclick="loadSeason(8)">8. SEZON (2009)</button>
     <button class="season-button" onclick="loadSeason(7)">7. SEZON (2009)</button>
@@ -164,7 +165,39 @@
 
   <script>
     const episodes = {
-		
+	
+	11: [
+        {
+          title: "<span class='episode-number'>[073]</span> 11. Sezon 1. Bölüm - (Deadly Reputation) - Pistte Facia", 
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 12 Ağustos 2011</p>",
+          thumbnail: "./img/11S01E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.165913914135728/165909730802813"
+        },
+		{
+          title: "<span class='episode-number'>[074]</span> 11. Sezon 2. Bölüm - (The Plane That Flew Too High) - Yüksek İrtifa", 
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 19 Ağustos 2011</p>",
+          thumbnail: "./img/11S02E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.165993757461077/165988884128231"
+        },
+		{
+          title: "<span class='episode-number'>[075]</span> 11. Sezon 3. Bölüm - (Split Decision) - Fikir Ayrılığı", 
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 26 Ağustos 2011</p>",
+          thumbnail: "./img/11S03E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.166483154078804/166479540745832"
+        },
+		{
+          title: "<span class='episode-number'>[076]</span> 11. Sezon 4. Bölüm - (Breakup over Texas) - Teksas Faciası", 
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 15 Aralık 2011</p>",
+          thumbnail: "./img/11S04E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.166862997374153/166858044041315"
+        },
+		{
+          title: "<span class='episode-number'>[077]</span> 11. Sezon 5. Bölüm - (Munich Air Disaster) - Münih Kazası", 
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 22 Aralık 2011</p>",
+          thumbnail: "./img/11S05E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.167170884010031/167166207343832"
+        }
+      ],
 			  
       10: [
         {
@@ -672,8 +705,8 @@
       video.src = '';  // Videoyu durdurmak için src'i temizle
     }
 
-    // Sayfa yüklenince 10. sezonu yükle
-    window.onload = () => loadSeason(10);
+    // Sayfa yüklenince 11. sezonu yükle
+    window.onload = () => loadSeason(11);
   </script>
 
 </body>
