@@ -140,6 +140,8 @@
 <body>
 
   <div class="sidebar">
+	<button class="season-button" onclick="loadSeason(6)">6. SEZON (2012)</button>
+	<button class="season-button" onclick="loadSeason(2)">2. SEZON (2005-2006)</button>
 	<button class="season-button" onclick="loadSeason(1)">1. SEZON (2004)</button>
     <!-- Diğer sezonlar buraya gelecek -->
   </div>
@@ -155,6 +157,31 @@
 
   <script>
     const episodes = {
+	
+	  6: [
+	    {
+          title: "<span class='episode-number'>[060]</span> 6. Sezon 3. Bölüm - (Fire in the Cockpit) - Kokpitte Yangın",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Kasım 2012</p>",
+          thumbnail: "./img/01S03E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.103745097019277/103730617020725"
+        },
+		{
+          title: "<span class='episode-number'>[063]</span> 6. Sezon 6. Bölüm - (Terrified Over Tokyo) - Tokyo'da Korku",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 3 Aralık 2012</p>",
+          thumbnail: "./img/03S03E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.117985882261865/117983385595448"
+        }
+      ]
+	
+	  2: [
+	  {
+          title: "<span class='episode-number'>[014]</span> 2. Sezon 1. Bölüm - (Space Shuttle Columbia) - Uzay Mekiği Columbia",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 28 Haziran 2005</p>",
+          thumbnail: "./img/FA02S01E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177747499619036/177746162952503"
+        }
+      ]
+	
       1: [
         {
           title: "<span class='episode-number'>[001]</span> 1. Sezon 1. Bölüm - (Crash of the Concorde) - Concorde Kazası",
@@ -221,6 +248,18 @@
           date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Ekim 2004</p>",
           thumbnail: "./img/FA01S11E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.175775143149605/175773209816465"
+        },
+		{
+          title: "<span class='episode-number'>[012]</span> 1. Sezon 12. Bölüm - (Collision on the Runway) - Pistte Çarpışma",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 19 Ekim 2004</p>",
+          thumbnail: "./img/FA01S12E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177415876318865/177412952985824"
+        },
+		{
+          title: "<span class='episode-number'>[013]</span> 1. Sezon 13. Bölüm - (Pentagon Plane Crash) - Pentagon Uçak Kazası",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 26 Ekim 2004</p>",
+          thumbnail: "./img/FA01S13E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177458179647968/177456896314763"
         }
       ]
     };
@@ -259,8 +298,8 @@
       video.src = '';  // Videoyu durdurmak için src'i temizliyoruz
     }
 
-    // Sayfa yüklenince 1. sezonu yükle
-    window.onload = () => loadSeason(1);
+    // Sayfa yüklenince 2. sezonu yükle
+    window.onload = () => loadSeason(2);
   </script>
 
 </body>

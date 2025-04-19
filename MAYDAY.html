@@ -141,7 +141,8 @@
 <body>
 
   <div class="sidebar">
-    <button class="season-button" onclick="loadSeason(12)">12. SEZON (2012-2013)</button>
+    <button class="season-button" onclick="loadSeason(13)">13. SEZON (2013-2014)</button>
+	<button class="season-button" onclick="loadSeason(12)">12. SEZON (2012-2013)</button>
 	<button class="season-button" onclick="loadSeason(11)">11. SEZON (2011-2012)</button>
 	<button class="season-button" onclick="loadSeason(10)">10. SEZON (2011)</button>
     <button class="season-button" onclick="loadSeason(9)">9. SEZON (2010)</button>
@@ -167,6 +168,15 @@
   <script>
     const episodes = {
 	
+	13: [
+	    {
+          title: "<span class='episode-number'>[099]</span> 13. Sezon 1. Bölüm - (Fight To Death) - Ölümüne Mücadele", 
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 16 Aralık 2013</p>",
+          thumbnail: "./img/13S01E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177826619611124/177822872944832"
+        }
+      ],
+		
 	12: [
 	    {
           title: "<span class='episode-number'>[086]</span> 12. Sezon 1. Bölüm - (Fight for Control) - Kontrol Mücadelesi", 
@@ -233,6 +243,18 @@
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 25 Mart 2013</p>",
           thumbnail: "./img/12S11E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.176127749781011/176122866448166"
+        },
+		{
+          title: "<span class='episode-number'>[097]</span> 12. Sezon 12. Bölüm - (28 Seconds to Survive) - Kurtuluşa 28 Saniye", 
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 1 Nisan 2013</p>",
+          thumbnail: "./img/12S12E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.176483823078737/176477683079351"
+        },
+		{
+          title: "<span class='episode-number'>[098]</span> 12. Sezon 13. Bölüm - (Air France 447-Vanished) - Air France 447: Kaybolan Uçak", 
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 15 Nisan 2013</p>",
+          thumbnail: "./img/12S13E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177383529655433/177380579655728"
         }
       ],
 		
@@ -823,8 +845,8 @@
       video.src = '';  // Videoyu durdurmak için src'i temizle
     }
 
-    // Sayfa yüklenince 12. sezonu yükle
-    window.onload = () => loadSeason(12);
+    // Sayfa yüklenince 13. sezonu yükle
+    window.onload = () => loadSeason(13);
   </script>
 
 </body>
