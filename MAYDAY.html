@@ -141,7 +141,8 @@
 <body>
 
   <div class="sidebar">
-    <button class="season-button" onclick="loadSeason(11)">11. SEZON (2011-2012)</button>
+    <button class="season-button" onclick="loadSeason(12)">12. SEZON (2012-2013)</button>
+	<button class="season-button" onclick="loadSeason(11)">11. SEZON (2011-2012)</button>
 	<button class="season-button" onclick="loadSeason(10)">10. SEZON (2011)</button>
     <button class="season-button" onclick="loadSeason(9)">9. SEZON (2010)</button>
     <button class="season-button" onclick="loadSeason(8)">8. SEZON (2009)</button>
@@ -166,6 +167,15 @@
   <script>
     const episodes = {
 	
+	12: [
+	    {
+          title: "<span class='episode-number'>[086]</span> 12. Sezon 1. Bölüm - (Fight for Control) - Kontrol Mücadelesi", 
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 3 Ağustos 2012</p>",
+          thumbnail: "./img/12S01E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.171370596923393/171366863590433"
+        }
+      ],
+		
 	11: [
         {
           title: "<span class='episode-number'>[073]</span> 11. Sezon 1. Bölüm - (Deadly Reputation) - Pistte Facia", 
@@ -238,6 +248,12 @@
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 23 Mart 2012</p>",
           thumbnail: "./img/11S12E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.170985330295253/170982393628880"
+        },
+		{
+          title: "<span class='episode-number'>[085]</span> 11. Sezon 13. Bölüm - (Impossible Landing) - Alev Topu", 
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 13 Nisan 2012</p>",
+          thumbnail: "./img/11S13E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.171007506959702/171002246960228"
         }
       ],
 			  
@@ -747,8 +763,8 @@
       video.src = '';  // Videoyu durdurmak için src'i temizle
     }
 
-    // Sayfa yüklenince 11. sezonu yükle
-    window.onload = () => loadSeason(11);
+    // Sayfa yüklenince 12. sezonu yükle
+    window.onload = () => loadSeason(12);
   </script>
 
 </body>
