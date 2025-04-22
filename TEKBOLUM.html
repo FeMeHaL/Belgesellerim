@@ -26,7 +26,7 @@
     .episode {
       background-color: #2b2b2b;       /* Kartın koyu gri arka planı */
       width: 100%;                     /* Varsayılan genişlik (içinde olduğu konteynerin %100'ü) */
-      max-width: 290px;                /* En fazla 280px genişlik */
+      max-width: 300px;                /* En fazla 280px genişlik */
       flex: 1 1 calc(20% - 20px);      /* Flex kutuda %20 genişlik - boşluk ayarı (15px) */
       padding: 10px 5px;               /* İçeriğe 10px boşluk (tüm kenarlar) */
       box-sizing: border-box;          /* Padding dahil genişlik kontrolü */
@@ -56,6 +56,11 @@
       cursor: pointer;
       text-align: center;
       margin-top: 10px;
+    }
+
+    .subtitle {
+      color: red;        /* Kırmızı renk */
+      font-weight: bold; /* Kalın yazı tipi */
     }
 
     .episode-summary {
@@ -127,7 +132,14 @@
         date: "<p class=\"episode-date\">İlk Vizyona Girişi: 05 Ocak 2014</p>",
         thumbnail: "./img/MiracleHudson.jpg",
         video: "https://player.bilibili.com/player.html?bvid=BV1pf4y1M7CW&t=16.7",
-        summary: "Uçak Kazası Raporunun 10. Sezon 5. Bölümdeki bölümün daha uzun versiyonu diyebiliriz."
+        summary: "Uçak Kazası Raporunun 10. Sezon 5. Bölümünün daha uzun versiyonu diyebiliriz."
+      },
+      {
+        title: "TRT Belgesel (Unutulmayan Olaylar Programı) / 1963 Ankara Uçak Kazası",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 2008 Yapımı</p>",
+        thumbnail: "./img/AnkaraUlusaUcakKazasi.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.178085379585248/178081676252285",
+        summary: "Havacılık tarihine Ulus Faciası olarak geçen uçak kazası, 1 Şubat 1963'de Lübnan havayolu şirketi Middle East Airlines'a ait uçağın Ankara semalarındayken Türk Hava Kuvvetleri'ne ait nakliye uçağıyla çarpışması sonucu gerçekleşti. Her iki uçak da Ulus semtinde bulunan meskun mahaller üzerindeki farklı noktalara düştü. Kazada yolcu uçağında bulunan 11 yolcu ve 3 mürettebat, askeri uçakta bulunan 3 Türk askerî personeli ve uçakların düştükleri yerlerde bulunan 87 kişi ile beraber toplam 104 kişi hayatını kaybetti."
       },
       {
         title: "TRT Belgesel (Ve Sonra Programı) / Isparta Uçak Kazası Sonrası",
