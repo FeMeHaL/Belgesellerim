@@ -15,8 +15,7 @@
         .container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+            justify-content: space-between;
             padding: 20px;
         }
         .col {
@@ -70,11 +69,6 @@
             color: #ffffff;
         }
 
-        @media (max-width: 2000px) {
-            .col {
-                flex: 1 1 calc(17% - 15px); /* 5 seçenek (default) */
-	        }
-	    }
         @media (max-width: 1200px) {
             .col {
                 flex: 1 1 calc(25% - 20px); /* 4 seçenek */
