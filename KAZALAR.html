@@ -16,8 +16,8 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            padding: 15px;
+            gap: 20px;
+            padding: 20px;
         }
         .col {
             flex: 1 1 calc(20% - 20px);
@@ -70,7 +70,13 @@
             color: #ffffff;
         }
 
-        @media (max-width: 1500px) {
+        @media (max-width: 1700px) {
+            .col {
+                flex: 1 1 calc(20% - 20px); /* 5 seçenek */
+            }
+        }
+		
+        @media (max-width: 1200px) {
             .col {
                 flex: 1 1 calc(25% - 20px); /* 4 seçenek */
             }
