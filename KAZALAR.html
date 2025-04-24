@@ -20,7 +20,7 @@
             padding: 20px;
         }
         .col {
-            flex: 1 1 calc(17.5% - 20px);
+            flex: 1 1 calc(20% - 20px);
             box-sizing: border-box;
             max-width: 20%;
         }
@@ -68,6 +68,12 @@
         }
         .gen-movie-info h3 a:hover {
             color: #ffffff;
+                }
+
+        @media (max-width: 2000px) {
+            .col {
+                flex: 1 1 calc(16.67% - 20px); /* 6 seçenek */
+            }
         }
 
         @media (max-width: 1700px) {
