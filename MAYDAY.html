@@ -10,7 +10,7 @@
       background-color: #1e1e1e;
       color: white;
       display: flex;
-      height: 100vh;
+      flex-wrap: wrap;
     }
 
     .sidebar {
@@ -20,8 +20,7 @@
       padding: 20px;
       box-sizing: border-box;
       flex-shrink: 0;
-      overflow: hidden;     /* taşanı gizle */
-      height: 100vh;         /* sabit yüksekliğe sahip olsun */
+	  height: auto; 
     }
 
     .season-button {
@@ -43,8 +42,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
-      overflow: hidden;     /* içerik taşarsa gizlensin */
-      height: 100vh;         /* sayfa sabit kalsın */
+      max-height: 500px;          /* Sabit yükseklik */
     }
 
     .subtitle {
