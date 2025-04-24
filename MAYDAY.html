@@ -10,7 +10,6 @@
       background-color: #1e1e1e;
       color: white;
       display: flex;
-      flex-wrap: nowrap;
       height: 100vh;
       overflow: hidden;
     }
@@ -22,8 +21,8 @@
       padding: 20px;
       box-sizing: border-box;
       flex-shrink: 0;
-      height: 100vh;
-      overflow-y: auto;
+      overflow: hidden;     /* taşanı gizle */
+      height: 100vh;         /* sabit yüksekliğe sahip olsun */
     }
 
     .season-button {
@@ -45,8 +44,8 @@
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
-      height: 100vh;
-      overflow-y: auto;
+      overflow: hidden;     /* içerik taşarsa gizlensin */
+      height: 100vh;         /* sayfa sabit kalsın */
     }
 
     .subtitle {
