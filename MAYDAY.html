@@ -143,7 +143,8 @@
 <body>
 
   <div class="sidebar">
-    <button class="season-button" onclick="loadSeason(13)">13. SEZON (2013-2014)</button>
+    <button class="season-button" onclick="loadSeason(14)">14. SEZON (2015)</button>
+	<button class="season-button" onclick="loadSeason(13)">13. SEZON (2013-2014)</button>
 	<button class="season-button" onclick="loadSeason(12)">12. SEZON (2012-2013)</button>
 	<button class="season-button" onclick="loadSeason(11)">11. SEZON (2011-2012)</button>
 	<button class="season-button" onclick="loadSeason(10)">10. SEZON (2011)</button>
@@ -169,6 +170,15 @@
 
   <script>
     const episodes = {
+	
+	14: [
+	    {
+          title: "<span class='episode-number'>[110]</span> 14. Sezon 1. Bölüm - (Choosing Sides) - Motor Arızası", 
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 5 Ocak 2015</p>",
+          thumbnail: "./img/14S01E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.182019379191848/182015785858874"
+        }
+      ],
 	
 	13: [
 	    {
@@ -230,6 +240,12 @@
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 17 Şubat 2014</p>",
           thumbnail: "./img/13S10E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.181375552589564/181372482589871"
+        },
+		{
+          title: "<span class='episode-number'>[109]</span> 13. Sezon 11. Bölüm - (Getting out Alive) - Hayatta Kalmak", 
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi: 9 Mayıs 2014</p>",
+          thumbnail: "./img/13S11E.jpg",
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/356565018403949"
         }
       ],
 		
@@ -901,8 +917,8 @@
       video.src = '';  // Videoyu durdurmak için src'i temizle
     }
 
-    // Sayfa yüklenince 13. sezonu yükle
-    window.onload = () => loadSeason(13);
+    // Sayfa yüklenince 14. sezonu yükle
+    window.onload = () => loadSeason(14);
   </script>
 
 </body>
