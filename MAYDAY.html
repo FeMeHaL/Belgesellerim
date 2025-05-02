@@ -882,21 +882,17 @@
 
 let currentSeason = 14; // Başlangıçta 14. sezon gösterilsin
 
-
 function loadSeason(season) {
   currentSeason = season;  // Sezon bilgisi güncelleniyor
   const container = document.getElementById('episodeContainer');
-  if (query.trim() === "") {
-  loadSeason(currentSeason);  // ✅ aktif sezonu yeniden yükle
-  return;
-}
   container.innerHTML = '';
+  
   if (!episodes[season]) {
     container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
     return;
   }
 
-episodes[season].forEach(ep => {
+  episodes[season].forEach(ep => {
     const epDiv = document.createElement('div');
     epDiv.className = 'episode';
     epDiv.innerHTML = `
