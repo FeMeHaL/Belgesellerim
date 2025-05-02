@@ -880,35 +880,37 @@
       ]
     };
 
-    function loadSeason(season) {
-      const container = document.getElementById('episodeContainer');
-      container.innerHTML = '';
-      if (!episodes[season]) {
-        container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
-        return;
-      }
+let currentSeason = 14; // Başlangıçta 14. sezon gösterilsin
 
-      episodes[season].forEach(ep => {
-        const epDiv = document.createElement('div');
-        epDiv.className = 'episode';
-        epDiv.innerHTML = `
-          <img src="${ep.thumbnail}" alt="${ep.title}">
-          <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-          <p>${ep.date}</p>
-        `;
-        container.appendChild(epDiv);
-      });
-    }
+
+function loadSeason(season) {
+  currentSeason = season;  // Sezon bilgisi güncelleniyor
+  const container = document.getElementById('episodeContainer');
+  if (query.trim() === "") {
+  loadSeason(currentSeason);  // ✅ aktif sezonu yeniden yükle
+  return;
+}
+  container.innerHTML = '';
+  if (!episodes[season]) {
+    container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
+    return;
+  }
+
+episodes[season].forEach(ep => {
+    const epDiv = document.createElement('div');
+    epDiv.className = 'episode';
+    epDiv.innerHTML = `
+      <img src="${ep.thumbnail}" alt="${ep.title}">
+      <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+      <p>${ep.date}</p>
+    `;
+    container.appendChild(epDiv);
+  });
+}
 
     function filterEpisodesAllSeasons() {
     const query = document.getElementById('searchInput').value.toLowerCase();
     const container = document.getElementById('episodeContainer');
-  // 📌 Eğer arama kutusu boşsa sadece 14. sezonu geri yükle ve çık
-  if (query.trim() === "") {
-    loadSeason(14);
-    return;
-  }
-
   container.innerHTML = '';
 
   let found = false;
