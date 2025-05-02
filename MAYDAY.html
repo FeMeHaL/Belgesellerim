@@ -904,11 +904,17 @@ function loadSeason(season) {
   });
 }
 
-    function filterEpisodesAllSeasons() {
-    const query = document.getElementById('searchInput').value.toLowerCase();
-    const container = document.getElementById('episodeContainer');
-  container.innerHTML = '';
+function filterEpisodesAllSeasons() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
 
+  // Eğer arama kutusu boşsa sayfayı yenile
+  if (query.trim() === "") {
+    window.location.reload();  // ✅ Sayfa baştan yüklenecek, 14. sezon geri gelir
+    return;
+  }
+
+  const container = document.getElementById('episodeContainer');
+  container.innerHTML = '';
   let found = false;
 
   for (const season in episodes) {
@@ -919,7 +925,6 @@ function loadSeason(season) {
     if (matches.length > 0) {
       found = true;
 
-      // Sezon başlığı ekle
       const header = document.createElement('h2');
       header.textContent = `${season}. Sezon`;
       header.style.width = "100%";
@@ -944,6 +949,7 @@ function loadSeason(season) {
     container.innerHTML = "<p>Hiçbir bölüm bulunamadı.</p>";
   }
 }
+
 
 
     function playVideo(src) {
