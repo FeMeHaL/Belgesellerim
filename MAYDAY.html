@@ -900,9 +900,15 @@
       });
     }
 
-function filterEpisodesAllSeasons() {
-  const query = document.getElementById('searchInput').value.toLowerCase();
-  const container = document.getElementById('episodeContainer');
+    function filterEpisodesAllSeasons() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const container = document.getElementById('episodeContainer');
+  // 📌 Eğer arama kutusu boşsa sadece 14. sezonu geri yükle ve çık
+  if (query.trim() === "") {
+    loadSeason(14);
+    return;
+  }
+
   container.innerHTML = '';
 
   let found = false;
