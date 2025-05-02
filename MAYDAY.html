@@ -143,6 +143,11 @@
 <body>
 
   <div class="sidebar">
+  <input type="text" id="searchInput" placeholder="Bölüm ara..." oninput="filterEpisodesAllSeasons()" style="width: 100%; padding: 10px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px;">
+
+  
+  
+  
     <button class="season-button" onclick="loadSeason(14)">14. SEZON (2015)</button>
 	<button class="season-button" onclick="loadSeason(13)">13. SEZON (2013-2014)</button>
 	<button class="season-button" onclick="loadSeason(12)">12. SEZON (2012-2013)</button>
@@ -894,6 +899,48 @@
         container.appendChild(epDiv);
       });
     }
+
+function filterEpisodesAllSeasons() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  const container = document.getElementById('episodeContainer');
+  container.innerHTML = '';
+
+  let found = false;
+
+  for (const season in episodes) {
+    const matches = episodes[season].filter(ep =>
+      ep.title.toLowerCase().includes(query)
+    );
+
+    if (matches.length > 0) {
+      found = true;
+
+      // Sezon başlığı ekle
+      const header = document.createElement('h2');
+      header.textContent = `${season}. Sezon`;
+      header.style.width = "100%";
+      header.style.color = "#ff4d4d";
+      header.style.borderBottom = "1px solid #444";
+      container.appendChild(header);
+
+      matches.forEach(ep => {
+        const epDiv = document.createElement('div');
+        epDiv.className = 'episode';
+        epDiv.innerHTML = `
+          <img src="${ep.thumbnail}" alt="${ep.title}">
+          <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+          <p>${ep.date}</p>
+        `;
+        container.appendChild(epDiv);
+      });
+    }
+  }
+
+  if (!found) {
+    container.innerHTML = "<p>Hiçbir bölüm bulunamadı.</p>";
+  }
+}
+
 
     function playVideo(src) {
       const overlay = document.getElementById('videoOverlay');
