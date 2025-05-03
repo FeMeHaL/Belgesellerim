@@ -976,7 +976,7 @@ function filterEpisodesAllSeasons() {
           <img src="${ep.thumbnail}" alt="${ep.title}">
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
            ${ep.date}
-           ${ep.tag ? ep.tag : ''}
+           ${ep.tag || ''}
            `;
         container.appendChild(epDiv);
       });
