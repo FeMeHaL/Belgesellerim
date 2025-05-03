@@ -89,6 +89,41 @@
       margin-top: 10px;
     }
 
+.tag-link {
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.tag-badge {
+  width: 180px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+  background: #fff;
+}
+
+.tag-badge:hover {
+  transform: scale(1.05);
+}
+
+.tag-badge img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.tag-title {
+  padding: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
     .video-overlay {
       position: fixed;
       top: 0; left: 0;
@@ -146,7 +181,7 @@
 	<button class="season-button" onclick="loadSeason(6)">6. SEZON (2012)</button>
 	<button class="season-button" onclick="loadSeason(5)">5. SEZON (2012)</button>
 	<button class="season-button" onclick="loadSeason(4)">4. SEZON (2011)</button>
-	<button class="season-button" onclick="loadSeason(3)">2. SEZON (2006-2007)</button>
+	<button class="season-button" onclick="loadSeason(3)">3. SEZON (2006-2007)</button>
 	<button class="season-button" onclick="loadSeason(2)">2. SEZON (2005-2006)</button>
 	<button class="season-button" onclick="loadSeason(1)">1. SEZON (2004)</button>
     <!-- Diğer sezonlar buraya gelecek -->
@@ -169,7 +204,18 @@
           title: "<span class='episode-number'>[060]</span> 6. Sezon 3. Bölüm - (Fire in the Cockpit) - Kokpitte Yangın",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Kasım 2012</p>",
           thumbnail: "./img/01S03E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.103745097019277/103730617020725"
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.103745097019277/103730617020725",
+
+  // 👇 Bu satır, etiketi (badge’i) oluşturur
+  tag: `
+    <a href="https://femehal.github.io/Belgesellerim/MAYDAY#mayday-video003" class="tag-link" target="_blank">
+      <div class="tag-badge">
+        <img src="./img/01S03E.jpg" alt="Fire on Board" />
+        <div class="tag-title">[003] 1. Sezon 3. Bölüm - Fire on Board</div>
+      </div>
+    </a>
+  `
+}
         },
 		{
           title: "<span class='episode-number'>[063]</span> 6. Sezon 6. Bölüm - (Terrified Over Tokyo) - Tokyo'da Korku",
