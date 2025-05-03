@@ -43,17 +43,6 @@
       gap: 20px;
     }
 
-    .subtitle {
-      color: red;        /* Kırmızı renk */
-      font-weight: bold; /* Kalın yazı tipi */
-    }
-	
-	 .episode-number {
-      color: purple;  /* Mor renk */
-      font-weight: bold; /* Kalın yazı tipi */
-      display: inline;  /* Bu sayede sadece span etiketini etkiler */
-    }
-	
     .episode {
       background-color: #2b2b2b;
       width: 100%;
@@ -87,6 +76,21 @@
       margin-top: 10px;
     }
 
+    .tag {
+      display: inline-block;
+      background-color: #444;
+      color: white;
+      padding: 5px 10px;
+      margin: 3px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .tag:hover {
+      background-color: #ff4d4d;
+    }
+
     .video-overlay {
       position: fixed;
       top: 0; left: 0;
@@ -113,16 +117,15 @@
       cursor: pointer;
     }
 
-    /* Responsive Ayarlar */
     @media (max-width: 768px) {
       .episode {
-        flex: 1 1 calc(50% - 20px); /* Tablet görünümü */
+        flex: 1 1 calc(50% - 20px);
       }
     }
 
     @media (max-width: 480px) {
       .episode {
-        flex: 1 1 100%; /* Telefon görünümü */
+        flex: 1 1 100%;
       }
 
       .sidebar {
@@ -134,19 +137,15 @@
         padding: 10px;
       }
     }
-
   </style>
 </head>
 <body>
 
   <div class="sidebar">
-	<button class="season-button" onclick="loadSeason(1)">1. SEZON (2007-2008)</button>
-    <!-- Diğer sezonlar buraya gelecek -->
+    <button class="season-button" onclick="loadSeason(1)">1. SEZON (2007-2008)</button>
   </div>
 
-  <div class="content" id="episodeContainer">
-    <!-- Bölümler burada yüklenecek -->
-  </div>
+  <div class="content" id="episodeContainer"></div>
 
   <div class="video-overlay" id="videoOverlay">
     <span class="close-btn" onclick="closeVideo()">×</span>
@@ -157,22 +156,23 @@
     const episodes = {
       1: [
         {
-          title: "<span class='episode-number'>[001]</span> 1. Sezon 1. Bölüm - (North Hollywood Shootout) - Kuzey Hollywood Çatışması / Film Gibi Soygun",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 18 Haziran 2007</p>",
+          title: "[001] 1. Sezon 1. Bölüm - (North Hollywood Shootout) - Kuzey Hollywood Çatışması",
+          date: "İlk Vizyona Girişi : 18 Haziran 2007",
           thumbnail: "./img/KA01S01E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/575188971570761"
         },
-		{
-          title: "<span class='episode-number'>[005]</span> 1. Sezon 5. Bölüm - (Downed Pilot) - Bosna'da Düşen Uçak",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 15 Mayıs 2007</p>",
+        {
+          title: "[005] 1. Sezon 5. Bölüm - (Downed Pilot) - Bosna'da Düşen Uçak",
+          date: "İlk Vizyona Girişi : 15 Mayıs 2007",
           thumbnail: "./img/KA01S05E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/506529168665653"
         },
-		{
-          title: "<span class='episode-number'>[009]</span> 1. Sezon 9. Bölüm - (Assault On Entebbe) - Ugandaya Kaçırılan Uçak",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Haziran 2007</p>",
+        {
+          title: "[009] 1. Sezon 9. Bölüm - (Assault On Entebbe) - Uganda’ya Kaçırılan Uçak",
+          date: "İlk Vizyona Girişi : 12 Haziran 2007",
           thumbnail: "./img/KA01S09E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1031743588089291"
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1031743588089291",
+          tags: ["Uganda", "Rehine Operasyonu", "İsrail", "Operasyon Entebbe", "1976"]
         }
       ]
     };
@@ -191,7 +191,8 @@
         epDiv.innerHTML = `
           <img src="${ep.thumbnail}" alt="${ep.title}">
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-          <p>${ep.date}</p>
+          <p class="episode-date">${ep.date}</p>
+          ${ep.tags ? '<div>' + ep.tags.map(tag => `<span class="tag" onclick="filterByTag('${tag}')">${tag}</span>`).join('') + '</div>' : ''}
         `;
         container.appendChild(epDiv);
       });
@@ -200,7 +201,7 @@
     function playVideo(src) {
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
-      video.src = src;  // Facebook embed linkini buraya ekliyoruz
+      video.src = src;
       overlay.style.display = 'flex';
     }
 
@@ -208,10 +209,36 @@
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
       overlay.style.display = 'none';
-      video.src = '';  // Videoyu durdurmak için src'i temizliyoruz
+      video.src = '';
     }
 
-    // Sayfa yüklenince 1. sezonu yükle
+    function filterByTag(tagName) {
+      const container = document.getElementById('episodeContainer');
+      container.innerHTML = '';
+      let found = false;
+
+      for (const season in episodes) {
+        const matches = episodes[season].filter(ep => ep.tags && ep.tags.includes(tagName));
+
+        matches.forEach(ep => {
+          found = true;
+          const epDiv = document.createElement('div');
+          epDiv.className = 'episode';
+          epDiv.innerHTML = `
+            <img src="${ep.thumbnail}" alt="${ep.title}">
+            <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+            <p class="episode-date">${ep.date}</p>
+            <div>${ep.tags.map(tag => `<span class="tag" onclick="filterByTag('${tag}')">${tag}</span>`).join('')}</div>
+          `;
+          container.appendChild(epDiv);
+        });
+      }
+
+      if (!found) {
+        container.innerHTML = "<p>Bu etikete sahip bölüm bulunamadı.</p>";
+      }
+    }
+
     window.onload = () => loadSeason(1);
   </script>
 
