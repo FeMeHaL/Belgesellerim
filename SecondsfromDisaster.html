@@ -354,6 +354,36 @@
       ]
     };
 
+// Video linklerine tıklama olayını dinleyen script
+  document.querySelectorAll('.video-link').forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      
+      // Video URL'sini al
+      var videoUrl = link.getAttribute('data-video-url');
+      
+      // Overlay'i aç
+      var overlay = document.querySelector('.video-overlay');
+      var iframe = overlay.querySelector('iframe');
+      
+      // iframe'e video URL'sini yerleştir
+      iframe.src = videoUrl;
+      
+      // Overlay'i görünür yap
+      overlay.style.display = 'flex';
+    });
+  });
+
+  // Overlay kapama butonuna tıklama olayını dinleyen script
+  document.querySelector('.close-btn').addEventListener('click', function() {
+    // iframe'i temizle
+    var iframe = document.querySelector('.video-overlay iframe');
+    iframe.src = '';  // iframe içeriğini temizle
+    
+    // Overlay'i gizle
+    document.querySelector('.video-overlay').style.display = 'none';
+  });
+
     function loadSeason(season) {
       const container = document.getElementById('episodeContainer');
       container.innerHTML = '';
