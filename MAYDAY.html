@@ -894,7 +894,7 @@
           thumbnail: "./img/01S03E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/2900952230166820/"
           tag: "<a href='https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.103745097019277/103730617020725' target='_blank' title='Felaket Anları 6. Sezon 3. Bölüm - (Fire in the Cockpit) - Kokpitte Yangın' onclick='window.open(this.href, \"_blank\", \"fullscreen=yes, scrollbars=yes\"); return false;'><img src='./img/video-icon.png' alt='Tag Icon' style='width: 35px; height: 35px; margin-right: 10px; vertical-align: middle; float: left;' /></a>"
-    },
+		  },
         {
           title: "<span class='episode-number'>[004]</span> 1. Sezon 4. Bölüm - (Flying Blind) - Kör Uçuş",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi: 17 Eylül 2003</p>",
@@ -974,8 +974,9 @@ function filterEpisodesAllSeasons() {
         epDiv.innerHTML = `
           <img src="${ep.thumbnail}" alt="${ep.title}">
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-          <p>${ep.date}</p>
-        `;
+           ${ep.date}
+           ${ep.tag ? ep.tag : ''}
+           `;
         container.appendChild(epDiv);
       });
     }
