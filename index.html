@@ -71,7 +71,10 @@
         }
 		
 		.alphabet-strip {
-    width: 100%;
+          width: 90%; /* %100 yerine %90 */
+		  margin: 0 auto; /* ortalamak için */
+		  overflow-x: auto; /* ekstra önlem */
+		  box-sizing: border-box; /* padding dahil */
     background-color: #1f1f1f;
     padding: 15px;
     border-radius: 10px;
@@ -101,7 +104,10 @@
 
 /* Açılır içerik */
 .letter-content {
-    display: none;
+    display: flex;              /* esnek düzen */
+    flex-wrap: wrap;            /* sığmazsa alt satıra geç */
+    gap: 10px;                  /* kutular arasında boşluk */
+    justify-content: center;    /* ortala */
     background-color: #333;
     margin: 15px auto;
     padding: 15px;
@@ -111,12 +117,14 @@
 }
 
 .letter-content a {
-    display: block;
-    padding: 10px 0;
-    color: #b0b0b0;
-    text-decoration: none;
-    border-bottom: 1px solid #444;
-    transition: color 0.3s;
+    flex: 1 1 auto;
+    min-width: 200px;           /* küçük ekranlarda minimum genişlik */
+    max-width: 250px;           /* büyük ekranda fazla büyümesin */
+    background-color: #2c2c2c;  /* kutu gibi görünmesi için */
+    padding: 10px;
+    margin: 5px 0;
+    text-align: center;
+    border-radius: 5px;
 }
 
 .letter-content a:hover {
