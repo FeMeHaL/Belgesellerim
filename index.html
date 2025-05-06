@@ -333,17 +333,21 @@
 
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            // Önce tüm bölümleri gizle
-            contents.forEach(content => content.style.display = 'none');
-
-            // Tıklanan harfe ait bölümü göster
             const targetId = button.getAttribute('data-target');
             const targetSection = document.getElementById(targetId);
-            if (targetSection) {
+
+            // Eğer tıklanan harfin bölümü zaten açık ise kapat
+            if (targetSection.style.display === 'flex') {
+                targetSection.style.display = 'none';
+            } else {
+                // Önce tüm içerikleri kapat
+                contents.forEach(content => content.style.display = 'none');
+
+                // Sonra sadece tıklananı aç
                 targetSection.style.display = 'flex';
             }
         });
     });
-</script>
+</script>>
 </body>
 </html>
