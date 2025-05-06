@@ -314,6 +314,23 @@
         </div>
 
     </div>
+<script>
+    const buttons = document.querySelectorAll('.letter-button');
+    const contents = document.querySelectorAll('.letter-content');
 
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Önce tüm bölümleri gizle
+            contents.forEach(content => content.style.display = 'none');
+
+            // Tıklanan harfe ait bölümü göster
+            const targetId = button.getAttribute('data-target');
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            }
+        });
+    });
+</script>
 </body>
 </html>
