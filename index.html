@@ -104,11 +104,11 @@
 
 /* Açılır içerik */
 .letter-content {
-    display: flex;              /* esnek düzen */
+    display: none; /* Başta gizli */
     flex-wrap: wrap;            /* sığmazsa alt satıra geç */
     gap: 10px;                  /* kutular arasında boşluk */
     justify-content: center;    /* ortala */
-    background-color: #333;
+    background-color: transparent;
     margin: 15px auto;
     padding: 15px;
     border: 2px solid #00bfff;
@@ -121,14 +121,19 @@
     min-width: 200px;           /* küçük ekranlarda minimum genişlik */
     max-width: 250px;           /* büyük ekranda fazla büyümesin */
     background-color: #2c2c2c;  /* kutu gibi görünmesi için */
-    padding: 10px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
     margin: 5px 0;
     text-align: center;
     border-radius: 5px;
 }
 
 .letter-content a:hover {
-    color: #ffffff;
+    background-color: #00bfff;
+    color: #1e1e1e;
 }
 		
 		
@@ -335,7 +340,7 @@
             const targetId = button.getAttribute('data-target');
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
-                targetSection.style.display = 'block';
+                targetSection.style.display = 'flex';
             }
         });
     });
