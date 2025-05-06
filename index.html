@@ -70,67 +70,60 @@
             color: #ffffff;
         }
 		
-		.alphabet-strip {
-    width: 100%;
-    background-color: #2c2c2c; /* legal-warning ile aynı arka plan */
-    padding: 10px;
-    overflow-x: auto;
-    white-space: nowrap;
-    box-sizing: border-box;
-    border-bottom: 1px solid #444;
-}
-
-.alphabet-strip ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap; /* Satır taşmalarını kontrol eder */
-    margin: 0;
-    padding: 0;
-    justify-content: center; /* Ortalar */
-}
-
-.alphabet-strip li {
-    position: relative;
-    margin: 5px 10px;
-    cursor: pointer;
-    color: #b0b0b0; /* harf rengi legal-warning ile uyumlu */
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.alphabet-strip li:hover {
-    color: #ffffff; /* üzerine gelince beyaza dönüşür */
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 25px;
-    left: 0;
-    background-color: #2c2c2c;
-    min-width: 200px;
-    border: 1px solid #444;
-    z-index: 100;
-    padding: 10px;
-    border-radius: 6px;
-}
-
-.dropdown-content a {
-    color: #b0b0b0;
-    text-decoration: none;
-    display: block;
-    margin: 5px 0;
-    font-size: 14px;
-}
-
-.dropdown-content a:hover {
-    color: #ffffff;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-		
+		.alphabet-accordion {
+            width: 100%;
+            background-color: #1f1f1f;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .letter-section {
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .letter-button {
+            width: 100%;
+            padding: 15px;
+            text-align: left;
+            font-size: 18px;
+            font-weight: bold;
+            color: #00bfff;
+            background-color: #2c2c2c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+        .letter-button:hover {
+            background-color: #00bfff;
+            color: #2c2c2c;
+        }
+        .letter-content {
+            max-height: 0;
+            overflow: hidden;
+            background-color: #333;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+            border-left: 2px solid #00bfff;
+            border-right: 2px solid #00bfff;
+            border-bottom: 2px solid #00bfff;
+            border-radius: 0 0 5px 5px;
+            padding: 0 15px;
+        }
+        .letter-content a {
+            display: block;
+            padding: 10px 0;
+            color: #b0b0b0;
+            text-decoration: none;
+            border-bottom: 1px solid #444;
+            transition: color 0.3s;
+        }
+        .letter-content a:hover {
+            color: #ffffff;
+        }
+        .letter-content.open {
+            padding: 10px 15px;
+            max-height: 500px; /* Gerekirse artır */
+        }		
 		
 		.legal-warning {
              background-color: #2c2c2c;
@@ -173,71 +166,69 @@
 </head>
 <body>
 
-<div class="alphabet-strip">
-    <ul>
-        <li class="dropdown">
-            <span>B</span>
-            <div class="dropdown-content">
-                <a href="DestroyedinSeconds">BİR ANDA YERLE BİR</a>
-            </div>
-        </li>
-		 <li class="dropdown">
-            <span>D</span>
-            <div class="dropdown-content">
-                <a href="MomentsofTerror">DEHŞET ANLARI</a>
-            </div>
-        </li>
-		<li class="dropdown">
-            <span>F</span>
-            <div class="dropdown-content">
-                <a href="SecondsfromDisaster">FELAKET ANLARI</a>
-            </div>
-        </li>
-		<li class="dropdown">
-            <span>G</span>
-            <div class="dropdown-content">
-                <a href="WarHeroesoftheSkies">GÖKLERİN KAHRAMANLARI</a>
-            </div>
-        </li>
-		<li class="dropdown">
-            <span>H</span>
-            <div class="dropdown-content">
-                <a href="HAVACILIK">HAVACILIK FİLMLERİ</a>
-            </div>
-        </li>
-		<li class="dropdown">
-            <span>İ</span>
-            <div class="dropdown-content">
-			    <a href="Inside911">İNSİDE 9/11</a>
-                <a href="InterpolInvestigates">İNTERPOL ARAŞTIRMALARI</a>
-            </div>
-        </li>
-		<li class="dropdown">
-            <span>K</span>
-            <div class="dropdown-content">
-			    <a href="KillingKennedy">KENNEDY SUİKASTİ</a>
-                <a href="SituationCritical">KRİTİK ANLAR</a>
-            </div>
-        </li>
-		<li class="dropdown">
-            <span>N</span>
-            <div class="dropdown-content">
-			    <a href="NaziMegastructures">NAZİLERİN MEGA YAPILARI</a>
-            </div>
-        </li>
-		<li class="dropdown">
-            <span>T</span>
-            <div class="dropdown-content">
-                <a href="TEKBOLUM">TEK BÖLÜMLÜK UÇAK KAZALARI</a>
-            </div>
-        </li>
-        <li class="dropdown">
-            <span>U</span>
-            <div class="dropdown-content">
-                <a href="MAYDAY">UÇAK KAZASI RAPORU</a>
-            </div>
-        </li>
-    </ul>
+<div class="alphabet-accordion">
+    <div class="letter-section">
+        <button class="letter-button" data-target="section-B">B</button>
+        <div id="section-B" class="letter-content">
+            <a href="DestroyedinSeconds">BİR ANDA YERLE BİR</a>
+        </div>
+    </div>
+    <div class="letter-section">
+        <button class="letter-button" data-target="section-D">D</button>
+        <div id="section-D" class="letter-content">
+            <a href="MomentsofTerror">DEHŞET ANLARI</a>
+        </div>
+    </div>
+    <div class="letter-section">
+        <button class="letter-button" data-target="section-F">F</button>
+        <div id="section-F" class="letter-content">
+            <a href="SecondsfromDisaster">FELAKET ANLARI</a>
+        </div>
+    </div>
+    <div class="letter-section">
+        <button class="letter-button" data-target="section-G">G</button>
+        <div id="section-G" class="letter-content">
+            <a href="WarHeroesoftheSkies">GÖKLERİN KAHRAMANLARI</a>
+        </div>
+    </div>
+    <div class="letter-section">
+        <button class="letter-button" data-target="section-H">H</button>
+        <div id="section-H" class="letter-content">
+            <a href="HAVACILIK">HAVACILIK FİLMLERİ</a>
+        </div>
+    </div>
+    <div class="letter-section">
+        <button class="letter-button" data-target="section-I">İ</button>
+        <div id="section-I" class="letter-content">
+            <a href="Inside911">İNSİDE 9/11</a>
+            <a href="InterpolInvestigates">İNTERPOL ARAŞTIRMALARI</a>
+        </div>
+    </div>
+    <div class="letter-section">
+        <button class="letter-button" data-target="section-K">K</button>
+        <div id="section-K" class="letter-content">
+            <a href="KillingKennedy">KENNEDY SUİKASTİ</a>
+            <a href="SituationCritical">KRİTİK ANLAR</a>
+        </div>
+    </div>
+    <div class="letter-section">
+        <button class="letter-button" data-target="section-N">N</button>
+        <div id="section-N" class="letter-content">
+            <a href="NaziMegastructures">NAZİLERİN MEGA YAPILARI</a>
+        </div>
+    </div>
+    <div class="letter-section">
+        <button class="letter-button" data-target="section-T">T</button>
+        <div id="section-T" class="letter-content">
+            <a href="TEKBOLUM">TEK BÖLÜMLÜK UÇAK KAZALARI</a>
+        </div>
+    </div>
+    <div class="letter-section">
+        <button class="letter-button" data-target="section-U">U</button>
+        <div id="section-U" class="letter-content">
+            <a href="MAYDAY">UÇAK KAZASI RAPORU</a>
+        </div>
+    </div>
 </div>
 	
     <div class="legal-warning">
