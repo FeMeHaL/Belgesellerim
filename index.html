@@ -70,60 +70,59 @@
             color: #ffffff;
         }
 		
-		.alphabet-accordion {
-            width: 100%;
-            background-color: #1f1f1f;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-        .letter-section {
-            margin-bottom: 10px;
-            overflow: hidden;
-        }
-        .letter-button {
-            width: 100%;
-            padding: 15px;
-            text-align: left;
-            font-size: 18px;
-            font-weight: bold;
-            color: #00bfff;
-            background-color: #2c2c2c;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s, color 0.3s;
-        }
-        .letter-button:hover {
-            background-color: #00bfff;
-            color: #2c2c2c;
-        }
-        .letter-content {
-            max-height: 0;
-            overflow: hidden;
-            background-color: #333;
-            transition: max-height 0.5s ease, padding 0.5s ease;
-            border-left: 2px solid #00bfff;
-            border-right: 2px solid #00bfff;
-            border-bottom: 2px solid #00bfff;
-            border-radius: 0 0 5px 5px;
-            padding: 0 15px;
-        }
-        .letter-content a {
-            display: block;
-            padding: 10px 0;
-            color: #b0b0b0;
-            text-decoration: none;
-            border-bottom: 1px solid #444;
-            transition: color 0.3s;
-        }
-        .letter-content a:hover {
-            color: #ffffff;
-        }
-        .letter-content.open {
-            padding: 10px 15px;
-            max-height: 500px; /* Gerekirse artır */
-        }		
+		.alphabet-strip {
+    width: 100%;
+    background-color: #1f1f1f;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.letter-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #00bfff;
+    background-color: #2c2c2c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.letter-button:hover {
+    background-color: #00bfff;
+    color: #2c2c2c;
+}
+
+/* Açılır içerik */
+.letter-content {
+    display: none;
+    background-color: #333;
+    margin: 15px auto;
+    padding: 15px;
+    border: 2px solid #00bfff;
+    border-radius: 5px;
+    width: 90%;
+}
+
+.letter-content a {
+    display: block;
+    padding: 10px 0;
+    color: #b0b0b0;
+    text-decoration: none;
+    border-bottom: 1px solid #444;
+    transition: color 0.3s;
+}
+
+.letter-content a:hover {
+    color: #ffffff;
+}
+		
 		
 		.legal-warning {
              background-color: #2c2c2c;
@@ -166,70 +165,52 @@
 </head>
 <body>
 
-<div class="alphabet-accordion">
-    <div class="letter-section">
-        <button class="letter-button" data-target="section-B">B</button>
-        <div id="section-B" class="letter-content">
-            <a href="DestroyedinSeconds">BİR ANDA YERLE BİR</a>
-        </div>
-    </div>
-    <div class="letter-section">
-        <button class="letter-button" data-target="section-D">D</button>
-        <div id="section-D" class="letter-content">
-            <a href="MomentsofTerror">DEHŞET ANLARI</a>
-        </div>
-    </div>
-    <div class="letter-section">
-        <button class="letter-button" data-target="section-F">F</button>
-        <div id="section-F" class="letter-content">
-            <a href="SecondsfromDisaster">FELAKET ANLARI</a>
-        </div>
-    </div>
-    <div class="letter-section">
-        <button class="letter-button" data-target="section-G">G</button>
-        <div id="section-G" class="letter-content">
-            <a href="WarHeroesoftheSkies">GÖKLERİN KAHRAMANLARI</a>
-        </div>
-    </div>
-    <div class="letter-section">
-        <button class="letter-button" data-target="section-H">H</button>
-        <div id="section-H" class="letter-content">
-            <a href="HAVACILIK">HAVACILIK FİLMLERİ</a>
-        </div>
-    </div>
-    <div class="letter-section">
-        <button class="letter-button" data-target="section-I">İ</button>
-        <div id="section-I" class="letter-content">
-            <a href="Inside911">İNSİDE 9/11</a>
-            <a href="InterpolInvestigates">İNTERPOL ARAŞTIRMALARI</a>
-        </div>
-    </div>
-    <div class="letter-section">
-        <button class="letter-button" data-target="section-K">K</button>
-        <div id="section-K" class="letter-content">
-            <a href="KillingKennedy">KENNEDY SUİKASTİ</a>
-            <a href="SituationCritical">KRİTİK ANLAR</a>
-        </div>
-    </div>
-    <div class="letter-section">
-        <button class="letter-button" data-target="section-N">N</button>
-        <div id="section-N" class="letter-content">
-            <a href="NaziMegastructures">NAZİLERİN MEGA YAPILARI</a>
-        </div>
-    </div>
-    <div class="letter-section">
-        <button class="letter-button" data-target="section-T">T</button>
-        <div id="section-T" class="letter-content">
-            <a href="TEKBOLUM">TEK BÖLÜMLÜK UÇAK KAZALARI</a>
-        </div>
-    </div>
-    <div class="letter-section">
-        <button class="letter-button" data-target="section-U">U</button>
-        <div id="section-U" class="letter-content">
-            <a href="MAYDAY">UÇAK KAZASI RAPORU</a>
-        </div>
-    </div>
+<div class="alphabet-strip">
+    <button class="letter-button" data-target="section-B">B</button>
+    <button class="letter-button" data-target="section-D">D</button>
+    <button class="letter-button" data-target="section-F">F</button>
+    <button class="letter-button" data-target="section-G">G</button>
+    <button class="letter-button" data-target="section-H">H</button>
+    <button class="letter-button" data-target="section-I">İ</button>
+    <button class="letter-button" data-target="section-K">K</button>
+    <button class="letter-button" data-target="section-N">N</button>
+    <button class="letter-button" data-target="section-T">T</button>
+    <button class="letter-button" data-target="section-U">U</button>
 </div>
+
+<div id="section-B" class="letter-content">
+    <a href="DestroyedinSeconds">BİR ANDA YERLE BİR</a>
+</div>
+<div id="section-D" class="letter-content">
+    <a href="MomentsofTerror">DEHŞET ANLARI</a>
+</div>
+<div id="section-F" class="letter-content">
+    <a href="SecondsfromDisaster">FELAKET ANLARI</a>
+</div>
+<div id="section-G" class="letter-content">
+    <a href="WarHeroesoftheSkies">GÖKLERİN KAHRAMANLARI</a>
+</div>
+<div id="section-H" class="letter-content">
+    <a href="HAVACILIK">HAVACILIK FİLMLERİ</a>
+</div>
+<div id="section-I" class="letter-content">
+    <a href="Inside911">İNSİDE 9/11</a>
+    <a href="InterpolInvestigates">İNTERPOL ARAŞTIRMALARI</a>
+</div>
+<div id="section-K" class="letter-content">
+    <a href="KillingKennedy">KENNEDY SUİKASTİ</a>
+    <a href="SituationCritical">KRİTİK ANLAR</a>
+</div>
+<div id="section-N" class="letter-content">
+    <a href="NaziMegastructures">NAZİLERİN MEGA YAPILARI</a>
+</div>
+<div id="section-T" class="letter-content">
+    <a href="TEKBOLUM">TEK BÖLÜMLÜK UÇAK KAZALARI</a>
+</div>
+<div id="section-U" class="letter-content">
+    <a href="MAYDAY">UÇAK KAZASI RAPORU</a>
+</div>
+
 	
     <div class="legal-warning">
     <strong>📌 <u><b>Yasal Uyarı</b></u></strong> : Bu internet sitesinde yer alan video içerikleri, [Facebook, Dailymotion, "ok.ru", YouTube vb.] gibi üçüncü taraf platformlardan embed (gömülü) olarak sunulmaktadır. 5651 sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Hakkında Kanun uyarınca, sitemiz yer sağlayıcı konumunda olup, bu içeriklerin barındırılması, kontrolü veya denetlenmesi site yönetimi tarafından yapılmamaktadır. İlgili içeriklerle ilgili her türlü yasal bildirim, videoların barındırıldığı platformlara yapılmalıdır. Sitemiz, bu içeriklerden doğabilecek herhangi bir sorumluluk kabul etmemektedir.
