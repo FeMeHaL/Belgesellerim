@@ -70,6 +70,68 @@
             color: #ffffff;
         }
 		
+		.alphabet-strip {
+    width: 100%;
+    background-color: #2c2c2c; /* legal-warning ile aynı arka plan */
+    padding: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    box-sizing: border-box;
+    border-bottom: 1px solid #444;
+}
+
+.alphabet-strip ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap; /* Satır taşmalarını kontrol eder */
+    margin: 0;
+    padding: 0;
+    justify-content: center; /* Ortalar */
+}
+
+.alphabet-strip li {
+    position: relative;
+    margin: 5px 10px;
+    cursor: pointer;
+    color: #b0b0b0; /* harf rengi legal-warning ile uyumlu */
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.alphabet-strip li:hover {
+    color: #ffffff; /* üzerine gelince beyaza dönüşür */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    background-color: #2c2c2c;
+    min-width: 200px;
+    border: 1px solid #444;
+    z-index: 100;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.dropdown-content a {
+    color: #b0b0b0;
+    text-decoration: none;
+    display: block;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    color: #ffffff;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+		
+		
 		.legal-warning {
              background-color: #2c2c2c;
              color: #ff5c5c;
@@ -111,7 +173,72 @@
 </head>
 <body>
 
-
+<div class="alphabet-strip">
+    <ul>
+        <li class="dropdown">
+            <span>B</span>
+            <div class="dropdown-content">
+                <a href="DestroyedinSeconds">BİR ANDA YERLE BİR</a>
+            </div>
+        </li>
+		 <li class="dropdown">
+            <span>D</span>
+            <div class="dropdown-content">
+                <a href="MomentsofTerror">DEHŞET ANLARI</a>
+            </div>
+        </li>
+		<li class="dropdown">
+            <span>F</span>
+            <div class="dropdown-content">
+                <a href="SecondsfromDisaster">FELAKET ANLARI</a>
+            </div>
+        </li>
+		<li class="dropdown">
+            <span>G</span>
+            <div class="dropdown-content">
+                <a href="WarHeroesoftheSkies">GÖKLERİN KAHRAMANLARI</a>
+            </div>
+        </li>
+		<li class="dropdown">
+            <span>H</span>
+            <div class="dropdown-content">
+                <a href="HAVACILIK">HAVACILIK FİLMLERİ</a>
+            </div>
+        </li>
+		<li class="dropdown">
+            <span>İ</span>
+            <div class="dropdown-content">
+			    <a href="Inside911">İNSİDE 9/11</a>
+                <a href="InterpolInvestigates">İNTERPOL ARAŞTIRMALARI</a>
+            </div>
+        </li>
+		<li class="dropdown">
+            <span>K</span>
+            <div class="dropdown-content">
+			    <a href="KillingKennedy">KENNEDY SUİKASTİ</a>
+                <a href="SituationCritical">KRİTİK ANLAR</a>
+            </div>
+        </li>
+		<li class="dropdown">
+            <span>N</span>
+            <div class="dropdown-content">
+			    <a href="NaziMegastructures">NAZİLERİN MEGA YAPILARI</a>
+            </div>
+        </li>
+		<li class="dropdown">
+            <span>T</span>
+            <div class="dropdown-content">
+                <a href="TEKBOLUM">TEK BÖLÜMLÜK UÇAK KAZALARI</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <span>U</span>
+            <div class="dropdown-content">
+                <a href="MAYDAY">UÇAK KAZASI RAPORU</a>
+            </div>
+        </li>
+    </ul>
+</div>
 	
     <div class="legal-warning">
     <strong>📌 <u><b>Yasal Uyarı</b></u></strong> : Bu internet sitesinde yer alan video içerikleri, [Facebook, Dailymotion, "ok.ru", YouTube vb.] gibi üçüncü taraf platformlardan embed (gömülü) olarak sunulmaktadır. 5651 sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Hakkında Kanun uyarınca, sitemiz yer sağlayıcı konumunda olup, bu içeriklerin barındırılması, kontrolü veya denetlenmesi site yönetimi tarafından yapılmamaktadır. İlgili içeriklerle ilgili her türlü yasal bildirim, videoların barındırıldığı platformlara yapılmalıdır. Sitemiz, bu içeriklerden doğabilecek herhangi bir sorumluluk kabul etmemektedir.
