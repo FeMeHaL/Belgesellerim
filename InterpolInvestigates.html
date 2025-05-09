@@ -245,9 +245,10 @@ function filterByTag(tag) {
     }
   }
 
-function redirectToTag(tag) {
-  window.location.href = `/Belgesellerim/filter.html?tag=${encodeURIComponent(tag)}`;
+function filterByTag(tag) {
+  window.location.assign(`https://femehal.github.io/Belgesellerim/filter.html?tag=${encodeURIComponent(tag)}`);
 }
+
 
 
 
