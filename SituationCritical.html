@@ -203,43 +203,9 @@
   });
 }
 
-// 🔽 Buraya ekle
 function filterByTag(tag) {
-  const container = document.getElementById('episodeContainer');
-  container.innerHTML = '';
-
-  let found = false;
-
-  for (const season in episodes) {
-    const matches = episodes[season].filter(ep =>
-      ep.tags && ep.tags.includes(tag)
-    );
-
-    if (matches.length > 0) {
-      found = true;
-
-      const header = document.createElement('h2');
-      header.textContent = `${season}. Sezon - Etiket: ${tag}`;
-      header.style.width = "100%";
-      header.style.color = "#ff4d4d";
-      header.style.borderBottom = "1px solid #444";
-      container.appendChild(header);
-
-      matches.forEach(ep => {
-        const epDiv = document.createElement('div');
-        epDiv.className = 'episode';
-        epDiv.innerHTML = `
-          <img src="${ep.thumbnail}" alt="${ep.title}">
-          <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-          ${ep.date}
-          <div class="tags-container">
-            ${ep.tags.map(t => `<span class="tag" onclick="filterByTag('${t}')">${t}</span>`).join('')}
-          </div>
-        `;
-        container.appendChild(epDiv);
-      });
-    }
-  }
+  window.location.href = `https://femehal.github.io/Belgesellerim/filter.html?tag=${encodeURIComponent(tag)}`;
+}
 
   if (!found) {
     container.innerHTML = `<p>"${tag}" etiketine sahip bölüm bulunamadı.</p>`;
