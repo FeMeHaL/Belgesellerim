@@ -154,7 +154,6 @@
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
 
-
   <script>
     const episodes = {
       1: [
@@ -169,19 +168,18 @@
           date: "İlk Vizyona Girişi : 15 Mayıs 2007",
           thumbnail: "./img/KA01S05E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/506529168665653",
-          tags: ["<span class="tag" onclick="redirectToTag('Uçak')">Uçak</span>", "F16 Uçağının Düşürülmesi", "1995", "Bosna Hersek", "Pilot Kurtarma Operasyonu"]
+          tags: ["Uçak", "F16 Uçağının Düşürülmesi", "1995", "Bosna Hersek", "Pilot Kurtarma Operasyonu"]
         },
         {
           title: "[009] 1. Sezon 9. Bölüm - (Assault On Entebbe) - Uganda’ya Kaçırılan Uçak",
           date: "İlk Vizyona Girişi : 12 Haziran 2007",
           thumbnail: "./img/KA01S09E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1031743588089291",
-          tags: ["<span class="tag" onclick="redirectToTag('Uçak')">Uçak</span>", "<span class="tag" onclick="redirectToTag('Uçak Kaçırma')">Uçak Kaçırma</span>a", "1976", "Uganda", "Rehine Operasyonu"]
+          tags: ["Uçak", "Uçak Kaçırma", "1976", "Uganda", "Rehine Operasyonu"]
         }
       ]
     };
-
-
+	
        function loadSeason(season) {
   const container = document.getElementById('episodeContainer');
   container.innerHTML = '';
@@ -242,10 +240,6 @@ function filterByTag(tag) {
       });
     }
   }
-  
-function filterByTag(tag) {
-  window.location.assign(`https://femehal.github.io/Belgesellerim/filter.html?tag=${encodeURIComponent(tag)}`);
-}
 
 
   if (!found) {

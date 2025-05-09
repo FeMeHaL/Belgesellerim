@@ -177,11 +177,11 @@
           date: "<p class=\"episode-date\">İlk Vizyona Girişi : 11 Kasım 2004</p>",
           thumbnail: "./img/II01S10E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937",
-          tags: ["<span class="tag" onclick="redirectToTag('Uçak')">Uçak</span>", "<span class="tag" onclick="redirectToTag('Uçak Kaçırma')">Uçak Kaçırma</span>", "1985", "Yunanistan", "Rehine Operasyonu"]
+          tags: ["Uçak", "Uçak Kaçırma", "1985", "Yunanistan", "Rehine Operasyonu"]
         }
       ]
     };
-
+	
        function loadSeason(season) {
   const container = document.getElementById('episodeContainer');
   container.innerHTML = '';
@@ -242,13 +242,6 @@ function filterByTag(tag) {
       });
     }
   }
-
-function filterByTag(tag) {
-  window.location.assign(`https://femehal.github.io/Belgesellerim/filter.html?tag=${encodeURIComponent(tag)}`);
-}
-
-
-
 
   if (!found) {
     container.innerHTML = `<p>"${tag}" etiketine sahip bölüm bulunamadı.</p>`;
