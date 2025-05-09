@@ -240,6 +240,10 @@ function filterByTag(tag) {
       });
     }
   }
+  
+  function filterByTag(tag) {
+  window.location.href = https://femehal.github.io/Belgesellerim/filter.html?tag=${encodeURIComponent(tag)};
+}
 
   if (!found) {
     container.innerHTML = `<p>"${tag}" etiketine sahip bölüm bulunamadı.</p>`;
