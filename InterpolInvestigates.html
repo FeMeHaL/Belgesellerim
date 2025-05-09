@@ -168,6 +168,14 @@
     <span class="close-btn" onclick="closeVideo()">×</span>
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
+  
+  	<div class="tags-container">
+  <span class="tag" onclick="redirectToTag('Uçak')">Uçak</span>
+  <span class="tag" onclick="redirectToTag('Uçak Kaçırma')">Uçak Kaçırma</span>
+  <span class="tag" onclick="redirectToTag('1985')">1985</span>
+  <span class="tag" onclick="redirectToTag('Yunanistan')">Yunanistan</span>
+  <span class="tag" onclick="redirectToTag('Rehine Operasyonu')">Rehine Operasyonu</span>
+</div>
 
   <script>
     const episodes = {
@@ -182,7 +190,7 @@
       ]
     };
 
-	<span class="tag" onclick="redirectToTag('Uçak')">Uçak</span>
+
 	
        function loadSeason(season) {
   const container = document.getElementById('episodeContainer');
