@@ -182,6 +182,8 @@
       ]
     };
 
+	<span class="tag" onclick="redirectToTag('Uçak')">Uçak</span>
+	
        function loadSeason(season) {
   const container = document.getElementById('episodeContainer');
   container.innerHTML = '';
@@ -242,6 +244,12 @@ function filterByTag(tag) {
       });
     }
   }
+
+function redirectToTag(tag) {
+  window.location.href = `/Belgesellerim/filter.html?tag=${encodeURIComponent(tag)}`;
+}
+
+
 
   if (!found) {
     container.innerHTML = `<p>"${tag}" etiketine sahip bölüm bulunamadı.</p>`;

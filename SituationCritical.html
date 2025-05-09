@@ -179,6 +179,9 @@
         }
       ]
     };
+	
+	<span class="tag" onclick="redirectToTag('Uçak')">Uçak</span>
+
 
        function loadSeason(season) {
   const container = document.getElementById('episodeContainer');
@@ -241,9 +244,10 @@ function filterByTag(tag) {
     }
   }
   
-function filterByTag(tag) {
-  window.location.href = `filter.html?tag=${encodeURIComponent(tag)}`;
+function redirectToTag(tag) {
+  window.location.href = `/Belgesellerim/filter.html?tag=${encodeURIComponent(tag)}`;
 }
+
 
 
   if (!found) {
