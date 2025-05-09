@@ -168,14 +168,6 @@
     <span class="close-btn" onclick="closeVideo()">×</span>
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
-  
-  	<div class="tags-container">
-  <span class="tag" onclick="redirectToTag('Uçak')">Uçak</span>
-  <span class="tag" onclick="redirectToTag('Uçak Kaçırma')">Uçak Kaçırma</span>
-  <span class="tag" onclick="redirectToTag('1985')">1985</span>
-  <span class="tag" onclick="redirectToTag('Yunanistan')">Yunanistan</span>
-  <span class="tag" onclick="redirectToTag('Rehine Operasyonu')">Rehine Operasyonu</span>
-</div>
 
   <script>
     const episodes = {
@@ -185,13 +177,11 @@
           date: "<p class=\"episode-date\">İlk Vizyona Girişi : 11 Kasım 2004</p>",
           thumbnail: "./img/II01S10E.jpg",
           video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937",
-          tags: ["Uçak", "Uçak Kaçırma", "1985", "Yunanistan", "Rehine Operasyonu"]
+          tags: ["<span class="tag" onclick="redirectToTag('Uçak')">Uçak</span>", "<span class="tag" onclick="redirectToTag('Uçak Kaçırma')">Uçak Kaçırma</span>", "1985", "Yunanistan", "Rehine Operasyonu"]
         }
       ]
     };
 
-
-	
        function loadSeason(season) {
   const container = document.getElementById('episodeContainer');
   container.innerHTML = '';
