@@ -87,6 +87,22 @@
       margin-top: 10px;
     }
 
+.tag {
+  display: inline-block;
+  background-color: #4da6ff;
+  color: white;
+  border-radius: 20px;
+  padding: 5px 12px;
+  margin: 4px 4px 0 0;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.tag:hover {
+  background-color: #1e90ff;
+}
+
     .video-overlay {
       position: fixed;
       top: 0; left: 0;
@@ -160,35 +176,82 @@
           title: "<span class='episode-number'>[010]</span> 1. Sezon 10. Bölüm - (Terror in the Skies) - Göklerdeki Terör",
           date: "<p class=\"episode-date\">İlk Vizyona Girişi : 11 Kasım 2004</p>",
           thumbnail: "./img/II01S10E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937"
+          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937",
+          tags: ["Uçak", "Uçak Kaçırma", "1985", "Yunanistan", "Rehine Operasyonu"]
         }
       ]
     };
 
-    function loadSeason(season) {
-      const container = document.getElementById('episodeContainer');
-      container.innerHTML = '';
-      if (!episodes[season]) {
-        container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
-        return;
-      }
+       function loadSeason(season) {
+  const container = document.getElementById('episodeContainer');
+  container.innerHTML = '';
+  if (!episodes[season]) {
+    container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
+    return;
+  }
 
-      episodes[season].forEach(ep => {
+  episodes[season].forEach(ep => {
+    const epDiv = document.createElement('div');
+    epDiv.className = 'episode';
+    epDiv.innerHTML = `
+      <img src="${ep.thumbnail}" alt="${ep.title}">
+      <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+      ${ep.date}
+      <div class="tags-container">
+        ${ep.tags ? ep.tags.map(tag => `<span class="tag" onclick="filterByTag('${tag}')">${tag}</span>`).join('') : ''}
+      </div>
+    `;
+    container.appendChild(epDiv);
+  });
+}
+
+// 🔽 Buraya ekle
+function filterByTag(tag) {
+  const container = document.getElementById('episodeContainer');
+  container.innerHTML = '';
+
+  let found = false;
+
+  for (const season in episodes) {
+    const matches = episodes[season].filter(ep =>
+      ep.tags && ep.tags.includes(tag)
+    );
+
+    if (matches.length > 0) {
+      found = true;
+
+      const header = document.createElement('h2');
+      header.textContent = `${season}. Sezon - Etiket: ${tag}`;
+      header.style.width = "100%";
+      header.style.color = "#ff4d4d";
+      header.style.borderBottom = "1px solid #444";
+      container.appendChild(header);
+
+      matches.forEach(ep => {
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
         epDiv.innerHTML = `
           <img src="${ep.thumbnail}" alt="${ep.title}">
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-          <p>${ep.date}</p>
+          ${ep.date}
+          <div class="tags-container">
+            ${ep.tags.map(t => `<span class="tag" onclick="filterByTag('${t}')">${t}</span>`).join('')}
+          </div>
         `;
         container.appendChild(epDiv);
       });
     }
+  }
+
+  if (!found) {
+    container.innerHTML = `<p>"${tag}" etiketine sahip bölüm bulunamadı.</p>`;
+  }
+}
 
     function playVideo(src) {
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
-      video.src = src;  // Facebook embed linkini buraya ekliyoruz
+      video.src = src;
       overlay.style.display = 'flex';
     }
 
@@ -196,10 +259,36 @@
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
       overlay.style.display = 'none';
-      video.src = '';  // Videoyu durdurmak için src'i temizliyoruz
+      video.src = '';
     }
 
-    // Sayfa yüklenince 1. sezonu yükle
+    function filterByTag(tagName) {
+      const container = document.getElementById('episodeContainer');
+      container.innerHTML = '';
+      let found = false;
+
+      for (const season in episodes) {
+        const matches = episodes[season].filter(ep => ep.tags && ep.tags.includes(tagName));
+
+        matches.forEach(ep => {
+          found = true;
+          const epDiv = document.createElement('div');
+          epDiv.className = 'episode';
+          epDiv.innerHTML = `
+            <img src="${ep.thumbnail}" alt="${ep.title}">
+            <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+            <p class="episode-date">${ep.date}</p>
+            <div>${ep.tags.map(tag => `<span class="tag" onclick="filterByTag('${tag}')">${tag}</span>`).join('')}</div>
+          `;
+          container.appendChild(epDiv);
+        });
+      }
+
+      if (!found) {
+        container.innerHTML = "<p>Bu etikete sahip bölüm bulunamadı.</p>";
+      }
+    }
+
     window.onload = () => loadSeason(1);
   </script>
 
