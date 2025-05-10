@@ -44,16 +44,16 @@
     }
 
     .subtitle {
-      color: red;        /* Kırmızı renk */
-      font-weight: bold; /* Kalın yazı tipi */
+      color: red;
+      font-weight: bold;
     }
-	
-	 .episode-number {
-      color: purple;  /* Mor renk */
-      font-weight: bold; /* Kalın yazı tipi */
-      display: inline;  /* Bu sayede sadece span etiketini etkiler */
+
+    .episode-number {
+      color: purple;
+      font-weight: bold;
+      display: inline;
     }
-	
+
     .episode {
       background-color: #2b2b2b;
       width: 100%;
@@ -87,21 +87,21 @@
       margin-top: 10px;
     }
 
-.tag {
-  display: inline-block;
-  background-color: #4da6ff;
-  color: white;
-  border-radius: 20px;
-  padding: 5px 12px;
-  margin: 4px 4px 0 0;
-  font-size: 12px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
+    .tag {
+      display: inline-block;
+      background-color: #4da6ff;
+      color: white;
+      border-radius: 20px;
+      padding: 5px 12px;
+      margin: 4px 4px 0 0;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
 
-.tag:hover {
-  background-color: #1e90ff;
-}
+    .tag:hover {
+      background-color: #1e90ff;
+    }
 
     .video-overlay {
       position: fixed;
@@ -129,34 +129,30 @@
       cursor: pointer;
     }
 
-    /* Responsive Ayarlar */
     @media (max-width: 768px) {
       .episode {
-        flex: 1 1 calc(50% - 20px); /* Tablet görünümü */
+        flex: 1 1 calc(50% - 20px);
       }
     }
 
     @media (max-width: 480px) {
       .episode {
-        flex: 1 1 100%; /* Telefon görünümü */
+        flex: 1 1 100%;
       }
 
       .sidebar {
         width: 100%;
-        max-width: 100%;
       }
 
       .content {
         padding: 10px;
       }
     }
-
   </style>
 </head>
 <body>
   <div class="sidebar">
-	<button class="season-button" onclick="loadSeason(1)">1. SEZON (2004)</button>
-    <!-- Diğer sezonlar buraya gelecek -->
+    <button class="season-button" onclick="loadSeason(1)">1. SEZON (2004)</button>
   </div>
 
   <div class="content" id="episodeContainer">
@@ -180,60 +176,16 @@
         }
       ]
     };
-	
-       function loadSeason(season) {
-  const container = document.getElementById('episodeContainer');
-  container.innerHTML = '';
-  if (!episodes[season]) {
-    container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
-    return;
-  }
 
-  episodes[season].forEach(ep => {
-    const epDiv = document.createElement('div');
-    epDiv.className = 'episode';
-    epDiv.innerHTML = `
-      <img src="${ep.thumbnail}" alt="${ep.title}">
-      <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-      ${ep.date}
-      <div class="tags-container">
-        ${ep.tags ? ep.tags.map(tag => `<span class="tag" onclick="filterByTag('${tag}')">${tag}</span>`).join('') : ''}
-      </div>
-    `;
-    container.appendChild(epDiv);
-  });
-}
+    function loadSeason(season) {
+      const container = document.getElementById('episodeContainer');
+      container.innerHTML = '';
+      if (!episodes[season]) {
+        container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
+        return;
+      }
 
-</script>
-<script src="../data.js"></script>
-<script>
-  const episodes = allEpisodes; // Bu satır burada doğru yer
-
-  // Burada filterByTag(), playVideo(), vs. fonksiyonlarını tanımlayabilirsin
-
-// 🔽 Buraya ekle
-function filterByTag(tag) {
-  const container = document.getElementById('episodeContainer');
-  container.innerHTML = '';
-
-  let found = false;
-
-  for (const season in episodes) {
-    const matches = episodes[season].filter(ep =>
-      ep.tags && ep.tags.includes(tag)
-    );
-
-    if (matches.length > 0) {
-      found = true;
-
-      const header = document.createElement('h2');
-      header.textContent = `${season}. Sezon - Etiket: ${tag}`;
-      header.style.width = "100%";
-      header.style.color = "#ff4d4d";
-      header.style.borderBottom = "1px solid #444";
-      container.appendChild(header);
-
-      matches.forEach(ep => {
+      episodes[season].forEach(ep => {
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
         epDiv.innerHTML = `
@@ -241,18 +193,12 @@ function filterByTag(tag) {
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
           ${ep.date}
           <div class="tags-container">
-            ${ep.tags.map(t => `<span class="tag" onclick="filterByTag('${t}')">${t}</span>`).join('')}
+            ${ep.tags.map(tag => `<span class="tag" onclick="filterByTag('${tag}')">${tag}</span>`).join('')}
           </div>
         `;
         container.appendChild(epDiv);
       });
     }
-  }
-
-  if (!found) {
-    container.innerHTML = `<p>"${tag}" etiketine sahip bölüm bulunamadı.</p>`;
-  }
-}
 
     function playVideo(src) {
       const overlay = document.getElementById('videoOverlay');
@@ -274,29 +220,46 @@ function filterByTag(tag) {
       let found = false;
 
       for (const season in episodes) {
-        const matches = episodes[season].filter(ep => ep.tags && ep.tags.includes(tagName));
+        const matches = episodes[season].filter(ep => ep.tags && ep.tags.includes
+::contentReference[oaicite:0]{index=0}
+ 
+(tagName));
 
-        matches.forEach(ep => {
+        if (matches.length > 0) {
           found = true;
-          const epDiv = document.createElement('div');
-          epDiv.className = 'episode';
-          epDiv.innerHTML = `
-            <img src="${ep.thumbnail}" alt="${ep.title}">
-            <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-            <p class="episode-date">${ep.date}</p>
-            <div>${ep.tags.map(tag => `<span class="tag" onclick="filterByTag('${tag}')">${tag}</span>`).join('')}</div>
-          `;
-          container.appendChild(epDiv);
-        });
+
+          const header = document.createElement('h2');
+          header.textContent = `${season}. Sezon - Etiket: ${tagName}`;
+          header.style.width = "100%";
+          header.style.color = "#ff4d4d";
+          header.style.borderBottom = "1px solid #444";
+          container.appendChild(header);
+
+          matches.forEach(ep => {
+            const epDiv = document.createElement('div');
+            epDiv.className = 'episode';
+            epDiv.innerHTML = `
+              <img src="${ep.thumbnail}" alt="${ep.title}">
+              <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+              ${ep.date}
+              <div class="tags-container">
+                ${ep.tags.map(tag => `<span class="tag" onclick="filterByTag('${tag}')">${tag}</span>`).join('')}
+              </div>
+            `;
+            container.appendChild(epDiv);
+          });
+        }
       }
 
       if (!found) {
-        container.innerHTML = "<p>Bu etikete sahip bölüm bulunamadı.</p>";
+        container.innerHTML = `<p>"${tagName}" etiketine sahip bölüm bulunamadı.</p>`;
       }
     }
 
     window.onload = () => loadSeason(1);
   </script>
 
+  <!-- Tüm bölümleri içeren ayrı dosyanız varsa, aşağıdaki satırı etkinleştirin -->
+ <script src="../data.js"></script>
 </body>
 </html>
