@@ -80,6 +80,15 @@
       margin-top: 10px;
       text-align: center;
     }
+    .episode-tags a {
+      color: #ff9900;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .episode-tags a:hover {
+      text-decoration: underline;
+    }
+
     /* Responsive Ayarlar */
     @media (max-width: 768px) {
       .episode {
@@ -139,7 +148,7 @@
           <img src="${ep.thumbnail}" alt="${ep.title}">
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
           <p class="episode-date">${ep.date}</p>
-          <p class="episode-tags">${ep.tags.join(', ')}</p> <!-- Tags'leri burada gösteriyoruz -->
+          <p class="episode-tags">${ep.tags.map(tag => `<a href="#" class="tag">${tag}</a>`).join(' ')}</p> <!-- Tags'leri tıklanabilir hale getirdik -->
         `;
         container.appendChild(epDiv);
       });
@@ -173,6 +182,7 @@
 
       const totalSeasons = Object.keys(episodes[seriesName]).length;
 
+      // Eğer dizide sadece 1 sezon varsa, sadece 1. sezonu yükleyelim
       for (let season = 1; season <= totalSeasons; season++) {
         const seasonButton = document.createElement('button');
         seasonButton.classList.add('season-button');

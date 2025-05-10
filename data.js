@@ -1,5 +1,3 @@
-// data.js
-
 const allEpisodes = {
   "Kritik Anlar": {
     1: [
