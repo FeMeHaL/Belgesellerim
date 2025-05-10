@@ -74,6 +74,12 @@
       text-align: center;
       margin-top: 10px;
     }
+    .episode-tags {
+      color: #ff9900;
+      font-size: 14px;
+      margin-top: 10px;
+      text-align: center;
+    }
     /* Responsive Ayarlar */
     @media (max-width: 768px) {
       .episode {
@@ -95,9 +101,8 @@
 </head>
 <body>
 
-  <div class="sidebar">
-    <button class="season-button" onclick="loadSeason(1)">1. SEZON (2004)</button>
-    <!-- Diğer sezonlar buraya gelecek -->
+  <div class="sidebar" id="sidebar">
+    <!-- Sezonlar buraya dinamik olarak yüklenecek -->
   </div>
 
   <div class="content" id="episodeContainer">
@@ -113,19 +118,20 @@
   <script src="data.js"></script>
 
   <script>
-    // `episodes` dizisini doğrudan `allEpisodes`'a bağlıyoruz
     const episodes = allEpisodes; // Verileri 'allEpisodes' dan alıyoruz
 
     // Sezon yükleme fonksiyonu
-    function loadSeason(season) {
-  const container = document.getElementById('episodeContainer');
-  container.innerHTML = '';
+    function loadSeason(season, seriesName) {
+      const container = document.getElementById('episodeContainer');
+      container.innerHTML = ''; // İçeriği temizle
 
-  // Tüm diziler ve sezonlar üzerinde gezelim
-  for (let seriesName in episodes) {
-    const seasonEpisodes = episodes[seriesName][season];
+      const seasonEpisodes = episodes[seriesName][season];
 
-    if (seasonEpisodes && seasonEpisodes.length > 0) {
+      if (!seasonEpisodes || seasonEpisodes.length === 0) {
+        container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
+        return;
+      }
+
       seasonEpisodes.forEach(ep => {
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
@@ -133,17 +139,11 @@
           <img src="${ep.thumbnail}" alt="${ep.title}">
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
           <p class="episode-date">${ep.date}</p>
+          <p class="episode-tags">${ep.tags.join(', ')}</p> <!-- Tags'leri burada gösteriyoruz -->
         `;
         container.appendChild(epDiv);
       });
     }
-  }
-
-  if (container.innerHTML === '') {
-    container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
-  }
-}
-
 
     // Video oynatma fonksiyonu
     function playVideo(src) {
@@ -161,8 +161,50 @@
       video.src = '';
     }
 
-    // Sayfa yüklenince 1. sezonu yükle
-    window.onload = () => loadSeason(1);
+    // Sezon başlıklarını yükleme fonksiyonu
+    function loadSeasons(seriesName) {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.innerHTML = ''; // Eski içerikleri temizle
+
+      // Belgesel türü başlığı
+      const title = document.createElement('h3');
+      title.innerText = seriesName;
+      sidebar.appendChild(title);
+
+      const totalSeasons = Object.keys(episodes[seriesName]).length;
+
+      for (let season = 1; season <= totalSeasons; season++) {
+        const seasonButton = document.createElement('button');
+        seasonButton.classList.add('season-button');
+        seasonButton.innerText = `${season}. SEZON`; // Sezon numarası
+        seasonButton.onclick = () => loadSeason(season, seriesName); // Sezonu yükle
+        sidebar.appendChild(seasonButton);
+      }
+    }
+
+    // Belgesel türlerini sidebar'a yükleme fonksiyonu
+    function loadDocumentaries() {
+      const sidebar = document.getElementById('sidebar');
+
+      // Her belgesel türünü sidebar'a ekleyelim
+      for (let seriesName in episodes) {
+        const seriesButton = document.createElement('button');
+        seriesButton.classList.add('season-button');
+        seriesButton.innerText = seriesName;
+        seriesButton.onclick = () => {
+          loadSeasons(seriesName); // O türün sezonlarını yükle
+          loadSeason(1, seriesName); // İlk sezonu yükle
+        };
+        sidebar.appendChild(seriesButton);
+      }
+    }
+
+    // Sayfa yüklendiğinde ilk belgesel türü ve sezonu yükleyelim
+    window.onload = () => {
+      loadDocumentaries(); // Belgesel türlerini sidebar'a yükle
+      loadSeasons('İnterpol Araştırmaları'); // 'İnterpol Araştırmaları' sezonlarını sidebar'a ekle
+      loadSeason(1, 'İnterpol Araştırmaları'); // 'İnterpol Araştırmaları' 1. sezonu yükle
+    };
   </script>
 
 </body>

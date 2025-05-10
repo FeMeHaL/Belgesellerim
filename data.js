@@ -29,7 +29,8 @@ const allEpisodes = {
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937",
         tags: ["Uçak", "Uçak Kaçırma", "1985", "Yunanistan", "Rehine Operasyonu"]
       }
-    ]
+    ],
+    seasonYear: 2004 // Sezon yılı bilgisi eklendi
   },
 
   // Diğer dizilerin bölümleri buraya eklenebilir...
