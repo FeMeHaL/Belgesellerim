@@ -238,13 +238,14 @@
 
     function filterByTag(tag) {
       const container = document.getElementById('episodeContainer');
-      container.innerHTML = '';
+      container.innerHTML = ''; // İçeriği temizle
 
       const allEpisodesArray = [];
 
-      // Sidebar'ı gizleyelim
+      // Sidebar'ı kaydırmadan, sadece içeriği sola kaydıralım
       document.getElementById('sidebar').style.transform = "translateX(-100%)";
 
+      // Tüm bölümleri topla
       for (let series in episodes) {
         for (let season in episodes[series]) {
           if (Array.isArray(episodes[series][season])) {
@@ -253,6 +254,7 @@
         }
       }
 
+      // Filtreleme
       const filtered = allEpisodesArray.filter(ep => ep.tags.includes(tag));
 
       if (filtered.length === 0) {
@@ -260,19 +262,40 @@
         return;
       }
 
+      // Tüm belgesellerde o tag'ı içeren bölümleri grupla
+      const groupedEpisodes = {};
+
       filtered.forEach(ep => {
-        const epDiv = document.createElement('div');
-        epDiv.className = 'episode';
-        epDiv.innerHTML = ` 
-          <img src="${ep.thumbnail}" alt="${ep.title}">
-          <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-          <p class="episode-date">${ep.date}</p>
-          <p class="episode-tags">
-            ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
-          </p>
-        `;
-        container.appendChild(epDiv);
+        if (!groupedEpisodes[ep.series]) {
+          groupedEpisodes[ep.series] = [];
+        }
+        groupedEpisodes[ep.series].push(ep);
       });
+
+      // Her belgeselin başlığını ve bölümlerini yazdıralım
+      for (let series in groupedEpisodes) {
+        const seriesDiv = document.createElement('div');
+        const seriesTitle = document.createElement('h3');
+        seriesTitle.innerText = series;
+        seriesDiv.appendChild(seriesTitle);
+
+        // Bu belgesel ile ilişkili tüm bölümleri ekleyelim
+        groupedEpisodes[series].forEach(ep => {
+          const epDiv = document.createElement('div');
+          epDiv.className = 'episode';
+          epDiv.innerHTML = `
+            <img src="${ep.thumbnail}" alt="${ep.title}">
+            <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+            <p class="episode-date">${ep.date}</p>
+            <p class="episode-tags">
+              ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+            </p>
+          `;
+          seriesDiv.appendChild(epDiv);
+        });
+
+        container.appendChild(seriesDiv); // Belgeseli ve bölümlerini ekle
+      }
     }
 
     // Sayfa ilk yüklendiğinde
