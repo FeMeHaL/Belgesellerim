@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Dizi Bölümleri</title>
   <style>
+    /* CSS stillerini buraya ekleyebilirsiniz */
     body {
       margin: 0;
       font-family: sans-serif;
@@ -12,7 +13,6 @@
       display: flex;
       flex-wrap: wrap;
     }
-
     .sidebar {
       width: 100%;
       max-width: 300px;
@@ -21,7 +21,6 @@
       box-sizing: border-box;
       flex-shrink: 0;
     }
-
     .season-button {
       background-color: #ff4d4d;
       color: #f1f1f1;
@@ -33,7 +32,6 @@
       cursor: pointer;
       font-weight: bold;
     }
-
     .content {
       flex: 1;
       padding: 20px;
@@ -42,13 +40,11 @@
       flex-wrap: wrap;
       gap: 20px;
     }
-
     .episode-number {
       color: purple;
       font-weight: bold;
       display: inline;
     }
-
     .episode {
       background-color: #2b2b2b;
       width: 100%;
@@ -58,7 +54,6 @@
       box-sizing: border-box;
       border-radius: 8px;
     }
-
     .episode img {
       width: 100%;
       aspect-ratio: 16 / 9;
@@ -67,13 +62,11 @@
       display: block;
       margin: 0 auto;
     }
-
     .episode-date {
       font-weight: bold;
       text-align: center;
       margin-top: 10px;
     }
-
     .episode-title {
       color: #4da6ff;
       font-weight: bold;
@@ -81,55 +74,23 @@
       text-align: center;
       margin-top: 10px;
     }
-
-    .video-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.9);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-    }
-
-    .video-overlay iframe {
-      width: 80%;
-      height: 80%;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 30px;
-      color: white;
-      cursor: pointer;
-    }
-
     /* Responsive Ayarlar */
     @media (max-width: 768px) {
       .episode {
-        flex: 1 1 calc(50% - 20px); /* Tablet görünümü */
+        flex: 1 1 calc(50% - 20px);
       }
     }
-
     @media (max-width: 480px) {
       .episode {
-        flex: 1 1 100%; /* Telefon görünümü */
+        flex: 1 1 100%;
       }
-
       .sidebar {
         width: 100%;
-        max-width: 100%;
       }
-
       .content {
         padding: 10px;
       }
     }
-
   </style>
 </head>
 <body>
@@ -149,28 +110,31 @@
   </div>
 
   <!-- data.js dosyasını buraya ekliyoruz -->
-<script src="data.js"></script>
-<script>
-  const episodes = allEpisodes;
-</script>
+  <script src="data.js"></script>
 
+  <script>
+    // `episodes` dizisini doğrudan `allEpisodes`'a bağlıyoruz
+    const episodes = allEpisodes; // Verileri 'allEpisodes' dan alıyoruz
 
     // Sezon yükleme fonksiyonu
     function loadSeason(season) {
       const container = document.getElementById('episodeContainer');
       container.innerHTML = '';
-      if (!episodes[season]) {
+
+      const seasonEpisodes = episodes.filter(ep => ep.season === season);
+
+      if (seasonEpisodes.length === 0) {
         container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
         return;
       }
 
-      episodes[season].forEach(ep => {
+      seasonEpisodes.forEach(ep => {
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
         epDiv.innerHTML = `
           <img src="${ep.thumbnail}" alt="${ep.title}">
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-          <p>${ep.date}</p>
+          <p class="episode-date">${ep.date}</p>
         `;
         container.appendChild(epDiv);
       });

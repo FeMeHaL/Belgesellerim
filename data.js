@@ -1,6 +1,6 @@
 // data.js
 
-const episodes = {
+const allEpisodes = {
   "Kritik Anlar": {
     1: [
       {
@@ -17,19 +17,19 @@ const episodes = {
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1031743588089291",
         tags: ["Uçak", "Uçak Kaçırma", "1976", "Uganda", "Rehine Operasyonu"]
       }
-    ],
+    ]
   },
 
   "İnterpol Araştırmaları": {
     1: [
       {
-        title: "<span class='episode-number'>[010]</span> 1. Sezon 10. Bölüm - (Terror in the Skies) - Göklerdeki Terör",
-        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 11 Kasım 2004</p>",
+        title: "[010] 1. Sezon 10. Bölüm - (Terror in the Skies) - Göklerdeki Terör",
+        date: "İlk Vizyona Girişi : 11 Kasım 2004",
         thumbnail: "./img/II01S10E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937",
         tags: ["Uçak", "Uçak Kaçırma", "1985", "Yunanistan", "Rehine Operasyonu"]
       }
-    ],
+    ]
   },
 
   // Diğer dizilerin bölümleri buraya eklenebilir...
