@@ -118,16 +118,14 @@
 
     // Sezon yükleme fonksiyonu
     function loadSeason(season) {
-      const container = document.getElementById('episodeContainer');
-      container.innerHTML = '';
+  const container = document.getElementById('episodeContainer');
+  container.innerHTML = '';
 
-      const seasonEpisodes = episodes.filter(ep => ep.season === season);
+  // Tüm diziler ve sezonlar üzerinde gezelim
+  for (let seriesName in episodes) {
+    const seasonEpisodes = episodes[seriesName][season];
 
-      if (seasonEpisodes.length === 0) {
-        container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
-        return;
-      }
-
+    if (seasonEpisodes && seasonEpisodes.length > 0) {
       seasonEpisodes.forEach(ep => {
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
@@ -139,6 +137,13 @@
         container.appendChild(epDiv);
       });
     }
+  }
+
+  if (container.innerHTML === '') {
+    container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
+  }
+}
+
 
     // Video oynatma fonksiyonu
     function playVideo(src) {
