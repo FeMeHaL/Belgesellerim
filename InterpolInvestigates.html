@@ -20,6 +20,7 @@
       padding: 20px;
       box-sizing: border-box;
       flex-shrink: 0;
+      transition: transform 0.3s ease;
     }
     .season-button {
       background-color: #ff4d4d;
@@ -39,6 +40,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
+      transition: margin-left 0.3s ease;
     }
     .episode-number {
       color: purple;
@@ -239,6 +241,9 @@
       container.innerHTML = '';
 
       const allEpisodesArray = [];
+
+      // Sidebar'ı gizleyelim
+      document.getElementById('sidebar').style.transform = "translateX(-100%)";
 
       for (let series in episodes) {
         for (let season in episodes[series]) {
