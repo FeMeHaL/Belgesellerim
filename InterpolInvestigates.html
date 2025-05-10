@@ -43,17 +43,12 @@
       gap: 20px;
     }
 
-    .subtitle {
-      color: red;        /* Kırmızı renk */
-      font-weight: bold; /* Kalın yazı tipi */
+    .episode-number {
+      color: purple;
+      font-weight: bold;
+      display: inline;
     }
-	
-	 .episode-number {
-      color: purple;  /* Mor renk */
-      font-weight: bold; /* Kalın yazı tipi */
-      display: inline;  /* Bu sayede sadece span etiketini etkiler */
-    }
-	
+
     .episode {
       background-color: #2b2b2b;
       width: 100%;
@@ -140,7 +135,7 @@
 <body>
 
   <div class="sidebar">
-	<button class="season-button" onclick="loadSeason(1)">1. SEZON (2004)</button>
+    <button class="season-button" onclick="loadSeason(1)">1. SEZON (2004)</button>
     <!-- Diğer sezonlar buraya gelecek -->
   </div>
 
@@ -153,19 +148,11 @@
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
 
-  <script>
-    const episodes = {
-      1: [
-        {
-          title: "<span class='episode-number'>[010]</span> 1. Sezon 10. Bölüm - (Terror in the Skies) - Göklerdeki Terör",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 11 Kasım 2004</p>",
-          thumbnail: "./img/II01S10E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937",
-		  tags: ["Uçak", "F16 Uçağının Düşürülmesi", "1995", "Bosna Hersek", "Pilot Kurtarma Operasyonu"]
-        }
-      ]
-    };
+  <!-- data.js dosyasını buraya ekliyoruz -->
+  <script src="data.js"></script>
 
+  <script>
+    // Sezon yükleme fonksiyonu
     function loadSeason(season) {
       const container = document.getElementById('episodeContainer');
       container.innerHTML = '';
@@ -186,18 +173,20 @@
       });
     }
 
+    // Video oynatma fonksiyonu
     function playVideo(src) {
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
-      video.src = src;  // Facebook embed linkini buraya ekliyoruz
+      video.src = src;
       overlay.style.display = 'flex';
     }
 
+    // Video kapama fonksiyonu
     function closeVideo() {
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
       overlay.style.display = 'none';
-      video.src = '';  // Videoyu durdurmak için src'i temizliyoruz
+      video.src = '';
     }
 
     // Sayfa yüklenince 1. sezonu yükle
