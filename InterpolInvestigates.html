@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Dizi Bölümleri</title>
   <style>
-    /* CSS stillerini buraya ekleyebilirsiniz */
     body {
       margin: 0;
       font-family: sans-serif;
@@ -40,14 +39,8 @@
       flex-wrap: wrap;
       gap: 20px;
     }
-    .episode-number {
-      color: purple;
-      font-weight: bold;
-      display: inline;
-    }
     .episode {
       background-color: #2b2b2b;
-      width: 100%;
       max-width: 295px;
       flex: 1 1 calc(33.333% - 20px);
       padding: 10px;
@@ -80,7 +73,40 @@
       margin-top: 10px;
       text-align: center;
     }
-    /* Responsive Ayarlar */
+    .episode-tags a {
+      color: #ffcc66;
+      text-decoration: underline;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .video-overlay.active {
+      display: flex;
+    }
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      display: none;
+    }
+    .video-overlay.active .close-btn {
+      display: block;
+    }
     @media (max-width: 768px) {
       .episode {
         flex: 1 1 calc(50% - 20px);
@@ -90,75 +116,30 @@
       .episode {
         flex: 1 1 100%;
       }
-      .sidebar {
-        width: 100%;
-      }
-      .content {
-        padding: 10px;
-      }
-    }
-
-    /* Video overlay stilleri */
-    .video-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      display: none;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      color: white;
-      font-size: 36px;
-      cursor: pointer;
-      display: none;
-    }
-
-    .video-overlay.show {
-      display: flex;
-    }
-
-    .video-overlay.show .close-btn {
-      display: block;
     }
   </style>
 </head>
 <body>
 
-  <div class="sidebar" id="sidebar">
-    <!-- Sezonlar buraya dinamik olarak yüklenecek -->
-  </div>
-
-  <div class="content" id="episodeContainer">
-    <!-- Bölümler burada yüklenecek -->
-  </div>
+  <div class="sidebar" id="sidebar"></div>
+  <div class="content" id="episodeContainer"></div>
 
   <div class="video-overlay" id="videoOverlay">
     <span class="close-btn" onclick="closeVideo()">×</span>
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
 
-  <!-- data.js dosyasını buraya ekliyoruz -->
   <script src="data.js"></script>
 
   <script>
-    const episodes = allEpisodes; // Verileri 'allEpisodes' dan alıyoruz
+    const episodes = allEpisodes;
 
-    // Sezon yükleme fonksiyonu
     function loadSeason(season, seriesName) {
       const container = document.getElementById('episodeContainer');
-      container.innerHTML = ''; // İçeriği temizle
+      container.innerHTML = '';
 
       const seasonEpisodes = episodes[seriesName][season];
-
-      if (!seasonEpisodes || seasonEpisodes.length === 0) {
+      if (!seasonEpisodes || !Array.isArray(seasonEpisodes)) {
         container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
         return;
       }
@@ -170,81 +151,112 @@
           <img src="${ep.thumbnail}" alt="${ep.title}">
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
           <p class="episode-date">${ep.date}</p>
-          <p class="episode-tags">${ep.tags.map(tag => `<a href="#" onclick="searchTag('${tag}')">${tag}</a>`).join(' ')}</p> <!-- Tags'leri tıklanabilir hale getirdik -->
+          <p class="episode-tags">
+            ${ep.tags.map(tag => `<a onclick="filterByTag('${tag}')">${tag}</a>`).join('')}
+          </p>
         `;
         container.appendChild(epDiv);
       });
     }
 
-    // Tıklanabilir tag'ler için fonksiyon
-    function searchTag(tag) {
-      alert(`Arama yapılıyor: ${tag}`);
-      // Burada tag ile ilgili arama işlemi yapılabilir veya filtreleme işlemi eklenebilir.
-    }
-
-    // Video oynatma fonksiyonu
-    function playVideo(src) {
-      const overlay = document.getElementById('videoOverlay');
-      const video = document.getElementById('episodeVideo');
-      overlay.classList.add('show'); // Video açıldığında overlay'i göster
-      video.src = src;
-    }
-
-    // Video kapama fonksiyonu
-    function closeVideo() {
-      const overlay = document.getElementById('videoOverlay');
-      const video = document.getElementById('episodeVideo');
-      overlay.classList.remove('show'); // Overlay'i gizle
-      video.src = '';
-    }
-
-    // Sezon başlıklarını yükleme fonksiyonu
     function loadSeasons(seriesName) {
       const sidebar = document.getElementById('sidebar');
-      sidebar.innerHTML = ''; // Eski içerikleri temizle
+      sidebar.innerHTML = '';
 
-      // Belgesel türü başlığı
       const title = document.createElement('h3');
       title.innerText = seriesName;
       sidebar.appendChild(title);
 
-      const totalSeasons = Object.keys(episodes[seriesName]).length;
+      const seasons = Object.keys(episodes[seriesName])
+        .filter(key => !isNaN(key))
+        .map(key => parseInt(key));
 
-      // Her sezon için bir buton oluştur
-      for (let season = 1; season <= totalSeasons; season++) {
-        const seasonButton = document.createElement('button');
-        seasonButton.classList.add('season-button');
-        const seasonYear = episodes[seriesName][season]?.seasonYear || ''; // Yıl bilgisi varsa al
-        seasonButton.innerText = `${season}. SEZON ${seasonYear ? `(${seasonYear})` : ''}`; // Yıl bilgisini parantez içinde ekle
-        seasonButton.onclick = () => loadSeason(season, seriesName); // Sezonu yükle
-        sidebar.appendChild(seasonButton);
-      }
+      seasons.forEach(season => {
+        const year = episodes[seriesName].seasonYear || '';
+        const yearText = episodes[seriesName].seasonYears && episodes[seriesName].seasonYears[season]
+          ? ` (${episodes[seriesName].seasonYears[season]})` : '';
+
+        const btn = document.createElement('button');
+        btn.className = 'season-button';
+        btn.innerText = `${season}. SEZON${yearText}`;
+        btn.onclick = () => loadSeason(season, seriesName);
+        sidebar.appendChild(btn);
+      });
     }
 
-    // Belgesel türlerini sidebar'a yükleme fonksiyonu
     function loadDocumentaries() {
       const sidebar = document.getElementById('sidebar');
+      sidebar.innerHTML = '';
 
-      // Her belgesel türünü sidebar'a ekleyelim
-      for (let seriesName in episodes) {
-        const seriesButton = document.createElement('button');
-        seriesButton.classList.add('season-button');
-        seriesButton.innerText = seriesName;
-        seriesButton.onclick = () => {
-          loadSeasons(seriesName); // O türün sezonlarını yükle
-          loadSeason(1, seriesName); // İlk sezonu yükle
+      for (let series in episodes) {
+        const btn = document.createElement('button');
+        btn.className = 'season-button';
+        btn.innerText = series;
+        btn.onclick = () => {
+          loadSeasons(series);
+          loadSeason(1, series);
         };
-        sidebar.appendChild(seriesButton);
+        sidebar.appendChild(btn);
       }
     }
 
-    // Sayfa yüklendiğinde ilk belgesel türü ve sezonu yükleyelim
+    function playVideo(src) {
+      const overlay = document.getElementById('videoOverlay');
+      const video = document.getElementById('episodeVideo');
+      video.src = src;
+      overlay.classList.add('active');
+    }
+
+    function closeVideo() {
+      const overlay = document.getElementById('videoOverlay');
+      const video = document.getElementById('episodeVideo');
+      overlay.classList.remove('active');
+      video.src = '';
+    }
+
+    function filterByTag(tag) {
+      const container = document.getElementById('episodeContainer');
+      container.innerHTML = '';
+
+      const allEpisodesArray = [];
+
+      for (let series in episodes) {
+        for (let season in episodes[series]) {
+          if (Array.isArray(episodes[series][season])) {
+            allEpisodesArray.push(...episodes[series][season]);
+          }
+        }
+      }
+
+      const filtered = allEpisodesArray.filter(ep => ep.tags.includes(tag));
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<p>"${tag}" etiketiyle eşleşen bölüm bulunamadı.</p>`;
+        return;
+      }
+
+      filtered.forEach(ep => {
+        const epDiv = document.createElement('div');
+        epDiv.className = 'episode';
+        epDiv.innerHTML = `
+          <img src="${ep.thumbnail}" alt="${ep.title}">
+          <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+          <p class="episode-date">${ep.date}</p>
+          <p class="episode-tags">
+            ${ep.tags.map(tag => `<a onclick="filterByTag('${tag}')">${tag}</a>`).join('')}
+          </p>
+        `;
+        container.appendChild(epDiv);
+      });
+    }
+
+    // Sayfa ilk yüklendiğinde
     window.onload = () => {
-      loadDocumentaries(); // Belgesel türlerini sidebar'a yükle
-      loadSeasons('İnterpol Araştırmaları'); // 'İnterpol Araştırmaları' sezonlarını sidebar'a ekle
-      loadSeason(1, 'İnterpol Araştırmaları'); // 'İnterpol Araştırmaları' 1. sezonu yükle
+      const defaultSeries = Object.keys(episodes)[0];
+      loadDocumentaries();
+      loadSeasons(defaultSeries);
+      loadSeason(1, defaultSeries);
     };
   </script>
-
 </body>
 </html>
