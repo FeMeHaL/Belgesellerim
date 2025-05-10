@@ -184,10 +184,6 @@
       const sidebar = document.getElementById('sidebar');
       sidebar.innerHTML = '';
 
-      const title = document.createElement('h3');
-      title.innerText = seriesName;
-      sidebar.appendChild(title);
-
       const seasons = Object.keys(episodes[seriesName])
         .filter(key => !isNaN(key))
         .map(key => parseInt(key));
