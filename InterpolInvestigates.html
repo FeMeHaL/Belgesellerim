@@ -232,7 +232,7 @@
       <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
       <p class="episode-date">${ep.date}</p>
       <p class="episode-tags">Tags: ${ep.tags.join(', ')}</p>  <!-- Tags bilgisi -->
-      <p class="episode-videoId">Video ID: ${ep.videoId}</p>  <!-- VideoId bilgisi -->
+      <p class="episode-views">Izlenme Sayısı: ${ep.views}</p> <!-- Views bilgisi -->
     `;
         container.appendChild(epDiv);  // Bölümü içeriğe ekle
       });
@@ -261,23 +261,6 @@ function filterEpisodesAllSeasons() {
     `;
     allEpisodesDiv.appendChild(epDiv);  // Filtrelenmiş bölümleri ekle
   });
-}
-
-// Video ID'sini çıkarmak için yardımcı fonksiyon
-function getVideoId(src) {
-  let videoId = "";
-
-  // YouTube video linkinden video ID'si al
-  if (src.includes("youtube.com")) {
-    videoId = src.split("v=")[1].split("&")[0];
-  } 
-  // Facebook video linkinden video ID'si al
-  else if (src.includes("facebook.com")) {
-    const urlParts = src.split('/');
-    videoId = urlParts[urlParts.length - 1];  // Facebook video ID'si genellikle URL'nin sonunda yer alır
-  }
-  
-  return videoId;
 }
 
 // Video oynatma fonksiyonu
