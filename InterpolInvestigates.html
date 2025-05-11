@@ -240,9 +240,8 @@
 	function filterEpisodesAllSeasons() {
   const query = document.getElementById('searchInput').value.toLowerCase();
 
-  // Eğer arama kutusu boşsa sayfayı yenile
   if (query.trim() === "") {
-    window.location.reload();  // ✅ Sayfa baştan yüklenecek, 14. sezon geri gelir
+    window.location.reload();  // Boşsa sayfayı yenile
     return;
   }
 
@@ -250,8 +249,12 @@
   container.innerHTML = '';
   let found = false;
 
-  for (const season in episodes) {
-    const matches = episodes[season].filter(ep =>
+  const seriesData = episodes[defaultSeries]; // ✅ Sadece bu seride arama yap
+
+  for (const season in seriesData) {
+    if (!Array.isArray(seriesData[season])) continue; // seasonYears gibi nesneleri atla
+
+    const matches = seriesData[season].filter(ep =>
       ep.title.toLowerCase().includes(query)
     );
 
@@ -271,9 +274,11 @@
         epDiv.innerHTML = `
           <img src="${ep.thumbnail}" alt="${ep.title}">
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-           ${ep.date}
-           ${ep.tag || ''}
-           `;
+          <p class="episode-date">${ep.date}</p>
+          <p class="episode-tags">
+            ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+          </p>
+        `;
         container.appendChild(epDiv);
       });
     }
