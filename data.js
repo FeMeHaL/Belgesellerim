@@ -15,22 +15,29 @@ const allEpisodes = {
   }
 };
 
-// Sayfa kaynağından alınan tüm veri buraya string olarak gelecek (örnek veri)
-const sourceCode = `view-source:https://www.facebook.com/100021513607216/videos/116231829103937/`;
+// Dinamik veriyi almak için fetch kullanılabilir
+const videoUrl = "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937";
 
-// Sayfa kaynağında "is_live_streaming":false ile başlayan JSON parçasını arıyoruz
-const match = sourceCode.match(/({\s*"is_live_streaming":false[\s\S]+?"is_play_count_supported":false\s*})/);
+fetch(videoUrl)
+  .then(response => response.text())
+  .then(sourceCode => {
+    // Sayfa kaynağından JSON parçasını bulma işlemi
+    const match = sourceCode.match(/({\s*"is_live_streaming":false[\s\S]+?"is_play_count_supported":false\s*})/);
+    
+    if (match) {
+      const jsonStr = match[1]; // JSON verisini alıyoruz
+      const jsonObj = JSON.parse(jsonStr); // JSON stringini parse ediyoruz
+      
+      // Burada jsonObj.play_count değerini alıp, dynamicViews değişkenine atıyoruz
+      dynamicViews = jsonObj.play_count;
 
-if (match) {
-  const jsonStr = match[1]; // JSON verisini alıyoruz
-  const jsonObj = JSON.parse(jsonStr); // JSON stringini parse ediyoruz
-  
-  // Burada jsonObj.play_count değerini alıp, dynamicViews değişkenine atıyoruz
-  dynamicViews = jsonObj.play_count;
+      // Son olarak allEpisodes objesindeki views kısmını güncelliyoruz
+      allEpisodes["İnterpol Araştırmaları"][1][0].views = dynamicViews;
 
-  // Son olarak allEpisodes objesindeki views kısmını güncelliyoruz
-  allEpisodes["İnterpol Araştırmaları"][1][0].views = dynamicViews;
-}
-
-// Dinamik veriyi HTML sayfasına yansıtmak için:
-document.querySelector('.views').innerText = dynamicViews; // Buradaki .views sınıfına sahip elemanın içeriğini güncelliyoruz
+      // Dinamik veriyi HTML sayfasına yansıtmak için:
+      document.querySelector('.views').innerText = dynamicViews; // Buradaki .views sınıfına sahip elemanın içeriğini güncelliyoruz
+    }
+  })
+  .catch(error => {
+    console.error("Veri alma hatası:", error);
+  });
