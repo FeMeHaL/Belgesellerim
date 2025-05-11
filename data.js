@@ -1,6 +1,22 @@
-// İzlenme sayısını almak için fonksiyon (şu an için sabit değer döndürüyoruz)
+// İzlenme sayısını almak için fonksiyon
 async function getViews(videoUrl) {
-  return 750; // Burayı, dinamik olarak alacak şekilde güncelleyebilirsiniz
+  const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // Proxy URL'si
+  const targetUrl = videoUrl; // Facebook video URL'si
+  const response = await fetch(proxyUrl + targetUrl); // Proxy ile isteği gönderiyoruz
+  const html = await response.text(); // HTML yanıtını alıyoruz
+  
+  const parser = new DOMParser(); // HTML'i parse etmek için DOMParser kullanıyoruz
+  const doc = parser.parseFromString(html, 'text/html'); // Sayfa içeriğini parse ediyoruz
+  
+  // İzlenme sayısının bulunduğu span elementini buluyoruz
+  const viewCountElement = doc.querySelector('span[class*="x193iq5w"][dir="auto"]');
+  
+  if (viewCountElement) {
+    // Sayıyı alıyoruz ve yalnızca sayıları bırakıyoruz
+    return parseInt(viewCountElement.textContent.trim().replace(/[^0-9]/g, '')) || 0;
+  } else {
+    return 0; // İzlenme sayısı bulunamazsa 0 döndür
+  }
 }
 
 // Verilerin bulunduğu dış dosya
@@ -50,7 +66,7 @@ async function updateAllEpisodes() {
       for (const episode of allEpisodes[series][season]) {
         const videoUrl = episode.video; // Video URL'sini al
         const views = await getViews(videoUrl); // İzlenme sayısını al
-
+        
         episode.views = views; // İzlenme sayısını güncelle
       }
     }
