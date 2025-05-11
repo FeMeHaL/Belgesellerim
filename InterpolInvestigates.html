@@ -46,13 +46,6 @@
       color: purple;
       font-weight: bold;
       display: inline;
-    }
-	.episode-views {
-	text-align: center;
-	color: #aaa;
-	font-weight: bold;
-	margin-top: 5px;
-	font-size: 14px;
 	}
     .episode {
       background-color: #2b2b2b;
@@ -212,7 +205,6 @@
       <img src="${ep.thumbnail}" alt="${ep.title}">
       <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
       <p class="episode-date">${ep.date}</p>
-      <p class="episode-views">İzlenme Sayısı: ${ep.views}</p>
 	  <p class="episode-tags">
         ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
       </p>
@@ -328,7 +320,6 @@ function loadDocumentaries() {
           <img src="${ep.thumbnail}" alt="${ep.title}">
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
           <p class="episode-date">${ep.date}</p>
-		  <p class="episode-views">İzlenme Sayısı: ${ep.views}</p>
 		  <p class="episode-tags">
             ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
           </p>
@@ -378,7 +369,6 @@ function loadDocumentaries() {
       <img src="${ep.thumbnail}" alt="${ep.title}">
       <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
       <p class="episode-date">${ep.date}</p>
-      <p class="episode-views">İzlenme Sayısı: ${ep.views}</p>
       <p class="episode-tags">
         ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
       </p>

@@ -1,57 +1,36 @@
-// Tüm videolar için izlenme sayısını almak için genel bir fonksiyon
-async function fetchVideoViews(videoUrl) {
-  try {
-    const response = await fetch(videoUrl); // Videonun sayfasından veriyi alıyoruz (bu API veya benzeri bir yapı ile olabilir)
-    const sourceCode = await response.text(); // Sayfa kaynağını alıyoruz
-    
-    // "is_play_count_supported": false kısmından play_count değerini alıyoruz
-    const match = sourceCode.match(/"is_play_count_supported":\s*false[\s\S]+?"play_count":\s*(\d+)/);
-    
-    if (match) {
-      return match[1]; // play_count değerini döndürüyoruz
-    } else {
-      throw new Error("Play count verisi bulunamadı.");
-    }
-  } catch (error) {
-    console.error("Video verisi alınırken hata oluştu:", error);
-    return null;
-  }
-}
+// Verilerin bulunduğu dış dosya
+const allEpisodes = {
+  "Kritik Anlar": {
+    1: [
+      {
+        title: "[005] 1. Sezon 5. Bölüm - (Downed Pilot) - Bosna'da Düşen Uçak",
+        date: "İlk Vizyona Girişi : 15 Mayıs 2007",
+        thumbnail: "./img/KA01S05E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/506529168665653",
+        tags: ["Uçak", "F16 Uçağının Düşürülmesi", "1995", "Bosna Hersek", "Pilot Kurtarma Operasyonu"]
+      },
+      {
+        title: "[009] 1. Sezon 9. Bölüm - (Assault On Entebbe) - Uganda’ya Kaçırılan Uçak",
+        date: "İlk Vizyona Girişi : 12 Haziran 2007",
+        thumbnail: "./img/KA01S09E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1031743588089291",
+        tags: ["Uçak", "Uçak Kaçırma", "1976", "Uganda", "Rehine Operasyonu"]
+      }
+    ]
+  },
 
-// Tüm bölümleri güncelleme fonksiyonu
-async function updateVideoViews() {
-  const allEpisodes = {
-    "İnterpol Araştırmaları": {
-      1: [
-        {
-          title: "İnterpol Araştırmaları<br><span class='episode-number'>[010]</span> 1. Sezon 10. Bölüm<br>(Terror in the Skies) - Göklerdeki Terör",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 23 Kasım 2004</p>",
-          thumbnail: "./img/II01S10E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937",
-          tags: ["Uçak", "Uçak Kaçırma", "1985", "Yunanistan", "Rehine Operasyonu"],
-          views: "750" // Dinamik değer burada kullanılacak
-        }
-      ]
-    }
-  };
-  
-  const episodes = allEpisodes["İnterpol Araştırmaları"][1]; // Tüm bölümleri alıyoruz
-  
-  // Tüm bölümler için views değerlerini güncelleme
-  for (const episode of episodes) {
-    const videoUrl = episode.video; // Videonun URL'sini alıyoruz
-    const views = await fetchVideoViews(videoUrl); // Videonun izlenme sayısını alıyoruz
-    
-    if (views) {
-      episode.views = views; // İzlenme sayısını güncelliyoruz
+  "İnterpol Araştırmaları": {
+    1: [
+      {
+        title: "İnterpol Araştırmaları<br><span class='episode-number'>[010]</span> 1. Sezon 10. Bölüm<br>(Terror in the Skies) - Göklerdeki Terör",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 23 Kasım 2004</p>",
+        thumbnail: "./img/II01S10E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937",
+        tags: ["Uçak", "Uçak Kaçırma", "1985", "Yunanistan", "Rehine Operasyonu"]
+      }
+    ],
+    seasonYears: {
+      1: 2004
     }
   }
-  
-  // Güncellenmiş verileri HTML'e yansıtmak için
-  episodes.forEach(episode => {
-    document.querySelector(`.views[data-video="${episode.video}"]`).innerText = episode.views;
-  });
-}
-
-// Başlatmak için
-updateVideoViews();
+};
