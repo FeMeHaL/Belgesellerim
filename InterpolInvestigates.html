@@ -201,7 +201,7 @@
     }
 
     function loadSeasons(seriesName) {
-      const sidebar = document.getElementById('sidebar');
+      const sidebar = document.getElementById('sidebar-buttons');
       sidebar.innerHTML = '';
 
       const seasons = Object.keys(episodes[seriesName])
@@ -222,7 +222,7 @@
     }
 
     function loadDocumentaries() {
-      const sidebar = document.getElementById('sidebar');
+      const sidebar = document.getElementById('sidebar-buttons');
       sidebar.innerHTML = '';
 
       for (let series in episodes) {
