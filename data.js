@@ -1,5 +1,21 @@
-// data.js
+// Video ID'sini çıkarmak için yardımcı fonksiyon
+function getVideoId(src) {
+  let videoId = "";
 
+  // YouTube video linkinden video ID'si al
+  if (src.includes("youtube.com")) {
+    videoId = src.split("v=")[1].split("&")[0];
+  } 
+  // Facebook video linkinden video ID'si al
+  else if (src.includes("facebook.com")) {
+    const urlParts = src.split('/');
+    videoId = urlParts[urlParts.length - 1];  // Facebook video ID'si genellikle URL'nin sonunda yer alır
+  }
+  
+  return videoId;
+}
+
+// Verilerin bulunduğu dış dosya
 const allEpisodes = {
   "Kritik Anlar": {
     1: [
@@ -15,10 +31,10 @@ const allEpisodes = {
         date: "İlk Vizyona Girişi : 12 Haziran 2007",
         thumbnail: "./img/KA01S09E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1031743588089291",
-tags: ["Uçak", "Uçak Kaçırma", "1976", "Uganda", "Rehine Operasyonu"]
-}
-]
-},
+        tags: ["Uçak", "Uçak Kaçırma", "1976", "Uganda", "Rehine Operasyonu"]
+      }
+    ]
+  },
 
   "İnterpol Araştırmaları": {
     1: [
@@ -28,7 +44,8 @@ tags: ["Uçak", "Uçak Kaçırma", "1976", "Uganda", "Rehine Operasyonu"]
         thumbnail: "./img/II01S10E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937",
         tags: ["Uçak", "Uçak Kaçırma", "1985", "Yunanistan", "Rehine Operasyonu"],
-		videoId: getVideoId("https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937")
+        // Burada `getVideoId` fonksiyonunu kullanmak yerine fonksiyonu dışarıda çağırarak ID'yi veriyi oluşturduğumuzda alıyoruz
+        videoId: getVideoId("https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937")
       }
     ],
     seasonYears: {
