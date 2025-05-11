@@ -387,23 +387,13 @@ function loadDocumentaries() {
   });
 }
 
-// Facebook sayfasındaki izlenme sayısını almak için
-function getFacebookVideoViews(videoUrl) {
-  const videoContainer = document.querySelector('[href="' + videoUrl + '"]');  // Video URL'sine tıklanabilir öğeyi bul
-  if (videoContainer) {
-    const viewsSpan = videoContainer.querySelector('span');  // İzlenme sayısını içeren <span> etiketini bul
-    return viewsSpan ? viewsSpan.textContent : 'No views found';
-  } else {
-    return 'Video not found';
-  }
+// Facebook video izlenme sayısını al
+const span = document.querySelector('span[class*="x193iq5w"][dir="auto"]');
+if (span) {
+  console.log("İzlenme sayısı:", span.textContent.trim());
+} else {
+  console.log("İzlenme sayısı bulunamadı.");
 }
-
-// Kullanmak için video URL'sini aşağıda tanımladım
-const videoUrl = 'https://www.facebook.com/ferhat.polaterce.9/videos/1376284733513700';  // İlk video URL'si
-const views = getFacebookVideoViews(videoUrl);
-
-// Sonuç olarak izlenme sayısını konsola yazdırıyoruz
-console.log(views);  // "1,6 B" ya da "775" gibi bir çıktı alacağız
 
     // Sayfa ilk yüklendiğinde
     window.onload = () => {

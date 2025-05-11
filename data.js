@@ -27,7 +27,7 @@ const allEpisodes = {
         thumbnail: "./img/II01S10E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937",
         tags: ["Uçak", "Uçak Kaçırma", "1985", "Yunanistan", "Rehine Operasyonu"],
-        views: getFacebookVideoViews('https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937')  // Dinamik izlenme sayısı burada olacak
+        views: 750 // Bu değer otomatik olarak güncellenmeli
       }
     ],
     seasonYears: {
@@ -35,3 +35,42 @@ const allEpisodes = {
     }
   }
 };
+
+// İzlenme sayısını alacak fonksiyon
+async function updateViewCount(videoUrl) {
+  try {
+    const response = await fetch(videoUrl); // Facebook video sayfasını al
+    const html = await response.text(); // Sayfa HTML'ini çek
+    const parser = new DOMParser(); // HTML'i parse etmek için
+    const doc = parser.parseFromString(html, 'text/html'); // Sayfa HTML'ini parse ediyoruz
+
+    // İzlenme sayısının bulunduğu span elementini buluyoruz
+    const viewCountElement = doc.querySelector('span[class*="x193iq5w"][dir="auto"]');
+    if (viewCountElement) {
+      return parseInt(viewCountElement.textContent.trim().replace(/[^0-9]/g, '')) || 0; // Sayıyı alıyoruz
+    } else {
+      return 0; // İzlenme sayısı bulunamazsa 0 döndür
+    }
+  } catch (error) {
+    console.error("Bir hata oluştu:", error);
+    return 0; // Hata durumunda 0 döndür
+  }
+}
+
+// Video URL'sini alıp JSON'daki views değerini güncelle
+async function updateAllEpisodes() {
+  for (const series in allEpisodes) {
+    for (const season in allEpisodes[series]) {
+      for (const episode of allEpisodes[series][season]) {
+        const videoUrl = episode.video; // Video URL'sini al
+        const views = await updateViewCount(videoUrl); // İzlenme sayısını al
+
+        episode.views = views; // İzlenme sayısını güncelle
+      }
+    }
+  }
+  console.log(allEpisodes); // Güncellenmiş veriyi konsola yazdır
+}
+
+// Verileri güncelle
+updateAllEpisodes();
