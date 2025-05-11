@@ -197,6 +197,31 @@
       });
     }
 
+// Arama filtresi fonksiyonu
+function filterEpisodesAllSeasons() {
+  const searchInput = document.getElementById('searchInput').value.toLowerCase();
+  const allEpisodesDiv = document.getElementById('episodeContainer');
+  
+  const episodes = allEpisodes[document.querySelector('.season-button')?.innerText]; // şu anda aktif belgesel adını almak
+  const filteredEpisodes = episodes.filter(ep => 
+    ep.title.toLowerCase().includes(searchInput) ||
+    ep.date.toLowerCase().includes(searchInput)
+  );
+
+  allEpisodesDiv.innerHTML = '';  // Mevcut içerikleri temizle
+
+  filteredEpisodes.forEach(ep => {
+    const epDiv = document.createElement('div');
+    epDiv.className = 'episode';
+    epDiv.innerHTML = `
+      <img src="${ep.thumbnail}" alt="${ep.title}">
+      <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+      <p class="episode-date">${ep.date}</p>
+    `;
+    allEpisodesDiv.appendChild(epDiv);  // Filtrelenmiş bölümleri ekle
+  });
+}
+
 // Video ID'sini çıkarmak için yardımcı fonksiyon
 function getVideoId(src) {
   let videoId = "";
