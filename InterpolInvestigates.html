@@ -333,26 +333,27 @@ function loadDocumentaries() {
     // Arama Fonksiyonu
     function searchEpisodes() {
   const searchInput = document.getElementById('searchInput').value.toLowerCase();
+  const container = document.getElementById('episodeContainer');
 
-  // Arama kutusu boşsa: sadece mevcut sezonu göster
+  // Eğer arama kutusu boşsa mevcut sezonu geri yükle
   if (searchInput.trim() === "") {
     loadSeason(currentSeason, currentSeries);
     return;
   }
 
-  const container = document.getElementById('episodeContainer');
   container.innerHTML = '';
 
   const allEpisodesArray = [];
 
-  for (let series in episodes) {
-    for (let season in episodes[series]) {
-      if (Array.isArray(episodes[series][season])) {
-        allEpisodesArray.push(...episodes[series][season]);
-      }
+  // ❗ Sadece mevcut dizinin tüm sezonlarını tara
+  const seriesData = episodes[currentSeries];
+  for (let season in seriesData) {
+    if (Array.isArray(seriesData[season])) {
+      allEpisodesArray.push(...seriesData[season]);
     }
   }
 
+  // Arama filtreleme
   const filtered = allEpisodesArray.filter(ep =>
     ep.title.toLowerCase().includes(searchInput)
   );
@@ -362,6 +363,7 @@ function loadDocumentaries() {
     return;
   }
 
+  // Sonuçları göster
   filtered.forEach(ep => {
     const epDiv = document.createElement('div');
     epDiv.className = 'episode';
@@ -369,14 +371,15 @@ function loadDocumentaries() {
       <img src="${ep.thumbnail}" alt="${ep.title}">
       <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
       <p class="episode-date">${ep.date}</p>
-	  <p class="episode-views">${ep.views} izlenme</p>
-	  <p class="episode-tags">
+      <p class="episode-views">${ep.views} izlenme</p>
+      <p class="episode-tags">
         ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
       </p>
     `;
     container.appendChild(epDiv);
   });
 }
+
 
 
     // Sayfa ilk yüklendiğinde
