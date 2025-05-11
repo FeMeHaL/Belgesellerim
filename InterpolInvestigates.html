@@ -223,20 +223,21 @@
         return;
       }
 
-      // Her bölümü ekle
-      seasonEpisodes.forEach(ep => {
-        const epDiv = document.createElement('div');
-        epDiv.className = 'episode';
-        epDiv.innerHTML = `
-      <img src="${ep.thumbnail}" alt="${ep.title}">
-      <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-      <p class="episode-date">${ep.date}</p>
-      <p class="episode-tags">Tags: ${ep.tags.join(', ')}</p>  <!-- Tags bilgisi -->
-      <p class="episode-views">Izlenme Sayısı: ${ep.views}</p> <!-- Views bilgisi -->
-    `;
-        container.appendChild(epDiv);  // Bölümü içeriğe ekle
-      });
-    }
+      // Her bölümü eklerken tag kısmını düzenleyin
+seasonEpisodes.forEach(ep => {
+  const epDiv = document.createElement('div');
+  epDiv.className = 'episode';
+  epDiv.innerHTML = `
+    <img src="${ep.thumbnail}" alt="${ep.title}">
+    <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+    <p class="episode-date">${ep.date}</p>
+    <p class="episode-tags">
+      Tags: ${ep.tags.map(tag => `<a href="#" class="tag">${tag}</a>`).join(', ')}
+    </p>  <!-- Tags bilgisi -->
+    <p class="episode-views">İzlenme Sayısı: ${ep.views}</p> <!-- Views bilgisi -->
+  `;
+  container.appendChild(epDiv);  // Bölümü içeriğe ekle
+});
 
 // Arama filtresi fonksiyonu
 function filterEpisodesAllSeasons() {
