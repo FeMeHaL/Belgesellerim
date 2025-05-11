@@ -171,21 +171,21 @@
 
 <script src="data.js"></script>
 <script>
-  const episodes = allEpisodes;
-  let defaultSeries = "İnterpol Araştırmaları"; // <-- globalde tanımladık
+  const episodes = allEpisodes; // <-- DEĞİŞTİR: YENİ BELGESELİN VERİSİNİ BAĞLA
+  let defaultSeries = "İnterpol Araştırmaları"; // <-- BURAYI DEĞİŞTİR: YENİ BELGESELİN ADINI YAZ
 
   // Sayfa ilk yüklendiğinde
   window.onload = () => {
-    loadDocumentaries();
-    loadSeasons(defaultSeries);
-    loadSeason(1, defaultSeries);
+    loadDocumentaries();  // <-- BELGESELİ YÜKLEME
+    loadSeasons(defaultSeries); // <-- SEZONLARI YÜKLEME
+    loadSeason(1, defaultSeries);  // <-- İLK SEZONU YÜKLEME
   };
 
     function loadSeason(season, seriesName) {
       const container = document.getElementById('episodeContainer');
       container.innerHTML = ''; // İçeriği temizle
 
-      const seasonEpisodes = episodes[seriesName][season];
+      const seasonEpisodes = episodes[seriesName][season];  // <-- SEZON VERİLERİ
 
       if (!seasonEpisodes || seasonEpisodes.length === 0) {
         container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
@@ -222,8 +222,8 @@
 
         const btn = document.createElement('button');
         btn.className = 'season-button';
-        btn.innerText = `${season}. SEZON${yearText}`;
-        btn.onclick = () => loadSeason(season, seriesName);
+        btn.innerText = `${season}. SEZON${yearText}`;  // <-- SEZON YILI GÖSTERİLİYOR
+        btn.onclick = () => loadSeason(season, seriesName);  // <-- SEZON SEÇİLİYOR
         sidebar.appendChild(btn);
       });
     }
@@ -237,8 +237,8 @@
         btn.className = 'season-button';
         btn.innerText = series;
         btn.onclick = () => {
-          loadSeasons(series);
-          loadSeason(1, series);
+          loadSeasons(series);  // <-- YENİ BELGESEL SEZONLARI YÜKLENİYOR
+          loadSeason(1, series);  // <-- YENİ BELGESELİN İLK SEZONU
         };
         sidebar.appendChild(btn);
       }
@@ -295,7 +295,6 @@
     container.innerHTML = "<p>Hiçbir bölüm bulunamadı.</p>";
   }
 }
-
 
     function playVideo(src) {
 	const overlay = document.getElementById('videoOverlay');
