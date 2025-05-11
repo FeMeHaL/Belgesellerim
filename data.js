@@ -1,26 +1,5 @@
 // Verilerin bulunduğu dış dosya
 const allEpisodes = {
-  "Kritik Anlar": {
-    1: [
-      {
-        title: "[005] 1. Sezon 5. Bölüm - (Downed Pilot) - Bosna'da Düşen Uçak",
-        date: "İlk Vizyona Girişi : 15 Mayıs 2007",
-        thumbnail: "./img/KA01S05E.jpg",
-        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/506529168665653",
-        tags: ["Uçak", "F16 Uçağının Düşürülmesi", "1995", "Bosna Hersek", "Pilot Kurtarma Operasyonu"],
-        views: 0 // Başlangıçta 0
-      },
-      {
-        title: "[009] 1. Sezon 9. Bölüm - (Assault On Entebbe) - Uganda’ya Kaçırılan Uçak",
-        date: "İlk Vizyona Girişi : 12 Haziran 2007",
-        thumbnail: "./img/KA01S09E.jpg",
-        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1031743588089291",
-        tags: ["Uçak", "Uçak Kaçırma", "1976", "Uganda", "Rehine Operasyonu"],
-        views: 0 // Başlangıçta 0
-      }
-    ]
-  },
-
   "İnterpol Araştırmaları": {
     1: [
       {
