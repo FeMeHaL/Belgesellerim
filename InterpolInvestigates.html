@@ -180,33 +180,39 @@
   <script src="data.js"></script>
 
   <script>
-    const episodes = allEpisodes;
+  let currentSeries = "";
+  let currentSeason = 1;
 
-    function loadSeason(season, seriesName) {
-      const container = document.getElementById('episodeContainer');
-      container.innerHTML = ''; // İçeriği temizle
+  const episodes = allEpisodes;
 
-      const seasonEpisodes = episodes[seriesName][season];
+ function loadSeason(season, seriesName) {
+  currentSeries = seriesName;
+  currentSeason = season;
+  const container = document.getElementById('episodeContainer');
+  container.innerHTML = '';
 
-      if (!seasonEpisodes || seasonEpisodes.length === 0) {
-        container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
-        return;
-      }
+  const seasonEpisodes = episodes[seriesName][season];
 
-      seasonEpisodes.forEach(ep => {
-        const epDiv = document.createElement('div');
-        epDiv.className = 'episode';
-        epDiv.innerHTML = ` 
-          <img src="${ep.thumbnail}" alt="${ep.title}">
-          <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-          <p class="episode-date">${ep.date}</p>
-          <p class="episode-tags">
-            ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
-          </p>
-        `;
-        container.appendChild(epDiv);
-      });
-    }
+  if (!seasonEpisodes || seasonEpisodes.length === 0) {
+    container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
+    return;
+  }
+
+  seasonEpisodes.forEach(ep => {
+    const epDiv = document.createElement('div');
+    epDiv.className = 'episode';
+    epDiv.innerHTML = `
+      <img src="${ep.thumbnail}" alt="${ep.title}">
+      <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+      <p class="episode-date">${ep.date}</p>
+      <p class="episode-views">${ep.views} izlenme</p>
+	  <p class="episode-tags">
+        ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+      </p>
+    `;
+    container.appendChild(epDiv);
+  });
+}
 
 function loadSeasons(seriesName) {
   const sidebar = document.getElementById('sidebar');
@@ -315,7 +321,8 @@ function loadDocumentaries() {
           <img src="${ep.thumbnail}" alt="${ep.title}">
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
           <p class="episode-date">${ep.date}</p>
-          <p class="episode-tags">
+		  <p class="episode-views">${ep.views} izlenme</p>
+		  <p class="episode-tags">
             ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
           </p>
         `;
@@ -325,43 +332,52 @@ function loadDocumentaries() {
 
     // Arama Fonksiyonu
     function searchEpisodes() {
-      const query = document.getElementById('searchInput').value.toLowerCase();
-      const container = document.getElementById('episodeContainer');
-      container.innerHTML = ''; // İçeriği temizle
+  const searchInput = document.getElementById('searchInput').value.toLowerCase();
 
-      const allEpisodesArray = [];
+  // Arama kutusu boşsa: sadece mevcut sezonu göster
+  if (searchInput.trim() === "") {
+    loadSeason(currentSeason, currentSeries);
+    return;
+  }
 
-      // Tüm bölümleri diziye ekle
-      for (let series in episodes) {
-        for (let season in episodes[series]) {
-          if (Array.isArray(episodes[series][season])) {
-            allEpisodesArray.push(...episodes[series][season]);
-          }
-        }
+  const container = document.getElementById('episodeContainer');
+  container.innerHTML = '';
+
+  const allEpisodesArray = [];
+
+  for (let series in episodes) {
+    for (let season in episodes[series]) {
+      if (Array.isArray(episodes[series][season])) {
+        allEpisodesArray.push(...episodes[series][season]);
       }
-
-      // Başlıkları filtrele
-      const filtered = allEpisodesArray.filter(ep => ep.title.toLowerCase().includes(query));
-
-      if (filtered.length === 0) {
-        container.innerHTML = `<p>"${query}" ile eşleşen bölüm bulunamadı.</p>`;
-        return;
-      }
-
-      filtered.forEach(ep => {
-        const epDiv = document.createElement('div');
-        epDiv.className = 'episode';
-        epDiv.innerHTML = ` 
-          <img src="${ep.thumbnail}" alt="${ep.title}">
-          <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-          <p class="episode-date">${ep.date}</p>
-          <p class="episode-tags">
-            ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
-          </p>
-        `;
-        container.appendChild(epDiv);
-      });
     }
+  }
+
+  const filtered = allEpisodesArray.filter(ep =>
+    ep.title.toLowerCase().includes(searchInput)
+  );
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<p>"${searchInput}" ile eşleşen bölüm bulunamadı.</p>`;
+    return;
+  }
+
+  filtered.forEach(ep => {
+    const epDiv = document.createElement('div');
+    epDiv.className = 'episode';
+    epDiv.innerHTML = `
+      <img src="${ep.thumbnail}" alt="${ep.title}">
+      <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+      <p class="episode-date">${ep.date}</p>
+	  <p class="episode-views">${ep.views} izlenme</p>
+	  <p class="episode-tags">
+        ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+      </p>
+    `;
+    container.appendChild(epDiv);
+  });
+}
+
 
     // Sayfa ilk yüklendiğinde
     window.onload = () => {
