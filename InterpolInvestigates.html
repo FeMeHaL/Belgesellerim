@@ -151,7 +151,16 @@
 <body>
 
   <div class="sidebar">
-  <input type="text" id="searchInput" placeholder="Bölüm ara..." oninput="filterEpisodesAllSeasons()" style="width: 100%; padding: 10px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px;">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Bölüm ara..."
+      oninput="filterEpisodesAllSeasons()"
+      style="width: 100%; padding: 10px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px;"
+    >
+    <div id="sidebar-buttons"></div>
+  </div>
+
   <div class="content" id="episodeContainer"></div>
 
   <!-- Video Overlay -->
@@ -160,9 +169,18 @@
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
 
+  <!-- Verilerin bulunduğu dış dosya -->
   <script src="data.js"></script>
 
   <script>
+    // Sayfa yüklendiğinde yapılacak işlemler
+	  window.onload = function() {
+      console.log(allEpisodes);  // Verinin doğru yüklendiğini kontrol et
+      loadDocumentaries();  
+      loadSeasons('İnterpol Araştırmaları');  // Varsayılan belgesel adını yazdık
+      loadSeason(1, 'İnterpol Araştırmaları');  // Varsayılan olarak ilk sezonu yükle
+    };
+	
     const episodes = allEpisodes;
 
     function loadSeason(season, seriesName) {
@@ -291,14 +309,6 @@ function closeVideo() {
         container.appendChild(epDiv);
       });
     }
-
-    // Sayfa ilk yüklendiğinde
-    window.onload = () => {
-      const defaultSeries = "İnterpol Araştırmaları";
-      loadDocumentaries();
-      loadSeasons(defaultSeries);
-      loadSeason(1, defaultSeries);
-    };
   </script>
 </body>
 </html>
