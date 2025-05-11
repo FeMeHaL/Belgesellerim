@@ -146,6 +146,9 @@
 </head>
 <body>
 
+  <div class="sidebar">
+  <input type="text" id="searchInput" placeholder="Bölüm ara..." oninput="filterEpisodesAllSeasons()" style="width: 100%; padding: 10px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px;">
+
   <div class="sidebar" id="sidebar"></div>
   <div class="content" id="episodeContainer"></div>
 
@@ -222,6 +225,54 @@
         sidebar.appendChild(btn);
       }
     }
+	
+	function filterEpisodesAllSeasons() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+
+  // Eğer arama kutusu boşsa sayfayı yenile
+  if (query.trim() === "") {
+    window.location.reload();  // ✅ Sayfa baştan yüklenecek, 14. sezon geri gelir
+    return;
+  }
+
+  const container = document.getElementById('episodeContainer');
+  container.innerHTML = '';
+  let found = false;
+
+  for (const season in episodes) {
+    const matches = episodes[season].filter(ep =>
+      ep.title.toLowerCase().includes(query)
+    );
+
+    if (matches.length > 0) {
+      found = true;
+
+      const header = document.createElement('h2');
+      header.textContent = `${season}. Sezon`;
+      header.style.width = "100%";
+      header.style.color = "#ff4d4d";
+      header.style.borderBottom = "1px solid #444";
+      container.appendChild(header);
+
+      matches.forEach(ep => {
+        const epDiv = document.createElement('div');
+        epDiv.className = 'episode';
+        epDiv.innerHTML = `
+          <img src="${ep.thumbnail}" alt="${ep.title}">
+          <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+           ${ep.date}
+           ${ep.tag || ''}
+           `;
+        container.appendChild(epDiv);
+      });
+    }
+  }
+
+  if (!found) {
+    container.innerHTML = "<p>Hiçbir bölüm bulunamadı.</p>";
+  }
+}
+
 
     function playVideo(src) {
 	const overlay = document.getElementById('videoOverlay');
