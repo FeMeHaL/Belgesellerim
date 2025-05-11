@@ -11,7 +11,7 @@ const allEpisodes = {
 };
 
 // Sayfa kaynağından alınan tüm veri buraya string olarak gelecek:
-const sourceCode = `...buraya view-source: içeriğini yapıştırıyorsun...`;
+const sourceCode = `view-source:https://www.facebook.com/100021513607216/videos/116231829103937/`;
 
 // İlk "is_live_streaming":false ile başlayan JSON parçasını bul
 const match = sourceCode.match(/({\s*"is_live_streaming":false[\s\S]+?"is_play_count_supported":false\s*})/);
