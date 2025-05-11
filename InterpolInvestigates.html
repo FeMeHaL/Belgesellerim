@@ -42,10 +42,14 @@
       gap: 20px;
       transition: margin-left 0.3s ease;
     }
-    .episode-number {
-      color: purple;
-      font-weight: bold;
-      display: inline;
+    .subtitle {
+      color: red;        /* Kırmızı renk */
+      font-weight: bold; /* Kalın yazı tipi */
+    }
+	 .episode-number {
+      color: purple;  /* Mor renk */
+      font-weight: bold; /* Kalın yazı tipi */
+      display: inline;  /* Bu sayede sadece span etiketini etkiler */
     }
     .episode {
       background-color: #2b2b2b;
@@ -146,7 +150,17 @@
 </head>
 <body>
 
-  <div class="sidebar" id="sidebar"></div>
+  <div class="sidebar">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Bölüm ara..."
+      oninput="filterEpisodesAllSeasons()"
+      style="width: 100%; padding: 10px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px;"
+    >
+    <div id="sidebar-buttons"></div>
+  </div>
+
   <div class="content" id="episodeContainer"></div>
 
   <!-- Video Overlay -->
@@ -155,6 +169,7 @@
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
 
+    <!-- Verilerin bulunduğu dış dosya -->
   <script src="data.js"></script>
 
   <script>
