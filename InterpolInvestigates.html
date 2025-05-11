@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Dizi Bölümleri</title>
   <style>
+    /* CSS stillerini buraya ekleyebilirsiniz */
     body {
       margin: 0;
       font-family: sans-serif;
@@ -41,10 +42,6 @@
       gap: 20px;
       transition: margin-left 0.3s ease;
     }
-    .subtitle {
-      color: red;
-      font-weight: bold;
-    }
     .episode-number {
       color: purple;
       font-weight: bold;
@@ -72,8 +69,8 @@
       text-align: center;
       margin-top: 10px;
     }
-    .episode-tags {
-      text-align: center;
+	.episode-tags {
+     text-align: center;
     }
     .episode-title {
       color: #4da6ff;
@@ -82,6 +79,7 @@
       text-align: center;
       margin-top: 10px;
     }
+    /* Yeni Tag Stili */
     .tag {
       display: inline-block;
       background-color: #4da6ff;
@@ -94,9 +92,12 @@
       transition: background-color 0.2s;
       text-decoration: none;
     }
+
     .tag:hover {
       background-color: #1e90ff;
     }
+
+    /* Responsive Ayarlar */
     @media (max-width: 768px) {
       .episode {
         flex: 1 1 calc(50% - 20px);
@@ -113,8 +114,10 @@
         padding: 10px;
       }
     }
+
+    /* Video Overlay ve Kapanma Butonu */
     .video-overlay {
-      display: none;
+      display: none; /* Başlangıçta gizle */
       position: fixed;
       top: 0;
       left: 0;
@@ -123,12 +126,14 @@
       background-color: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
-      z-index: 999;
+	  z-index: 999;
     }
-    .video-overlay iframe {
-      width: 80%;
-      height: 80%;
-    }
+	
+	.video-overlay iframe {
+	width: 80%;
+	height: 80%;
+	}
+
     .video-overlay .close-btn {
       position: absolute;
       top: 20px;
@@ -141,19 +146,10 @@
 </head>
 <body>
 
-  <div class="sidebar">
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Bölüm ara..."
-      oninput="filterEpisodesAllSeasons()"
-      style="width: 100%; padding: 10px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px;"
-    >
-    <div id="sidebar-buttons"></div>
-  </div>
-
+  <div class="sidebar" id="sidebar"></div>
   <div class="content" id="episodeContainer"></div>
 
+  <!-- Video Overlay -->
   <div class="video-overlay" id="videoOverlay">
     <span class="close-btn" onclick="closeVideo()">×</span>
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
@@ -162,54 +158,13 @@
   <script src="data.js"></script>
 
   <script>
-    window.onload = function() {
-      console.log(allEpisodes);
-      loadDocumentaries();
-      loadSeasons('İnterpol Araştırmaları');
-      loadSeason(1, 'İnterpol Araştırmaları');
-    };
-
-    function loadDocumentaries() {
-      const sidebar = document.getElementById('sidebar-buttons');
-      sidebar.innerHTML = '';
-
-      for (let series in allEpisodes) {
-        const btn = document.createElement('button');
-        btn.className = 'season-button';
-        btn.innerText = series;
-        btn.onclick = () => {
-          loadSeasons(series);
-          loadSeason(1, series);
-        };
-        sidebar.appendChild(btn);
-      }
-    }
-
-    function loadSeasons(seriesName) {
-      const sidebar = document.getElementById('sidebar-buttons');
-      sidebar.innerHTML = '';
-
-      const seasons = Object.keys(allEpisodes[seriesName])
-        .filter(key => !isNaN(key))
-        .map(key => parseInt(key));
-
-      seasons.forEach(season => {
-        const yearText = allEpisodes[seriesName].seasonYears && allEpisodes[seriesName].seasonYears[season]
-          ? ` (${allEpisodes[seriesName].seasonYears[season]})` : '';
-
-        const btn = document.createElement('button');
-        btn.className = 'season-button';
-        btn.innerText = `${season}. SEZON${yearText}`;
-        btn.onclick = () => loadSeason(season, seriesName);
-        sidebar.appendChild(btn);
-      });
-    }
+    const episodes = allEpisodes;
 
     function loadSeason(season, seriesName) {
       const container = document.getElementById('episodeContainer');
-      container.innerHTML = '';
+      container.innerHTML = ''; // İçeriği temizle
 
-      const seasonEpisodes = allEpisodes[seriesName][season];
+      const seasonEpisodes = episodes[seriesName][season];
 
       if (!seasonEpisodes || seasonEpisodes.length === 0) {
         container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
@@ -226,74 +181,86 @@
           <p class="episode-tags">
             ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
           </p>
-          <p class="episode-views">İzlenme Sayısı: ${ep.views || 0}</p>
         `;
         container.appendChild(epDiv);
       });
     }
 
-    function filterEpisodesAllSeasons() {
-      const searchInput = document.getElementById('searchInput').value.toLowerCase();
-      const container = document.getElementById('episodeContainer');
-      const seriesName = document.querySelector('.season-button')?.innerText;
+    function loadSeasons(seriesName) {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.innerHTML = '';
 
-      if (!allEpisodes[seriesName]) return;
+      const seasons = Object.keys(episodes[seriesName])
+        .filter(key => !isNaN(key))
+        .map(key => parseInt(key));
 
-      let episodes = [];
-      for (let season in allEpisodes[seriesName]) {
-        if (!isNaN(season)) {
-          episodes = episodes.concat(allEpisodes[seriesName][season]);
-        }
-      }
+      seasons.forEach(season => {
+        const year = episodes[seriesName].seasonYear || '';
+        const yearText = episodes[seriesName].seasonYears && episodes[seriesName].seasonYears[season]
+          ? ` (${episodes[seriesName].seasonYears[season]})` : '';
 
-      const filtered = episodes.filter(ep =>
-        ep.title.toLowerCase().includes(searchInput) ||
-        ep.date.toLowerCase().includes(searchInput)
-      );
-
-      container.innerHTML = '';
-      filtered.forEach(ep => {
-        const epDiv = document.createElement('div');
-        epDiv.className = 'episode';
-        epDiv.innerHTML = `
-          <img src="${ep.thumbnail}" alt="${ep.title}">
-          <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-          <p class="episode-date">${ep.date}</p>
-        `;
-        container.appendChild(epDiv);
+        const btn = document.createElement('button');
+        btn.className = 'season-button';
+        btn.innerText = `${season}. SEZON${yearText}`;
+        btn.onclick = () => loadSeason(season, seriesName);
+        sidebar.appendChild(btn);
       });
+    }
+
+    function loadDocumentaries() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.innerHTML = '';
+
+      for (let series in episodes) {
+        const btn = document.createElement('button');
+        btn.className = 'season-button';
+        btn.innerText = series;
+        btn.onclick = () => {
+          loadSeasons(series);
+          loadSeason(1, series);
+        };
+        sidebar.appendChild(btn);
+      }
     }
 
     function playVideo(src) {
-      const overlay = document.getElementById('videoOverlay');
-      const video = document.getElementById('episodeVideo');
+	const overlay = document.getElementById('videoOverlay');
+	const video = document.getElementById('episodeVideo');
+	
+	if (src.includes("youtube.com")) {
+    const videoId = src.split("v=")[1].split("&")[0];
+    video.src = `https://www.youtube.com/embed/${videoId}`;
+	} else if (src.includes("facebook.com")) {
+    video.src = src;
+  }
 
-      if (src.includes("youtube.com")) {
-        const videoId = src.split("v=")[1].split("&")[0];
-        video.src = `https://www.youtube.com/embed/${videoId}`;
-      } else if (src.includes("facebook.com")) {
-        video.src = src;
-      }
+  overlay.style.display = 'flex';
+}
 
-      overlay.style.display = 'flex';
-    }
-
-    function closeVideo() {
-      const overlay = document.getElementById('videoOverlay');
-      const video = document.getElementById('episodeVideo');
-      overlay.style.display = 'none';
-      video.src = '';
-    }
+function closeVideo() {
+  const overlay = document.getElementById('videoOverlay');
+  const video = document.getElementById('episodeVideo');
+  overlay.style.display = 'none';
+  video.src = '';  // Videoyu durdurmak için sıfırla
+}
 
     function searchTag(tag) {
+      filterByTag(tag); // Arama sonuçlarını filtrele
+    }
+
+    function filterByTag(tag) {
       const container = document.getElementById('episodeContainer');
       container.innerHTML = '';
 
       const allEpisodesArray = [];
-      for (let series in allEpisodes) {
-        for (let season in allEpisodes[series]) {
-          if (Array.isArray(allEpisodes[series][season])) {
-            allEpisodesArray.push(...allEpisodes[series][season]);
+
+      // Sidebar'ı gizleyelim
+      document.getElementById('sidebar').style.transform = "translateX(-100%)";
+
+      for (let series in episodes) {
+        for (let season in episodes[series]) {
+          if (Array.isArray(episodes[series][season])) {
+            allEpisodesArray.push(...episodes[series][season]);
           }
         }
       }
@@ -319,6 +286,14 @@
         container.appendChild(epDiv);
       });
     }
+
+    // Sayfa ilk yüklendiğinde
+    window.onload = () => {
+      const defaultSeries = "İnterpol Araştırmaları";
+      loadDocumentaries();
+      loadSeasons(defaultSeries);
+      loadSeason(1, defaultSeries);
+    };
   </script>
 </body>
 </html>
