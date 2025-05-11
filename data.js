@@ -27,7 +27,7 @@ const allEpisodes = {
         thumbnail: "./img/II01S10E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937",
         tags: ["Uçak", "Uçak Kaçırma", "1985", "Yunanistan", "Rehine Operasyonu"],
-        views: 750 // izlenme sayısı
+        views: getFacebookVideoViews('https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937')  // Dinamik izlenme sayısı burada olacak
       }
     ],
     seasonYears: {
