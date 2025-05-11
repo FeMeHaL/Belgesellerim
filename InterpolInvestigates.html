@@ -181,18 +181,63 @@
       loadSeason(1, 'İnterpol Araştırmaları');  // Varsayılan olarak ilk sezonu yükle
     };
 	
-    const episodes = allEpisodes;
+    // Belgesellerin yüklenmesi
+    function loadDocumentaries() {
+      const sidebar = document.getElementById('sidebar-buttons');
+      sidebar.innerHTML = '';  // Sidebar'ı temizle
 
+      for (let series in allEpisodes) {
+        const btn = document.createElement('button');
+        btn.className = 'season-button';
+        btn.innerText = series;
+        btn.onclick = () => {
+          loadSeasons(series);  // Yeni belgeselin sezonlarını yükle
+          loadSeason(1, series);  // Yeni belgeselin ilk sezonunu yükle
+        };
+        sidebar.appendChild(btn);  // Sidebar'a buton ekle
+      }
+    }
+	
+    // Sezonların yüklenmesi
+    function loadSeasons(seriesName) {
+      const sidebar = document.getElementById('sidebar-buttons');
+      sidebar.innerHTML = '';  // Sidebar'ı temizle
+      const seasons = Object.keys(allEpisodes[seriesName])  // Sezonları al
+        .filter(key => !isNaN(key))  // Sayı olan anahtarları seç
+        .map(key => parseInt(key));  // Anahtarları sayıya çevir
+
+      // Sezon butonlarını oluştur
+      seasons.forEach(season => {
+        const btn = document.createElement('button');
+        btn.className = 'season-button';
+        btn.innerText = `${season}. Sezon`;
+        btn.onclick = () => loadSeason(season, seriesName);  // Sezona tıklayınca o sezonu yükle
+        sidebar.appendChild(btn);  // Sidebar'a buton ekle
+      });
+    }
+	
+    // Sezonun yüklenmesi
     function loadSeason(season, seriesName) {
       const container = document.getElementById('episodeContainer');
-      container.innerHTML = ''; // İçeriği temizle
+      container.innerHTML = '';  // İçeriği temizle
 
-      const seasonEpisodes = episodes[seriesName][season];
+      const seasonEpisodes = allEpisodes[seriesName][season];  // Sezonun bölümleri
 
       if (!seasonEpisodes || seasonEpisodes.length === 0) {
         container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
         return;
       }
+	
+	
+	
+	
+	
+	
+	
+    
+
+    
+
 
       seasonEpisodes.forEach(ep => {
         const epDiv = document.createElement('div');
