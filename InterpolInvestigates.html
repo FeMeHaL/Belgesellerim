@@ -228,17 +228,7 @@
         return;
       }
 	
-	
-	
-	
-	
-	
-	
-    
-
-    
-
-
+	// Her bölümü eklerken tag kısmını düzenleyin
       seasonEpisodes.forEach(ep => {
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
@@ -248,13 +238,38 @@
           <p class="episode-date">${ep.date}</p>
           <p class="episode-tags">
             ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
-          </p>
+          </p>  <!-- Tags bilgisi -->
+    <p class="episode-views">İzlenme Sayısı: ${ep.views}</p> <!-- Views bilgisi -->
         `;
         container.appendChild(epDiv);
       });
     }
+	
+// Arama filtresi fonksiyonu
+function filterEpisodesAllSeasons() {
+  const searchInput = document.getElementById('searchInput').value.toLowerCase();
+  const allEpisodesDiv = document.getElementById('episodeContainer');
+  
+  const episodes = allEpisodes[document.querySelector('.season-button')?.innerText]; // şu anda aktif belgesel adını almak
+  const filteredEpisodes = episodes.filter(ep => 
+    ep.title.toLowerCase().includes(searchInput) ||
+    ep.date.toLowerCase().includes(searchInput)
+  );
 
-    function loadSeasons(seriesName) {
+  allEpisodesDiv.innerHTML = '';  // Mevcut içerikleri temizle
+
+  filteredEpisodes.forEach(ep => {
+    const epDiv = document.createElement('div');
+    epDiv.className = 'episode';
+    epDiv.innerHTML = `
+      <img src="${ep.thumbnail}" alt="${ep.title}">
+      <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+      <p class="episode-date">${ep.date}</p>
+    `;
+    allEpisodesDiv.appendChild(epDiv);  // Filtrelenmiş bölümleri ekle
+  });
+}
+	function loadSeasons(seriesName) {
       const sidebar = document.getElementById('sidebar');
       sidebar.innerHTML = '';
 
@@ -263,7 +278,6 @@
         .map(key => parseInt(key));
 
       seasons.forEach(season => {
-        const year = episodes[seriesName].seasonYear || '';
         const yearText = episodes[seriesName].seasonYears && episodes[seriesName].seasonYears[season]
           ? ` (${episodes[seriesName].seasonYears[season]})` : '';
 
@@ -279,7 +293,7 @@
       const sidebar = document.getElementById('sidebar');
       sidebar.innerHTML = '';
 
-      for (let series in episodes) {
+      for (let series in allEpisodes) {
         const btn = document.createElement('button');
         btn.className = 'season-button';
         btn.innerText = series;
@@ -305,6 +319,7 @@
   overlay.style.display = 'flex';
 }
 
+// Video overlay'ını kapatma fonksiyonu
 function closeVideo() {
   const overlay = document.getElementById('videoOverlay');
   const video = document.getElementById('episodeVideo');
