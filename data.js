@@ -8,7 +8,7 @@ const allEpisodes = {
         thumbnail: "./img/KA01S05E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/506529168665653",
         tags: ["Uçak", "F16 Uçağının Düşürülmesi", "1995", "Bosna Hersek", "Pilot Kurtarma Operasyonu"],
-        views: 0
+        views: 0 // İzlenme sayısı başlangıçta 0
       },
       {
         title: "[009] 1. Sezon 9. Bölüm - (Assault On Entebbe) - Uganda’ya Kaçırılan Uçak",
@@ -16,7 +16,7 @@ const allEpisodes = {
         thumbnail: "./img/KA01S09E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1031743588089291",
         tags: ["Uçak", "Uçak Kaçırma", "1976", "Uganda", "Rehine Operasyonu"],
-        views: 0
+        views: 0 // İzlenme sayısı başlangıçta 0
       }
     ]
   },
@@ -29,7 +29,7 @@ const allEpisodes = {
         thumbnail: "./img/II01S10E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937",
         tags: ["Uçak", "Uçak Kaçırma", "1985", "Yunanistan", "Rehine Operasyonu"],
-        views: 0
+        views: "buraya yazılacak !" // Bu alanda dinamik veriyi göstereceğiz
       }
     ],
     seasonYears: {
@@ -38,10 +38,24 @@ const allEpisodes = {
   }
 };
 
-// Sayfa yüklendikten sonra izlenme sayısını çek
-fetch("https://www.facebook.com/100021513607216/videos/pcb.116236065770180/116231829103937")
-  .then(r => r.text())
-  .then(t => {
-    const match = t.match(/<span[^>]*?>(\d+)<\/span>/);
-    allEpisodes["İnterpol Araştırmaları"][1][0].views = match ? +match[1] : 0;
-  });
+// Dinamik veri çekme ve güncelleme işlemi
+// Video 1
+let video1 = document.querySelector('div[data-ft*="116231829103937"]'); // İlk video
+if (video1) {
+  let playCount1 = video1.innerHTML.match(/"play_count":(\d+)/);
+  if (playCount1) {
+    allEpisodes["İnterpol Araştırmaları"][1][0].views = parseInt(playCount1[1], 10); // İlk video izlenme sayısını güncelle
+  }
+}
+
+// Video 2
+let video2 = document.querySelector('div[data-ft*="1376284733513700"]'); // İkinci video
+if (video2) {
+  let playCount2 = video2.innerHTML.match(/"play_count":(\d+)/);
+  if (playCount2) {
+    allEpisodes["İnterpol Araştırmaları"][1][1].views = parseInt(playCount2[1], 10); // İkinci video izlenme sayısını güncelle
+  }
+}
+
+// Güncellenmiş 'views' değerini yazdırma
+document.getElementById("result").innerHTML = JSON.stringify(allEpisodes, null, 2);
