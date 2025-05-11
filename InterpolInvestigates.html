@@ -147,10 +147,21 @@
 <body>
 
   <div class="sidebar">
-  <input type="text" id="searchInput" placeholder="Bölüm ara..." oninput="filterEpisodesAllSeasons()" style="width: 100%; padding: 10px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px;">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Bölüm ara..."
+    oninput="filterEpisodesAllSeasons()"
+    style="width: 100%; padding: 10px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px;"
+  >
 
-  <div class="sidebar" id="sidebar"></div>
-  <div class="content" id="episodeContainer"></div>
+  <!-- Sezon veya belgesel butonları buraya dinamik olarak yüklenecek -->
+  <div id="sidebar-buttons"></div>
+</div>
+
+<!-- Dizi bölümleri buraya yüklenecek -->
+<div class="content" id="episodeContainer"></div>
+
 
   <!-- Video Overlay -->
   <div class="video-overlay" id="videoOverlay">
