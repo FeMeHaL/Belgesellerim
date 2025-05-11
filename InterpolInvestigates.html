@@ -126,7 +126,13 @@
       background-color: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
+	  z-index: 999;
     }
+	
+	.video-overlay iframe {
+	width: 80%;
+	height: 80%;
+	}
 
     .video-overlay .close-btn {
       position: absolute;
@@ -218,18 +224,25 @@
     }
 
     function playVideo(src) {
-      const overlay = document.getElementById('videoOverlay');
-      const video = document.getElementById('episodeVideo');
-      video.src = src;
-      overlay.style.display = 'flex'; // Video açıldığında overlay'i göster
-    }
+	const overlay = document.getElementById('videoOverlay');
+	const video = document.getElementById('episodeVideo');
+	
+	if (src.includes("youtube.com")) {
+    const videoId = src.split("v=")[1].split("&")[0];
+    video.src = `https://www.youtube.com/embed/${videoId}`;
+	} else if (src.includes("facebook.com")) {
+    video.src = src;
+  }
 
-    function closeVideo() {
-      const overlay = document.getElementById('videoOverlay');
-      const video = document.getElementById('episodeVideo');
-      overlay.style.display = 'none'; // Video kapatıldığında overlay'i gizle
-      video.src = ''; // Video kaynağını sıfırla
-    }
+  overlay.style.display = 'flex';
+}
+
+function closeVideo() {
+  const overlay = document.getElementById('videoOverlay');
+  const video = document.getElementById('episodeVideo');
+  overlay.style.display = 'none';
+  video.src = '';  // Videoyu durdurmak için sıfırla
+}
 
     function searchTag(tag) {
       filterByTag(tag); // Arama sonuçlarını filtrele
