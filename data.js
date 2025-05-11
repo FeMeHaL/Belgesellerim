@@ -2,8 +2,11 @@ const allEpisodes = {
   "İnterpol Araştırmaları": {
     1: [
       {
-        title: "1. Sezon 10. Bölüm",
+        title: "İnterpol Araştırmaları<br><span class='episode-number'>[010]</span> 1. Sezon 10. Bölüm<br>(Terror in the Skies) - Göklerdeki Terör",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 23 Kasım 2004</p>",
+        thumbnail: "./img/II01S10E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/116231829103937",
+        tags: ["Uçak", "Uçak Kaçırma", "1985", "Yunanistan", "Rehine Operasyonu"],
         views: "buraya yazılacak !"
       }
     ]
