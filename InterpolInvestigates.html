@@ -69,6 +69,9 @@
       text-align: center;
       margin-top: 10px;
     }
+	.episode-tags {
+     text-align: center;
+    }
     .episode-title {
       color: #4da6ff;
       font-weight: bold;
@@ -76,6 +79,42 @@
       text-align: center;
       margin-top: 10px;
     }
+    /* Yeni Tag Stili */
+    .tag {
+      display: inline-block;
+      background-color: #4da6ff;
+      color: white;
+      border-radius: 20px;
+      padding: 5px 12px;
+      margin: 4px 4px 0 0;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      text-decoration: none;
+    }
+
+    .tag:hover {
+      background-color: #1e90ff;
+    }
+
+    /* Responsive Ayarlar */
+    @media (max-width: 768px) {
+      .episode {
+        flex: 1 1 calc(50% - 20px);
+      }
+    }
+    @media (max-width: 480px) {
+      .episode {
+        flex: 1 1 100%;
+      }
+      .sidebar {
+        width: 100%;
+      }
+      .content {
+        padding: 10px;
+      }
+    }
+
     /* Video Overlay ve Kapanma Butonu */
     .video-overlay {
       display: none; /* Başlangıçta gizle */
@@ -87,13 +126,13 @@
       background-color: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
-      z-index: 999;
+	  z-index: 999;
     }
-
-    .video-overlay iframe {
-      width: 80%;
-      height: 80%;
-    }
+	
+	.video-overlay iframe {
+	width: 80%;
+	height: 80%;
+	}
 
     .video-overlay .close-btn {
       position: absolute;
@@ -222,6 +261,23 @@ function filterEpisodesAllSeasons() {
     `;
     allEpisodesDiv.appendChild(epDiv);  // Filtrelenmiş bölümleri ekle
   });
+}
+
+// Video ID'sini çıkarmak için yardımcı fonksiyon
+function getVideoId(src) {
+  let videoId = "";
+
+  // YouTube video linkinden video ID'si al
+  if (src.includes("youtube.com")) {
+    videoId = src.split("v=")[1].split("&")[0];
+  } 
+  // Facebook video linkinden video ID'si al
+  else if (src.includes("facebook.com")) {
+    const urlParts = src.split('/');
+    videoId = urlParts[urlParts.length - 1];  // Facebook video ID'si genellikle URL'nin sonunda yer alır
+  }
+  
+  return videoId;
 }
 
 // Video oynatma fonksiyonu

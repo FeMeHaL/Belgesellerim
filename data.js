@@ -1,20 +1,3 @@
-// Video ID'sini çıkarmak için yardımcı fonksiyon
-function getVideoId(src) {
-  let videoId = "";
-
-  // YouTube video linkinden video ID'si al
-  if (src.includes("youtube.com")) {
-    videoId = src.split("v=")[1].split("&")[0];
-  } 
-  // Facebook video linkinden video ID'si al
-  else if (src.includes("facebook.com")) {
-    const urlParts = src.split('/');
-    videoId = urlParts[urlParts.length - 1];  // Facebook video ID'si genellikle URL'nin sonunda yer alır
-  }
-  
-  return videoId;
-}
-
 // Verilerin bulunduğu dış dosya
 const allEpisodes = {
   "Kritik Anlar": {
