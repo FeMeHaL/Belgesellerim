@@ -97,6 +97,23 @@
       background-color: #1e90ff;
     }
 
+    /* Arama Kutusu */
+    .search-container {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .search-input {
+      padding: 10px;
+      font-size: 16px;
+      width: 80%;
+      max-width: 400px;
+      border: none;
+      border-radius: 8px;
+      background-color: #444;
+      color: white;
+    }
+
     /* Responsive Ayarlar */
     @media (max-width: 768px) {
       .episode {
@@ -146,6 +163,11 @@
 </head>
 <body>
 
+  <!-- Arama Kutusu -->
+  <div class="search-container">
+    <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
+  </div>
+
   <div class="sidebar" id="sidebar"></div>
   <div class="content" id="episodeContainer"></div>
 
@@ -174,7 +196,7 @@
       seasonEpisodes.forEach(ep => {
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
-        epDiv.innerHTML = `
+        epDiv.innerHTML = ` 
           <img src="${ep.thumbnail}" alt="${ep.title}">
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
           <p class="episode-date">${ep.date}</p>
@@ -186,76 +208,12 @@
       });
     }
 
-    function loadSeasons(seriesName) {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.innerHTML = '';
-
-      const seasons = Object.keys(episodes[seriesName])
-        .filter(key => !isNaN(key))
-        .map(key => parseInt(key));
-
-      seasons.forEach(season => {
-        const year = episodes[seriesName].seasonYear || '';
-        const yearText = episodes[seriesName].seasonYears && episodes[seriesName].seasonYears[season]
-          ? ` (${episodes[seriesName].seasonYears[season]})` : '';
-
-        const btn = document.createElement('button');
-        btn.className = 'season-button';
-        btn.innerText = `${season}. SEZON${yearText}`;
-        btn.onclick = () => loadSeason(season, seriesName);
-        sidebar.appendChild(btn);
-      });
-    }
-
-    function loadDocumentaries() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.innerHTML = '';
-
-      for (let series in episodes) {
-        const btn = document.createElement('button');
-        btn.className = 'season-button';
-        btn.innerText = series;
-        btn.onclick = () => {
-          loadSeasons(series);
-          loadSeason(1, series);
-        };
-        sidebar.appendChild(btn);
-      }
-    }
-
-    function playVideo(src) {
-	const overlay = document.getElementById('videoOverlay');
-	const video = document.getElementById('episodeVideo');
-	
-	if (src.includes("youtube.com")) {
-    const videoId = src.split("v=")[1].split("&")[0];
-    video.src = `https://www.youtube.com/embed/${videoId}`;
-	} else if (src.includes("facebook.com")) {
-    video.src = src;
-  }
-
-  overlay.style.display = 'flex';
-}
-
-function closeVideo() {
-  const overlay = document.getElementById('videoOverlay');
-  const video = document.getElementById('episodeVideo');
-  overlay.style.display = 'none';
-  video.src = '';  // Videoyu durdurmak için sıfırla
-}
-
-    function searchTag(tag) {
-      filterByTag(tag); // Arama sonuçlarını filtrele
-    }
-
-    function filterByTag(tag) {
+    function searchEpisodes() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
       const container = document.getElementById('episodeContainer');
-      container.innerHTML = '';
+      container.innerHTML = ''; // İçeriği temizle
 
       const allEpisodesArray = [];
-
-      // Sidebar'ı gizleyelim
-      document.getElementById('sidebar').style.transform = "translateX(-100%)";
 
       for (let series in episodes) {
         for (let season in episodes[series]) {
@@ -265,10 +223,10 @@ function closeVideo() {
         }
       }
 
-      const filtered = allEpisodesArray.filter(ep => ep.tags.includes(tag));
+      const filtered = allEpisodesArray.filter(ep => ep.title.toLowerCase().includes(query));
 
       if (filtered.length === 0) {
-        container.innerHTML = `<p>"${tag}" etiketiyle eşleşen bölüm bulunamadı.</p>`;
+        container.innerHTML = `<p>"${query}" ile eşleşen bölüm bulunamadı.</p>`;
         return;
       }
 
