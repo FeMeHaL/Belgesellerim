@@ -387,14 +387,6 @@ function loadDocumentaries() {
   });
 }
 
-// Facebook video izlenme sayısını al
-const span = document.querySelector('span[class*="x193iq5w"][dir="auto"]');
-if (span) {
-  console.log("İzlenme sayısı:", span.textContent.trim());
-} else {
-  console.log("İzlenme sayısı bulunamadı.");
-}
-
     // Sayfa ilk yüklendiğinde
     window.onload = () => {
       const defaultSeries = "İnterpol Araştırmaları";
