@@ -169,20 +169,17 @@
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
 
-  <script src="data.js"></script>
+<script src="data.js"></script>
+<script>
+  const episodes = allEpisodes;
+  let defaultSeries = "İnterpol Araştırmaları"; // <-- globalde tanımladık
 
-  <script>
-	
-    const episodes = allEpisodes;
-	
-    // Sayfa ilk yüklendiğinde
-    window.onload = () => {
-      const defaultSeries = "İnterpol Araştırmaları";
-      loadDocumentaries();
-      loadSeasons(defaultSeries);
-      loadSeason(1, defaultSeries);
-    };
-
+  // Sayfa ilk yüklendiğinde
+  window.onload = () => {
+    loadDocumentaries();
+    loadSeasons(defaultSeries);
+    loadSeason(1, defaultSeries);
+  };
 
     function loadSeason(season, seriesName) {
       const container = document.getElementById('episodeContainer');
