@@ -6,31 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferhat Polaterce ile belgeseller keyfi ... </title>
     <style>
-        /* Fare imlecini büyük yolcu uçağına dönüştürme */
-        /* Sayfa üzerindeki tüm öğelere fare imleci uygula */
-        * {
-            cursor: url('./img/Airplane.svg'), auto;
-        }
-
-        /* Eğer fare imlecini görselde daha net bir şekilde görmek istersen, boyutlandırma ekleyebilirsin */
-        html,
-        body {
-            cursor: url('./img/Airplane.svg') 24 24, auto;
-            /* Buradaki 24 24, imlecin boyutunu ayarlamak için */
-        }
-
-
-        /* Linklere tıklandığında uçak sesi çalması */
-        a {
-            text-decoration: none;
-            color: blue;
-            font-weight: bold;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
         body {
             background-color: #1e1e1e;
             /* Gözleri yormayacak siyah tonunda arka plan */
@@ -176,6 +151,7 @@
             background-color: #2c2c2c;
             border: none;
             border-radius: 5px;
+            cursor: pointer;
             transition: background 0.3s, color 0.3s;
         }
 
@@ -662,21 +638,6 @@
         }
 
         setInterval(updateTitle, titleSpeed);
-		
-		document.body.style.cursor = 'url("./img/Airplane.svg"), auto';
-
-		
-
-        setInterval(scrollTitle, titleSpeed);
-
-        // Uçak sesini çalmak için JavaScript kodu
-        const soundLink = document.getElementById('soundLink');
-        const airplaneSound = new Audio('https://www.soundjay.com/button/beep-07.wav'); // Uçak sesi URL'si
-
-        soundLink.addEventListener('click', function (event) {
-            event.preventDefault(); // Linkin varsayılan davranışını engelle
-            airplaneSound.play(); // Uçak sesini çal
-        });
 
         const buttons = document.querySelectorAll('.letter-button');
         const contents = document.querySelectorAll('.letter-content');
