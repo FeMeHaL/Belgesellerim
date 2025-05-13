@@ -26,9 +26,8 @@
 
         /* Fare imlecini büyük yolcu uçağına dönüştürme */
 body {
-    cursor: url('https://upload.wikimedia.org/wikipedia/commons/a/a9/Airplane_cursor.cur'), auto;
+    cursor: url('images/Airplane%2003.svg'), auto;
 }
-
 
         /* Linklere tıklandığında uçak sesi çalması */
         a {
@@ -285,9 +284,6 @@ body {
 
 <body>
 
-<!-- Kayan yazıyı buraya ekleyin -->
-    <h1>Belgeseller hakkında daha fazla bilgi</h1>
-	
 	<a href="#" id="soundLink">Tıkla ve ses dinle</a>
 
     <div class="alphabet-strip">
@@ -665,6 +661,21 @@ body {
 
     </div>
     <script>
+	
+	<!-- Kayan yazıyı buraya ekleyin -->	
+	let titleText = "Belgeseller hakkında daha fazla bilgi";
+        let index = 0;
+        let titleSpeed = 200; // Yazı kayma hızını ayarla (ms cinsinden)
+
+        function scrollTitle() {
+            document.title = titleText.substring(index) + titleText.substring(0, index);
+            index++;
+            if (index > titleText.length) {
+                index = 0;
+            }
+        }
+
+        setInterval(scrollTitle, titleSpeed);
 	
 	// Uçak sesini çalmak için JavaScript kodu
         const soundLink = document.getElementById('soundLink');
