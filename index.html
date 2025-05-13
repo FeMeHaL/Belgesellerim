@@ -6,14 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Belgeseller hakkında daha fazla bilgi</title>
     <style>
-        /* Başlık metninin sağdan sola kayması */
-        @keyframes slide {
-            from {
-                transform: translateX(100%);
-            }
+        /* Kayan yazı için temel stil */
+        #marquee {
+            font-size: 30px;
+            font-weight: bold;
+            color: #ff6347; /* Yazı rengi */
+            text-transform: uppercase; /* Yazıyı büyük yap */
+            font-family: 'Arial', sans-serif;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100%;  /* Yazının genişliği */
+            position: relative;
+        }
 
-            to {
-                transform: translateX(-100%);
+        #marquee span {
+            position: absolute;
+            animation: slide 10s linear infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                left: 100%;
+            }
+            100% {
+                left: -100%;
             }
         }
 
@@ -25,18 +41,25 @@
         }
 
         /* Fare imlecini büyük yolcu uçağına dönüştürme */
+        /* Sayfa üzerindeki tüm öğelere imleci uygulama */
         * {
             cursor: url('./img/Airplane.png'), auto !important;
-            /* Tüm öğelere ve alt öğelere uygulanacak */
         }
 
-        /* Ayrıca, img gibi resimler için de cursor'un düzgün görünmesini sağlamak */
+        /* Resimler için de cursor'u uygula */
         img,
         video,
-        a {
+        a,
+        button {
             cursor: url('./img/Airplane.png'), auto !important;
-            /* Resimler ve videoların üzerine gelindiğinde de imleç görünür */
         }
+
+        /* Sayfa içindeki tüm öğelere zorla imleci uygulama */
+        html,
+        body {
+            cursor: url('./img/Airplane.png'), auto !important;
+        }
+
 
         /* Linklere tıklandığında uçak sesi çalması */
         a {
