@@ -25,8 +25,17 @@
         }
 
         /* Fare imlecini büyük yolcu uçağına dönüştürme */
-        body {
-            cursor: url('./img/Airplane%2003.svg'), auto;
+        * {
+            cursor: url('./img/Airplane.png'), auto !important;
+            /* Tüm öğelere ve alt öğelere uygulanacak */
+        }
+
+        /* Ayrıca, img gibi resimler için de cursor'un düzgün görünmesini sağlamak */
+        img,
+        video,
+        a {
+            cursor: url('./img/Airplane.png'), auto !important;
+            /* Resimler ve videoların üzerine gelindiğinde de imleç görünür */
         }
 
         /* Linklere tıklandığında uçak sesi çalması */
