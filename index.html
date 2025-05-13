@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Film ve Dizi Seçenekleri</title>
     <style>
         body {
-            background-color: #1e1e1e; /* Gözleri yormayacak siyah tonunda arka plan */
-            color: #b0b0b0; /* Koyu gri yazı rengi */
+            background-color: #1e1e1e;
+            /* Gözleri yormayacak siyah tonunda arka plan */
+            color: #b0b0b0;
+            /* Koyu gri yazı rengi */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
+
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -19,56 +23,61 @@
             gap: 20px;
             padding: 20px;
         }
+
         .col {
             flex: 1 1 calc(20% - 20px);
             box-sizing: border-box;
             max-width: 20%;
         }
+
         .gen-carousel-movies-style-3 {
-            background-color: #2c2c2c; /* Hafif koyu arka plan rengi */
+            background-color: #2c2c2c;
+            /* Hafif koyu arka plan rengi */
             border-radius: 8px;
-            overflow: hidden;
+            overflow: visible;
         }
+
         .gen-movie-contain {
             position: relative;
         }
-.gen-movie-img {
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    perspective: 1000px;
-}
 
-.gen-movie-img:hover {
-    transform: scale(1.03) rotateX(2deg) rotateY(2deg);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
+        .gen-movie-img {
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            perspective: 1000px;
+        }
 
-.gen-movie-img img {
-    width: 100%;
-    height: 292px;
-    object-fit: cover;
-    border-radius: 8px;
-    display: block;
+        .gen-movie-img:hover {
+            transform: scale(1.03) rotateX(2deg) rotateY(2deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
 
-    /* Dijital Görünüm Efektleri */
-    filter: contrast(1.1) brightness(1.05);
-    box-shadow: inset 0 0 20px rgba(255,255,255,0.1), 0 10px 20px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-}
+        .gen-movie-img img {
+            width: 100%;
+            height: 292px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
 
-/* Cam yansıma efekti */
-.gen-movie-img::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
-    pointer-events: none;
-    transform: skewY(-10deg);
-    border-radius: 8px;
-}
+            /* Dijital Görünüm Efektleri */
+            filter: contrast(1.1) brightness(1.05);
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1), 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        /* Cam yansıma efekti */
+        .gen-movie-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+            pointer-events: none;
+            transform: skewY(-10deg);
+            border-radius: 8px;
+        }
 
         .gen-movie-action {
             position: absolute;
@@ -76,6 +85,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
+
         .gen-button {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 10px;
@@ -84,217 +94,254 @@
             font-size: 20px;
             text-decoration: none;
         }
+
         .gen-info-contain {
             padding: 10px;
             background-color: #333;
         }
+
         .gen-movie-info h3 {
             font-size: 16px;
             margin: 0;
             color: #b0b0b0;
             text-align: center;
-            line-height: 1.2; /* burayı ekledik */
+            line-height: 1.2;
+            /* burayı ekledik */
         }
+
         .gen-movie-info h3 a {
             color: #b0b0b0;
             text-decoration: none;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 3px rgba(0, 191, 255, 0.2);
+            /* Dijital hafif parlama */
+            font-weight: bold;
         }
+
         .gen-movie-info h3 a:hover {
             color: #ffffff;
+            text-shadow: 0 0 8px rgba(0, 191, 255, 0.7), 0 0 12px rgba(0, 191, 255, 0.5);
+            transform: scale(1.05);
         }
-		
-		.alphabet-strip {
-          width: 90%; /* %100 yerine %90 */
-		  margin: 0 auto; /* ortalamak için */
-		  overflow-x: auto; /* ekstra önlem */
-		  box-sizing: border-box; /* padding dahil */
-    background-color: #1f1f1f;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-}
 
-.letter-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #00bfff;
-    background-color: #2c2c2c;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s, color 0.3s;
-}
+        .alphabet-strip {
+            width: 90%;
+            /* %100 yerine %90 */
+            margin: 0 auto;
+            /* ortalamak için */
+            overflow-x: auto;
+            /* ekstra önlem */
+            box-sizing: border-box;
+            /* padding dahil */
+            background-color: #1f1f1f;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
 
-.letter-button:hover {
-    background-color: #00bfff;
-    color: #2c2c2c;
-}
+        .letter-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #00bfff;
+            background-color: #2c2c2c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
 
-/* Açılır içerik */
-.letter-content {
-    display: none; /* Başta gizli */
-    flex-wrap: wrap;            /* sığmazsa alt satıra geç */
-    gap: 10px;                  /* kutular arasında boşluk */
-    justify-content: center;    /* ortala */
-    background-color: transparent;
-    margin: 15px auto;
-    padding: 15px;
-    border: 2px solid #00bfff;
-    border-radius: 5px;
-    width: 90%;
-}
+        .letter-button:hover {
+            background-color: #00bfff;
+            color: #2c2c2c;
+        }
 
-.letter-content a {
-    flex: 1 1 auto;
-    min-width: 200px;           /* küçük ekranlarda minimum genişlik */
-    max-width: 250px;           /* büyük ekranda fazla büyümesin */
-    background-color: #2c2c2c;  /* kutu gibi görünmesi için */
-    padding: 12px 20px;
-    border-radius: 6px;
-    color: #b0b0b0;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-    margin: 5px 0;
-    text-align: center;
-    border-radius: 5px;
-}
+        /* Açılır içerik */
+        .letter-content {
+            display: none;
+            /* Başta gizli */
+            flex-wrap: wrap;
+            /* sığmazsa alt satıra geç */
+            gap: 10px;
+            /* kutular arasında boşluk */
+            justify-content: center;
+            /* ortala */
+            background-color: transparent;
+            margin: 15px auto;
+            padding: 15px;
+            border: 2px solid #00bfff;
+            border-radius: 5px;
+            width: 90%;
+        }
 
-.letter-content a:hover {
-    background-color: #00bfff;
-    color: #1e1e1e;
-}
+        .letter-content a {
+            flex: 1 1 auto;
+            min-width: 200px;
+            /* küçük ekranlarda minimum genişlik */
+            max-width: 250px;
+            /* büyük ekranda fazla büyümesin */
+            background-color: #2c2c2c;
+            /* kutu gibi görünmesi için */
+            padding: 12px 20px;
+            border-radius: 6px;
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+            margin: 5px 0;
+            text-align: center;
+            border-radius: 5px;
+        }
 
-		.legal-warning {
-             background-color: #2c2c2c;
-             color: #ff5c5c;
-			 width: 100%; /* Genişlik 100% */
-             max-width: 95%; /* Genişliği %95 yapar */
-             margin: 0 auto; /* Ortalamayı sağlıyor */
-             font-size: 13px;
-             text-align: left;
-             padding: 8px 20px;
-		     border-radius: 8px;
-             border-bottom: 1px solid #444;
-             font-family: Arial, sans-serif;
-	    }
+        .letter-content a:hover {
+            background-color: #00bfff;
+            color: #1e1e1e;
+        }
+
+        .legal-warning {
+            background-color: #2c2c2c;
+            color: #ff5c5c;
+            width: 100%;
+            /* Genişlik 100% */
+            max-width: 95%;
+            /* Genişliği %95 yapar */
+            margin: 0 auto;
+            /* Ortalamayı sağlıyor */
+            font-size: 13px;
+            text-align: left;
+            padding: 8px 20px;
+            border-radius: 8px;
+            border-bottom: 1px solid #444;
+            font-family: Arial, sans-serif;
+        }
 
         @media (max-width: 1200px) {
             .col {
-                flex: 1 1 calc(25% - 20px); /* 4 seçenek */
+                flex: 1 1 calc(25% - 20px);
+                /* 4 seçenek */
             }
         }
 
         @media (max-width: 992px) {
             .col {
-                flex: 1 1 calc(33.33% - 20px); /* 3 seçenek */
+                flex: 1 1 calc(33.33% - 20px);
+                /* 3 seçenek */
             }
         }
 
         @media (max-width: 768px) {
             .col {
-                flex: 1 1 calc(50% - 20px); /* 2 seçenek */
+                flex: 1 1 calc(50% - 20px);
+                /* 2 seçenek */
             }
         }
 
         @media (max-width: 480px) {
             .col {
-                flex: 1 1 100%; /* Tekli seçenek */
+                flex: 1 1 100%;
+                /* Tekli seçenek */
             }
         }
     </style>
 </head>
+
 <body>
 
-<div class="alphabet-strip">
-    <button class="letter-button" data-target="section-B">B</button>
-    <button class="letter-button" data-target="section-D">D</button>
-    <button class="letter-button" data-target="section-F">F</button>
-    <button class="letter-button" data-target="section-G">G</button>
-    <button class="letter-button" data-target="section-H">H</button>
-    <button class="letter-button" data-target="section-I">İ</button>
-    <button class="letter-button" data-target="section-K">K</button>
-    <button class="letter-button" data-target="section-N">N</button>
-    <button class="letter-button" data-target="section-T">T</button>
-    <button class="letter-button" data-target="section-U">U</button>
-</div>
+    <div class="alphabet-strip">
+        <button class="letter-button" data-target="section-B">B</button>
+        <button class="letter-button" data-target="section-D">D</button>
+        <button class="letter-button" data-target="section-F">F</button>
+        <button class="letter-button" data-target="section-G">G</button>
+        <button class="letter-button" data-target="section-H">H</button>
+        <button class="letter-button" data-target="section-I">İ</button>
+        <button class="letter-button" data-target="section-K">K</button>
+        <button class="letter-button" data-target="section-N">N</button>
+        <button class="letter-button" data-target="section-T">T</button>
+        <button class="letter-button" data-target="section-U">U</button>
+    </div>
 
-<div id="section-B" class="letter-content">
-    <a href="DestroyedinSeconds">BİR ANDA YERLE BİR</a>
-</div>
-<div id="section-D" class="letter-content">
-    <a href="MomentsofTerror">DEHŞET ANLARI</a>
-</div>
-<div id="section-F" class="letter-content">
-    <a href="SecondsfromDisaster">FELAKET ANLARI</a>
-</div>
-<div id="section-G" class="letter-content">
-    <a href="WarHeroesoftheSkies">GÖKLERİN KAHRAMANLARI</a>
-</div>
-<div id="section-H" class="letter-content">
-    <a href="HAVACILIK">HAVACILIK FİLMLERİ</a>
-</div>
-<div id="section-I" class="letter-content">
-    <a href="Inside911">İNSİDE 9/11</a>
-    <a href="InterpolInvestigates">İNTERPOL ARAŞTIRMALARI</a>
-</div>
-<div id="section-K" class="letter-content">
-    <a href="KillingKennedy">KENNEDY SUİKASTİ</a>
-    <a href="SituationCritical">KRİTİK ANLAR</a>
-</div>
-<div id="section-N" class="letter-content">
-    <a href="NaziMegastructures">NAZİLERİN MEGA YAPILARI</a>
-</div>
-<div id="section-T" class="letter-content">
-    <a href="TEKBOLUM">TEK BÖLÜMLÜK UÇAK KAZALARI</a>
-</div>
-<div id="section-U" class="letter-content">
-    <a href="MAYDAY">UÇAK KAZASI RAPORU</a>
-</div>
+    <div id="section-B" class="letter-content">
+        <a href="DestroyedinSeconds">BİR ANDA YERLE BİR</a>
+    </div>
+    <div id="section-D" class="letter-content">
+        <a href="MomentsofTerror">DEHŞET ANLARI</a>
+    </div>
+    <div id="section-F" class="letter-content">
+        <a href="SecondsfromDisaster">FELAKET ANLARI</a>
+    </div>
+    <div id="section-G" class="letter-content">
+        <a href="WarHeroesoftheSkies">GÖKLERİN KAHRAMANLARI</a>
+    </div>
+    <div id="section-H" class="letter-content">
+        <a href="HAVACILIK">HAVACILIK FİLMLERİ</a>
+    </div>
+    <div id="section-I" class="letter-content">
+        <a href="Inside911">İNSİDE 9/11</a>
+        <a href="InterpolInvestigates">İNTERPOL ARAŞTIRMALARI</a>
+    </div>
+    <div id="section-K" class="letter-content">
+        <a href="KillingKennedy">KENNEDY SUİKASTİ</a>
+        <a href="SituationCritical">KRİTİK ANLAR</a>
+    </div>
+    <div id="section-N" class="letter-content">
+        <a href="NaziMegastructures">NAZİLERİN MEGA YAPILARI</a>
+    </div>
+    <div id="section-T" class="letter-content">
+        <a href="TEKBOLUM">TEK BÖLÜMLÜK UÇAK KAZALARI</a>
+    </div>
+    <div id="section-U" class="letter-content">
+        <a href="MAYDAY">UÇAK KAZASI RAPORU</a>
+    </div>
 
-	
+
     <div class="legal-warning">
-    <strong>📌 <u><b>Yasal Uyarı</b></u></strong> : Bu internet sitesinde yer alan video içerikleri, bizim sunucumuzda bulunmamakla birlikte [Facebook, Dailymotion, "ok.ru", YouTube vb.] gibi üçüncü taraf platformlardan embed (gömülü) olarak sunulmaktadır. 5651 sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Hakkında Kanun uyarınca, sitemiz yer sağlayıcı konumunda olup, bu içeriklerin barındırılması, kontrolü veya denetlenmesi site yönetimi tarafından yapılmamaktadır. İlgili içeriklerle ilgili her türlü yasal bildirim, videoların barındırıldığı platformlara yapılmalıdır. Sitemiz, bu içeriklerden doğabilecek herhangi bir sorumluluk kabul etmemektedir.
-            </div>
+        <strong>📌 <u><b>Yasal Uyarı</b></u></strong> : Bu internet sitesinde yer alan video içerikleri, bizim
+        sunucumuzda bulunmamakla birlikte [Facebook, Dailymotion, "ok.ru", YouTube vb.] gibi üçüncü taraf platformlardan
+        embed (gömülü) olarak sunulmaktadır. 5651 sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Hakkında
+        Kanun uyarınca, sitemiz yer sağlayıcı konumunda olup, bu içeriklerin barındırılması, kontrolü veya denetlenmesi
+        site yönetimi tarafından yapılmamaktadır. İlgili içeriklerle ilgili her türlü yasal bildirim, videoların
+        barındırıldığı platformlara yapılmalıdır. Sitemiz, bu içeriklerden doğabilecek herhangi bir sorumluluk kabul
+        etmemektedir.
+    </div>
 
     <div class="container">
-	
-<div class="col">
-    <div class="gen-carousel-movies-style-3 movie-grid style-3">
-        <div class="gen-movie-contain">
-            <!-- Resmi ve ikonu saran bağlantı -->
-            <a href="KAZALAR">
-                <div class="gen-movie-img">
-                    <img src="./img/KAZALAR.jpg" alt="streamlab-image" style="border: none; outline: none;">
-                    <div class="gen-movie-action">
-                        <i class="fa fa-play"></i>
-                    </div>
-                </div>
-            </a>
-            <div class="gen-info-contain">
-                <div class="gen-movie-info">
-                    <h3><a href="KAZALAR">KAZA & FELAKET BELGESELLERİ</a></h3>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-			
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
-                    <div class="gen-movie-img">
-                        <img src="./img/TEROR.jpg" alt="streamlab-image">
-                        <div class="gen-movie-action">
+                    <!-- Resmi ve ikonu saran bağlantı -->
+                    <a href="KAZALAR">
+                        <div class="gen-movie-img">
+                            <img src="./img/KAZALAR.jpg" alt="streamlab-image" style="border: none; outline: none;">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
-                            </a>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="gen-info-contain">
+                        <div class="gen-movie-info">
+                            <h3><a href="KAZALAR">KAZA & FELAKET BELGESELLERİ</a></h3>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col">
+            <div class="gen-carousel-movies-style-3 movie-grid style-3">
+                <div class="gen-movie-contain">
+                    <a href="TEROR">
+                        <div class="gen-movie-img">
+                            <img src="./img/TEROR.jpg" alt="streamlab-image">
+                            <div class="gen-movie-action">
+                                <i class="fa fa-play"></i>
+                            </div>
+                        </div>
+                    </a>
                     <div class="gen-info-contain">
                         <div class="gen-movie-info">
                             <h3><a href="TEROR">TERÖR OLAYLARI BELGESELLERİ</a></h3>
@@ -303,17 +350,19 @@
                 </div>
             </div>
         </div>
-		
+
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
-                    <div class="gen-movie-img">
-                        <img src="./img/Muhendislik.jpg" alt="streamlab-image">
-                        <div class="gen-movie-action">
+                    <a href="Muhendislik">
+                        <div class="gen-movie-img">
+                            <img src="./img/Muhendislik.jpg" alt="streamlab-image">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
-                            </a>
+
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="gen-info-contain">
                         <div class="gen-movie-info">
                             <h3><a href="Muhendislik">MÜHENDİSLİK & TASARIM BELGESELLERİ</a></h3>
@@ -322,17 +371,19 @@
                 </div>
             </div>
         </div>
-		
+
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
-                    <div class="gen-movie-img">
-                        <img src="./img/Mimari.jpg" alt="streamlab-image">
-                        <div class="gen-movie-action">
+                    <a href="Mimari">
+                        <div class="gen-movie-img">
+                            <img src="./img/Mimari.jpg" alt="streamlab-image">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
-                            </a>
+
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="gen-info-contain">
                         <div class="gen-movie-info">
                             <h3><a href="Mimari">MİMARİ & İNŞAAT & YAPI BELGESELLERİ</a></h3>
@@ -341,17 +392,19 @@
                 </div>
             </div>
         </div>
-		
+
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
-                    <div class="gen-movie-img">
-                        <img src="./img/TARiH.jpg" alt="streamlab-image">
-                        <div class="gen-movie-action">
+                    <a href="TARiH">
+                        <div class="gen-movie-img">
+                            <img src="./img/TARiH.jpg" alt="streamlab-image">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
-                            </a>
+
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="gen-info-contain">
                         <div class="gen-movie-info">
                             <h3><a href="TARiH">TARİH BELGESELLERİ</a></h3>
@@ -361,16 +414,18 @@
             </div>
         </div>
 
-		<div class="col">
+        <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
-                    <div class="gen-movie-img">
-                        <img src="./img/Savas.jpg" alt="streamlab-image">
-                        <div class="gen-movie-action">
+                    <a href="SAVAS">
+                        <div class="gen-movie-img">
+                            <img src="./img/Savas.jpg" alt="streamlab-image">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
-                            </a>
+
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="gen-info-contain">
                         <div class="gen-movie-info">
                             <h3><a href="SAVAS">SAVAŞ BELGESELLERİ</a></h3>
@@ -379,17 +434,19 @@
                 </div>
             </div>
         </div>
-		
+
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
-                    <div class="gen-movie-img">
-                        <img src="./img/Gokyuzunden.jpg" alt="streamlab-image">
-                        <div class="gen-movie-action">
+                    <a href="Gokyuzunden">
+                        <div class="gen-movie-img">
+                            <img src="./img/Gokyuzunden.jpg" alt="streamlab-image">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
-                            </a>
+
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="gen-info-contain">
                         <div class="gen-movie-info">
                             <h3><a href="Gokyuzunden">DÜNYA BELGESELLERİ</a></h3>
@@ -397,18 +454,20 @@
                     </div>
                 </div>
             </div>
-         </div>
+        </div>
 
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
-                    <div class="gen-movie-img">
-                        <img src="./img/Seyahat.jpg" alt="streamlab-image">
-                        <div class="gen-movie-action">
+                    <a href="Seyahat">
+                        <div class="gen-movie-img">
+                            <img src="./img/Seyahat.jpg" alt="streamlab-image">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
-                            </a>
+
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="gen-info-contain">
                         <div class="gen-movie-info">
                             <h3><a href="Seyahat">YOLCULUK BELGESELLERİ</a></h3>
@@ -417,17 +476,19 @@
                 </div>
             </div>
         </div>
-				
+
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
-                    <div class="gen-movie-img">
-                        <img src="./img/BiLiM.jpg" alt="streamlab-image">
-                        <div class="gen-movie-action">
+                    <a href="BiLiM">
+                        <div class="gen-movie-img">
+                            <img src="./img/BiLiM.jpg" alt="streamlab-image">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
-                            </a>
+
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="gen-info-contain">
                         <div class="gen-movie-info">
                             <h3><a href="BiLiM">BİLİM & TEKNOLOJİ BELGESELLERİ</a></h3>
@@ -436,17 +497,19 @@
                 </div>
             </div>
         </div>
-				
+
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
-                    <div class="gen-movie-img">
-                        <img src="./img/SUC.jpg" alt="streamlab-image">
-                        <div class="gen-movie-action">
+                    <a href="KRiMiNAL">
+                        <div class="gen-movie-img">
+                            <img src="./img/SUC.jpg" alt="streamlab-image">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
-                            </a>
+
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="gen-info-contain">
                         <div class="gen-movie-info">
                             <h3><a href="KRiMiNAL">SUÇ & POLİSİYE BELGESELLERİ</a></h3>
@@ -455,17 +518,19 @@
                 </div>
             </div>
         </div>
-				
+
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
-                    <div class="gen-movie-img">
-                        <img src="./img/UZAY.jpg" alt="streamlab-image">
-                        <div class="gen-movie-action">
+                    <a href="UZAY">
+                        <div class="gen-movie-img">
+                            <img src="./img/UZAY.jpg" alt="streamlab-image">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
-                            </a>
+
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="gen-info-contain">
                         <div class="gen-movie-info">
                             <h3><a href="UZAY">UZAY & EVREN BELGESELLERİ</a></h3>
@@ -474,17 +539,19 @@
                 </div>
             </div>
         </div>
-				
+
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
-                    <div class="gen-movie-img">
-                        <img src="./img/YASAM.jpg" alt="streamlab-image">
-                        <div class="gen-movie-action">
+                    <a href="YASAM">
+                        <div class="gen-movie-img">
+                            <img src="./img/YASAM.jpg" alt="streamlab-image">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
-                            </a>
+
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="gen-info-contain">
                         <div class="gen-movie-info">
                             <h3><a href="YASAM">YAŞAM & VAHŞİ YAŞAM BELGESELLERİ</a></h3>
@@ -493,17 +560,19 @@
                 </div>
             </div>
         </div>
-				
+
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
-                    <div class="gen-movie-img">
-                        <img src="./img/MUTFAK.jpg" alt="streamlab-image">
-                        <div class="gen-movie-action">
+                    <a href="MUTFAK">
+                        <div class="gen-movie-img">
+                            <img src="./img/MUTFAK.jpg" alt="streamlab-image">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
-                            </a>
+
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="gen-info-contain">
                         <div class="gen-movie-info">
                             <h3><a href="MUTFAK">YİYECEK & MUTFAK BELGESELLERİ</a></h3>
@@ -516,13 +585,15 @@
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
-                    <div class="gen-movie-img">
-                        <img src="./img/Diziler.png" alt="streamlab-image">
-                        <div class="gen-movie-action">
+                    <a href="Diziler">
+                        <div class="gen-movie-img">
+                            <img src="./img/Diziler.png" alt="streamlab-image">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
-                            </a>
+
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="gen-info-contain">
                         <div class="gen-movie-info">
                             <h3><a href="Diziler">BELGESEL DİZİLERİ</a></h3>
@@ -531,17 +602,19 @@
                 </div>
             </div>
         </div>
-		
+
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
-                    <div class="gen-movie-img">
-                        <img src="./img/Havacilik.jpg" alt="streamlab-image">
-                        <div class="gen-movie-action">
+                    <a href="HAVACILIK">
+                        <div class="gen-movie-img">
+                            <img src="./img/Havacilik.jpg" alt="streamlab-image">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
-                            </a>
+
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="gen-info-contain">
                         <div class="gen-movie-info">
                             <h3><a href="HAVACILIK">HAVACILIK FİLMLERİ</a></h3>
@@ -552,27 +625,28 @@
         </div>
 
     </div>
-<script>
-    const buttons = document.querySelectorAll('.letter-button');
-    const contents = document.querySelectorAll('.letter-content');
+    <script>
+        const buttons = document.querySelectorAll('.letter-button');
+        const contents = document.querySelectorAll('.letter-content');
 
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetId = button.getAttribute('data-target');
-            const targetSection = document.getElementById(targetId);
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+                const targetSection = document.getElementById(targetId);
 
-            // Eğer tıklanan harfin bölümü zaten açık ise kapat
-            if (targetSection.style.display === 'flex') {
-                targetSection.style.display = 'none';
-            } else {
-                // Önce tüm içerikleri kapat
-                contents.forEach(content => content.style.display = 'none');
+                // Eğer tıklanan harfin bölümü zaten açık ise kapat
+                if (targetSection.style.display === 'flex') {
+                    targetSection.style.display = 'none';
+                } else {
+                    // Önce tüm içerikleri kapat
+                    contents.forEach(content => content.style.display = 'none');
 
-                // Sonra sadece tıklananı aç
-                targetSection.style.display = 'flex';
-            }
+                    // Sonra sadece tıklananı aç
+                    targetSection.style.display = 'flex';
+                }
+            });
         });
-    });
-</script>
+    </script>
 </body>
+
 </html>
