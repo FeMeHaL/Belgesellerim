@@ -41,7 +41,7 @@
         /* Fare imlecini büyük yolcu uçağına dönüştürme */
         /* Sayfa üzerindeki tüm öğelere imleci uygulama */
         * {
-            cursor: url('./img/Airplane.png'), auto;
+            cursor: url('./img/Airplane.svg'), auto;
         }
 
         /* Resimler için de cursor'u uygula */
@@ -49,13 +49,13 @@
         video,
         a,
         button {
-            cursor: url('./img/Airplane.png'), auto;
+            cursor: url('./img/Airplane.svg'), auto;
         }
 
         /* Sayfa içindeki tüm öğelere zorla imleci uygulama */
         html,
         body {
-            cursor: url('./img/Airplane.png'), auto;
+            cursor: url('./img/Airplane.svg'), auto;
         }
 
 
@@ -693,13 +693,7 @@
     <script>
 
         <!-- Sayfada kayan yazıyı göstereceğimiz div -->
-    <div id="kayanYazi">Ferhat Polaterce ile belgeseller keyfi ...</div>
-
-    <script>
-        // Kayan yazıyı başlıkta kaydırma
-        let titleText = "Ferhat Polaterce ile belgeseller keyfi ...   ";
-        let index = 0;
-        let titleSpeed = 200;
+        <div id="kayanYazi">Ferhat Polaterce ile belgeseller keyfi ...</div>
 
         function updateTitle() {
             document.title = titleText.substring(index) + titleText.substring(0, index);
@@ -726,8 +720,8 @@
         const airplaneSound = new Audio('https://www.soundjay.com/button/beep-07.wav'); // Uçak sesi URL'si
 
         soundLink.addEventListener('click', function (event) {
-            event.preventDefault();  // Linkin varsayılan davranışını engelle
-            airplaneSound.play();    // Uçak sesini çal
+            event.preventDefault(); // Linkin varsayılan davranışını engelle
+            airplaneSound.play(); // Uçak sesini çal
         });
 
         const buttons = document.querySelectorAll('.letter-button');
