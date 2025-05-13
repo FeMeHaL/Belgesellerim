@@ -6,30 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Belgeseller hakkında daha fazla bilgi</title>
     <style>
-        /* Kayan yazı için temel stil */
-        #marquee {
-            font-size: 30px;
-            font-weight: bold;
-            color: #ff6347; /* Yazı rengi */
-            text-transform: uppercase; /* Yazıyı büyük yap */
+        /* Kayan yazıyı bir div içinde göstermek için stil */
+        #kayanYazi {
             font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            font-size: 30px;
+            color: #ff4500;
+            /* Turuncu renk */
             white-space: nowrap;
+            /* Yazının tek satırda kalmasını sağlar */
             overflow: hidden;
-            width: 100%;  /* Yazının genişliği */
-            position: relative;
-        }
-
-        #marquee span {
-            position: absolute;
+            display: inline-block;
             animation: slide 10s linear infinite;
         }
 
+        /* Kayan yazı animasyonu */
         @keyframes slide {
-            0% {
-                left: 100%;
+            from {
+                transform: translateX(100%);
             }
-            100% {
-                left: -100%;
+
+            to {
+                transform: translateX(-100%);
             }
         }
 
@@ -43,7 +41,7 @@
         /* Fare imlecini büyük yolcu uçağına dönüştürme */
         /* Sayfa üzerindeki tüm öğelere imleci uygulama */
         * {
-            cursor: url('./img/Airplane.png'), auto !important;
+            cursor: url('./img/Airplane.png'), auto;
         }
 
         /* Resimler için de cursor'u uygula */
@@ -51,13 +49,13 @@
         video,
         a,
         button {
-            cursor: url('./img/Airplane.png'), auto !important;
+            cursor: url('./img/Airplane.png'), auto;
         }
 
         /* Sayfa içindeki tüm öğelere zorla imleci uygulama */
         html,
         body {
-            cursor: url('./img/Airplane.png'), auto !important;
+            cursor: url('./img/Airplane.png'), auto;
         }
 
 
@@ -694,10 +692,24 @@
     </div>
     <script>
 
-        <!-- Kayan yazıyı buraya ekleyin -->
+        <!-- Sayfada kayan yazıyı göstereceğimiz div -->
+    <div id="kayanYazi">Ferhat Polaterce ile belgeseller keyfi ...</div>
+
+    <script>
+        // Kayan yazıyı başlıkta kaydırma
         let titleText = "Ferhat Polaterce ile belgeseller keyfi ...   ";
         let index = 0;
-        let titleSpeed = 200; // Yazı kayma hızını ayarla (ms cinsinden)
+        let titleSpeed = 200;
+
+        function updateTitle() {
+            document.title = titleText.substring(index) + titleText.substring(0, index);
+            index++;
+            if (index > titleText.length) {
+                index = 0;
+            }
+        }
+
+        setInterval(updateTitle, titleSpeed);
 
         function scrollTitle() {
             document.title = titleText.substring(index) + titleText.substring(0, index);
