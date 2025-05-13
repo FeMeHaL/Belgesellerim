@@ -4,58 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belgeseller hakkında daha fazla bilgi</title>
+    <title>Ferhat Polaterce ile belgeseller keyfi ... </title>
     <style>
-        /* Kayan yazıyı bir div içinde göstermek için stil */
-        #kayanYazi {
-            font-family: 'Arial', sans-serif;
-            font-weight: bold;
-            font-size: 30px;
-            color: #ff4500;
-            /* Turuncu renk */
-            white-space: nowrap;
-            /* Yazının tek satırda kalmasını sağlar */
-            overflow: hidden;
-            display: inline-block;
-            animation: slide 10s linear infinite;
-        }
-
-        /* Kayan yazı animasyonu */
-        @keyframes slide {
-            from {
-                transform: translateX(100%);
-            }
-
-            to {
-                transform: translateX(-100%);
-            }
-        }
-
-        h1 {
-            white-space: nowrap;
-            overflow: hidden;
-            display: inline-block;
-            animation: slide 10s linear infinite;
-        }
-
         /* Fare imlecini büyük yolcu uçağına dönüştürme */
-        /* Sayfa üzerindeki tüm öğelere imleci uygulama */
+        /* Sayfa üzerindeki tüm öğelere fare imleci uygula */
         * {
             cursor: url('./img/Airplane.svg'), auto;
         }
 
-        /* Resimler için de cursor'u uygula */
-        img,
-        video,
-        a,
-        button {
-            cursor: url('./img/Airplane.svg'), auto;
-        }
-
-        /* Sayfa içindeki tüm öğelere zorla imleci uygulama */
+        /* Eğer fare imlecini görselde daha net bir şekilde görmek istersen, boyutlandırma ekleyebilirsin */
         html,
         body {
-            cursor: url('./img/Airplane.svg'), auto;
+            cursor: url('./img/Airplane.svg') 24 24, auto;
+            /* Buradaki 24 24, imlecin boyutunu ayarlamak için */
         }
 
 
@@ -691,9 +652,9 @@
 
     </div>
     <script>
-
-        <!-- Sayfada kayan yazıyı göstereceğimiz div -->
-        <div id="kayanYazi">Ferhat Polaterce ile belgeseller keyfi ...</div>
+        let titleText = "Ferhat Polaterce ile belgeseller keyfi ... ";
+        let index = 0;
+        let titleSpeed = 300; // milisaniye
 
         function updateTitle() {
             document.title = titleText.substring(index) + titleText.substring(0, index);
@@ -704,14 +665,6 @@
         }
 
         setInterval(updateTitle, titleSpeed);
-
-        function scrollTitle() {
-            document.title = titleText.substring(index) + titleText.substring(0, index);
-            index++;
-            if (index > titleText.length) {
-                index = 0;
-            }
-        }
 
         setInterval(scrollTitle, titleSpeed);
 
