@@ -4,8 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Film ve Dizi Seçenekleri</title>
+    <title>Belgeseller hakkında daha fazla bilgi</title>
     <style>
+	
+	/* Başlık metninin sağdan sola kayması */
+        @keyframes slide {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        h1 {
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: slide 10s linear infinite;
+        }
+
+        /* Fare imlecini büyük yolcu uçağına dönüştürme */
+        body {
+            cursor: url('https://upload.wikimedia.org/wikipedia/commons/a/a9/Airplane_cursor.png'), auto;
+        }
+
+        /* Linklere tıklandığında uçak sesi çalması */
+        a {
+            text-decoration: none;
+            color: blue;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+	
         body {
             background-color: #1e1e1e;
             /* Gözleri yormayacak siyah tonunda arka plan */
@@ -625,6 +659,16 @@
 
     </div>
     <script>
+	
+	// Uçak sesini çalmak için JavaScript kodu
+        const soundLink = document.getElementById('soundLink');
+        const airplaneSound = new Audio('https://www.soundjay.com/button/beep-07.wav'); // Uçak sesi URL'si
+
+        soundLink.addEventListener('click', function(event) {
+            event.preventDefault();  // Linkin varsayılan davranışını engelle
+            airplaneSound.play();    // Uçak sesini çal
+        });
+	
         const buttons = document.querySelectorAll('.letter-button');
         const contents = document.querySelectorAll('.letter-content');
 
