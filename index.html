@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Belgeseller hakkında daha fazla bilgi</title>
     <style>
-	
-	/* Başlık metninin sağdan sola kayması */
+        /* Başlık metninin sağdan sola kayması */
         @keyframes slide {
             from {
                 transform: translateX(100%);
             }
+
             to {
                 transform: translateX(-100%);
             }
@@ -25,9 +25,9 @@
         }
 
         /* Fare imlecini büyük yolcu uçağına dönüştürme */
-body {
-    cursor: url('images/Airplane%2003.svg'), auto;
-}
+        body {
+            cursor: url('./img/Airplane%2003.svg'), auto;
+        }
 
         /* Linklere tıklandığında uçak sesi çalması */
         a {
@@ -39,7 +39,7 @@ body {
         a:hover {
             text-decoration: underline;
         }
-	
+
         body {
             background-color: #1e1e1e;
             /* Gözleri yormayacak siyah tonunda arka plan */
@@ -284,7 +284,7 @@ body {
 
 <body>
 
-	<a href="#" id="soundLink">Tıkla ve ses dinle</a>
+    <a href="#" id="soundLink">Tıkla ve ses dinle</a>
 
     <div class="alphabet-strip">
         <button class="letter-button" data-target="section-B">B</button>
@@ -661,9 +661,9 @@ body {
 
     </div>
     <script>
-	
-	<!-- Kayan yazıyı buraya ekleyin -->	
-	let titleText = "Belgeseller hakkında daha fazla bilgi";
+
+        <!-- Kayan yazıyı buraya ekleyin -->
+        let titleText = "Ferhat Polaterce ile belgeseller keyfi ...   ";
         let index = 0;
         let titleSpeed = 200; // Yazı kayma hızını ayarla (ms cinsinden)
 
@@ -676,16 +676,16 @@ body {
         }
 
         setInterval(scrollTitle, titleSpeed);
-	
-	// Uçak sesini çalmak için JavaScript kodu
+
+        // Uçak sesini çalmak için JavaScript kodu
         const soundLink = document.getElementById('soundLink');
         const airplaneSound = new Audio('https://www.soundjay.com/button/beep-07.wav'); // Uçak sesi URL'si
 
-        soundLink.addEventListener('click', function(event) {
+        soundLink.addEventListener('click', function (event) {
             event.preventDefault();  // Linkin varsayılan davranışını engelle
             airplaneSound.play();    // Uçak sesini çal
         });
-	
+
         const buttons = document.querySelectorAll('.letter-button');
         const contents = document.querySelectorAll('.letter-content');
 
