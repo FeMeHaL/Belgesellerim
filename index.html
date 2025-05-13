@@ -32,12 +32,44 @@
         .gen-movie-contain {
             position: relative;
         }
-        .gen-movie-img img {
-            width: 100%;
-            height: 292px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
+.gen-movie-img {
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    perspective: 1000px;
+}
+
+.gen-movie-img:hover {
+    transform: scale(1.03) rotateX(2deg) rotateY(2deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.gen-movie-img img {
+    width: 100%;
+    height: 292px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+
+    /* Dijital Görünüm Efektleri */
+    filter: contrast(1.1) brightness(1.05);
+    box-shadow: inset 0 0 20px rgba(255,255,255,0.1), 0 10px 20px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+/* Cam yansıma efekti */
+.gen-movie-img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+    pointer-events: none;
+    transform: skewY(-10deg);
+    border-radius: 8px;
+}
+
         .gen-movie-action {
             position: absolute;
             top: 50%;
