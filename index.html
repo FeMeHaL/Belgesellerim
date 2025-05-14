@@ -124,57 +124,50 @@
             transform: scale(1.05);
         }
 
-       /* Dış çerçeve kapsayıcı */
+       /* Çerçeveyi dışarıda saran kapsayıcı */
 .glowing-frame-outer {
     position: relative;
     display: inline-block;
+    padding: 10px;
     border-radius: 12px;
-    padding: 6px; /* Çerçeve dışındaki alan */
+    box-sizing: border-box;
+    overflow: hidden; /* Işığın dışarı taşmaması için */
 }
 
-/* Görselin dışına hareket eden ışık çerçeve */
+/* Işıklı çerçeve */
 .glowing-frame-outer::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    right: 0;
+    bottom: 0;
     border-radius: 16px;
-    background: none;
-    z-index: 2;
+    z-index: -1;
     pointer-events: none;
 
-    /* Işıklı hareketli çerçeve */
-    background: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.8) 50%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    background-repeat: no-repeat;
-    background-size: 200% 200%;
-    animation: borderLightTrace 3s linear infinite;
-    mask-image: linear-gradient(#fff 0 0); /* Chrome için */
-    -webkit-mask-image: linear-gradient(#fff 0 0);
+    /* Arka planda yanıp sönen ışıkları simüle etmek için */
+    background: repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(255, 255, 255, 0.8) 10px, rgba(255, 255, 255, 0.8) 15px);
+    background-size: 100% 15px;
+    animation: glowSequence 1.5s linear infinite;
 }
 
-/* Saat yönünde akan ışık animasyonu */
-@keyframes borderLightTrace {
+/* Işığın sırasıyla yanıp sönmesi için animasyon */
+@keyframes glowSequence {
     0% {
-        background-position: 200% 0;
-    }
-    25% {
-        background-position: 200% 200%;
-    }
-    50% {
-        background-position: 0 200%;
-    }
-    75% {
         background-position: 0 0;
     }
+    25% {
+        background-position: 25% 0;
+    }
+    50% {
+        background-position: 50% 0;
+    }
+    75% {
+        background-position: 75% 0;
+    }
     100% {
-        background-position: 200% 0;
+        background-position: 100% 0;
     }
 }
 
