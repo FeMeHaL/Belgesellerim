@@ -124,100 +124,6 @@
             transform: scale(1.05);
         }
 
-       /* Çerçeveyi dışarıda saran kapsayıcı */
-.glowing-frame-outer {
-    position: relative;
-    display: inline-block;
-    padding: 10px;
-    border-radius: 12px;
-    box-sizing: border-box;
-    overflow: hidden; /* Işığın dışarı taşmaması için */
-}
-
-/* Işıklı çerçeve */
-.glowing-frame-outer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 16px;
-    z-index: -1;
-    pointer-events: none;
-
-    /* Arka planda yanıp sönen ışıkları simüle etmek için */
-    background: repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(255, 255, 255, 0.8) 10px, rgba(255, 255, 255, 0.8) 15px);
-    background-size: 100% 15px;
-    animation: glowSequence 1.5s linear infinite;
-}
-
-/* Işığın sırasıyla yanıp sönmesi için animasyon */
-@keyframes glowSequence {
-    0% {
-        background-position: 0 0;
-    }
-    25% {
-        background-position: 25% 0;
-    }
-    50% {
-        background-position: 50% 0;
-    }
-    75% {
-        background-position: 75% 0;
-    }
-    100% {
-        background-position: 100% 0;
-    }
-}
-
-
-
-        .glowing-frame {
-            position: relative;
-            display: inline-block;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .glowing-frame::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            width: calc(100% + 4px);
-            height: calc(100% + 4px);
-            border-radius: 14px;
-            background: conic-gradient(from 0deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.6),
-                    transparent 30%);
-            animation: spin-frame 2s linear infinite;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .glowing-frame img {
-            display: block;
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Dönen ışıklı çizgi animasyonu */
-        @keyframes spin-frame {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-
         .alphabet-strip {
             width: 90%;
             /* %100 yerine %90 */
@@ -405,9 +311,9 @@
 
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
-                <div class="gen-movie-img glowing-frame">
+                <div class="gen-movie-contain">
                     <a href="KAZALAR">
-                        <div class="gen-movie-img glowing-frame-outer">
+                        <div class="gen-movie-img">
                             <img src="./img/KAZALAR.jpg" alt="streamlab-image">
                             <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
@@ -415,14 +321,13 @@
                         </div>
                     </a>
                     <div class="gen-info-contain">
-                        <div class="gen-movie-info glowing-border"> <!-- Yazı için hafif parlama -->
+                        <div class="gen-movie-info">
                             <h3><a href="KAZALAR">KAZA & FELAKET BELGESELLERİ</a></h3>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
 
 
         <div class="col">
