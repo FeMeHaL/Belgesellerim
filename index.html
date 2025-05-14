@@ -175,43 +175,42 @@
             }
         }
 
-        /* Görselin etrafında dönen beyaz ışıklı şerit */
-        .glow-ring {
+
+        .glowing-frame {
             position: relative;
             display: inline-block;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
         }
 
-        .glow-ring::before {
-            content: "";
+        .glowing-frame::before {
+            content: '';
             position: absolute;
-            top: -5px;
-            left: -5px;
-            width: calc(100% + 10px);
-            height: calc(100% + 10px);
-            border-radius: 12px;
-            background: conic-gradient(rgba(255, 255, 255, 0) 0deg,
-                    rgba(255, 255, 255, 0.7) 90deg,
-                    rgba(255, 255, 255, 0) 180deg,
-                    rgba(255, 255, 255, 0.7) 270deg,
-                    rgba(255, 255, 255, 0) 360deg);
-            animation: spinGlow 3s linear infinite;
+            top: -2px;
+            left: -2px;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            border-radius: 14px;
+            background: conic-gradient(from 0deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.6),
+                    transparent 30%);
+            animation: spin-frame 2s linear infinite;
             z-index: 2;
             pointer-events: none;
         }
 
-        .glow-ring img {
+        .glowing-frame img {
             display: block;
             width: 100%;
             height: auto;
-            border-radius: 10px;
+            border-radius: 12px;
             position: relative;
             z-index: 1;
         }
 
-        /* Dönme animasyonu */
-        @keyframes spinGlow {
+        /* Dönen ışıklı çizgi animasyonu */
+        @keyframes spin-frame {
             0% {
                 transform: rotate(0deg);
             }
@@ -409,7 +408,7 @@
 
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
-                <div class="gen-movie-contain">
+                <div class="gen-movie-img glowing-frame">
                     <a href="KAZALAR">
                         <div class="gen-movie-img glow-ring"> <!-- GÜNCELLENDİ -->
                             <img src="./img/KAZALAR.jpg" alt="streamlab-image">
