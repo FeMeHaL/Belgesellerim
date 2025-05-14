@@ -124,6 +124,57 @@
             transform: scale(1.05);
         }
 
+        /* Parlak dönen sınır efekti */
+        .glowing-border {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* Animasyonu gösterecek pseudo-element */
+        .glowing-border::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, red, orange, yellow, green, cyan, blue, violet, red);
+            background-size: 400% 400%;
+            z-index: -1;
+            animation: glowBorder 6s linear infinite;
+            border-radius: 10px;
+            filter: blur(4px);
+        }
+
+        /* İçeriği net göstermek için arka plan */
+        .glowing-border::after {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            background: #000;
+            /* veya sayfanın arka plan rengi */
+            z-index: -1;
+            border-radius: 8px;
+        }
+
+        @keyframes glowBorder {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
         .alphabet-strip {
             width: 90%;
             /* %100 yerine %90 */
