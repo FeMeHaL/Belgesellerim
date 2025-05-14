@@ -175,6 +175,53 @@
             }
         }
 
+        /* Görselin etrafında dönen beyaz ışıklı şerit */
+        .glow-ring {
+            position: relative;
+            display: inline-block;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .glow-ring::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: calc(100% + 10px);
+            height: calc(100% + 10px);
+            border-radius: 12px;
+            background: conic-gradient(rgba(255, 255, 255, 0) 0deg,
+                    rgba(255, 255, 255, 0.7) 90deg,
+                    rgba(255, 255, 255, 0) 180deg,
+                    rgba(255, 255, 255, 0.7) 270deg,
+                    rgba(255, 255, 255, 0) 360deg);
+            animation: spinGlow 3s linear infinite;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .glow-ring img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Dönme animasyonu */
+        @keyframes spinGlow {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
         .alphabet-strip {
             width: 90%;
             /* %100 yerine %90 */
@@ -364,21 +411,22 @@
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
                     <a href="KAZALAR">
-                        <div class="gen-movie-img">
+                        <div class="gen-movie-img glow-ring"> <!-- GÜNCELLENDİ -->
                             <img src="./img/KAZALAR.jpg" alt="streamlab-image">
-                            <div class="gen-movie-img glowing-border">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
                             </div>
                         </div>
                     </a>
                     <div class="gen-info-contain">
-                        <div class="gen-movie-info glowing-border">
+                        <div class="gen-movie-info glowing-border"> <!-- Yazı için hafif parlama -->
                             <h3><a href="KAZALAR">KAZA & FELAKET BELGESELLERİ</a></h3>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
 
 
         <div class="col">
