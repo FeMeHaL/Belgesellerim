@@ -136,28 +136,27 @@
         }
 
         .led-dot {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: red;
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: ledFlash 2s infinite;
-        }
+    position: absolute;
+    width: 20px;        /* Uzun çizgi için genişlik artırıldı */
+    height: 4px;        /* İnce çizgi için yükseklik azaltıldı */
+    background: white;  /* Beyaz renk */
+    border-radius: 2px; /* Hafif yuvarlatma */
+    opacity: 0.3;
+    animation: ledFlash 2s infinite;
+}
+
 
         /* LED yanıp sönme animasyonu */
         @keyframes ledFlash {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 6px 3px white; /* Beyaz parıltı */
+    }
+}
 
-            0%,
-            100% {
-                opacity: 0.3;
-            }
-
-            50% {
-                opacity: 1;
-                box-shadow: 0 0 6px 3px red;
-            }
-        }
 
         /* Alfabetik menü şeridi */
         .alphabet-strip {
@@ -337,16 +336,18 @@
                             <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
                             </div>
-                            <!-- LED FRAME buraya, gen-movie-img'in içine -->
-                            <div class="led-frame" id="ledFrame"></div>
                         </div>
                     </a>
+                    <!-- led-frame burada, görselin hemen altında -->
+                    <div class="led-frame" id="ledFrame"></div>
+
                     <div class="gen-info-contain">
                         <div class="gen-movie-info">
                             <h3><a href="KAZALAR">KAZA & FELAKET BELGESELLERİ</a></h3>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
