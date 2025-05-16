@@ -125,35 +125,71 @@
         }
 
         /* LED çerçeve efekti */
-.led-frame {
-    position: absolute;
-    top: -10px;       /* yukarı doğru 10px taşır */
-    left: -10px;      /* sola doğru 10px taşır */
-    width: calc(100% + 20px);  /* hem sağ hem sol için toplam 20px genişlet */
-    height: calc(100% + 20px); /* hem üst hem alt için toplam 20px genişlet */
-    pointer-events: none;
-    z-index: 2;
-    display: flex;
-    justify-content: space-between; /* yatayda eşit aralık */
-    align-items: center;             /* dikeyde ortala */
-    padding: 0 5px;                  /* içerden biraz boşluk */
-}
+        .led-frame {
+            position: absolute;
+            top: -5px;
+            /* Resmin dışına taşır */
+            left: -5px;
+            width: calc(100% + 10px);
+            /* Kenarlardan taşma için */
+            height: calc(100% + 10px);
+            pointer-events: none;
+            z-index: 10;
+        }
 
-/* soldaki ve sağdaki dikey çizgiler için */
-.led-dot {
-    width: 2px;
-    height: 20px;
-    background: white;
-    border-radius: 1px;
-    opacity: 0.3;
-    animation: ledFlash 2s infinite;
-}
+        /* Dikey çizgiler */
+        .led-line.vertical {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: white;
+            opacity: 0.3;
+            animation: ledFlash 2s infinite;
+        }
 
-/* Animasyon aynı kalabilir */
-@keyframes ledFlash {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; box-shadow: 0 0 6px 3px white; }
-}
+        .led-line.left {
+            top: 0;
+            left: 0;
+        }
+
+        .led-line.right {
+            top: 0;
+            right: 0;
+        }
+
+        /* Yatay çizgiler */
+        .led-line.horizontal {
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: white;
+            opacity: 0.3;
+            animation: ledFlash 2s infinite;
+        }
+
+        .led-line.top {
+            top: 0;
+            left: 0;
+        }
+
+        .led-line.bottom {
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Animasyon */
+        @keyframes ledFlash {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+                box-shadow: 0 0 6px 3px white;
+            }
+        }
 
         /* Alfabetik menü şeridi */
         .alphabet-strip {
@@ -264,6 +300,13 @@
 </head>
 
 <body>
+
+    <div class="led-frame">
+        <div class="led-line vertical left"></div>
+        <div class="led-line vertical right"></div>
+        <div class="led-line horizontal top"></div>
+        <div class="led-line horizontal bottom"></div>
+    </div>
 
     <div class="alphabet-strip">
         <button class="letter-button" data-target="section-B">B</button>
