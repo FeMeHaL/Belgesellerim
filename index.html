@@ -36,6 +36,8 @@
             background-color: #2c2c2c;
             border-radius: 8px;
             overflow: hidden;
+            position: relative;
+            /* led-frame’in referansı için GEREKLİ */
         }
 
         .gen-movie-contain {
@@ -301,13 +303,6 @@
 
 <body>
 
-    <div class="led-frame">
-        <div class="led-line vertical left"></div>
-        <div class="led-line vertical right"></div>
-        <div class="led-line horizontal top"></div>
-        <div class="led-line horizontal bottom"></div>
-    </div>
-
     <div class="alphabet-strip">
         <button class="letter-button" data-target="section-B">B</button>
         <button class="letter-button" data-target="section-D">D</button>
@@ -368,7 +363,16 @@
     <div class="container">
 
         <div class="col">
-            <div class="gen-carousel-movies-style-3 movie-grid style-3">
+            <div class="gen-carousel-movies-style-3 movie-grid style-3" style="position: relative;">
+
+                <!-- LED Çerçeve (Resmin dışını saracak şekilde) -->
+                <div class="led-frame" id="ledFrame">
+                    <div class="led-line vertical left"></div>
+                    <div class="led-line vertical right"></div>
+                    <div class="led-line horizontal top"></div>
+                    <div class="led-line horizontal bottom"></div>
+                </div>
+
                 <div class="gen-movie-contain">
                     <a href="KAZALAR">
                         <div class="gen-movie-img">
@@ -377,17 +381,16 @@
                                 <i class="fa fa-play"></i>
                             </div>
                         </div>
-							                    <!-- led-frame burada, görselin hemen altında -->
-                    <div class="led-frame" id="ledFrame"></div>
-                    </a>
-                    <div class="gen-info-contain">
-                        <div class="gen-movie-info">
-                            <h3><a href="KAZALAR">KAZA & FELAKET BELGESELLERİ</a></h3>
+                        <div class="gen-info-contain">
+                            <div class="gen-movie-info">
+                                <h3><a href="KAZALAR">KAZA & FELAKET BELGESELLERİ</a></h3>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
+
 
 
 
