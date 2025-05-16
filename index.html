@@ -125,38 +125,35 @@
         }
 
         /* LED çerçeve efekti */
-        .led-frame {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .led-dot {
+.led-frame {
     position: absolute;
-    width: 20px;        /* Uzun çizgi için genişlik artırıldı */
-    height: 4px;        /* İnce çizgi için yükseklik azaltıldı */
-    background: white;  /* Beyaz renk */
-    border-radius: 2px; /* Hafif yuvarlatma */
+    top: -10px;       /* yukarı doğru 10px taşır */
+    left: -10px;      /* sola doğru 10px taşır */
+    width: calc(100% + 20px);  /* hem sağ hem sol için toplam 20px genişlet */
+    height: calc(100% + 20px); /* hem üst hem alt için toplam 20px genişlet */
+    pointer-events: none;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between; /* yatayda eşit aralık */
+    align-items: center;             /* dikeyde ortala */
+    padding: 0 5px;                  /* içerden biraz boşluk */
+}
+
+/* soldaki ve sağdaki dikey çizgiler için */
+.led-dot {
+    width: 2px;
+    height: 20px;
+    background: white;
+    border-radius: 1px;
     opacity: 0.3;
     animation: ledFlash 2s infinite;
 }
 
-
-        /* LED yanıp sönme animasyonu */
-        @keyframes ledFlash {
-    0%, 100% {
-        opacity: 0.3;
-    }
-    50% {
-        opacity: 1;
-        box-shadow: 0 0 6px 3px white; /* Beyaz parıltı */
-    }
+/* Animasyon aynı kalabilir */
+@keyframes ledFlash {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; box-shadow: 0 0 6px 3px white; }
 }
-
 
         /* Alfabetik menü şeridi */
         .alphabet-strip {
