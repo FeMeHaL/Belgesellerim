@@ -6,277 +6,261 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferhat Polaterce ile belgeseller keyfi ... </title>
     <style>
-        body {
-            background-color: #1e1e1e;
-            /* Gözleri yormayacak siyah tonunda arka plan */
-            color: #b0b0b0;
-            /* Koyu gri yazı rengi */
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+        /* Genel body ayarları */
+body {
+    background-color: #1e1e1e;
+    color: #b0b0b0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            gap: 20px;
-            padding: 20px;
-        }
+/* Bölüm konteyneri */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 20px;
+}
 
-        .col {
-            flex: 1 1 calc(20% - 20px);
-            box-sizing: border-box;
-            max-width: 20%;
-        }
+/* Kolon yapısı (film kutuları) */
+.col {
+    flex: 1 1 calc(20% - 20px);
+    box-sizing: border-box;
+    max-width: 20%;
+}
 
-        .gen-carousel-movies-style-3 {
-            background-color: #2c2c2c;
-            /* Hafif koyu arka plan rengi */
-            border-radius: 8px;
-            overflow: hidden;
-        }
+/* Her bir film kutusu */
+.gen-carousel-movies-style-3 {
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    overflow: hidden;
+}
 
-        .gen-movie-contain {
-            position: relative;
-        }
+.gen-movie-contain {
+    position: relative;
+}
 
-        .gen-movie-img {
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            perspective: 1000px;
-        }
+/* Film görseli efekti */
+.gen-movie-img {
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    perspective: 1000px;
+}
 
-        .gen-movie-img:hover {
-            transform: scale(1.03) rotateX(2deg) rotateY(2deg);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
+.gen-movie-img:hover {
+    transform: scale(1.03) rotateX(2deg) rotateY(2deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
 
-        .gen-movie-img img {
-            width: 100%;
-            height: 292px;
-            object-fit: cover;
-            border-radius: 8px;
-            display: block;
+.gen-movie-img img {
+    width: 100%;
+    height: 292px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    filter: contrast(1.1) brightness(1.05);
+    box-shadow: none !important;
+    transition: all 0.3s ease;
+}
 
-            /* Dijital Görünüm Efektleri */
-            filter: contrast(1.1) brightness(1.05);
-            box-shadow: none !important;
-            transition: all 0.3s ease;
-        }
+/* Cam yansıma efekti */
+.gen-movie-img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
+    transform: skewY(-10deg);
+    border-radius: 8px;
+}
 
-        /* Cam yansıma efekti */
-        .gen-movie-img::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
-            pointer-events: none;
-            transform: skewY(-10deg);
-            border-radius: 8px;
-        }
+/* İzle butonu */
+.gen-movie-action {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
-        .gen-movie-action {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+.gen-button {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    color: white;
+    border-radius: 50%;
+    font-size: 20px;
+    text-decoration: none;
+}
 
-        .gen-button {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            color: white;
-            border-radius: 50%;
-            font-size: 20px;
-            text-decoration: none;
-        }
+/* Film ismi kısmı */
+.gen-info-contain {
+    padding: 10px;
+    background-color: #333;
+}
 
-        .gen-info-contain {
-            padding: 10px;
-            background-color: #333;
-        }
+.gen-movie-info h3 {
+    font-size: 16px;
+    margin: 0;
+    color: #b0b0b0;
+    text-align: center;
+    line-height: 1.2;
+}
 
-        .gen-movie-info h3 {
-            font-size: 16px;
-            margin: 0;
-            color: #b0b0b0;
-            text-align: center;
-            line-height: 1.2;
-            /* burayı ekledik */
-        }
+.gen-movie-info h3 a {
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 3px rgba(0, 191, 255, 0.2);
+    font-weight: bold;
+}
 
-        .gen-movie-info h3 a {
-            color: #b0b0b0;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            text-shadow: 0 0 3px rgba(0, 191, 255, 0.2);
-            /* Dijital hafif parlama */
-            font-weight: bold;
-        }
+.gen-movie-info h3 a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(0, 191, 255, 0.7), 0 0 12px rgba(0, 191, 255, 0.5);
+    transform: scale(1.05);
+}
 
-        .gen-movie-info h3 a:hover {
-            color: #ffffff;
-            text-shadow: 0 0 8px rgba(0, 191, 255, 0.7), 0 0 12px rgba(0, 191, 255, 0.5);
-            transform: scale(1.05);
-        }
+/* LED çerçeve efekti */
+.led-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
 
-        .led-frame {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 2;
-        }
+.led-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: red;
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: ledFlash 2s infinite;
+}
 
-        .led-dot {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: red;
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: ledFlash 2s infinite;
-        }
+/* LED yanıp sönme animasyonu */
+@keyframes ledFlash {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 6px 3px red;
+    }
+}
 
-        @keyframes ledFlash {
+/* Alfabetik menü şeridi */
+.alphabet-strip {
+    width: 90%;
+    margin: 0 auto;
+    overflow-x: auto;
+    box-sizing: border-box;
+    background-color: #1f1f1f;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
 
-            0%,
-            100% {
-                opacity: 0.3;
-            }
+.letter-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #00bfff;
+    background-color: #2c2c2c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
 
-            50% {
-                opacity: 1;
-                box-shadow: 0 0 6px 3px red;
-            }
+.letter-button:hover {
+    background-color: #00bfff;
+    color: #2c2c2c;
+}
 
-            .alphabet-strip {
-                width: 90%;
-                /* %100 yerine %90 */
-                margin: 0 auto;
-                /* ortalamak için */
-                overflow-x: auto;
-                /* ekstra önlem */
-                box-sizing: border-box;
-                /* padding dahil */
-                background-color: #1f1f1f;
-                padding: 15px;
-                border-radius: 10px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
-            }
+/* Harf menüsü altındaki içerik */
+.letter-content {
+    display: none;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    background-color: transparent;
+    margin: 15px auto;
+    padding: 15px;
+    border: 2px solid #00bfff;
+    border-radius: 5px;
+    width: 90%;
+}
 
-            .letter-button {
-                padding: 10px 20px;
-                font-size: 18px;
-                font-weight: bold;
-                color: #00bfff;
-                background-color: #2c2c2c;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: background 0.3s, color 0.3s;
-            }
+.letter-content a {
+    flex: 1 1 auto;
+    min-width: 200px;
+    max-width: 250px;
+    background-color: #2c2c2c;
+    padding: 12px 20px;
+    border-radius: 6px;
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 5px 0;
+    text-align: center;
+}
 
-            .letter-button:hover {
-                background-color: #00bfff;
-                color: #2c2c2c;
-            }
+.letter-content a:hover {
+    background-color: #00bfff;
+    color: #1e1e1e;
+}
 
-            /* Açılır içerik */
-            .letter-content {
-                display: none;
-                /* Başta gizli */
-                flex-wrap: wrap;
-                /* sığmazsa alt satıra geç */
-                gap: 10px;
-                /* kutular arasında boşluk */
-                justify-content: center;
-                /* ortala */
-                background-color: transparent;
-                margin: 15px auto;
-                padding: 15px;
-                border: 2px solid #00bfff;
-                border-radius: 5px;
-                width: 90%;
-            }
+/* Hukuki uyarı kutusu */
+.legal-warning {
+    background-color: #2c2c2c;
+    color: #ff5c5c;
+    width: 100%;
+    max-width: 95%;
+    margin: 0 auto;
+    font-size: 13px;
+    text-align: left;
+    padding: 8px 20px;
+    border-radius: 8px;
+    border-bottom: 1px solid #444;
+    font-family: Arial, sans-serif;
+}
 
-            .letter-content a {
-                flex: 1 1 auto;
-                min-width: 200px;
-                /* küçük ekranlarda minimum genişlik */
-                max-width: 250px;
-                /* büyük ekranda fazla büyümesin */
-                background-color: #2c2c2c;
-                /* kutu gibi görünmesi için */
-                padding: 12px 20px;
-                border-radius: 6px;
-                color: #b0b0b0;
-                text-decoration: none;
-                transition: background-color 0.3s, color 0.3s;
-                margin: 5px 0;
-                text-align: center;
-                border-radius: 5px;
-            }
+/* Responsive kolon düzeni */
+@media (max-width: 1200px) {
+    .col {
+        flex: 1 1 calc(25% - 20px);
+    }
+}
 
-            .letter-content a:hover {
-                background-color: #00bfff;
-                color: #1e1e1e;
-            }
+@media (max-width: 992px) {
+    .col {
+        flex: 1 1 calc(33.33% - 20px);
+    }
+}
 
-            .legal-warning {
-                background-color: #2c2c2c;
-                color: #ff5c5c;
-                width: 100%;
-                /* Genişlik 100% */
-                max-width: 95%;
-                /* Genişliği %95 yapar */
-                margin: 0 auto;
-                /* Ortalamayı sağlıyor */
-                font-size: 13px;
-                text-align: left;
-                padding: 8px 20px;
-                border-radius: 8px;
-                border-bottom: 1px solid #444;
-                font-family: Arial, sans-serif;
-            }
+@media (max-width: 768px) {
+    .col {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
 
-            @media (max-width: 1200px) {
-                .col {
-                    flex: 1 1 calc(25% - 20px);
-                    /* 4 seçenek */
-                }
-            }
-
-            @media (max-width: 992px) {
-                .col {
-                    flex: 1 1 calc(33.33% - 20px);
-                    /* 3 seçenek */
-                }
-            }
-
-            @media (max-width: 768px) {
-                .col {
-                    flex: 1 1 calc(50% - 20px);
-                    /* 2 seçenek */
-                }
-            }
-
-            @media (max-width: 480px) {
-                .col {
-                    flex: 1 1 100%;
-                    /* Tekli seçenek */
-                }
-            }
+@media (max-width: 480px) {
+    .col {
+        flex: 1 1 100%;
+    }
+}
     </style>
 </head>
 
