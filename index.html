@@ -124,127 +124,159 @@
             transform: scale(1.05);
         }
 
-        .alphabet-strip {
-            width: 90%;
-            /* %100 yerine %90 */
-            margin: 0 auto;
-            /* ortalamak için */
-            overflow-x: auto;
-            /* ekstra önlem */
-            box-sizing: border-box;
-            /* padding dahil */
-            background-color: #1f1f1f;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .letter-button {
-            padding: 10px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #00bfff;
-            background-color: #2c2c2c;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .letter-button:hover {
-            background-color: #00bfff;
-            color: #2c2c2c;
-        }
-
-        /* Açılır içerik */
-        .letter-content {
-            display: none;
-            /* Başta gizli */
-            flex-wrap: wrap;
-            /* sığmazsa alt satıra geç */
-            gap: 10px;
-            /* kutular arasında boşluk */
-            justify-content: center;
-            /* ortala */
-            background-color: transparent;
-            margin: 15px auto;
-            padding: 15px;
-            border: 2px solid #00bfff;
-            border-radius: 5px;
-            width: 90%;
-        }
-
-        .letter-content a {
-            flex: 1 1 auto;
-            min-width: 200px;
-            /* küçük ekranlarda minimum genişlik */
-            max-width: 250px;
-            /* büyük ekranda fazla büyümesin */
-            background-color: #2c2c2c;
-            /* kutu gibi görünmesi için */
-            padding: 12px 20px;
-            border-radius: 6px;
-            color: #b0b0b0;
-            text-decoration: none;
-            transition: background-color 0.3s, color 0.3s;
-            margin: 5px 0;
-            text-align: center;
-            border-radius: 5px;
-        }
-
-        .letter-content a:hover {
-            background-color: #00bfff;
-            color: #1e1e1e;
-        }
-
-        .legal-warning {
-            background-color: #2c2c2c;
-            color: #ff5c5c;
+        .led-frame {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            /* Genişlik 100% */
-            max-width: 95%;
-            /* Genişliği %95 yapar */
-            margin: 0 auto;
-            /* Ortalamayı sağlıyor */
-            font-size: 13px;
-            text-align: left;
-            padding: 8px 20px;
-            border-radius: 8px;
-            border-bottom: 1px solid #444;
-            font-family: Arial, sans-serif;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
         }
 
-        @media (max-width: 1200px) {
-            .col {
-                flex: 1 1 calc(25% - 20px);
-                /* 4 seçenek */
-            }
+        .led-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: red;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: ledFlash 2s infinite;
         }
 
-        @media (max-width: 992px) {
-            .col {
-                flex: 1 1 calc(33.33% - 20px);
-                /* 3 seçenek */
-            }
-        }
+        @keyframes ledFlash {
 
-        @media (max-width: 768px) {
-            .col {
-                flex: 1 1 calc(50% - 20px);
-                /* 2 seçenek */
+            0%,
+            100% {
+                opacity: 0.3;
             }
-        }
 
-        @media (max-width: 480px) {
-            .col {
-                flex: 1 1 100%;
-                /* Tekli seçenek */
+            50% {
+                opacity: 1;
+                box-shadow: 0 0 6px 3px red;
             }
-        }
+
+            .alphabet-strip {
+                width: 90%;
+                /* %100 yerine %90 */
+                margin: 0 auto;
+                /* ortalamak için */
+                overflow-x: auto;
+                /* ekstra önlem */
+                box-sizing: border-box;
+                /* padding dahil */
+                background-color: #1f1f1f;
+                padding: 15px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .letter-button {
+                padding: 10px 20px;
+                font-size: 18px;
+                font-weight: bold;
+                color: #00bfff;
+                background-color: #2c2c2c;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background 0.3s, color 0.3s;
+            }
+
+            .letter-button:hover {
+                background-color: #00bfff;
+                color: #2c2c2c;
+            }
+
+            /* Açılır içerik */
+            .letter-content {
+                display: none;
+                /* Başta gizli */
+                flex-wrap: wrap;
+                /* sığmazsa alt satıra geç */
+                gap: 10px;
+                /* kutular arasında boşluk */
+                justify-content: center;
+                /* ortala */
+                background-color: transparent;
+                margin: 15px auto;
+                padding: 15px;
+                border: 2px solid #00bfff;
+                border-radius: 5px;
+                width: 90%;
+            }
+
+            .letter-content a {
+                flex: 1 1 auto;
+                min-width: 200px;
+                /* küçük ekranlarda minimum genişlik */
+                max-width: 250px;
+                /* büyük ekranda fazla büyümesin */
+                background-color: #2c2c2c;
+                /* kutu gibi görünmesi için */
+                padding: 12px 20px;
+                border-radius: 6px;
+                color: #b0b0b0;
+                text-decoration: none;
+                transition: background-color 0.3s, color 0.3s;
+                margin: 5px 0;
+                text-align: center;
+                border-radius: 5px;
+            }
+
+            .letter-content a:hover {
+                background-color: #00bfff;
+                color: #1e1e1e;
+            }
+
+            .legal-warning {
+                background-color: #2c2c2c;
+                color: #ff5c5c;
+                width: 100%;
+                /* Genişlik 100% */
+                max-width: 95%;
+                /* Genişliği %95 yapar */
+                margin: 0 auto;
+                /* Ortalamayı sağlıyor */
+                font-size: 13px;
+                text-align: left;
+                padding: 8px 20px;
+                border-radius: 8px;
+                border-bottom: 1px solid #444;
+                font-family: Arial, sans-serif;
+            }
+
+            @media (max-width: 1200px) {
+                .col {
+                    flex: 1 1 calc(25% - 20px);
+                    /* 4 seçenek */
+                }
+            }
+
+            @media (max-width: 992px) {
+                .col {
+                    flex: 1 1 calc(33.33% - 20px);
+                    /* 3 seçenek */
+                }
+            }
+
+            @media (max-width: 768px) {
+                .col {
+                    flex: 1 1 calc(50% - 20px);
+                    /* 2 seçenek */
+                }
+            }
+
+            @media (max-width: 480px) {
+                .col {
+                    flex: 1 1 100%;
+                    /* Tekli seçenek */
+                }
+            }
     </style>
 </head>
 
@@ -315,6 +347,7 @@
                     <a href="KAZALAR">
                         <div class="gen-movie-img">
                             <img src="./img/KAZALAR.jpg" alt="streamlab-image">
+                            <div class="led-frame" id="ledFrame"></div>
                             <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
                             </div>
@@ -625,6 +658,54 @@
 
     </div>
     <script>
+        const frame = document.getElementById('ledFrame');
+        const countPerEdge = 12; // Her kenarda 12 ışık
+        let delay = 0;
+
+        // ÜST kenar
+        for (let i = 0; i < countPerEdge; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'led-dot';
+            dot.style.top = '-5px';
+            dot.style.left = `${(i / (countPerEdge - 1)) * 100}%`;
+            dot.style.animationDelay = `${delay}s`;
+            delay += 0.1;
+            frame.appendChild(dot);
+        }
+
+        // SAĞ kenar
+        for (let i = 1; i < countPerEdge; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'led-dot';
+            dot.style.right = '-5px';
+            dot.style.top = `${(i / (countPerEdge - 1)) * 100}%`;
+            dot.style.animationDelay = `${delay}s`;
+            delay += 0.1;
+            frame.appendChild(dot);
+        }
+
+        // ALT kenar
+        for (let i = countPerEdge - 2; i >= 0; i--) {
+            const dot = document.createElement('div');
+            dot.className = 'led-dot';
+            dot.style.bottom = '-5px';
+            dot.style.left = `${(i / (countPerEdge - 1)) * 100}%`;
+            dot.style.animationDelay = `${delay}s`;
+            delay += 0.1;
+            frame.appendChild(dot);
+        }
+
+        // SOL kenar
+        for (let i = countPerEdge - 2; i > 0; i--) {
+            const dot = document.createElement('div');
+            dot.className = 'led-dot';
+            dot.style.left = '-5px';
+            dot.style.top = `${(i / (countPerEdge - 1)) * 100}%`;
+            dot.style.animationDelay = `${delay}s`;
+            delay += 0.1;
+            frame.appendChild(dot);
+        }
+
         let titleText = "Ferhat Polaterce ile belgeseller keyfi ... ";
         let index = 0;
         let titleSpeed = 300; // milisaniye
