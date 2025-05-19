@@ -127,6 +127,8 @@
       display: inline-block;
       /* Flex yerine inline-block, metni düzgün hizalamak için */
       cursor: pointer;
+      margin-bottom: 15px;
+      /* Bu şekilde bölüm konusu ile tagler arasına boşluk eklenmiş olur */
       margin: 0;
       flex-shrink: 0;
     }
@@ -153,7 +155,6 @@
       font-size: 14px;
     }
 
-
     .tooltip-and-tags {
       display: inline-flex;
       align-items: center;
@@ -165,6 +166,7 @@
       /* Sıkı boşluk */
       row-gap: 4px;
       margin-top: 10px;
+      gap: 12px;
     }
 
     .tooltip-text {
@@ -340,7 +342,6 @@
       <span class="tooltip-text">Bölüm Konusu</span>
       <div class="tooltip-balloon">${ep.description}</div>
     </div>
-    <br> <!-- Burada bölüm konusu ile tagler arasında boşluk ekliyoruz -->
   ` : ''}
   <div class="episode-tags">
     ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
