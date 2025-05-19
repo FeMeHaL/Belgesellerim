@@ -127,7 +127,8 @@
       display: inline-block;
       /* Flex yerine inline-block, metni düzgün hizalamak için */
       cursor: pointer;
-	  text-align: center; /* Ortalamak için */
+      text-align: center;
+      /* Ortalamak için */
       margin-bottom: 15px;
       /* Bu şekilde bölüm konusu ile tagler arasına boşluk eklenmiş olur */
       margin: 0;
@@ -171,11 +172,16 @@
     }
 
     .tooltip-text {
+      display: inline-block;
+      /* Blok yapıyoruz ki ortalanabilsin */
+      text-align: center;
+      /* Yatayda ortalamak */
+      width: 100%;
+      /* Bütün genişlik boyunca yayılmasını sağlıyoruz */
       font-size: 16px;
       font-weight: bold;
       color: #b87333;
       /* Kahverengi yazı rengi */
-      text-align: center;
       padding: 10px 20px;
       background-color: #dcdcdc;
       /* Kirli beyaz arka plan */
