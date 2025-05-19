@@ -23,6 +23,8 @@
       box-sizing: border-box;
       flex-shrink: 0;
       transition: transform 0.3s ease;
+      align-self: flex-start;
+      /* ✨ Burası önemli */
     }
 
     .season-button {
@@ -113,6 +115,43 @@
 
     .tag:hover {
       background-color: #1e90ff;
+    }
+
+    .tooltip-container {
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      margin: 10px auto;
+      cursor: pointer;
+    }
+
+    .tooltip-icon {
+      font-size: 20px;
+    }
+
+    .tooltip-text {
+      visibility: hidden;
+      background-color: #333;
+      color: #fff;
+      text-align: left;
+      padding: 10px;
+      border-radius: 6px;
+      width: 250px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      /* ikonun üstünde çıkması için */
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .tooltip-container:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
     }
 
     /* Arama Kutusu */
@@ -226,17 +265,14 @@
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
         epDiv.innerHTML = `
-      <img src="${ep.thumbnail}" alt="${ep.title}">
-      <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-      <p class="episode-date">${ep.date}</p>
-<p class="episode-description">${ep.description || ''}</p>
-<p class="episode-tags">
-  ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
-</p>
-
-        ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
-      </p>
-    `;
+    <img src="${ep.thumbnail}" alt="${ep.title}">
+    <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+    <p class="episode-date">${ep.date}</p>
+    <p class="episode-description">${ep.description || ''}</p>
+    <p class="episode-tags">
+      ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+    </p>
+  `;
         container.appendChild(epDiv);
       });
     }
