@@ -506,14 +506,23 @@
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
         epDiv.innerHTML = `
-      <img src="${ep.thumbnail}" alt="${ep.title}">
-      <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-      <p class="episode-date">${ep.date}</p>
-      <p class="episode-description">${ep.description || ''}</p>
-      <p class="episode-tags">
-        ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
-        </p>
-    `;
+    <img src="${ep.thumbnail}" alt="${ep.title}">
+    <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+    <p class="episode-date">${ep.date}</p>
+
+    <!-- Bölüm Konusu Tooltip -->
+    ${ep.description ? `
+      <div class="tooltip-container">
+        <span class="tooltip-text">Bölüm Konusu</span>
+        <div class="tooltip-balloon">${ep.description}</div>
+      </div>
+    ` : ''}
+
+    <p class="episode-tags">
+      ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+    </p>
+  `;
+
         container.appendChild(epDiv);
       });
     }
