@@ -268,13 +268,21 @@
     <img src="${ep.thumbnail}" alt="${ep.title}">
     <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
     <p class="episode-date">${ep.date}</p>
-    <p class="episode-description">${ep.description || ''}</p>
+
+    ${ep.description ? `
+      <div class="tooltip-container">
+        <span class="tooltip-icon">📘</span>
+        <div class="tooltip-text">${ep.description}</div>
+      </div>
+    ` : ''}
+
     <p class="episode-tags">
       ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
     </p>
   `;
         container.appendChild(epDiv);
       });
+
     }
 
     function loadSeasons(seriesName) {
