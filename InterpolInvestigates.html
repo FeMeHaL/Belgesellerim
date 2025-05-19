@@ -124,9 +124,8 @@
 
     .tooltip-container {
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: inline-block;
+      /* Flex yerine inline-block, metni düzgün hizalamak için */
       cursor: pointer;
       margin: 0;
       flex-shrink: 0;
@@ -169,28 +168,54 @@
     }
 
     .tooltip-text {
-      visibility: hidden;
-      background-color: #333;
-      color: #fff;
-      text-align: left;
-      padding: 10px;
-      border-radius: 6px;
-      width: 250px;
-      position: absolute;
-      z-index: 1;
-      bottom: 125%;
-      /* ikonun üstünde çıkması için */
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0;
-      transition: opacity 0.3s;
-      font-size: 13px;
-      line-height: 1.4;
-      white-space: normal;
-      /* çok uzun kelimeler satırı taşırsa kırılır */
+      font-size: 16px;
+      font-weight: bold;
+      color: #b87333;
+      /* Kahverengi yazı rengi */
+      text-align: center;
+      padding: 10px 20px;
+      background-color: #dcdcdc;
+      /* Kirli beyaz arka plan */
+      border: 2px solid #b87333;
+      /* Çerçeve */
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
 
-    .tooltip-container:hover .tooltip-text {
+    .tooltip-text:hover {
+      background-color: #c4c4c4;
+      /* Hoverda arka plan rengi değişsin */
+    }
+
+    /* Balon (Tooltip) */
+    .tooltip-balloon {
+      visibility: hidden;
+      background-color: #b87333;
+      /* Kahverengi arka plan */
+      color: #dcdcdc;
+      /* Kirli beyaz yazı rengi */
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 10px;
+      /* Köşe yuvarlama */
+      position: absolute;
+      top: 125%;
+      /* Balon yazısının üstüne çıkması için */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 14px;
+      width: 200px;
+      border: 2px solid #dcdcdc;
+      /* Çerçeve */
+    }
+
+    /* Balon (Tooltip) Tıklama ile Görünür Yapma */
+    .tooltip-container:active .tooltip-balloon,
+    .tooltip-container:hover .tooltip-balloon {
       visibility: visible;
       opacity: 1;
     }
@@ -312,9 +337,10 @@
 
     <div class="tooltip-and-tags">
       ${ep.description ? `
-        <div class="tooltip-icon-container">
-		<span class="tooltip-icon-text">Bölüm Konusu</span>
-		</div>
+        <div class="tooltip-container">
+  <span class="tooltip-text">Bölüm Konusu</span>
+  <div class="tooltip-balloon">Bölümün konusu burada görünecek.</div>
+</div>
           <div class="tooltip-text">${ep.description}</div>
         </div>
       ` : ''}
