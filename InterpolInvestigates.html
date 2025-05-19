@@ -171,26 +171,22 @@
       gap: 12px;
     }
 
-    .tooltip-text {
-      display: inline-block;
-      /* Blok yapıyoruz ki ortalanabilsin */
-      text-align: center;
-      /* Yatayda ortalamak */
-      width: 100%;
-      /* Bütün genişlik boyunca yayılmasını sağlıyoruz */
-      font-size: 16px;
-      font-weight: bold;
-      color: #b87333;
-      /* Kahverengi yazı rengi */
-      padding: 10px 20px;
-      background-color: #dcdcdc;
-      /* Kirli beyaz arka plan */
-      border: 2px solid #b87333;
-      /* Çerçeve */
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+.tooltip-text {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  color: #b87333;
+  text-align: center; /* Ortalamayı sağlar */
+  padding: 10px 20px;
+  background-color: #dcdcdc;
+  border: 2px solid #b87333;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: auto; /* Bu, genişliğin sadece içeriğe göre ayarlanmasını sağlar */
+  margin: 0 auto; /* Yatayda ortalamayı sağlayacak margin */
+  text-align: center; /* Metnin yatayda ortalanması için */
+}
 
     .tooltip-text:hover {
       background-color: #c4c4c4;
