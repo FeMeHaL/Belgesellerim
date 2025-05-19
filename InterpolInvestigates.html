@@ -171,22 +171,26 @@
       gap: 12px;
     }
 
-.tooltip-text {
-  display: inline-block;
-  font-size: 16px;
-  font-weight: bold;
-  color: #b87333;
-  text-align: center; /* Ortalamayı sağlar */
-  padding: 10px 20px;
-  background-color: #dcdcdc;
-  border: 2px solid #b87333;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  width: auto; /* Bu, genişliğin sadece içeriğe göre ayarlanmasını sağlar */
-  margin: 0 auto; /* Yatayda ortalamayı sağlayacak margin */
-  text-align: center; /* Metnin yatayda ortalanması için */
-}
+    .tooltip-text {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: bold;
+      color: #b87333;
+      text-align: center;
+      /* Ortalamayı sağlar */
+      padding: 10px 20px;
+      background-color: #dcdcdc;
+      border: 2px solid #b87333;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: auto;
+      /* Bu, genişliğin sadece içeriğe göre ayarlanmasını sağlar */
+      margin: 0 auto;
+      /* Yatayda ortalamayı sağlayacak margin */
+      text-align: center;
+      /* Metnin yatayda ortalanması için */
+    }
 
     .tooltip-text:hover {
       background-color: #c4c4c4;
@@ -455,30 +459,38 @@
         return;
       }
 
+      // Ortalamak için bir wrapper div ekle
+      const centeredWrapper = document.createElement('div');
+      centeredWrapper.style.display = 'flex';
+      centeredWrapper.style.justifyContent = 'center';
+      centeredWrapper.style.flexWrap = 'wrap'; // Flexbox ile öğeleri sarmak
+      container.appendChild(centeredWrapper);
+
+      // Sonuçları ekleyelim
       filtered.forEach(ep => {
         const epDiv = document.createElement('div');
-        epDiv.className = 'episode';
+        epDiv.className = 'episode'; // Ortalanmış episode div'i
         epDiv.innerHTML = `
-    <img src="${ep.thumbnail}" alt="${ep.title}">
-    <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-    <p class="episode-date">${ep.date}</p>
+      <img src="${ep.thumbnail}" alt="${ep.title}">
+      <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+      <p class="episode-date">${ep.date}</p>
 
-    <!-- Bölüm Konusu Tooltip -->
-    ${ep.description ? `
-      <div class="tooltip-container">
-        <span class="tooltip-text">Bölüm Konusu</span>
-        <div class="tooltip-balloon">${ep.description}</div>
-      </div>
-    ` : ''}
+      <!-- Bölüm Konusu Tooltip -->
+      ${ep.description ? `
+        <div class="tooltip-container">
+          <span class="tooltip-text">Bölüm Konusu</span>
+          <div class="tooltip-balloon">${ep.description}</div>
+        </div>
+      ` : ''}
 
-    <!-- Etiketler -->
-    <p class="episode-tags">
-      ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
-    </p>
-  `;
-        container.appendChild(epDiv);
+      <!-- Etiketler -->
+      <p class="episode-tags">
+        ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+      </p>
+    `;
+
+        centeredWrapper.appendChild(epDiv); // Ortalanmış div'e ekle
       });
-
     }
 
     // Arama Fonksiyonu
