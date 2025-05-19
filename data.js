@@ -26,6 +26,7 @@ const allEpisodes = {
         date: "<p class=\"episode-date\">İlk Vizyona Girişi : 23 Kasım 2004</p>",
         thumbnail: "./img/II01S10E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/625048620697878",
+        description: "Mısır Havayolları Uçuş 648, Yunanistan'ın Atina (Ellinikon) Uluslararası Havaalanından Mısır'ın Kahire Uluslararası Havaalanına gitmek üzere havalandığı sırada kalkıştan on dakika sonra uçak terör örgütü Ebu Nidal tarafından kaçırıldı. Teröristler uçağı Malta'ya götürmek istediler. Teröristleri pasaport kontrolü sırasında bir sürpriz bekliyordu. Maltalıları da sürpriz bekliyordu tabi.",
         tags: ["Uçak", "Uçak Kaçırma", "1985", "Rehine Operasyonu", "Egypt Air Flight 648"]
       }
     ],
