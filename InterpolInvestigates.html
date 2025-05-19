@@ -338,9 +338,9 @@
     <div class="tooltip-and-tags">
       ${ep.description ? `
         <div class="tooltip-container">
-  <span class="tooltip-text">Bölüm Konusu</span>
-  <div class="tooltip-balloon">Bölümün konusu burada görünecek.</div>
-</div>
+          <span class="tooltip-text">Bölüm Konusu</span>
+          <div class="tooltip-balloon">${ep.description}</div> <!-- ep.description burada dinamiktir, JSON'dan gelir -->
+          </div>
           <div class="tooltip-text">${ep.description}</div>
         </div>
       ` : ''}
