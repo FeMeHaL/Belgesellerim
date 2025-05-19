@@ -63,6 +63,11 @@
       padding: 10px;
       box-sizing: border-box;
       border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /* Her içeriği (tooltip-container ve etiketler) ortalar */
     }
 
     .episode img {
@@ -124,13 +129,15 @@
 
     .tooltip-container {
       position: relative;
-      display: inline-block;
-      /* Flex yerine inline-block, metni düzgün hizalamak için */
+      display: flex;
+      /* Flex kullanarak ortalayalım */
+      justify-content: center;
+      /* Yatayda ortala */
+      align-items: center;
+      /* Dikeyde ortala */
       cursor: pointer;
       text-align: center;
-      /* Ortalamak için */
       margin-bottom: 15px;
-      /* Bu şekilde bölüm konusu ile tagler arasına boşluk eklenmiş olur */
       margin: 0;
       flex-shrink: 0;
     }
