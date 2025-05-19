@@ -119,7 +119,7 @@
 
     .tooltip-container {
       position: relative;
-      display: inline-block;
+      display: flex;
       text-align: center;
       margin: 10px auto;
       cursor: pointer;
@@ -296,112 +296,112 @@
   `;
         container.appendChild(epDiv);
       });
-}
+    }
 
-      function loadSeasons(seriesName) {
-        const sidebar = document.getElementById('sidebar');
+    function loadSeasons(seriesName) {
+      const sidebar = document.getElementById('sidebar');
 
-        // Arama kutusunu tekrar ekle
-        sidebar.innerHTML = `
+      // Arama kutusunu tekrar ekle
+      sidebar.innerHTML = `
     <div class="search-container">
       <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
     </div>
   `;
 
-        const seasons = Object.keys(episodes[seriesName])
-          .filter(key => !isNaN(key))
-          .map(key => parseInt(key));
+      const seasons = Object.keys(episodes[seriesName])
+        .filter(key => !isNaN(key))
+        .map(key => parseInt(key));
 
-        seasons.forEach(season => {
-          const yearText = episodes[seriesName].seasonYears?.[season]
-            ? ` (${episodes[seriesName].seasonYears[season]})` : '';
+      seasons.forEach(season => {
+        const yearText = episodes[seriesName].seasonYears?.[season]
+          ? ` (${episodes[seriesName].seasonYears[season]})` : '';
 
-          const btn = document.createElement('button');
-          btn.className = 'season-button';
-          btn.innerText = `${season}. SEZON${yearText}`;
-          btn.onclick = () => loadSeason(season, seriesName);
-          sidebar.appendChild(btn);
-        });
-      }
+        const btn = document.createElement('button');
+        btn.className = 'season-button';
+        btn.innerText = `${season}. SEZON${yearText}`;
+        btn.onclick = () => loadSeason(season, seriesName);
+        sidebar.appendChild(btn);
+      });
+    }
 
 
-      function loadDocumentaries() {
-        const sidebar = document.getElementById('sidebar');
+    function loadDocumentaries() {
+      const sidebar = document.getElementById('sidebar');
 
-        // Tüm içeriği temizleyip önce arama kutusunu ekleyelim
-        sidebar.innerHTML = `
+      // Tüm içeriği temizleyip önce arama kutusunu ekleyelim
+      sidebar.innerHTML = `
     <div class="search-container">
       <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
     </div>
   `;
 
-        // Ardından her bir dizi için buton ekleyelim
-        for (let series in episodes) {
-          const btn = document.createElement('button');
-          btn.className = 'season-button';
-          btn.innerText = series;
-          btn.onclick = () => {
-            loadSeasons(series);
-            loadSeason(1, series);
-          };
-          sidebar.appendChild(btn);
-        }
+      // Ardından her bir dizi için buton ekleyelim
+      for (let series in episodes) {
+        const btn = document.createElement('button');
+        btn.className = 'season-button';
+        btn.innerText = series;
+        btn.onclick = () => {
+          loadSeasons(series);
+          loadSeason(1, series);
+        };
+        sidebar.appendChild(btn);
+      }
+    }
+
+
+    function playVideo(src) {
+      const overlay = document.getElementById('videoOverlay');
+      const video = document.getElementById('episodeVideo');
+
+      if (src.includes("youtube.com")) {
+        const videoId = src.split("v=")[1].split("&")[0];
+        video.src = `https://www.youtube.com/embed/${videoId}`;
+      } else if (src.includes("facebook.com")) {
+        video.src = src;
       }
 
+      overlay.style.display = 'flex';
+    }
 
-      function playVideo(src) {
-        const overlay = document.getElementById('videoOverlay');
-        const video = document.getElementById('episodeVideo');
+    function closeVideo() {
+      const overlay = document.getElementById('videoOverlay');
+      const video = document.getElementById('episodeVideo');
+      overlay.style.display = 'none';
+      video.src = '';  // Videoyu durdurmak için sıfırla
+    }
 
-        if (src.includes("youtube.com")) {
-          const videoId = src.split("v=")[1].split("&")[0];
-          video.src = `https://www.youtube.com/embed/${videoId}`;
-        } else if (src.includes("facebook.com")) {
-          video.src = src;
-        }
+    function searchTag(tag) {
+      filterByTag(tag); // Arama sonuçlarını filtrele
+    }
 
-        overlay.style.display = 'flex';
-      }
+    function filterByTag(tag) {
+      const container = document.getElementById('episodeContainer');
+      container.innerHTML = '';
 
-      function closeVideo() {
-        const overlay = document.getElementById('videoOverlay');
-        const video = document.getElementById('episodeVideo');
-        overlay.style.display = 'none';
-        video.src = '';  // Videoyu durdurmak için sıfırla
-      }
+      const allEpisodesArray = [];
 
-      function searchTag(tag) {
-        filterByTag(tag); // Arama sonuçlarını filtrele
-      }
+      // Sidebar'ı gizleyelim
+      document.getElementById('sidebar').style.transform = "translateX(-100%)";
 
-      function filterByTag(tag) {
-        const container = document.getElementById('episodeContainer');
-        container.innerHTML = '';
-
-        const allEpisodesArray = [];
-
-        // Sidebar'ı gizleyelim
-        document.getElementById('sidebar').style.transform = "translateX(-100%)";
-
-        for (let series in episodes) {
-          for (let season in episodes[series]) {
-            if (Array.isArray(episodes[series][season])) {
-              allEpisodesArray.push(...episodes[series][season]);
-            }
+      for (let series in episodes) {
+        for (let season in episodes[series]) {
+          if (Array.isArray(episodes[series][season])) {
+            allEpisodesArray.push(...episodes[series][season]);
           }
         }
+      }
 
-        const filtered = allEpisodesArray.filter(ep => ep.tags.includes(tag));
+      const filtered = allEpisodesArray.filter(ep => ep.tags.includes(tag));
 
-        if (filtered.length === 0) {
-          container.innerHTML = `<p>"${tag}" etiketiyle eşleşen bölüm bulunamadı.</p>`;
-          return;
-        }
+      if (filtered.length === 0) {
+        container.innerHTML = `<p>"${tag}" etiketiyle eşleşen bölüm bulunamadı.</p>`;
+        return;
+      }
 
-        filtered.forEach(ep => {
-          const epDiv = document.createElement('div');
-          epDiv.className = 'episode';
-          epDiv.innerHTML = ` 
+      filtered.forEach(ep => {
+        const epDiv = document.createElement('div');
+        epDiv.className = 'episode';
+        epDiv.innerHTML = ` 
           <img src="${ep.thumbnail}" alt="${ep.title}">
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
           <p class="episode-date">${ep.date}</p>
@@ -410,48 +410,48 @@
   ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
 </p>
         `;
-          container.appendChild(epDiv);
-        });
+        container.appendChild(epDiv);
+      });
+    }
+
+    // Arama Fonksiyonu
+    function searchEpisodes() {
+      const searchInput = document.getElementById('searchInput').value.toLowerCase();
+      const container = document.getElementById('episodeContainer');
+
+      // Eğer arama kutusu boşsa mevcut sezonu geri yükle
+      if (searchInput.trim() === "") {
+        loadSeason(currentSeason, currentSeries);
+        return;
       }
 
-      // Arama Fonksiyonu
-      function searchEpisodes() {
-        const searchInput = document.getElementById('searchInput').value.toLowerCase();
-        const container = document.getElementById('episodeContainer');
+      container.innerHTML = '';
 
-        // Eğer arama kutusu boşsa mevcut sezonu geri yükle
-        if (searchInput.trim() === "") {
-          loadSeason(currentSeason, currentSeries);
-          return;
+      const allEpisodesArray = [];
+
+      // ❗ Sadece mevcut dizinin tüm sezonlarını tara
+      const seriesData = episodes[currentSeries];
+      for (let season in seriesData) {
+        if (Array.isArray(seriesData[season])) {
+          allEpisodesArray.push(...seriesData[season]);
         }
+      }
 
-        container.innerHTML = '';
+      // Arama filtreleme
+      const filtered = allEpisodesArray.filter(ep =>
+        ep.title.toLowerCase().includes(searchInput)
+      );
 
-        const allEpisodesArray = [];
+      if (filtered.length === 0) {
+        container.innerHTML = `<p>"${searchInput}" ile eşleşen bölüm bulunamadı.</p>`;
+        return;
+      }
 
-        // ❗ Sadece mevcut dizinin tüm sezonlarını tara
-        const seriesData = episodes[currentSeries];
-        for (let season in seriesData) {
-          if (Array.isArray(seriesData[season])) {
-            allEpisodesArray.push(...seriesData[season]);
-          }
-        }
-
-        // Arama filtreleme
-        const filtered = allEpisodesArray.filter(ep =>
-          ep.title.toLowerCase().includes(searchInput)
-        );
-
-        if (filtered.length === 0) {
-          container.innerHTML = `<p>"${searchInput}" ile eşleşen bölüm bulunamadı.</p>`;
-          return;
-        }
-
-        // Sonuçları göster
-        filtered.forEach(ep => {
-          const epDiv = document.createElement('div');
-          epDiv.className = 'episode';
-          epDiv.innerHTML = `
+      // Sonuçları göster
+      filtered.forEach(ep => {
+        const epDiv = document.createElement('div');
+        epDiv.className = 'episode';
+        epDiv.innerHTML = `
       <img src="${ep.thumbnail}" alt="${ep.title}">
       <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
       <p class="episode-date">${ep.date}</p>
@@ -460,17 +460,17 @@
   ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
 </p>
     `;
-          container.appendChild(epDiv);
-        });
-      }
+        container.appendChild(epDiv);
+      });
+    }
 
-      // Sayfa ilk yüklendiğinde
-      window.onload = () => {
-        const defaultSeries = "İnterpol Araştırmaları";
-        loadDocumentaries();
-        loadSeasons(defaultSeries);
-        loadSeason(1, defaultSeries);
-      };
+    // Sayfa ilk yüklendiğinde
+    window.onload = () => {
+      const defaultSeries = "İnterpol Araştırmaları";
+      loadDocumentaries();
+      loadSeasons(defaultSeries);
+      loadSeason(1, defaultSeries);
+    };
   </script>
 </body>
 
