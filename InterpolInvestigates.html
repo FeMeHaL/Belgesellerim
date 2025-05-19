@@ -334,20 +334,18 @@
     <img src="${ep.thumbnail}" alt="${ep.title}">
     <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
     <p class="episode-date">${ep.date}</p>
-
     <div class="tooltip-and-tags">
-      ${ep.description ? `
-        <div class="tooltip-container">
-          <span class="tooltip-text">Bölüm Konusu</span>
-          <div class="tooltip-balloon">${ep.description}</div> <!-- ep.description burada dinamiktir, JSON'dan gelir -->
-          </div>
-          <div class="tooltip-text">${ep.description}</div>
-        </div>
-      ` : ''}
-      <div class="episode-tags">
-        ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
-      </div>
+  ${ep.description ? `
+    <div class="tooltip-container">
+      <span class="tooltip-text">Bölüm Konusu</span>
+      <div class="tooltip-balloon">${ep.description}</div> <!-- ep.description burada dinamiktir, JSON'dan gelir -->
     </div>
+  ` : ''}
+  <div class="episode-tags">
+    ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+  </div>
+</div>
+
   `;
         container.appendChild(epDiv);
       });
