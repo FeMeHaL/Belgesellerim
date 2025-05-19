@@ -88,13 +88,13 @@
     }
 
     .episode-tags {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: inline-flex;
       flex-wrap: wrap;
-      gap: 4px;
+      justify-content: center;
+      /* Ortala */
+      gap: 6px;
+      /* Araları azalt */
     }
-
 
     .episode-title {
       color: #4da6ff;
@@ -141,12 +141,15 @@
     }
 
     .tooltip-and-tags {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      flex-wrap: nowrap;
-      /* ❗ Aynı satıra zorla */
-      gap: 10px;
+      /* Ortala */
+      flex-wrap: wrap;
+      /* Gerekirse sarar */
+      column-gap: 6px;
+      /* Sıkı boşluk */
+      row-gap: 4px;
       margin-top: 10px;
     }
 
@@ -415,10 +418,10 @@
           <img src="${ep.thumbnail}" alt="${ep.title}">
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
           <p class="episode-date">${ep.date}</p>
-<p class="episode-description">${ep.description || ''}</p>
-<p class="episode-tags">
-  ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
-</p>
+          <p class="episode-description">${ep.description || ''}</p>
+          <p class="episode-tags">
+            ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+            </p>
         `;
         container.appendChild(epDiv);
       });
@@ -465,10 +468,10 @@
       <img src="${ep.thumbnail}" alt="${ep.title}">
       <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
       <p class="episode-date">${ep.date}</p>
-<p class="episode-description">${ep.description || ''}</p>
-<p class="episode-tags">
-  ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
-</p>
+      <p class="episode-description">${ep.description || ''}</p>
+      <p class="episode-tags">
+        ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+        </p>
     `;
         container.appendChild(epDiv);
       });
