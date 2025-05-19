@@ -134,11 +134,26 @@
 
     .tooltip-icon {
       font-size: 20px;
-      color: #b87333;
-      /* Kahverengi ton */
+      color: #fff;
+      /* Yazıyı beyaz yapıyoruz */
+      background-color: #8B4513;
+      /* Kahverengi arka plan */
+      padding: 5px 10px;
+      /* İçerik etrafında boşluk */
+      border-radius: 5px;
+      /* Çerçeveye yuvarlatılmış köşe */
+      border: 2px solid #6A4E23;
+      /* Kirli beyaz çerçeve */
+      font-weight: bold;
+      /* Yazıyı kalın yapıyoruz */
       margin-right: 8px;
       vertical-align: middle;
     }
+
+    .tooltip-icon-text {
+      font-size: 14px;
+    }
+
 
     .tooltip-and-tags {
       display: inline-flex;
@@ -297,8 +312,9 @@
 
     <div class="tooltip-and-tags">
       ${ep.description ? `
-        <div class="tooltip-container">
-          <span class="tooltip-icon">ℹ️</span>
+        <div class="tooltip-icon-container">
+		<span class="tooltip-icon-text">Bölüm Konusu</span>
+		</div>
           <div class="tooltip-text">${ep.description}</div>
         </div>
       ` : ''}
