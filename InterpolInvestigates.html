@@ -119,9 +119,10 @@
 
     .tooltip-container {
       position: relative;
-      display: flex;
+      display: inline-flex;
+      /* ✅ blok değil, inline-flex */
       text-align: center;
-      margin: 10px auto;
+      margin: 0;
       cursor: pointer;
     }
 
@@ -160,6 +161,8 @@
       transition: opacity 0.3s;
       font-size: 13px;
       line-height: 1.4;
+      white-space: normal;
+      /* çok uzun kelimeler satırı taşırsa kırılır */
     }
 
     .tooltip-container:hover .tooltip-text {
