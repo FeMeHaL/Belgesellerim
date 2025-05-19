@@ -338,14 +338,14 @@
   ${ep.description ? `
     <div class="tooltip-container">
       <span class="tooltip-text">Bölüm Konusu</span>
-      <div class="tooltip-balloon">${ep.description}</div> <!-- ep.description burada dinamiktir, JSON'dan gelir -->
+      <div class="tooltip-balloon">${ep.description}</div>
     </div>
+    <br> <!-- Burada bölüm konusu ile tagler arasında boşluk ekliyoruz -->
   ` : ''}
   <div class="episode-tags">
     ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
   </div>
 </div>
-
   `;
         container.appendChild(epDiv);
       });
