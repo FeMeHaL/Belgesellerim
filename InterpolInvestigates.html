@@ -4,8 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Dizi Bölümleri</title>
+
+  <!-- Sayfanın stil ayarları -->
   <style>
-    /* CSS stillerini buraya ekleyebilirsiniz */
+    /* Genel gövde stili */
     body {
       margin: 0;
       font-family: sans-serif;
@@ -15,6 +17,7 @@
       flex-wrap: wrap;
     }
 
+    /* Sol menü (sidebar) */
     .sidebar {
       width: 100%;
       max-width: 300px;
@@ -24,9 +27,9 @@
       flex-shrink: 0;
       transition: transform 0.3s ease;
       align-self: flex-start;
-      /* ✨ Burası önemli */
     }
 
+    /* Sezon butonları */
     .season-button {
       background-color: #ff4d4d;
       color: #f1f1f1;
@@ -39,6 +42,7 @@
       font-weight: bold;
     }
 
+    /* İçerik alanı */
     .content {
       flex: 1;
       padding: 20px;
@@ -46,15 +50,16 @@
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
-      transition: margin-left 0.3s ease;
     }
 
+    /* Bölüm numarası */
     .episode-number {
       color: purple;
       font-weight: bold;
       display: inline;
     }
 
+    /* Her bir bölüm kutusu */
     .episode {
       background-color: #2b2b2b;
       width: 100%;
@@ -67,9 +72,9 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      /* Her içeriği (tooltip-container ve etiketler) ortalar */
     }
 
+    /* Bölüm resmi */
     .episode img {
       width: 100%;
       aspect-ratio: 16 / 9;
@@ -79,6 +84,7 @@
       margin: 0 auto;
     }
 
+    /* Açıklama (tooltip) yazısı */
     .episode-description {
       font-style: italic;
       text-align: center;
@@ -86,22 +92,23 @@
       margin: 0 0 5px 0;
     }
 
+    /* Tarih etiketi */
     .episode-date {
       font-weight: bold;
       text-align: center;
-      margin: 0; /* Üst ve alt boşluğu kısıtlayarak sorun çözüldü */
-    line-height: 1.2; /* Satır aralığını sıkılaştır */
-	}
+      margin: 0;
+      line-height: 1.2;
+    }
 
+    /* Etiket kutusu */
     .episode-tags {
       display: inline-flex;
       flex-wrap: wrap;
       justify-content: center;
-      /* Ortala */
       gap: 6px;
-      /* Araları azalt */
     }
 
+    /* Başlık */
     .episode-title {
       color: #4da6ff;
       font-weight: bold;
@@ -110,7 +117,7 @@
       margin-top: 2px;
     }
 
-    /* Yeni Tag Stili */
+    /* Etiket (tag) stilleri */
     .tag {
       display: inline-block;
       background-color: #4da6ff;
@@ -128,34 +135,27 @@
       background-color: #1e90ff;
     }
 
+    /* Tooltip ikonu için container */
     .tooltip-container {
       position: relative;
       display: flex;
-      /* Flex kullanarak ortalayalım */
       justify-content: center;
-      /* Yatayda ortala */
       align-items: center;
-      /* Dikeyde ortala */
       cursor: pointer;
       text-align: center;
       margin: 0;
       flex-shrink: 0;
     }
 
+    /* Tooltip ikon stili */
     .tooltip-icon {
       font-size: 20px;
       color: #fff;
-      /* Yazıyı beyaz yapıyoruz */
       background-color: #8B4513;
-      /* Kahverengi arka plan */
       padding: 5px 10px;
-      /* İçerik etrafında boşluk */
       border-radius: 5px;
-      /* Çerçeveye yuvarlatılmış köşe */
       border: 2px solid #6A4E23;
-      /* Kirli beyaz çerçeve */
       font-weight: bold;
-      /* Yazıyı kalın yapıyoruz */
       margin-right: 8px;
       vertical-align: middle;
     }
@@ -168,23 +168,18 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      /* Ortala */
       flex-wrap: wrap;
-      /* Gerekirse sarar */
       column-gap: 6px;
-      /* Sıkı boşluk */
       row-gap: 0;
       margin-top: 0;
       gap: 6px;
     }
 
+    /* Tooltip balonu */
     .tooltip-text {
-      display: inline-block;
       font-size: 16px;
       font-weight: bold;
       color: #b87333;
-      text-align: center;
-      /* Ortalamayı sağlar */
       padding: 10px 20px;
       background-color: #dcdcdc;
       border: 2px solid #b87333;
@@ -192,32 +187,24 @@
       cursor: pointer;
       transition: background-color 0.3s;
       width: auto;
-      /* Bu, genişliğin sadece içeriğe göre ayarlanmasını sağlar */
       margin: 0 auto;
-      /* Yatayda ortalamayı sağlayacak margin */
       text-align: center;
-      /* Metnin yatayda ortalanması için */
     }
 
     .tooltip-text:hover {
       background-color: #c4c4c4;
-      /* Hoverda arka plan rengi değişsin */
     }
 
-    /* Balon (Tooltip) */
+    /* Balon açıklaması (gizli) */
     .tooltip-balloon {
       visibility: hidden;
       background-color: #b87333;
-      /* Kahverengi arka plan */
       color: #dcdcdc;
-      /* Kirli beyaz yazı rengi */
       text-align: center;
       padding: 10px 20px;
       border-radius: 10px;
-      /* Köşe yuvarlama */
       position: absolute;
       top: 125%;
-      /* Balon yazısının üstüne çıkması için */
       left: 50%;
       transform: translateX(-50%);
       z-index: 1;
@@ -226,22 +213,22 @@
       font-size: 14px;
       width: 200px;
       border: 2px solid #dcdcdc;
-      /* Çerçeve */
     }
 
-    /* Balon (Tooltip) Tıklama ile Görünür Yapma */
+    /* Tooltip görünürlük ayarı */
     .tooltip-container:active .tooltip-balloon,
     .tooltip-container:hover .tooltip-balloon {
       visibility: visible;
       opacity: 1;
     }
 
-    /* Arama Kutusu */
+    /* Arama kutusu container */
     .search-container {
       margin-bottom: 20px;
       text-align: center;
     }
 
+    /* Arama input */
     .search-input {
       padding: 10px;
       font-size: 16px;
@@ -253,7 +240,7 @@
       color: white;
     }
 
-    /* Responsive Ayarlar */
+    /* Responsive düzenlemeler */
     @media (max-width: 768px) {
       .episode {
         flex: 1 1 calc(50% - 20px);
@@ -274,10 +261,9 @@
       }
     }
 
-    /* Video Overlay ve Kapanma Butonu */
+    /* Video oynatıcı overlay */
     .video-overlay {
       display: none;
-      /* Başlangıçta gizle */
       position: fixed;
       top: 0;
       left: 0;
@@ -294,6 +280,7 @@
       height: 80%;
     }
 
+    /* Kapatma butonu */
     .video-overlay .close-btn {
       position: absolute;
       top: 20px;
@@ -307,29 +294,34 @@
 
 <body>
 
+  <!-- Sol panel -->
   <div class="sidebar" id="sidebar">
-    <!-- Arama Kutusu -->
     <div class="search-container">
       <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..."
         onkeyup="searchEpisodes()">
     </div>
   </div>
+
+  <!-- İçerik alanı -->
   <div class="content" id="episodeContainer"></div>
 
-  <!-- Video Overlay -->
+  <!-- Video oynatıcı -->
   <div class="video-overlay" id="videoOverlay">
     <span class="close-btn" onclick="closeVideo()">×</span>
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
 
+  <!-- Bölüm verileri -->
   <script src="data.js"></script>
 
+  <!-- Davranışlar (JavaScript) -->
   <script>
     let currentSeries = "";
     let currentSeason = 1;
 
     const episodes = allEpisodes;
 
+    // Sezon yükleme
     function loadSeason(season, seriesName) {
       currentSeries = seriesName;
       currentSeason = season;
@@ -351,25 +343,25 @@
     <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
     <p class="episode-date">${ep.date}</p>
     <div class="tooltip-and-tags">
-  ${ep.description ? `
-    <div class="tooltip-container">
-      <span class="tooltip-text">Bölüm Konusu</span>
-      <div class="tooltip-balloon">${ep.description}</div>
+      ${ep.description ? `
+        <div class="tooltip-container">
+          <span class="tooltip-text">Bölüm Konusu</span>
+          <div class="tooltip-balloon">${ep.description}</div>
+        </div>
+      ` : ''}
+      <div class="episode-tags">
+        ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+      </div>
     </div>
-  ` : ''}
-  <div class="episode-tags">
-    ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
-  </div>
-</div>
   `;
         container.appendChild(epDiv);
       });
     }
 
+    // Sezon butonlarını yükle
     function loadSeasons(seriesName) {
       const sidebar = document.getElementById('sidebar');
 
-      // Arama kutusunu tekrar ekle
       sidebar.innerHTML = `
     <div class="search-container">
       <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
@@ -392,18 +384,16 @@
       });
     }
 
-
+    // Dizi listesini yükle
     function loadDocumentaries() {
       const sidebar = document.getElementById('sidebar');
 
-      // Tüm içeriği temizleyip önce arama kutusunu ekleyelim
       sidebar.innerHTML = `
     <div class="search-container">
       <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
     </div>
   `;
 
-      // Ardından her bir dizi için buton ekleyelim
       for (let series in episodes) {
         const btn = document.createElement('button');
         btn.className = 'season-button';
@@ -416,7 +406,7 @@
       }
     }
 
-
+    // Video oynatma
     function playVideo(src) {
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
@@ -431,24 +421,26 @@
       overlay.style.display = 'flex';
     }
 
+    // Video kapatma
     function closeVideo() {
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
       overlay.style.display = 'none';
-      video.src = '';  // Videoyu durdurmak için sıfırla
+      video.src = '';
     }
 
+    // Etikete tıklanınca arama yap
     function searchTag(tag) {
-      filterByTag(tag); // Arama sonuçlarını filtrele
+      filterByTag(tag);
     }
 
+    // Belirli etikete göre filtreleme
     function filterByTag(tag) {
       const container = document.getElementById('episodeContainer');
       container.innerHTML = '';
 
       const allEpisodesArray = [];
 
-      // Sidebar'ı gizleyelim
       document.getElementById('sidebar').style.transform = "translateX(-100%)";
 
       for (let series in episodes) {
@@ -466,39 +458,32 @@
         return;
       }
 
-      // Sonuçları ekleyelim
       filtered.forEach(ep => {
         const epDiv = document.createElement('div');
-        epDiv.className = 'episode'; // Ortalanmış episode div'i
+        epDiv.className = 'episode';
         epDiv.innerHTML = `
       <img src="${ep.thumbnail}" alt="${ep.title}">
       <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
       <p class="episode-date">${ep.date}</p>
-
-      <!-- Bölüm Konusu Tooltip -->
       ${ep.description ? `
         <div class="tooltip-container">
           <span class="tooltip-text">Bölüm Konusu</span>
           <div class="tooltip-balloon">${ep.description}</div>
         </div>
       ` : ''}
-
-      <!-- Etiketler -->
       <p class="episode-tags">
         ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
       </p>
     `;
-
-        container.appendChild(epDiv);  // Doğru div'e ekleme yapıyoruz
+        container.appendChild(epDiv);
       });
     }
 
-    // Arama Fonksiyonu
+    // Başlığa göre arama
     function searchEpisodes() {
       const searchInput = document.getElementById('searchInput').value.toLowerCase();
       const container = document.getElementById('episodeContainer');
 
-      // Eğer arama kutusu boşsa mevcut sezonu geri yükle
       if (searchInput.trim() === "") {
         loadSeason(currentSeason, currentSeries);
         return;
@@ -508,7 +493,6 @@
 
       const allEpisodesArray = [];
 
-      // ❗ Sadece mevcut dizinin tüm sezonlarını tara
       const seriesData = episodes[currentSeries];
       for (let season in seriesData) {
         if (Array.isArray(seriesData[season])) {
@@ -516,7 +500,6 @@
         }
       }
 
-      // Arama filtreleme
       const filtered = allEpisodesArray.filter(ep =>
         ep.title.toLowerCase().includes(searchInput)
       );
@@ -526,7 +509,6 @@
         return;
       }
 
-      // Sonuçları göster
       filtered.forEach(ep => {
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
@@ -534,25 +516,21 @@
     <img src="${ep.thumbnail}" alt="${ep.title}">
     <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
     <p class="episode-date">${ep.date}</p>
-
-    <!-- Bölüm Konusu Tooltip -->
     ${ep.description ? `
       <div class="tooltip-container">
         <span class="tooltip-text">Bölüm Konusu</span>
         <div class="tooltip-balloon">${ep.description}</div>
       </div>
     ` : ''}
-
     <p class="episode-tags">
       ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
     </p>
   `;
-
         container.appendChild(epDiv);
       });
     }
 
-    // Sayfa ilk yüklendiğinde
+    // Sayfa ilk açıldığında çalışacak kod
     window.onload = () => {
       const defaultSeries = "İnterpol Araştırmaları";
       loadDocumentaries();
