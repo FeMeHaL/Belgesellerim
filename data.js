@@ -45,7 +45,34 @@ const allEpisodes = {
         description: "V2, teknik adı Aggregat -4 ( A4 ) olan, dünyanın ilk uzun menzilli [ 4 ] güdümlü balistik füzesiydi. Sıvı yakıtlı bir roket motoruyla çalışan füze, İkinci Dünya Savaşı sırasında Nazi Almanyası'nda bir intikam silahı olarak geliştirildi ve Müttefiklerin Alman şehirlerini bombalamasına misilleme olarak Müttefik şehirlerine saldırmak üzere görevlendirildi. V2 roketi ayrıca 20 Haziran 1944'te MW 18014'ün dikey fırlatılmasıyla Kármán hattını (uzayın kenarı) geçerek uzaya giden ilk yapay nesne oldu.",
         tags: ["Roket", "Balistik Füze", "1944", "Mittelwerk", "Peenemünde Ordu Araştırma Merkezi"]
       }
-    ]
+    ],
+    seasonYears: {
+      1: 2013
+    }
+  },
+  
+    "Göklerin Kahramanları": {
+    1: [
+      {
+        title: "<br>GÖKLERİN KAHRAMANLARI<br><span class='episode-number'>[001]</span> 1. Sezon 1. Bölüm - (George Beurling) - Spitfire Zaferi",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 27 Eylül 2012</p>",
+        thumbnail: "./img/GK01S01E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.122157421844711/122151625178624",
+        description: "Kanadalı savaş pilotu George Beurling, savaş pilotu olarak eşsiz becerisiyle stratejik öneme sahip Malta adasını kurtarmaya yardımcı olur. Mükemmel görüşü, havadaki çevikliği, benzeri görülmemiş nişancılığı ve kuralları çiğnemeye istekli olması onu II. Dünya Savaşı'nın en büyük kahramanlarından biri yaptı. Yanında uçan pilotların tanıklıkları ve sürükleyici canlandırmalarla Hava Kahramanları, Kanada'nın en büyük kahramanı George Beurling'in hikayesini aydınlatıcı ayrıntılarla anlatıyor.",
+        tags: ["Uçak", "Kanada", "1942", "Malta", "Spitfire"]
+      },
+	  {
+        title: "<br>GÖKLERİN KAHRAMANLARI<br><span class='episode-number'>[002]</span> 1. Sezon 2. Bölüm - (Douglas Bader) - İngiltere Savaşı",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 20 Eylül 2012</p>",
+        thumbnail: "./img/GK01S02E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.131482817578838/131474210913032",
+        description: "Britanya Savaşı Kahramanı ve Filo Komutanı Douglas Bader'ın savaş uçaklarını uçurması bir yana, yürüyebilmesi bile beklenmiyordu. Başarısız bir havacılık gösterisi sırasında düşen Bader her iki bacağını da kaybetti, ancak kararlılığını kaybetmedi. Douglas Bader'ın kanatlarını nasıl geri kazandığını ve sonunda bir Filo Komutanı ve Britanya'nın en ünlü savaş kahramanlarından biri olduğunu anlatan ilham verici bir hikayeyi anlatıyor.",
+        tags: ["Uçak", "Savaş Esiri", "1941", "Birleşik Krallık", "Hurricane"]
+      }
+    ],
+    seasonYears: {
+      1: 2012
+    }
   },
 
   "İnterpol Araştırmaları": {
