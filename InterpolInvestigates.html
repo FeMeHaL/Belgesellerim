@@ -114,7 +114,7 @@
       font-weight: bold;
       cursor: pointer;
       text-align: center;
-      margin-top: 5px;
+      margin-top: 8px;
     }
 
     /* Etiket (tag) stilleri */
@@ -180,7 +180,7 @@
       font-size: 16px;
       font-weight: bold;
       color: #b87333;
-      padding: 10px 20px;
+      padding: 5px 10px;
       background-color: #dcdcdc;
       border: 2px solid #b87333;
       border-radius: 8px;
@@ -189,8 +189,10 @@
       width: auto;
       margin: 0 auto;
       text-align: center;
-	  display: inline-block;     /* boşluk kontrolü */
-	  line-height: 1.1;          /* satır aralığını daralt */
+      display: inline-block;
+      /* boşluk kontrolü */
+      line-height: 1.1;
+      /* satır aralığını daralt */
     }
 
     .tooltip-text:hover {
@@ -206,7 +208,7 @@
       padding: 10px 20px;
       border-radius: 10px;
       position: absolute;
-      top: 125%;
+      top: 100%;
       left: 50%;
       transform: translateX(-50%);
       z-index: 1;
@@ -341,7 +343,9 @@
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
         epDiv.innerHTML = `
-    <img src="${ep.thumbnail}" alt="${ep.title}">
+    <div class="episode-image" onclick="playVideo('${ep.video}')">
+  <img src="${ep.thumbnail}" alt="${ep.title}">
+</div>
     <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
     <p class="episode-date">${ep.date}</p>
     <div class="tooltip-and-tags">
@@ -464,7 +468,10 @@
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
         epDiv.innerHTML = `
-      <img src="${ep.thumbnail}" alt="${ep.title}">
+      <div class="episode-image" onclick="playVideo('${ep.video}')">
+	  <img src="${ep.thumbnail}" alt="${ep.title}">
+	  </div>
+
       <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
       <p class="episode-date">${ep.date}</p>
       ${ep.description ? `
@@ -515,7 +522,10 @@
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
         epDiv.innerHTML = `
-    <img src="${ep.thumbnail}" alt="${ep.title}">
+    <div class="episode-image" onclick="playVideo('${ep.video}')">
+  <img src="${ep.thumbnail}" alt="${ep.title}">
+</div>
+
     <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
     <p class="episode-date">${ep.date}</p>
     ${ep.description ? `
