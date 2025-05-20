@@ -18,6 +18,35 @@ const allEpisodes = {
       }
     ]
   },
+  
+    "Nazilerin Mega Yapıları": {
+    1: [
+      {
+        title: "<br>NAZİLERİN MEGA YAPILARI<br><span class='episode-number'>[001]</span> 1. Sezon 1. Bölüm - (Atlantic Wall) - Atlantik Duvarı / Savunma Hattı",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 1 Temmuz 2013</p>",
+        thumbnail: "./img/NM01S01E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.986959495364495/233550168915635",
+        description: "Atlantik Duvarı, Nazi Almanyası tarafından 1942 ile 1944 yılları arasında, II. Dünya Savaşı sırasında Birleşik Krallık'tan Nazi işgali altındaki Avrupa'ya yönelik beklenen Müttefik işgaline karşı savunma olarak kıta Avrupası ve İskandinavya kıyıları boyunca inşa edilen kapsamlı bir kıyı savunma ve tahkimat sistemiydi.",
+        tags: ["Kıyı Savunması", "Tahkimat", "1942", "D-Günü", "Topçu Bataryaları"]
+      },
+	  {
+        title: "<br>NAZİLERİN MEGA YAPILARI<br><span class='episode-number'>[002]</span> 1. Sezon 2. Bölüm - (U-Boat Base) - Denizaltı Üssü / Hitler'in Sığınakları",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 18 Kasım 2013</p>",
+        thumbnail: "./img/NM01S02E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1322528934837042",
+        description: "Lorient Denizaltı Üssü, Fransa'nın Lorient kentinde bulunan bir denizaltı deniz üssüydü. 1941'de Alman Kriegsmarine tarafından inşa edildi ve 1943'e kadar genişletilmeye devam etti. Alman yenilgisinden sonra Fransız Donanması tarafından kullanıldı. 1995'te hizmet dışı bırakıldı ve sivil kullanıma dönüştürüldü.",
+        tags: ["Lorient Denizaltı Üssü", "Dom Sığınakları", "1941", "Jacques Stosskopf", "Keroman Denizaltı Müzesi"]
+      },
+      {
+        title: "<br>NAZİLERİN MEGA YAPILARI<br><span class='episode-number'>[003]</span> 1. Sezon 3. Bölüm - (V2 Rocket Bases) - V2 Roket Rampaları/ İntikam Silahları",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 25 Kasım 2013</p>",
+        thumbnail: "./img/NM01S03E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1031219407729058",
+        description: "V2, teknik adı Aggregat -4 ( A4 ) olan, dünyanın ilk uzun menzilli [ 4 ] güdümlü balistik füzesiydi. Sıvı yakıtlı bir roket motoruyla çalışan füze, İkinci Dünya Savaşı sırasında Nazi Almanyası'nda bir intikam silahı olarak geliştirildi ve Müttefiklerin Alman şehirlerini bombalamasına misilleme olarak Müttefik şehirlerine saldırmak üzere görevlendirildi. V2 roketi ayrıca 20 Haziran 1944'te MW 18014'ün dikey fırlatılmasıyla Kármán hattını (uzayın kenarı) geçerek uzaya giden ilk yapay nesne oldu.",
+        tags: ["Roket", "Balistik Füze", "1944", "Mittelwerk", "Peenemünde Ordu Araştırma Merkezi"]
+      }
+    ]
+  },
 
   "İnterpol Araştırmaları": {
     1: [
