@@ -22,7 +22,7 @@ const allEpisodes = {
   "İnterpol Araştırmaları": {
     1: [
       {
-        title: "İnterpol Araştırmaları<br><span class='episode-number'>[010]</span> 1. Sezon 10. Bölüm<br>(Terror in the Skies)<br>Göklerdeki Terör",
+        title: "<br>İNTERPOL ARAŞTIRMALARI<br><span class='episode-number'>[010]</span> 1. Sezon 10. Bölüm<br>(Terror in the Skies)<br>Göklerdeki Terör",
         date: "<p class=\"episode-date\">İlk Vizyona Girişi : 23 Kasım 2004</p>",
         thumbnail: "./img/II01S10E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/625048620697878",
