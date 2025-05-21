@@ -83,7 +83,7 @@ const allEpisodes = {
         thumbnail: "./img/KillingKennedy2.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/183633649030421",
         description: "Bill O'Reilly ve Martin Dugard'ın en çok satan kitabından uyarlanan bu şok edici gerilim filmi, başrollerinde Rob Lowe ve Ginnifer Goodwin'i barındırıyor. John F. Kennedy (Lowe) ABD başkanı olmaya yükselirken, eski bir Deniz Piyadesi Amerika'dan hayal kırıklığına uğrar. Yolları sonunda kesiştiğinde, JFK suikastı ve ürpertici sonrasını konu alan bu büyüleyici filmde görüldüğü gibi tarihin seyri sonsuza dek değişir.",
-	    fragman: "<a href='https://www.youtube.com/watch?v=FHZqXcPZJOE&ab_channel=NationalGeographic' target='_blank' title='Killing Kennedy | National Geographic' onclick='window.open(this.href, \"_blank\", \"fullscreen=yes, scrollbars=yes\"); return false;'><img src='./img/video-icon.png' alt='fragman Icon' style='width: 35px; height: 35px; margin-right: 10px; vertical-align: middle; float: left;' /></a>",
+	    fragman: "<a href='https://www.youtube.com/watch?v=FHZqXcPZJOE&ab_channel=NationalGeographic' target='_blank' title='FRAGMAN : Killing Kennedy | National Geographic' onclick='window.open(this.href, \"_blank\", \"fullscreen=yes, scrollbars=yes\"); return false;'><img src='./img/video-icon.png' alt='fragman Icon' style='width: 35px; height: 35px; margin-right: 10px; vertical-align: middle; float: left;' /></a>",
         tags: ["Kennedy", "Biyografi", "1963", "Gerilim", "Drama"]
       }
     ],
