@@ -555,27 +555,37 @@
       }
 
       filtered.forEach(ep => {
-        const epDiv = document.createElement('div');
-        epDiv.className = 'episode';
-        epDiv.innerHTML = `
+  const epDiv = document.createElement('div');
+  epDiv.className = 'episode';
+
+  // Temiz HTML şablon
+  epDiv.innerHTML = `
     <div class="episode-image" onclick="playVideo('${ep.video}')">
-  <img src="${ep.thumbnail}" alt="${ep.title}">
-</div>
+      <img src="${ep.thumbnail}" alt="${stripHTML(ep.title)}">
+    </div>
 
     <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-    <p class="episode-date">${ep.date}</p>
+    <p class="episode-date">${stripHTML(ep.date)}</p>
+
     ${ep.description ? `
       <div class="tooltip-container">
         <span class="tooltip-text">Bölüm Konusu</span>
         <div class="tooltip-balloon">${ep.description}</div>
-      </div>
-    ` : ''}
+      </div>` : ''
+    }
+
+    ${ep.fragman ? `
+      <div class="fragman-link">${ep.fragman}</div>` : ''
+    }
+
     <p class="episode-tags">
       ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
     </p>
   `;
-        container.appendChild(epDiv);
-      });
+
+  container.appendChild(epDiv);
+});
+
     }
 
     // Sayfa ilk açıldığında çalışacak kod
