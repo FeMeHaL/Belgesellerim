@@ -384,6 +384,9 @@
 </div>
     <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
     <p class="episode-date">${ep.date}</p>
+	${ep.fragman ? `
+  <div class="fragman-link">${ep.fragman}</div>` : ''
+}
     <div class="tooltip-and-tags">
       ${ep.description ? `
         <div class="tooltip-container">
@@ -510,6 +513,9 @@
 
       <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
       <p class="episode-date">${ep.date}</p>
+	  ${ep.fragman ? `
+  <div class="fragman-link">${ep.fragman}</div>` : ''
+}
       ${ep.description ? `
         <div class="tooltip-container">
           <span class="tooltip-text">Bölüm Konusu</span>
@@ -566,6 +572,9 @@
 
     <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
     <p class="episode-date">${stripHTML(ep.date)}</p>
+	${ep.fragman ? `
+  <div class="fragman-link">${ep.fragman}</div>` : ''
+}
 
     ${ep.description ? `
       <div class="tooltip-container">
@@ -573,11 +582,6 @@
         <div class="tooltip-balloon">${ep.description}</div>
       </div>` : ''
     }
-
-    ${ep.fragman ? `
-      <div class="fragman-link">${ep.fragman}</div>` : ''
-    }
-
     <p class="episode-tags">
       ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
     </p>
