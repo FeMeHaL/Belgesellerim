@@ -82,7 +82,7 @@
       border-radius: 4px;
       display: block;
       margin: 0 auto;
-	  cursor: pointer;
+      cursor: pointer;
     }
 
     /* Açıklama (tooltip) yazısı */
@@ -118,40 +118,40 @@
       margin-top: 8px;
     }
 
-.fragman-link {
-  display: inline-block;
-  text-decoration: none;
-  margin-top: 10px;
-}
+    .fragman-link {
+      display: inline-block;
+      text-decoration: none;
+      margin-top: 3px;
+    }
 
-.fragman-badge {
-  width: 180px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease;
-  background: #fff;
-}
+    .fragman-badge {
+      width: 180px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease;
+      background: #fff;
+    }
 
-.fragman-badge:hover {
-  transform: scale(1.05);
-}
+    .fragman-badge:hover {
+      transform: scale(1.05);
+    }
 
-.fragman-badge img {
-  width: 100%;
-  height: 100px;
-  object-fit: cover;
-}
+    .fragman-badge img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+    }
 
-.fragman-title {
-  padding: 8px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #333;
-  background-color: #f0f0f0;
-  text-align: center;
-}
+    .fragman-title {
+      padding: 8px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #333;
+      background-color: #f0f0f0;
+      text-align: center;
+    }
 
     /* Etiket (tag) stilleri */
     .tag {
@@ -386,7 +386,7 @@
     <p class="episode-date">${ep.date}</p>
 	${ep.fragman ? `
   <div class="fragman-link">${ep.fragman}</div>` : ''
-}
+          }
     <div class="tooltip-and-tags">
       ${ep.description ? `
         <div class="tooltip-container">
@@ -515,7 +515,7 @@
       <p class="episode-date">${ep.date}</p>
 	  ${ep.fragman ? `
   <div class="fragman-link">${ep.fragman}</div>` : ''
-}
+          }
       ${ep.description ? `
         <div class="tooltip-container">
           <span class="tooltip-text">Bölüm Konusu</span>
@@ -561,11 +561,11 @@
       }
 
       filtered.forEach(ep => {
-  const epDiv = document.createElement('div');
-  epDiv.className = 'episode';
+        const epDiv = document.createElement('div');
+        epDiv.className = 'episode';
 
-  // Temiz HTML şablon
-  epDiv.innerHTML = `
+        // Temiz HTML şablon
+        epDiv.innerHTML = `
     <div class="episode-image" onclick="playVideo('${ep.video}')">
       <img src="${ep.thumbnail}" alt="${stripHTML(ep.title)}">
     </div>
@@ -574,21 +574,21 @@
     <p class="episode-date">${stripHTML(ep.date)}</p>
 	${ep.fragman ? `
   <div class="fragman-link">${ep.fragman}</div>` : ''
-}
+          }
 
     ${ep.description ? `
       <div class="tooltip-container">
         <span class="tooltip-text">Bölüm Konusu</span>
         <div class="tooltip-balloon">${ep.description}</div>
       </div>` : ''
-    }
+          }
     <p class="episode-tags">
       ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
     </p>
   `;
 
-  container.appendChild(epDiv);
-});
+        container.appendChild(epDiv);
+      });
 
     }
 
