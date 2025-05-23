@@ -455,9 +455,10 @@
           btn.className = 'season-button';
           btn.innerText = series;
           btn.onclick = () => {
-            loadSeasons(series);
-            loadSeason(0, series);
-          };
+      loadSeasons(series);
+      const seasonKey = Object.keys(episodes[series]).find(k => !isNaN(k)); // ilk sezonu bul
+      loadSeason(seasonKey, series);
+    };
           sidebar.appendChild(btn);
         }
       }
