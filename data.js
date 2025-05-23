@@ -112,10 +112,18 @@ const allEpisodes = {
        },
 	  {
         title: "<br>İNSİDE 9/11<br><span class='episode-number'>[003]</span> 3. Bölüm - Sıfır Saati",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 8 Kasım 2005</p>",
-          thumbnail: "./img/I91101S03E.jpg",
-          video: "https://www.dailymotion.com/embed/video/x8dei14",
-        description: "...",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 8 Kasım 2005</p>",
+        thumbnail: "./img/I91101S03E.jpg",
+        video: "https://www.dailymotion.com/embed/video/x8dei14",
+        description: "11 Eylül 2001'de, Amerika Birleşik Devletleri'nde iç hatlar uçuşu gerçekleştirilen dört uçak kaçırıldı. American Airlines'ın 11 sefer sayılı uçuşu ile United Airlines'ın 175 sefer sayılı uçuşu New York'taki Dünya Ticaret Merkezi'nin iki kulesine çarptırılırken, iki kulenin de yıkılmasına yol açtı. American Airlines'ın 77 sefer sayılı uçuşu, Arlington County'deki Pentagon'a çarparken, Washington, DC'de bulunan Amerikan Kongre Binası veya Beyaz Saray'a çarptırılması planlanan United Airlines'ın 93 sefer sayılı uçuşu ise yolcuların kalkışması sonucu Pensilvanya'daki Somerset County'e düştü. Saldırılar sonucunda, uçakları kaçıran 19 kişi dahil 2.996 kişi hayatını kaybetti, 6.000'den fazla kişiyse yaralandı.",
+        tags: ["11 Eylül", "El Kaide", "2005", "Terör", "A.B.D."]
+       },
+	  {
+        title: "<br>İNSİDE 9/11<br><span class='episode-number'>[004]</span> 4. Bölüm - Oyunun Sonu",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 8 Kasım 2005</p>",
+        thumbnail: "./img/I91101S04E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/165963690797417",
+        description: "16 Eylül günü bin Ladin tarafından yapılan açıklamada saldırıların arkasında kendisinin olmadığını belirtilse de, 29 Ekim 2004'te yayınlanan videosunda ilk kez saldırıların sorumluluğunu üstlendi ve uçakları kaçıran 19 kişiyi bizzat kendisinin eğittiğini söyledi. FBI tarafından yürütülen araştırma neticesinde saldırıları gerçekleştiren kişilerin, bin Ladin'in liderliğindeki el-Kaide ile bağlantılı olduğu belirlendi. Amerika Birleşik Devletleri tarafından Afganistan'daki Taliban rejimini sonlandırılmak için Terörizmle Savaş adı altında bir kampanya başlatıldı. 7 Ekim 2001'de, Afganistan'daki Taliban ve el-Kaide hedeflerinin Amerikan ve Britanya kuvvetleri tarafından bombalanmasıyla Afganistan Savaşı fiilen başlamış oldu. Kuzey İttifakı ile birlikte hareket eden koalisyon güçleri, Kasım 2001'de başkent Kâbil'i ele geçirip Afganistan İslam Emirliği'ni yıkarak Taliban yönetimine son verdi.Terörizmle Savaş'ın başlamasının ardından el-Kaide'nin hem yönetici kademesinde hem de militanlarında kayıplar yaşanmaya başlansa da örgütün faaliyetleri devam etti. 22 Aralık 2001'de, Paris'ten Miami'ye gerçekleşen American Airlines'ın 63 sefer sayılı uçuşu sırasında, ayakkabısında sakladığı bombayı patlatmaya çalışan bir el-Kaide üyesinin bu girişimi kabin memurları ve yolcular tarafından engellendi. 11 Nisan 2002'de, Tunus'a bağlı Cerbe adasındaki El-Griba Sinagogu'na el-Kaide'ye bağlı bir kişi tarafından düzenlenen intihar saldırısı, 21 kişinin ölümüne yol açtı.",
         tags: ["11 Eylül", "El Kaide", "2005", "Terör", "A.B.D."]
        }
     ],

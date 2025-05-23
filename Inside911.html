@@ -419,11 +419,14 @@
       const video = document.getElementById('episodeVideo');
 
       if (src.includes("youtube.com")) {
-        const videoId = src.split("v=")[1].split("&")[0];
-        video.src = `https://www.youtube.com/embed/${videoId}`;
-      } else if (src.includes("facebook.com")) {
-        video.src = src;
-      }
+    const videoId = src.split("v=")[1].split("&")[0];
+    video.src = `https://www.youtube.com/embed/${videoId}`;
+  } else if (src.includes("facebook.com")) {
+    video.src = src;
+  } else if (src.includes("dailymotion.com")) {
+    const videoId = src.split("/video/")[1]?.split("_")[0];
+    video.src = `https://www.dailymotion.com/embed/video/${videoId}`;
+  }
 
       overlay.style.display = 'flex';
     }
