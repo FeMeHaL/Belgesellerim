@@ -76,7 +76,7 @@ const allEpisodes = {
   },
   
     "Kennedy Suikasti": {
-    1: [
+    0: [
       {
         title: "<br>KENNEDY SUİKASTİ<br>(Killing Kennedy)",
         date: "<p class=\"episode-date\">İlk Vizyona Girişi : 10 Kasım 2013</p>",
@@ -88,7 +88,7 @@ const allEpisodes = {
       }
     ],
     seasonYears: {
-      1: 2013
+      0: 2013
     }
   },
 

@@ -121,7 +121,8 @@
     .fragman-link {
       display: inline-block;
       text-decoration: none;
-      margin: 5px 0 20px 0; /* üst:5px, sağ:0, alt:20px, sol:0 */
+      margin: 5px 0 20px 0;
+      /* üst:5px, sağ:0, alt:20px, sol:0 */
     }
 
     .fragman-badge {
@@ -417,96 +418,106 @@
         .filter(key => !isNaN(key))
         .map(key => parseInt(key));
 
-      seasons.forEach(season => {
-        const yearText = episodes[seriesName].seasonYears?.[season]
-          ? ` (${episodes[seriesName].seasonYears[season]})` : '';
-
+      // 👇 Sezon sayısını kontrol et
+      if (seasons.length === 1 && (seasons[0] === 0 || seasons[0] === 1)) {
         const btn = document.createElement('button');
         btn.className = 'season-button';
-        btn.innerText = `${season}. SEZON${yearText}`;
-        btn.onclick = () => loadSeason(season, seriesName);
+        btn.innerText = 'TEK SEZON';
+        btn.onclick = () => loadSeason(seasons[0], seriesName);
         sidebar.appendChild(btn);
-      });
-    }
+      } else {
+        // Çoklu sezon durumu
 
-    // Dizi listesini yükle
-    function loadDocumentaries() {
-      const sidebar = document.getElementById('sidebar');
+        seasons.forEach(season => {
+          const yearText = episodes[seriesName].seasonYears?.[season]
+            ? ` (${episodes[seriesName].seasonYears[season]})` : '';
 
-      sidebar.innerHTML = `
+          const btn = document.createElement('button');
+          btn.className = 'season-button';
+          btn.innerText = `${season}. SEZON${yearText}`;
+          btn.onclick = () => loadSeason(season, seriesName);
+          sidebar.appendChild(btn);
+        });
+      }
+
+      // Dizi listesini yükle
+      function loadDocumentaries() {
+        const sidebar = document.getElementById('sidebar');
+
+        sidebar.innerHTML = `
     <div class="search-container">
       <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
     </div>
   `;
 
-      for (let series in episodes) {
-        const btn = document.createElement('button');
-        btn.className = 'season-button';
-        btn.innerText = series;
-        btn.onclick = () => {
-          loadSeasons(series);
-          loadSeason(1, series);
-        };
-        sidebar.appendChild(btn);
-      }
-    }
-
-    // Video oynatma
-    function playVideo(src) {
-      const overlay = document.getElementById('videoOverlay');
-      const video = document.getElementById('episodeVideo');
-
-      if (src.includes("youtube.com")) {
-        const videoId = src.split("v=")[1].split("&")[0];
-        video.src = `https://www.youtube.com/embed/${videoId}`;
-      } else if (src.includes("facebook.com")) {
-        video.src = src;
-      }
-
-      overlay.style.display = 'flex';
-    }
-
-    // Video kapatma
-    function closeVideo() {
-      const overlay = document.getElementById('videoOverlay');
-      const video = document.getElementById('episodeVideo');
-      overlay.style.display = 'none';
-      video.src = '';
-    }
-
-    // Etikete tıklanınca arama yap
-    function searchTag(tag) {
-      filterByTag(tag);
-    }
-
-    // Belirli etikete göre filtreleme
-    function filterByTag(tag) {
-      const container = document.getElementById('episodeContainer');
-      container.innerHTML = '';
-
-      const allEpisodesArray = [];
-
-      document.getElementById('sidebar').style.transform = "translateX(-100%)";
-
-      for (let series in episodes) {
-        for (let season in episodes[series]) {
-          if (Array.isArray(episodes[series][season])) {
-            allEpisodesArray.push(...episodes[series][season]);
-          }
+        for (let series in episodes) {
+          const btn = document.createElement('button');
+          btn.className = 'season-button';
+          btn.innerText = series;
+          btn.onclick = () => {
+            loadSeasons(series);
+            loadSeason(1, series);
+          };
+          sidebar.appendChild(btn);
         }
       }
 
-      const filtered = allEpisodesArray.filter(ep => ep.tags.includes(tag));
+      // Video oynatma
+      function playVideo(src) {
+        const overlay = document.getElementById('videoOverlay');
+        const video = document.getElementById('episodeVideo');
 
-      if (filtered.length === 0) {
-        container.innerHTML = `<p>"${tag}" etiketiyle eşleşen bölüm bulunamadı.</p>`;
-        return;
+        if (src.includes("youtube.com")) {
+          const videoId = src.split("v=")[1].split("&")[0];
+          video.src = `https://www.youtube.com/embed/${videoId}`;
+        } else if (src.includes("facebook.com")) {
+          video.src = src;
+        }
+
+        overlay.style.display = 'flex';
       }
 
-      filtered.forEach(ep => {
-        const epDiv = document.createElement('div');
-        epDiv.className = 'episode';
-        epDiv.innerHTML = `
+      // Video kapatma
+      function closeVideo() {
+        const overlay = document.getElementById('videoOverlay');
+        const video = document.getElementById('episodeVideo');
+        overlay.style.display = 'none';
+        video.src = '';
+      }
+
+      // Etikete tıklanınca arama yap
+      function searchTag(tag) {
+        filterByTag(tag);
+      }
+
+      // Belirli etikete göre filtreleme
+      function filterByTag(tag) {
+        const container = document.getElementById('episodeContainer');
+        container.innerHTML = '';
+
+        const allEpisodesArray = [];
+
+        document.getElementById('sidebar').style.transform = "translateX(-100%)";
+
+        for (let series in episodes) {
+          for (let season in episodes[series]) {
+            if (Array.isArray(episodes[series][season])) {
+              allEpisodesArray.push(...episodes[series][season]);
+            }
+          }
+        }
+
+        const filtered = allEpisodesArray.filter(ep => ep.tags.includes(tag));
+
+        if (filtered.length === 0) {
+          container.innerHTML = `<p>"${tag}" etiketiyle eşleşen bölüm bulunamadı.</p>`;
+          return;
+        }
+
+        filtered.forEach(ep => {
+          const epDiv = document.createElement('div');
+          epDiv.className = 'episode';
+          epDiv.innerHTML = `
       <div class="episode-image" onclick="playVideo('${ep.video}')">
 	  <img src="${ep.thumbnail}" alt="${ep.title}">
 	  </div>
@@ -515,7 +526,7 @@
       <p class="episode-date">${ep.date}</p>
 	  ${ep.fragman ? `
   <div class="fragman-link">${ep.fragman}</div>` : ''
-          }
+            }
       ${ep.description ? `
         <div class="tooltip-container">
           <span class="tooltip-text">Bölüm Konusu</span>
@@ -526,46 +537,46 @@
         ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
       </p>
     `;
-        container.appendChild(epDiv);
-      });
-    }
-
-    // Başlığa göre arama
-    function searchEpisodes() {
-      const searchInput = document.getElementById('searchInput').value.toLowerCase();
-      const container = document.getElementById('episodeContainer');
-
-      if (searchInput.trim() === "") {
-        loadSeason(currentSeason, currentSeries);
-        return;
+          container.appendChild(epDiv);
+        });
       }
 
-      container.innerHTML = '';
+      // Başlığa göre arama
+      function searchEpisodes() {
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        const container = document.getElementById('episodeContainer');
 
-      const allEpisodesArray = [];
-
-      const seriesData = episodes[currentSeries];
-      for (let season in seriesData) {
-        if (Array.isArray(seriesData[season])) {
-          allEpisodesArray.push(...seriesData[season]);
+        if (searchInput.trim() === "") {
+          loadSeason(currentSeason, currentSeries);
+          return;
         }
-      }
 
-      const filtered = allEpisodesArray.filter(ep =>
-        ep.title.toLowerCase().includes(searchInput)
-      );
+        container.innerHTML = '';
 
-      if (filtered.length === 0) {
-        container.innerHTML = `<p>"${searchInput}" ile eşleşen bölüm bulunamadı.</p>`;
-        return;
-      }
+        const allEpisodesArray = [];
 
-      filtered.forEach(ep => {
-        const epDiv = document.createElement('div');
-        epDiv.className = 'episode';
+        const seriesData = episodes[currentSeries];
+        for (let season in seriesData) {
+          if (Array.isArray(seriesData[season])) {
+            allEpisodesArray.push(...seriesData[season]);
+          }
+        }
 
-        // Temiz HTML şablon
-        epDiv.innerHTML = `
+        const filtered = allEpisodesArray.filter(ep =>
+          ep.title.toLowerCase().includes(searchInput)
+        );
+
+        if (filtered.length === 0) {
+          container.innerHTML = `<p>"${searchInput}" ile eşleşen bölüm bulunamadı.</p>`;
+          return;
+        }
+
+        filtered.forEach(ep => {
+          const epDiv = document.createElement('div');
+          epDiv.className = 'episode';
+
+          // Temiz HTML şablon
+          epDiv.innerHTML = `
     <div class="episode-image" onclick="playVideo('${ep.video}')">
       <img src="${ep.thumbnail}" alt="${stripHTML(ep.title)}">
     </div>
@@ -574,31 +585,31 @@
     <p class="episode-date">${stripHTML(ep.date)}</p>
 	${ep.fragman ? `
   <div class="fragman-link">${ep.fragman}</div>` : ''
-          }
+            }
 
     ${ep.description ? `
       <div class="tooltip-container">
         <span class="tooltip-text">Bölüm Konusu</span>
         <div class="tooltip-balloon">${ep.description}</div>
       </div>` : ''
-          }
+            }
     <p class="episode-tags">
       ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
     </p>
   `;
 
-        container.appendChild(epDiv);
-      });
+          container.appendChild(epDiv);
+        });
 
-    }
+      }
 
-    // Sayfa ilk açıldığında çalışacak kod
-    window.onload = () => {
-      const defaultSeries = "Kennedy Suikasti"; // Sayfanın adı (dizi adı)
-      loadDocumentaries();
-      loadSeasons(defaultSeries);
-      loadSeason(1, defaultSeries); // Başlangıç sezonu numarası
-    };
+      // Sayfa ilk açıldığında çalışacak kod
+      window.onload = () => {
+        const defaultSeries = "Kennedy Suikasti"; // Sayfanın adı (dizi adı)
+        loadDocumentaries();
+        loadSeasons(defaultSeries);
+        loadSeason(1, defaultSeries); // Başlangıç sezonu numarası
+      };
   </script>
 </body>
 
