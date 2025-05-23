@@ -76,7 +76,7 @@ const allEpisodes = {
   },
   
     "Kennedy Suikasti": {
-    0: [
+    1: [
       {
         title: "<br>KENNEDY SUİKASTİ<br>(Killing Kennedy)",
         date: "<p class=\"episode-date\">İlk Vizyona Girişi : 10 Kasım 2013</p>",
@@ -88,7 +88,39 @@ const allEpisodes = {
       }
     ],
     seasonYears: {
-      0: 2013
+      1: 2013
+    }
+  },
+  
+    "İnside 9/11": {
+    1: [
+      {
+        title: "<br>İNSİDE 9/11<br><span class='episode-number'>[001]</span> 1. Bölüm - Usame Bin Ladinin Yükselişi",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 8 Kasım 2005</p>",
+        thumbnail: "./img/I91101S01E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/162949071098879",
+        description: "Bin Ladin, Suudi Arabistan'da yaşayan başarılı bir inşaat şirketinin sahibi olan zengin Yemenli Muhammed bin Ladin'in oğluydu. Muhammed 1968'de öldüğünde, Usame 30 milyon dolar miras aldı. Genç bir yetişkin olarak Usame, o ülkenin Sovyetler tarafından işgaline karşı savaşmak için bir mücahit olarak Afganistan'a gitmeye gönüllü oldu. Orada Batı karşıtı cihatçı ideoloji tarafından radikalleştirildi ve Arapçada Üs anlamına gelen El Kaide adlı bir askeri örgüt kurdu. 1989'da Sovyetler Birliği'nin dağılmasından sonra Bin Ladin, El Kaide'nin odağını Batı'ya, özellikle de Suudi Arabistan'daki Amerikan birliklerinin varlığına karşı çıkmaya dönüştürdü. ",
+        tags: ["11 Eylül", "El Kaide", "2005", "Terör", "A.B.D."]
+       },
+	  {
+        title: "<br>İNSİDE 9/11<br><span class='episode-number'>[002]</span> 2. Bölüm - Terör İçin Geri Sayım",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 8 Kasım 2005</p>",
+        thumbnail: "./img/I91101S02E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/163260241067762",
+        description: "1998'de Müslümanları her yerde Amerikalılar'ı öldürmeye çağıran bir fetva yayınladı.7 Ağustos 1998'de el-Kaide ve Mısır İslam Cihadı tarafından, Tanzanya'nın Darüsselam şehri ile Kenya'nın başkenti Nairobi'deki Amerika Birleşik Devleti konsolosluklarına bomba yüklü kamyonlarla saldırı düzenlendi. Saldırılarda 224 kişi öldü, 4.000'den fazla kişi ise yaralandı. 20 Ağustos günü Hartum'daki eş-Şifa fabrikası ile Afganistan'daki bazı el-Kaide eğitim kamplarına Amerikan güçleri tarafından füzeyle saldırılar düzenlendi. Bin Ladin'in kimyasal silah ürettiği gerekçesiyle düzenlenen saldırı sonucunda fabrika imha edilirken, daha sonra yapılan incelemeler ve Amerikalı hükûmet yetkililerinin açıklamalarıyla fabrikada böyle bir üretimin gerçekleşmediği ve yalnızca ilaç üretimi yapıldığı, bin Ladin ile fabrika arasında herhangi bir bağlantı olmadığı tespit edildi. Öte yandan Amerikan istihbarat yetkilileri, bin Ladin ile Sudan hükûmetine ait Military Industry Corporation adlı şirket arasında birtakım finansal ilişkilerin olduğunu öne sürdü.",
+        tags: ["11 Eylül", "El Kaide", "2005", "Terör", "A.B.D."]
+       },
+	  {
+        title: "<br>İNSİDE 9/11<br><span class='episode-number'>[003]</span> 3. Bölüm - Sıfır Saati",
+          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 8 Kasım 2005</p>",
+          thumbnail: "./img/I91101S03E.jpg",
+          video: "https://www.dailymotion.com/embed/video/x8dei14",
+        description: "...",
+        tags: ["11 Eylül", "El Kaide", "2005", "Terör", "A.B.D."]
+       }
+    ],
+    seasonYears: {
+      1: 2005
     }
   },
 
