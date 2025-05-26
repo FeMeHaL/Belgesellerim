@@ -91,7 +91,7 @@ const allEpisodes = {
         thumbnail: "./img/United2011.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.167145070679279/167142590679527",
         description: "United filmi bir İngiliz futbol takımı olan Manchester Unitedın geçmişini ve kendi içindeki değerlerini ele alıyor. Film, Futbol Ligini kazanan en genç takım olan Manchester Unitedın efsanevi Busby Babesinin ve takımdan sekizinin hayatını alan 1958 Münih Hava Kazasının gerçek hikayesine dayanmakta.",
-        tags: ["Uçak", "Manchester United", "1958", "Futbol Takımı", "Airspeed AS-57 Ambassador"]
+        tags: ["Uçak", "Manchester United", "1958", "Futbol Takımı", "Airspeed AS-57"]
       }
     ],
     seasonYears: {
