@@ -45,8 +45,10 @@
 
     .episode img {
       width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
+      height: auto;  /* Yüksekliği otomatik yaparak oranı korur */
+      max-height: 400px;  /* Yüksekliği sınırlandırarak çok uzun olmasını engeller */
+      aspect-ratio: 2 / 3;  /* Afiş boyutunu uzun olarak ayarladık */
+      object-fit: cover;  /* Görselin kesilmesini engellemek için */
       border-radius: 4px;
       display: block;
       margin: 0 auto;
