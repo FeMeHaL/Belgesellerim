@@ -73,6 +73,30 @@ const allEpisodes = {
     seasonYears: {
       1: 2012
     }
+    },
+  
+    "HAVACILIK": {
+    1: [
+      {
+        title: "ALIVE / Yaşamak İçin",
+        date: "<p class=\"episode-date\">1993 Yapımı</p>",
+        thumbnail: "./img/Alive1993.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.114529995940787/114518972608556",
+        description: "Uruguay ragbi takımının gerçekten yaşadığı bir olaydan yola çıkan film, takımın uçağının Ant Dağlarına çarptıktan sonra yaşanan hayatta kalma mücadelesine odaklanıyor. Takımın her bir elemanı hayatta kalma iç güdüsüyle bu dağlardan kurtulmak için ellerinden geleni yaparlar; aralarından bazılarını çetin hava ve coğrafi koşullara kurban verseler de bir yandan Tanrıya olan inançlarını kaybetmemeye ve ailelerine dönmeye çalışırlar.",
+        tags: ["Uçak", "Uruguay", "1972", "And Dağları", "Fairchild FH-227D"]
+      },
+	  {
+        title: "UNİTED / Manchester United",
+        date: "<p class=\"episode-date\">2011 Yapımı</p>",
+        thumbnail: "./img/United2011.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.167145070679279/167142590679527",
+        description: "United filmi bir İngiliz futbol takımı olan Manchester Unitedın geçmişini ve kendi içindeki değerlerini ele alıyor. Film, Futbol Ligini kazanan en genç takım olan Manchester Unitedın efsanevi Busby Babesinin ve takımdan sekizinin hayatını alan 1958 Münih Hava Kazasının gerçek hikayesine dayanmakta.",
+        tags: ["Uçak", "Manchester United", "1958", "Futbol Takımı", "Airspeed AS-57 Ambassador"]
+      }
+    ],
+    seasonYears: {
+      1: 2012
+    }
   },
   
     "Kennedy Suikasti": {
