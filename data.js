@@ -23,7 +23,10 @@ const allEpisodes = {
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1031743588089291",
         tags: ["Uçak", "Uçak Kaçırma", "1976", "Uganda", "Rehine Operasyonu"]
       }
-    ]
+    ],
+    seasonYears: {
+      1: 2007-2008
+    }
   },
   
     "Nazilerin Mega Yapıları": {
