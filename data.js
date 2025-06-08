@@ -25,7 +25,7 @@ const allEpisodes = {
       }
     ],
     seasonYears: {
-      1: 2007-2008
+      1: 2007
     }
   },
   
