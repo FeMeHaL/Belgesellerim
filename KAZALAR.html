@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Film ve Dizi Seçenekleri</title>
+    <title>Ferhat Polaterce ile belgesel keyfi ... </title>
     <style>
+        /* Genel body ayarları */
         body {
             background-color: #1e1e1e;
-            /* Gözleri yormayacak siyah tonunda arka plan */
             color: #b0b0b0;
-            /* Koyu gri yazı rengi */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
 
+        /* Bölüm konteyneri */
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -24,23 +24,27 @@
             padding: 20px;
         }
 
+        /* Kolon yapısı (film kutuları) */
         .col {
             flex: 1 1 calc(20% - 20px);
             box-sizing: border-box;
             max-width: 20%;
         }
 
+        /* Her bir film kutusu */
         .gen-carousel-movies-style-3 {
             background-color: #2c2c2c;
-            /* Hafif koyu arka plan rengi */
             border-radius: 8px;
             overflow: hidden;
+            position: relative;
+            /* led-frame’in referansı için GEREKLİ */
         }
 
         .gen-movie-contain {
             position: relative;
         }
 
+        /* Film görseli efekti */
         .gen-movie-img {
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -58,10 +62,8 @@
             object-fit: cover;
             border-radius: 8px;
             display: block;
-
-            /* Dijital Görünüm Efektleri */
             filter: contrast(1.1) brightness(1.05);
-            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1), 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: none !important;
             transition: all 0.3s ease;
         }
 
@@ -79,6 +81,7 @@
             border-radius: 8px;
         }
 
+        /* İzle butonu */
         .gen-movie-action {
             position: absolute;
             top: 50%;
@@ -95,6 +98,7 @@
             text-decoration: none;
         }
 
+        /* Film ismi kısmı */
         .gen-info-contain {
             padding: 10px;
             background-color: #333;
@@ -106,7 +110,6 @@
             color: #b0b0b0;
             text-align: center;
             line-height: 1.2;
-            /* burayı ekledik */
         }
 
         .gen-movie-info h3 a {
@@ -114,7 +117,6 @@
             text-decoration: none;
             transition: all 0.3s ease;
             text-shadow: 0 0 3px rgba(0, 191, 255, 0.2);
-            /* Dijital hafif parlama */
             font-weight: bold;
         }
 
@@ -124,132 +126,102 @@
             transform: scale(1.05);
         }
 
-        .alphabet-strip {
-            width: 90%;
-            /* %100 yerine %90 */
-            margin: 0 auto;
-            /* ortalamak için */
-            overflow-x: auto;
-            /* ekstra önlem */
-            box-sizing: border-box;
-            /* padding dahil */
-            background-color: #1f1f1f;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
+        /* LED çerçeve efekti */
+        .led-frame {
+            position: absolute;
+            top: -5px;
+            /* Resmin dışına taşır */
+            left: -5px;
+            width: calc(100% + 10px);
+            /* Kenarlardan taşma için */
+            height: calc(100% + 10px);
+            pointer-events: none;
+            z-index: 10;
         }
 
-        .letter-button {
-            padding: 10px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #00bfff;
-            background-color: #2c2c2c;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s, color 0.3s;
+        /* Dikey çizgiler */
+        .led-line.vertical {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: white;
+            opacity: 0.3;
+            animation: ledFlash 2s infinite;
         }
 
-        .letter-button:hover {
-            background-color: #00bfff;
-            color: #2c2c2c;
+        .led-line.left {
+            top: 0;
+            left: 0;
         }
 
-        /* Açılır içerik */
-        .letter-content {
-            display: none;
-            /* Başta gizli */
-            flex-wrap: wrap;
-            /* sığmazsa alt satıra geç */
-            gap: 10px;
-            /* kutular arasında boşluk */
-            justify-content: center;
-            /* ortala */
-            background-color: transparent;
-            margin: 15px auto;
-            padding: 15px;
-            border: 2px solid #00bfff;
-            border-radius: 5px;
-            width: 90%;
+        .led-line.right {
+            top: 0;
+            right: 0;
         }
 
-        .letter-content a {
-            flex: 1 1 auto;
-            min-width: 200px;
-            /* küçük ekranlarda minimum genişlik */
-            max-width: 250px;
-            /* büyük ekranda fazla büyümesin */
-            background-color: #2c2c2c;
-            /* kutu gibi görünmesi için */
-            padding: 12px 20px;
-            border-radius: 6px;
-            color: #b0b0b0;
-            text-decoration: none;
-            transition: background-color 0.3s, color 0.3s;
-            margin: 5px 0;
-            text-align: center;
-            border-radius: 5px;
-        }
-
-        .letter-content a:hover {
-            background-color: #00bfff;
-            color: #1e1e1e;
-        }
-
-        .legal-warning {
-            background-color: #2c2c2c;
-            color: #ff5c5c;
+        /* Yatay çizgiler */
+        .led-line.horizontal {
+            position: absolute;
+            height: 2px;
             width: 100%;
-            /* Genişlik 100% */
-            max-width: 95%;
-            /* Genişliği %95 yapar */
-            margin: 0 auto;
-            /* Ortalamayı sağlıyor */
-            font-size: 13px;
-            text-align: left;
-            padding: 8px 20px;
-            border-radius: 8px;
-            border-bottom: 1px solid #444;
-            font-family: Arial, sans-serif;
+            background: white;
+            opacity: 0.3;
+            animation: ledFlash 2s infinite;
         }
 
+        .led-line.top {
+            top: 0;
+            left: 0;
+        }
+
+        .led-line.bottom {
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Animasyon */
+        @keyframes ledFlash {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+                box-shadow: 0 0 6px 3px white;
+            }
+        }
+
+        /* Responsive kolon düzeni */
         @media (max-width: 1200px) {
             .col {
                 flex: 1 1 calc(25% - 20px);
-                /* 4 seçenek */
             }
         }
 
         @media (max-width: 992px) {
             .col {
                 flex: 1 1 calc(33.33% - 20px);
-                /* 3 seçenek */
             }
         }
 
         @media (max-width: 768px) {
             .col {
                 flex: 1 1 calc(50% - 20px);
-                /* 2 seçenek */
             }
         }
 
         @media (max-width: 480px) {
             .col {
                 flex: 1 1 100%;
-                /* Tekli seçenek */
             }
         }
     </style>
 </head>
-<body>
 
-    <div class="container">
+<body>
+     <div class="container">
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                 <div class="gen-movie-contain">
@@ -306,25 +278,37 @@
                 </div>
             </div>
         </div>
-		
-		<div class="col">
-            <div class="gen-carousel-movies-style-3 movie-grid style-3">
+
+
+		  <div class="col">
+            <div class="gen-carousel-movies-style-3 movie-grid style-3" style="position: relative;">
+
+                <!-- LED Çerçeve (Resmin dışını saracak şekilde) -->
+                <div class="led-frame" id="ledFrame">
+                    <div class="led-line vertical left"></div>
+                    <div class="led-line vertical right"></div>
+                    <div class="led-line horizontal top"></div>
+                    <div class="led-line horizontal bottom"></div>
+                </div>
+
                 <div class="gen-movie-contain">
-                    <div class="gen-movie-img">
-                        <img src="./img/SituationCritical.jpg" alt="streamlab-image">
-                        <div class="gen-movie-action">
+                    <a href="SituationCritical">
+                        <div class="gen-movie-img">
+                            <img src="./img/SituationCritical.jpg" alt="streamlab-image">
+                            <div class="gen-movie-action">
                                 <i class="fa fa-play"></i>
-                            </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="gen-info-contain">
-                        <div class="gen-movie-info">
-                            <h3><a href="SituationCritical">KRİTİK ANLAR</a></h3>
+                        <div class="gen-info-contain">
+                            <div class="gen-movie-info">
+                                <h3><a href="SituationCritical">KRİTİK ANLAR</a></h3>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
+		
 		
         <div class="col">
             <div class="gen-carousel-movies-style-3 movie-grid style-3">
@@ -375,6 +359,69 @@
         </div>
 
     </div>
+    <script>
+        const frame = document.getElementById('ledFrame');
+        const countPerEdge = 12; // Her kenarda 12 ışık
+        let delay = 0;
 
+        // ÜST kenar
+        for (let i = 0; i < countPerEdge; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'led-dot';
+            dot.style.top = '-5px';
+            dot.style.left = `${(i / (countPerEdge - 1)) * 100}%`;
+            dot.style.animationDelay = `${delay}s`;
+            delay += 0.1;
+            frame.appendChild(dot);
+        }
+
+        // SAĞ kenar
+        for (let i = 1; i < countPerEdge; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'led-dot';
+            dot.style.right = '-5px';
+            dot.style.top = `${(i / (countPerEdge - 1)) * 100}%`;
+            dot.style.animationDelay = `${delay}s`;
+            delay += 0.1;
+            frame.appendChild(dot);
+        }
+
+        // ALT kenar
+        for (let i = countPerEdge - 2; i >= 0; i--) {
+            const dot = document.createElement('div');
+            dot.className = 'led-dot';
+            dot.style.bottom = '-5px';
+            dot.style.left = `${(i / (countPerEdge - 1)) * 100}%`;
+            dot.style.animationDelay = `${delay}s`;
+            delay += 0.1;
+            frame.appendChild(dot);
+        }
+
+        // SOL kenar
+        for (let i = countPerEdge - 2; i > 0; i--) {
+            const dot = document.createElement('div');
+            dot.className = 'led-dot';
+            dot.style.left = '-5px';
+            dot.style.top = `${(i / (countPerEdge - 1)) * 100}%`;
+            dot.style.animationDelay = `${delay}s`;
+            delay += 0.1;
+            frame.appendChild(dot);
+        }
+
+        let titleText = "Ferhat Polaterce ile belgesel keyfi ... ";
+        let index = 0;
+        let titleSpeed = 300; // milisaniye
+
+        function updateTitle() {
+            document.title = titleText.substring(index) + titleText.substring(0, index);
+            index++;
+            if (index > titleText.length) {
+                index = 0;
+            }
+        }
+
+        setInterval(updateTitle, titleSpeed);
+    </script>
 </body>
+
 </html>

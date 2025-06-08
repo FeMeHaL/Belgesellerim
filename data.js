@@ -3,15 +3,22 @@ const allEpisodes = {
   "Kritik Anlar": {
     1: [
       {
-        title: "[005] 1. Sezon 5. Bölüm - (Downed Pilot) - Bosna'da Düşen Uçak",
-        date: "İlk Vizyona Girişi : 15 Mayıs 2007",
+        title: "<br>KRİTİK ANLAR<br><span class='episode-number'>[001]</span> 1. Sezon 1. Bölüm - (North Hollywood Shootout) - Kuzey Hollywood Çatışması",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 18 Haziran 2007</p>",
+        thumbnail: "./img/KA01S01E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/575188971570761",
+        tags: ["Uçak", "F16 Uçağının Düşürülmesi", "1995", "Bosna Hersek", "Pilot Kurtarma Operasyonu"]
+      },
+	  {
+        title: "<br>KRİTİK ANLAR<br><span class='episode-number'>[005]</span> 1. Sezon 5. Bölüm - (Downed Pilot) - Bosna'da Düşen Uçak",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 15 Mayıs 2007</p>",
         thumbnail: "./img/KA01S05E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/506529168665653",
         tags: ["Uçak", "F16 Uçağının Düşürülmesi", "1995", "Bosna Hersek", "Pilot Kurtarma Operasyonu"]
       },
       {
-        title: "[009] 1. Sezon 9. Bölüm - (Assault On Entebbe) - Uganda’ya Kaçırılan Uçak",
-        date: "İlk Vizyona Girişi : 12 Haziran 2007",
+        title: "<br>KRİTİK ANLAR<br><span class='episode-number'>[005]</span> 1. Sezon 9. Bölüm - (Assault On Entebbe) - Uganda’ya Kaçırılan Uçak",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Haziran 2007</p>",
         thumbnail: "./img/KA01S09E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1031743588089291",
         tags: ["Uçak", "Uçak Kaçırma", "1976", "Uganda", "Rehine Operasyonu"]

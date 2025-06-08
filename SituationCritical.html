@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8">
-  <title>Dizi Bölümleri</title>
+  <title>Kritik Anlar</title> <!-- Sayfanın adını yaz -->
+
+  <!-- Sayfanın stil ayarları -->
   <style>
+    /* Genel gövde stili */
     body {
       margin: 0;
       font-family: sans-serif;
@@ -13,6 +17,7 @@
       flex-wrap: wrap;
     }
 
+    /* Sol menü (sidebar) */
     .sidebar {
       width: 100%;
       max-width: 300px;
@@ -20,8 +25,11 @@
       padding: 20px;
       box-sizing: border-box;
       flex-shrink: 0;
+      transition: transform 0.3s ease;
+      align-self: flex-start;
     }
 
+    /* Sezon butonları */
     .season-button {
       background-color: #ff4d4d;
       color: #f1f1f1;
@@ -34,6 +42,7 @@
       font-weight: bold;
     }
 
+    /* İçerik alanı */
     .content {
       flex: 1;
       padding: 20px;
@@ -43,6 +52,14 @@
       gap: 20px;
     }
 
+    /* Bölüm numarası */
+    .episode-number {
+      color: purple;
+      font-weight: bold;
+      display: inline;
+    }
+
+    /* Her bir bölüm kutusu */
     .episode {
       background-color: #2b2b2b;
       width: 100%;
@@ -51,8 +68,13 @@
       padding: 10px;
       box-sizing: border-box;
       border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
+    /* Bölüm resmi */
     .episode img {
       width: 100%;
       aspect-ratio: 16 / 9;
@@ -60,65 +82,170 @@
       border-radius: 4px;
       display: block;
       margin: 0 auto;
+	  cursor: pointer;
     }
 
+    /* Açıklama (tooltip) yazısı */
+    .episode-description {
+      font-style: italic;
+      text-align: center;
+      color: #cccccc;
+      margin: 0 0 5px 0;
+    }
+
+    /* Tarih etiketi */
     .episode-date {
       font-weight: bold;
       text-align: center;
-      margin-top: 10px;
+      margin: 0;
+      line-height: 1.2;
     }
 
+    /* Etiket kutusu */
+    .episode-tags {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* Başlık */
     .episode-title {
       color: #4da6ff;
       font-weight: bold;
       cursor: pointer;
       text-align: center;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
+    /* Etiket (tag) stilleri */
     .tag {
-  display: inline-block;
-  background-color: #4da6ff;
-  color: white;
-  border-radius: 20px;
-  padding: 5px 12px;
-  margin: 4px 4px 0 0;
-  font-size: 12px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
+      display: inline-block;
+      background-color: #4da6ff;
+      color: white;
+      border-radius: 20px;
+      padding: 5px 12px;
+      margin: 5px 4px 0 0;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      text-decoration: none;
+    }
 
-.tag:hover {
-  background-color: #1e90ff;
-}
+    .tag:hover {
+      background-color: #1e90ff;
+    }
 
-
-    .video-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.9);
-      display: none;
+    /* Tooltip ikonu için container */
+    .tooltip-container {
+      position: relative;
+      display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 999;
-    }
-
-    .video-overlay iframe {
-      width: 80%;
-      height: 80%;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 30px;
-      color: white;
       cursor: pointer;
+      text-align: center;
+      margin: 0;
+      flex-shrink: 0;
     }
 
+    /* Tooltip ikon stili */
+    .tooltip-icon {
+      font-size: 20px;
+      color: #fff;
+      background-color: #8B4513;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: 2px solid #6A4E23;
+      font-weight: bold;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .tooltip-icon-text {
+      font-size: 14px;
+    }
+
+    .tooltip-and-tags {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      column-gap: 6px;
+      row-gap: 0;
+      margin-top: 0;
+      gap: 6px;
+    }
+
+    /* Tooltip balonu */
+    .tooltip-text {
+      font-size: 16px;
+      font-weight: bold;
+      color: #b87333;
+      padding: 10px 20px;
+      background-color: #dcdcdc;
+      border: 2px solid #b87333;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: auto;
+      margin: 0 auto;
+      text-align: center;
+      display: inline-block;
+      /* boşluk kontrolü */
+      line-height: 1.1;
+      /* satır aralığını daralt */
+    }
+
+    .tooltip-text:hover {
+      background-color: #c4c4c4;
+    }
+
+    /* Balon açıklaması (gizli) */
+    .tooltip-balloon {
+      visibility: hidden;
+      background-color: #b87333;
+      color: #dcdcdc;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 10px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 14px;
+      width: 200px;
+      border: 2px solid #dcdcdc;
+    }
+
+    /* Tooltip görünürlük ayarı */
+    .tooltip-container:active .tooltip-balloon,
+    .tooltip-container:hover .tooltip-balloon {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Arama kutusu container */
+    .search-container {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Arama input */
+    .search-input {
+      padding: 10px;
+      font-size: 16px;
+      width: 80%;
+      max-width: 400px;
+      border: none;
+      border-radius: 8px;
+      background-color: #444;
+      color: white;
+    }
+
+    /* Responsive düzenlemeler */
     @media (max-width: 768px) {
       .episode {
         flex: 1 1 calc(50% - 20px);
@@ -132,134 +259,176 @@
 
       .sidebar {
         width: 100%;
-        max-width: 100%;
       }
 
       .content {
         padding: 10px;
       }
     }
+
+    /* Video oynatıcı overlay */
+    .video-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .video-overlay iframe {
+      width: 80%;
+      height: 80%;
+    }
+
+    /* Kapatma butonu */
+    .video-overlay .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
   </style>
 </head>
+
 <body>
-<script src="../data.js"></script>
-  <div class="sidebar">
-    <button class="season-button" onclick="loadSeason(1)">1. SEZON (2007-2008)</button>
+
+  <!-- Sol panel -->
+  <div class="sidebar" id="sidebar">
+    <div class="search-container">
+      <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..."
+        onkeyup="searchEpisodes()">
+    </div>
   </div>
 
+  <!-- İçerik alanı -->
   <div class="content" id="episodeContainer"></div>
 
+  <!-- Video oynatıcı -->
   <div class="video-overlay" id="videoOverlay">
     <span class="close-btn" onclick="closeVideo()">×</span>
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
 
+  <!-- Bölüm verileri -->
+  <script src="data.js"></script>
+
+  <!-- Davranışlar (JavaScript) -->
   <script>
-    const episodes = {
-      1: [
-        {
-          title: "[001] 1. Sezon 1. Bölüm - (North Hollywood Shootout) - Kuzey Hollywood Çatışması",
-          date: "İlk Vizyona Girişi : 18 Haziran 2007",
-          thumbnail: "./img/KA01S01E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/575188971570761"
-        },
-        {
-          title: "[005] 1. Sezon 5. Bölüm - (Downed Pilot) - Bosna'da Düşen Uçak",
-          date: "İlk Vizyona Girişi : 15 Mayıs 2007",
-          thumbnail: "./img/KA01S05E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/506529168665653",
-          tags: ["Uçak", "F16 Uçağının Düşürülmesi", "1995", "Bosna Hersek", "Pilot Kurtarma Operasyonu"]
-        },
-        {
-          title: "[009] 1. Sezon 9. Bölüm - (Assault On Entebbe) - Uganda’ya Kaçırılan Uçak",
-          date: "İlk Vizyona Girişi : 12 Haziran 2007",
-          thumbnail: "./img/KA01S09E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1031743588089291",
-          tags: ["Uçak", "Uçak Kaçırma", "1976", "Uganda", "Rehine Operasyonu"]
-        }
-      ]
-    };
-	
-       function loadSeason(season) {
-  const container = document.getElementById('episodeContainer');
-  container.innerHTML = '';
-  if (!episodes[season]) {
-    container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
-    return;
-  }
+    let currentSeries = "";
+    let currentSeason = 1;
 
-  episodes[season].forEach(ep => {
-    const epDiv = document.createElement('div');
-    epDiv.className = 'episode';
-    epDiv.innerHTML = `
-      <img src="${ep.thumbnail}" alt="${ep.title}">
-      <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-      ${ep.date}
-      <div class="tags-container">
-        ${ep.tags ? ep.tags.map(tag => `<span class="tag" onclick="filterByTag('${tag}')">${tag}</span>`).join('') : ''}
-      </div>
-    `;
-    container.appendChild(epDiv);
-  });
-}
-</script>
-<script src="../data.js"></script>
-<script>
-  const episodes = allEpisodes; // Bu satır burada doğru yer
+    const episodes = allEpisodes;
 
-  // Burada filterByTag(), playVideo(), vs. fonksiyonlarını tanımlayabilirsin
+    // Sezon yükleme
+    function loadSeason(season, seriesName) {
+      currentSeries = seriesName;
+      currentSeason = season;
+      const container = document.getElementById('episodeContainer');
+      container.innerHTML = '';
 
-// 🔽 Buraya ekle
-function filterByTag(tag) {
-  const container = document.getElementById('episodeContainer');
-  container.innerHTML = '';
+      const seasonEpisodes = episodes[seriesName][season];
 
-  let found = false;
+      if (!seasonEpisodes || seasonEpisodes.length === 0) {
+        container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
+        return;
+      }
 
-  for (const season in episodes) {
-    const matches = episodes[season].filter(ep =>
-      ep.tags && ep.tags.includes(tag)
-    );
-
-    if (matches.length > 0) {
-      found = true;
-
-      const header = document.createElement('h2');
-      header.textContent = `${season}. Sezon - Etiket: ${tag}`;
-      header.style.width = "100%";
-      header.style.color = "#ff4d4d";
-      header.style.borderBottom = "1px solid #444";
-      container.appendChild(header);
-
-      matches.forEach(ep => {
+      seasonEpisodes.forEach(ep => {
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
         epDiv.innerHTML = `
-          <img src="${ep.thumbnail}" alt="${ep.title}">
-          <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-          ${ep.date}
-          <div class="tags-container">
-            ${ep.tags.map(t => `<span class="tag" onclick="filterByTag('${t}')">${t}</span>`).join('')}
-          </div>
-        `;
+    <div class="episode-image" onclick="playVideo('${ep.video}')">
+  <img src="${ep.thumbnail}" alt="${ep.title}">
+</div>
+    <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+    <p class="episode-date">${ep.date}</p>
+    <div class="tooltip-and-tags">
+      ${ep.description ? `
+        <div class="tooltip-container">
+          <span class="tooltip-text">Bölüm Konusu</span>
+          <div class="tooltip-balloon">${ep.description}</div>
+        </div>
+      ` : ''}
+      <div class="episode-tags">
+        ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+      </div>
+    </div>
+  `;
         container.appendChild(epDiv);
       });
     }
-  }
 
+    // Sezon butonlarını yükle
+    function loadSeasons(seriesName) {
+      const sidebar = document.getElementById('sidebar');
 
-  if (!found) {
-    container.innerHTML = `<p>"${tag}" etiketine sahip bölüm bulunamadı.</p>`;
-  }
-}
+      sidebar.innerHTML = `
+    <div class="search-container">
+      <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
+    </div>
+  `;
 
+      const seasons = Object.keys(episodes[seriesName])
+        .filter(key => !isNaN(key))
+        .map(key => parseInt(key));
+
+      seasons.forEach(season => {
+        const yearText = episodes[seriesName].seasonYears?.[season]
+          ? ` (${episodes[seriesName].seasonYears[season]})` : '';
+
+        const btn = document.createElement('button');
+        btn.className = 'season-button';
+        btn.innerText = `${season}. SEZON${yearText}`;
+        btn.onclick = () => loadSeason(season, seriesName);
+        sidebar.appendChild(btn);
+      });
+    }
+
+    // Dizi listesini yükle
+    function loadDocumentaries() {
+      const sidebar = document.getElementById('sidebar');
+
+      sidebar.innerHTML = `
+    <div class="search-container">
+      <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
+    </div>
+  `;
+
+      for (let series in episodes) {
+        const btn = document.createElement('button');
+        btn.className = 'season-button';
+        btn.innerText = series;
+        btn.onclick = () => {
+          loadSeasons(series);
+          loadSeason(1, series);
+        };
+        sidebar.appendChild(btn);
+      }
+    }
+
+    // Video oynatma
     function playVideo(src) {
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
-      video.src = src;
+
+      if (src.includes("youtube.com")) {
+        const videoId = src.split("v=")[1].split("&")[0];
+        video.src = `https://www.youtube.com/embed/${videoId}`;
+      } else if (src.includes("facebook.com")) {
+        video.src = src;
+      }
+
       overlay.style.display = 'flex';
     }
 
+    // Video kapatma
     function closeVideo() {
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
@@ -267,35 +436,121 @@ function filterByTag(tag) {
       video.src = '';
     }
 
-    function filterByTag(tagName) {
-      const container = document.getElementById('episodeContainer');
-      container.innerHTML = '';
-      let found = false;
-
-      for (const season in episodes) {
-        const matches = episodes[season].filter(ep => ep.tags && ep.tags.includes(tagName));
-
-        matches.forEach(ep => {
-          found = true;
-          const epDiv = document.createElement('div');
-          epDiv.className = 'episode';
-          epDiv.innerHTML = `
-            <img src="${ep.thumbnail}" alt="${ep.title}">
-            <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-            <p class="episode-date">${ep.date}</p>
-            <div>${ep.tags.map(tag => `<span class="tag" onclick="filterByTag('${tag}')">${tag}</span>`).join('')}</div>
-          `;
-          container.appendChild(epDiv);
-        });
-      }
-
-      if (!found) {
-        container.innerHTML = "<p>Bu etikete sahip bölüm bulunamadı.</p>";
-      }
+    // Etikete tıklanınca arama yap
+    function searchTag(tag) {
+      filterByTag(tag);
     }
 
-    window.onload = () => loadSeason(1);
-  </script>
+    // Belirli etikete göre filtreleme
+    function filterByTag(tag) {
+      const container = document.getElementById('episodeContainer');
+      container.innerHTML = '';
 
+      const allEpisodesArray = [];
+
+      document.getElementById('sidebar').style.transform = "translateX(-100%)";
+
+      for (let series in episodes) {
+        for (let season in episodes[series]) {
+          if (Array.isArray(episodes[series][season])) {
+            allEpisodesArray.push(...episodes[series][season]);
+          }
+        }
+      }
+
+      const filtered = allEpisodesArray.filter(ep => ep.tags.includes(tag));
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<p>"${tag}" etiketiyle eşleşen bölüm bulunamadı.</p>`;
+        return;
+      }
+
+      filtered.forEach(ep => {
+        const epDiv = document.createElement('div');
+        epDiv.className = 'episode';
+        epDiv.innerHTML = `
+      <div class="episode-image" onclick="playVideo('${ep.video}')">
+	  <img src="${ep.thumbnail}" alt="${ep.title}">
+	  </div>
+
+      <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+      <p class="episode-date">${ep.date}</p>
+      ${ep.description ? `
+        <div class="tooltip-container">
+          <span class="tooltip-text">Bölüm Konusu</span>
+          <div class="tooltip-balloon">${ep.description}</div>
+        </div>
+      ` : ''}
+      <p class="episode-tags">
+        ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+      </p>
+    `;
+        container.appendChild(epDiv);
+      });
+    }
+
+    // Başlığa göre arama
+    function searchEpisodes() {
+      const searchInput = document.getElementById('searchInput').value.toLowerCase();
+      const container = document.getElementById('episodeContainer');
+
+      if (searchInput.trim() === "") {
+        loadSeason(currentSeason, currentSeries);
+        return;
+      }
+
+      container.innerHTML = '';
+
+      const allEpisodesArray = [];
+
+      const seriesData = episodes[currentSeries];
+      for (let season in seriesData) {
+        if (Array.isArray(seriesData[season])) {
+          allEpisodesArray.push(...seriesData[season]);
+        }
+      }
+
+      const filtered = allEpisodesArray.filter(ep =>
+        ep.title.toLowerCase().includes(searchInput)
+      );
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<p>"${searchInput}" ile eşleşen bölüm bulunamadı.</p>`;
+        return;
+      }
+
+      filtered.forEach(ep => {
+        const epDiv = document.createElement('div');
+        epDiv.className = 'episode';
+        epDiv.innerHTML = `
+    <div class="episode-image" onclick="playVideo('${ep.video}')">
+  <img src="${ep.thumbnail}" alt="${ep.title}">
+</div>
+
+    <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+    <p class="episode-date">${ep.date}</p>
+    ${ep.description ? `
+      <div class="tooltip-container">
+        <span class="tooltip-text">Bölüm Konusu</span>
+        <div class="tooltip-balloon">${ep.description}</div>
+      </div>
+    ` : ''}
+    <p class="episode-tags">
+      ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+    </p>
+  `;
+        container.appendChild(epDiv);
+      });
+    }
+
+    // Sayfa ilk açıldığında çalışacak kod
+    window.onload = () => {
+      const defaultSeries = "Kritik Anlar"; // Sayfanın adı (dizi adı)
+      loadDocumentaries();
+      loadSeasons(defaultSeries);
+      loadSeason(1, defaultSeries); // Başlangıç sezonu numarası
+    };
+  </script>
 </body>
+
 </html>
