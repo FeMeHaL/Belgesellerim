@@ -105,10 +105,28 @@ const allEpisodes = {
 	    fragman: "<a href='https://www.youtube.com/watch?v=PJySuZgRlEo' target='_blank' title='FRAGMAN : UNITED - OFFICIAL TRAILER' onclick='window.open(this.href, \"_blank\", \"fullscreen=yes, scrollbars=yes\"); return false;'><img src='./img/fragman.jpg' alt='fragman Icon' style='width: 120px; height: 60px; margin-right: 8px; vertical-align: middle; float: left;' /></a>",
         tags: ["Uçak", "Manchester United", "1958", "Futbol Takımı", "Airspeed AS-57"]
       }
-    ],
-    seasonYears: {
-      1: 2012
-    }
+    ]
+    },
+  
+    "TEK BÖLÜM": {
+    1: [
+      {
+        title: "Miracle Landing on the Hudson / Hudson Nehri'nde Mucizevi İniş",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 05 Ocak 2014</p>",
+        thumbnail: "./img/MiracleHudson.jpg",
+        video: "https://player.bilibili.com/player.html?bvid=BV1pf4y1M7CW&t=16.7",
+        description: "Uçak Kazası Raporunun 10. Sezon 5. Bölümünün daha uzun versiyonu diyebiliriz.",
+        tags: ["Uçak", "A.B.D.", "2011", "Nehre Acil İniş", "US Airways Flight 1549"]
+      },
+	  {
+        title: "TRT Belgesel (Unutulmayan Olaylar Programı) / 1963 Ankara Uçak Kazası",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 2008 Yapımı</p>",
+        thumbnail: "./img/AnkaraUlusaUcakKazasi.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.178085379585248/178081676252285",
+        description: "Havacılık tarihine Ulus Faciası olarak geçen uçak kazası, 1 Şubat 1963'de Lübnan havayolu şirketi Middle East Airlines'a ait uçağın Ankara semalarındayken Türk Hava Kuvvetleri'ne ait nakliye uçağıyla çarpışması sonucu gerçekleşti. Her iki uçak da Ulus semtinde bulunan meskun mahaller üzerindeki farklı noktalara düştü. Kazada yolcu uçağında bulunan 11 yolcu ve 3 mürettebat, askeri uçakta bulunan 3 Türk askerî personeli ve uçakların düştükleri yerlerde bulunan 87 kişi ile beraber toplam 104 kişi hayatını kaybetti.",
+        tags: ["Uçak", "Türkiye", "1963", "Havada Çarpışma", "Middle East Airlines Flight 265"]
+      }
+    ]
   },
   
     "Kennedy Suikasti": {

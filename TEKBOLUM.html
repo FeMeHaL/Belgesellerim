@@ -1,53 +1,83 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8">
-  <title>Dizi Bölümleri</title>
+  <title>TEK BÖLÜM</title>
+
   <style>
     body {
       margin: 0;
       font-family: sans-serif;
       background-color: #1e1e1e;
       color: white;
-      display: flex;
-      justify-content: center;
-      padding: 20px 5px;
     }
 
+    /* İçerik alanı */
     .content {
-      width: 100%;
-      max-width: 1960px;  /* Sayfa genişliği ayarlaması */
+      padding: 20px;
+      box-sizing: border-box;
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 20px;
       justify-content: flex-start;
     }
 
+    .episode-number {
+      color: purple;
+      font-weight: bold;
+      display: inline;
+    }
+
     .episode {
-      background-color: #2b2b2b;       /* Kartın koyu gri arka planı */
-      width: 100%;                     /* Varsayılan genişlik (içinde olduğu konteynerin %100'ü) */
-      max-width: 300px;                /* En fazla 280px genişlik */
-      flex: 1 1 calc(20% - 20px);      /* Flex kutuda %20 genişlik - boşluk ayarı (15px) */
-      padding: 10px 5px;               /* İçeriğe 10px boşluk (tüm kenarlar) */
-      box-sizing: border-box;          /* Padding dahil genişlik kontrolü */
-      border-radius: 5px;              /* Köşeleri yuvarlama */
+      background-color: #2b2b2b;
+      width: 100%;
+      max-width: 295px;
+      flex: 1 1 calc(33.333% - 20px);
+      padding: 10px;
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .episode img {
       width: 100%;
-      height: auto;  /* Yüksekliği otomatik yaparak oranı korur */
-      max-height: 400px;  /* Yüksekliği sınırlandırarak çok uzun olmasını engeller */
-      aspect-ratio: 2 / 3;  /* Afiş boyutunu uzun olarak ayarladık */
-      object-fit: cover;  /* Görselin kesilmesini engellemek için */
+      height: auto;
+      /* Yüksekliği otomatik yaparak oranı korur */
+      max-height: 400px;
+      /* Yüksekliği sınırlandırarak çok uzun olmasını engeller */
+      aspect-ratio: 2 / 3;
+      /* Afiş boyutunu uzun olarak ayarladık */
+      object-fit: cover;
+      /* Görselin kesilmesini engellemek için */
       border-radius: 4px;
       display: block;
       margin: 0 auto;
+      cursor: pointer;
+    }
+
+    .episode-description {
+      font-style: italic;
+      text-align: center;
+      color: #cccccc;
+      margin: 0 0 5px 0;
     }
 
     .episode-date {
       font-weight: bold;
       text-align: center;
-      margin-top: 10px;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .episode-tags {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
     }
 
     .episode-title {
@@ -55,28 +85,169 @@
       font-weight: bold;
       cursor: pointer;
       text-align: center;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
-    .subtitle {
-      color: red;        /* Kırmızı renk */
-      font-weight: bold; /* Kalın yazı tipi */
+    .fragman-link {
+      display: inline-block;
+      text-decoration: none;
+      margin: 5px 0 20px 0;
     }
 
-    .episode-summary {
-      color: #f1f1f1;
-      margin-top: 10px;
+    .fragman-badge {
+      width: 180px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease;
+      background: #fff;
+    }
+
+    .fragman-badge:hover {
+      transform: scale(1.05);
+    }
+
+    .fragman-badge img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+    }
+
+    .fragman-title {
+      padding: 8px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #333;
+      background-color: #f0f0f0;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: #4da6ff;
+      color: white;
+      border-radius: 20px;
+      padding: 5px 12px;
+      margin: 5px 4px 0 0;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      text-decoration: none;
+    }
+
+    .tag:hover {
+      background-color: #1e90ff;
+    }
+
+    .tooltip-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      text-align: center;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .tooltip-icon {
+      font-size: 20px;
+      color: #fff;
+      background-color: #8B4513;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: 2px solid #6A4E23;
+      font-weight: bold;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .tooltip-icon-text {
       font-size: 14px;
-      text-align: justify;
+    }
+
+    .tooltip-and-tags {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      column-gap: 6px;
+      row-gap: 0;
+      margin-top: 0;
+      gap: 6px;
+    }
+
+    .tooltip-text {
+      font-size: 16px;
+      font-weight: bold;
+      color: #b87333;
+      padding: 10px 20px;
+      background-color: #dcdcdc;
+      border: 2px solid #b87333;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: auto;
+      margin: 0 auto;
+      text-align: center;
+      display: inline-block;
+      line-height: 1.1;
+    }
+
+    .tooltip-text:hover {
+      background-color: #c4c4c4;
+    }
+
+    .tooltip-balloon {
+      visibility: hidden;
+      background-color: #b87333;
+      color: #dcdcdc;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 10px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 14px;
+      width: 200px;
+      border: 2px solid #dcdcdc;
+    }
+
+    .tooltip-container:active .tooltip-balloon,
+    .tooltip-container:hover .tooltip-balloon {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .episode {
+        flex: 1 1 calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .episode {
+        flex: 1 1 100%;
+      }
+
+      .content {
+        padding: 10px;
+      }
     }
 
     .video-overlay {
+      display: none;
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.9);
-      display: none;
+      background-color: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
       z-index: 999;
@@ -87,122 +258,70 @@
       height: 80%;
     }
 
-    .close-btn {
+    .video-overlay .close-btn {
       position: absolute;
       top: 20px;
-      right: 30px;
+      right: 20px;
       font-size: 30px;
       color: white;
       cursor: pointer;
     }
-
-    /* Responsive Ayarlar */
-    @media (max-width: 768px) {
-      .episode {
-        flex: 1 1 calc(50% - 20px); /* Tablet görünümü */
-      }
-    }
-
-    @media (max-width: 480px) {
-      .episode {
-        flex: 1 1 100%; /* Telefon görünümü */
-      }
-
-      .content {
-        padding: 10px;
-      }
-    }
   </style>
 </head>
+
 <body>
 
-  <div class="content" id="episodeContainer">
-    <!-- Bölümler burada yüklenecek -->
-  </div>
+  <!-- İçerik alanı -->
+  <div class="content" id="episodeContainer"></div>
 
+  <!-- Video oynatıcı -->
   <div class="video-overlay" id="videoOverlay">
     <span class="close-btn" onclick="closeVideo()">×</span>
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
 
+  <!-- Bölüm verileri -->
+  <script src="data.js"></script>
+
   <script>
-    const episodes = [
-	{
-        title: "Miracle Landing on the Hudson / Hudson Nehri'nde Mucizevi İniş",
-        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 05 Ocak 2014</p>",
-        thumbnail: "./img/MiracleHudson.jpg",
-        video: "https://player.bilibili.com/player.html?bvid=BV1pf4y1M7CW&t=16.7",
-        summary: "Uçak Kazası Raporunun 10. Sezon 5. Bölümünün daha uzun versiyonu diyebiliriz."
-      },
-      {
-        title: "TRT Belgesel (Unutulmayan Olaylar Programı) / 1963 Ankara Uçak Kazası",
-        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 2008 Yapımı</p>",
-        thumbnail: "./img/AnkaraUlusaUcakKazasi.jpg",
-        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.178085379585248/178081676252285",
-        summary: "Havacılık tarihine Ulus Faciası olarak geçen uçak kazası, 1 Şubat 1963'de Lübnan havayolu şirketi Middle East Airlines'a ait uçağın Ankara semalarındayken Türk Hava Kuvvetleri'ne ait nakliye uçağıyla çarpışması sonucu gerçekleşti. Her iki uçak da Ulus semtinde bulunan meskun mahaller üzerindeki farklı noktalara düştü. Kazada yolcu uçağında bulunan 11 yolcu ve 3 mürettebat, askeri uçakta bulunan 3 Türk askerî personeli ve uçakların düştükleri yerlerde bulunan 87 kişi ile beraber toplam 104 kişi hayatını kaybetti."
-      },
-      {
-        title: "TRT Belgesel (Ve Sonra Programı) / Isparta Uçak Kazası Sonrası",
-        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 12 Eylül 2015</p>",
-        thumbnail: "./img/IspartaUcakKazasi.jpg",
-        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/138332683560518/",
-        summary: "30 Kasım 2007'de İstanbul'dan Isparta'ya giden uçak düştü. 50 yolcu ve 7 mürettebat dahil kimse kurtulamadı. Hayatını kaybeden yolcular arasında 6 bilim adamı da vardı. Uçağın düşmesiyle ilgili \"sabotaj\" iddiaları gündeme geldi. Ve Sonra..."
-      },
-	  {
-        title: "TRT HABER (Büyük Takip Programı) / Isparta Uçak Kazası",
-        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 7 Ocak 2011</p>",
-        thumbnail: "./img/IspartaUcakKazasi2.jpg",
-        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/138704570189996",
-        summary: "Ömer Özkök'ün başarılı sunumuyla, Isparta Uçak Kazasına farklı bakış."
-      },
-      {
-        title: "TVNET (Komplo Teorisi Programı) / Atlasjet Uçağı Düştü Mü Düşürüldü Mü ?",
-        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 15 Şubat 2013</p>",
-        thumbnail: "./img/KomploTeorisiIsparta.jpg",
-        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/138369916890128",
-        summary: "Cem Küçük'ün başarılı sunumuyla, Atlasjet için belki de en iyi belgesel."
-      },
-      {
-        title: "TVNET (Komplo Teorisi Programı) / Muhsin Yazıcıoğlu Öldürüldü mü ?",
-        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 26 Nisan 2013</p>",
-        thumbnail: "./img/KomploTeorisiMaras.jpg",
-        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/195283174532135/",
-        summary: "Cem Küçük'ün başarılı sunumuyla, Muhsin Yazıcıoğlu'nun Helikopterinin Düşüşü."
-      },
-      {
-        title: "Kanal A (Dünden Yarına Programı) / Bir Uçak Kazası-Adnan Menderes",
-        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 12 Mart 2014</p>",
-        thumbnail: "./img/DYPMenderes.jpg",
-        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177718486288604/177716582955461",
-        summary: "17 Şubat 1959 Türk Hava Yolları Londra kazası; Türkiye Cumhuriyeti başbakanı Adnan Menderes'in içerisinde bulunduğu Vickers Viscount 794 tipi TC-SEV uçağının Kıbrıs Cumhuriyeti'ni kuracak Londra Antlaşması için İngiltere'ye doğru giderken düşmesi olayıdır."
-      },
-      {
-        title: "Al Jazeera Türk (Özel Program) / Lockerbie'de Gerçekte Ne Oldu ? <span class='subtitle'>(Alt Yazılı)</span>",
-        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 12 Mart 2014</p>",
-        thumbnail: "./img/ALJLockerbie.jpg",
-        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/147216722672114",
-        summary: "1988'de yaşanan Lockerbie uçak bombalama olayında, yıllardır gizli kalan bilgiler deşifre oluyor. Uluslararası dengeleri sarsacak veri ve kanıtlar ilk kez gün yüzüne çıkıyor. 25 yıl önce patlayan bir bomba İngiltere tarihinin en büyük havacılık faciasına neden oldu. Al Jazeera üç yıl süren araştırma sonucunda bambaşka bir öyküyü gün yüzüne çıkarıyor."
-      }
-	  ];
+    let currentSeries = "";
+    let currentSeason = 1;
 
-    function loadEpisodes() {
+    const episodes = allEpisodes;
+
+    function loadSeason(season, seriesName) {
+      currentSeries = seriesName;
+      currentSeason = season;
       const container = document.getElementById('episodeContainer');
-      container.innerHTML = ''; // Önceki içerikleri temizle
+      container.innerHTML = '';
 
-      if (episodes.length === 0) {
-        container.innerHTML = "<p>Hiç bölüm bulunamadı.</p>";
+      const seasonEpisodes = episodes[seriesName][season];
+
+      if (!seasonEpisodes || seasonEpisodes.length === 0) {
+        container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
         return;
       }
 
-      episodes.forEach(ep => {
+      seasonEpisodes.forEach(ep => {
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
         epDiv.innerHTML = `
-          <img src="${ep.thumbnail}" alt="${ep.title}">
-          <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-          <p>${ep.date}</p>
-          <p class="episode-summary">${ep.summary}</p>
-        `;
+    <div class="episode-image" onclick="playVideo('${ep.video}')">
+      <img src="${ep.thumbnail}" alt="${ep.title}">
+    </div>
+    <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+    <p class="episode-date">${ep.date}</p>
+    ${ep.fragman ? `<div class="fragman-link">${ep.fragman}</div>` : ''}
+    <div class="tooltip-and-tags">
+      ${ep.description ? `
+        <div class="tooltip-container">
+          <span class="tooltip-text">Filmin Konusu</span>
+          <div class="tooltip-balloon">${ep.description}</div>
+        </div>` : ''}
+      <div class="episode-tags">
+        ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+      </div>
+    </div>`;
         container.appendChild(epDiv);
       });
     }
@@ -210,20 +329,88 @@
     function playVideo(src) {
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
-      video.src = src;  // Video kaynağını ayarla
+
+      // YouTube videosu
+      if (src.includes("youtube.com")) {
+        const videoId = src.split("v=")[1]?.split("&")[0];
+        video.src = `https://www.youtube.com/embed/${videoId}`;
+      }
+      // Facebook videosu (embed hali zaten gelmeli)
+      else if (src.includes("facebook.com")) {
+        video.src = src;
+      }
+      // Bilibili videosu
+      else if (src.includes("bilibili.com")) {
+        video.src = src; // Embed hali olduğu sürece doğrudan kullanılabilir
+      }
+      // Diğer tüm durumlar: varsayılan olarak verilen src'yi kullan
+      else {
+        video.src = src;
+      }
+
       overlay.style.display = 'flex';
     }
+
 
     function closeVideo() {
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
       overlay.style.display = 'none';
-      video.src = '';  // Videoyu durdurmak için src'i temizle
+      video.src = '';
     }
 
-    // Sayfa yüklendiğinde bölümleri yükle
-    window.onload = loadEpisodes;
-  </script>
+    function searchTag(tag) {
+      filterByTag(tag);
+    }
 
+    function filterByTag(tag) {
+      const container = document.getElementById('episodeContainer');
+      container.innerHTML = '';
+
+      const allEpisodesArray = [];
+
+      for (let series in episodes) {
+        for (let season in episodes[series]) {
+          if (Array.isArray(episodes[series][season])) {
+            allEpisodesArray.push(...episodes[series][season]);
+          }
+        }
+      }
+
+      const filtered = allEpisodesArray.filter(ep => ep.tags.includes(tag));
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<p>"${tag}" etiketiyle eşleşen bölüm bulunamadı.</p>`;
+        return;
+      }
+
+      filtered.forEach(ep => {
+        const epDiv = document.createElement('div');
+        epDiv.className = 'episode';
+        epDiv.innerHTML = `
+      <div class="episode-image" onclick="playVideo('${ep.video}')">
+        <img src="${ep.thumbnail}" alt="${ep.title}">
+      </div>
+      <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+      <p class="episode-date">${ep.date}</p>
+      ${ep.fragman ? `<div class="fragman-link">${ep.fragman}</div>` : ''}
+      ${ep.description ? `
+        <div class="tooltip-container">
+          <span class="tooltip-text">Bölüm Konusu</span>
+          <div class="tooltip-balloon">${ep.description}</div>
+        </div>` : ''}
+      <div class="episode-tags">
+        ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+      </div>`;
+        container.appendChild(epDiv);
+      });
+    }
+
+    window.onload = () => {
+      const defaultSeries = "TEK BÖLÜM";
+      loadSeason(1, defaultSeries);
+    };
+  </script>
 </body>
+
 </html>
