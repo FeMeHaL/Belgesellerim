@@ -149,6 +149,30 @@ const allEpisodes = {
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/138369916890128",
         description: "Cem Küçük'ün başarılı sunumuyla, Atlasjet için belki de en iyi belgesel.",
         tags: ["Uçak", "Türkiye", "2007", "EGPWS", "Atlasjet 4203"]
+      },
+	  {
+        title: "TVNET (Komplo Teorisi Programı) / Muhsin Yazıcıoğlu Öldürüldü mü ?",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 26 Nisan 2013</p>",
+        thumbnail: "./img/KomploTeorisiMaras.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/195283174532135/",
+        description: "Cem Küçük'ün başarılı sunumuyla, Muhsin Yazıcıoğlu'nun Helikopterinin Düşüşü.",
+        tags: ["Helikopter", "Türkiye", "2009", "FETÖ/PDY", "Medair Bell 206"]
+      },
+	  {
+        title: "Kanal A (Dünden Yarına Programı) / Bir Uçak Kazası-Adnan Menderes",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 12 Mart 2014</p>",
+        thumbnail: "./img/DYPMenderes.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177718486288604/177716582955461",
+        description: "17 Şubat 1959 Türk Hava Yolları Londra kazası; Türkiye Cumhuriyeti başbakanı Adnan Menderes'in içerisinde bulunduğu Vickers Viscount 794 tipi TC-SEV uçağının Kıbrıs Cumhuriyeti'ni kuracak Londra Antlaşması için İngiltere'ye doğru giderken düşmesi olayıdır.",
+        tags: ["Uçak", "İngiltere", "1959", "Londra Antlaşması", "Vickers Viscount 793"]
+      },
+	  {
+        title: "Al Jazeera Türk (Özel Program) / Lockerbie'de Gerçekte Ne Oldu ? <span class='subtitle'>(Alt Yazılı)</span>",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 12 Mart 2014</p>",
+        thumbnail: "./img/ALJLockerbie.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/147216722672114",
+        description: "1988'de yaşanan Lockerbie uçak bombalama olayında, yıllardır gizli kalan bilgiler deşifre oluyor. Uluslararası dengeleri sarsacak veri ve kanıtlar ilk kez gün yüzüne çıkıyor. 25 yıl önce patlayan bir bomba İngiltere tarihinin en büyük havacılık faciasına neden oldu. Al Jazeera üç yıl süren araştırma sonucunda bambaşka bir öyküyü gün yüzüne çıkarıyor.",
+        tags: ["Uçak", "İskoçya", "1988", "Uçak Bombalaması", "Pan Am Flight 103"]
       }
     ]
   },
