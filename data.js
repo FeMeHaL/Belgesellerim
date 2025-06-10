@@ -7,7 +7,7 @@ const allEpisodes = {
         date: "<p class=\"episode-date\">İlk Vizyona Girişi : 18 Haziran 2007</p>",
         thumbnail: "./img/KA01S01E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/575188971570761",
-        tags: ["Uçak", "F16 Uçağının Düşürülmesi", "1995", "Bosna Hersek", "Pilot Kurtarma Operasyonu"]
+        tags: ["Polis", "Banka Soygunu", "1997", "A.B.D.", "Silahlı Çatışma"]
       },
 	  {
         title: "<br>KRİTİK ANLAR<br><span class='episode-number'>[005]</span> 1. Sezon 5. Bölüm - (Downed Pilot) - Bosna'da Düşen Uçak",
@@ -25,7 +25,7 @@ const allEpisodes = {
       }
     ],
     seasonYears: {
-      1: "2007/2008",
+      1: "2007-2008",
     }
   },
   
