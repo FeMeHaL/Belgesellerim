@@ -124,7 +124,31 @@ const allEpisodes = {
         thumbnail: "./img/AnkaraUlusaUcakKazasi.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.178085379585248/178081676252285",
         description: "Havacılık tarihine Ulus Faciası olarak geçen uçak kazası, 1 Şubat 1963'de Lübnan havayolu şirketi Middle East Airlines'a ait uçağın Ankara semalarındayken Türk Hava Kuvvetleri'ne ait nakliye uçağıyla çarpışması sonucu gerçekleşti. Her iki uçak da Ulus semtinde bulunan meskun mahaller üzerindeki farklı noktalara düştü. Kazada yolcu uçağında bulunan 11 yolcu ve 3 mürettebat, askeri uçakta bulunan 3 Türk askerî personeli ve uçakların düştükleri yerlerde bulunan 87 kişi ile beraber toplam 104 kişi hayatını kaybetti.",
-        tags: ["Uçak", "Türkiye", "1963", "Havada Çarpışma", "Middle East Airlines Flight 265"]
+        tags: ["Uçak", "Türkiye", "1963", "Havada Çarpışma", "Ulus Faciası"]
+      },
+	  {
+        title: "TRT Belgesel (Ve Sonra Programı) / Isparta Uçak Kazası Sonrası",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 12 Eylül 2015</p>",
+        thumbnail: "./img/IspartaUcakKazasi.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/138332683560518/",
+        description: "30 Kasım 2007'de İstanbul'dan Isparta'ya giden uçak düştü. 50 yolcu ve 7 mürettebat dahil kimse kurtulamadı. Hayatını kaybeden yolcular arasında 6 bilim adamı da vardı. Uçağın düşmesiyle ilgili \"sabotaj\" iddiaları gündeme geldi. Ve Sonra...",
+        tags: ["Uçak", "Türkiye", "2007", "EGPWS", "Atlasjet 4203"]
+      },
+	  {
+        title: "TRT HABER (Büyük Takip Programı) / Isparta Uçak Kazası",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 7 Ocak 2011</p>",
+        thumbnail: "./img/IspartaUcakKazasi2.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/138704570189996",
+        description: "Ömer Özkök'ün başarılı sunumuyla, Isparta Uçak Kazasına farklı bakış.",
+        tags: ["Uçak", "Türkiye", "2007", "EGPWS", "Atlasjet 4203"]
+      },
+	  {
+        title: "TVNET (Komplo Teorisi Programı) / Atlasjet Uçağı Düştü Mü Düşürüldü Mü ?",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 15 Şubat 2013</p>",
+        thumbnail: "./img/KomploTeorisiIsparta.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/138369916890128",
+        description: "Cem Küçük'ün başarılı sunumuyla, Atlasjet için belki de en iyi belgesel.",
+        tags: ["Uçak", "Türkiye", "2007", "EGPWS", "Atlasjet 4203"]
       }
     ]
   },
