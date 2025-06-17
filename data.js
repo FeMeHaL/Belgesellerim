@@ -218,7 +218,7 @@ const allEpisodes = {
         thumbnail: "./img/BAYB01S01E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/178689442858175",
         description: "Bir mühimmat testinde bir F-18 Hornet ve bir A-4 Skyhawk'a bomba atıyor. Bir rüzgar türbini çılgınca dönüyor, bir helikopterin kuyruk pervanesi hiç dönmüyor ve ikisi de yok oluyor. Bir çamur kayması sakinleri sokakta kovalıyor, bir C-130 roket desteğiyle iyi durumda değil ve kasırgalar en kötüsünü yapıyor.",
-        tags: ["Douglas A-4 Skyhawk", "Yangın", "Kasırga", "Lockheed C-130 Hercules", "Sikorsky"]
+        tags: ["Douglas A-4 Skyhawk", "Yangın", "Kasırga", "Lockheed C-130 Hercules", "Helikopter"]
       },
 	  {
         title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[001]</span> 1. Sezon 2. Bölüm",
@@ -234,90 +234,16 @@ const allEpisodes = {
         thumbnail: "./img/BAYB01S03E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/179792756081177",
         description: "Dünya, bir benzin istasyonunda ve roket yakıtı tesisindeki büyük patlamalar ve ateş toplarından sallanıyor. Bir Thuderbird'ün F-16'sı ve bir F-117 gizli bombardıman uçağı hava gösterilerinde çarpışıyor. Kafa karıştırıcı trafik ışıkları, bir yarı römorku bir tren kazasında yok olmaya mahkûm ediyor. Evler, şişen bir nehir tarafından yıkanıyor.",
-        tags: ["Hatalı Trafik Sinyali", "F-117", "Thunderbirds", "Nehir Taşması", "PEPCON Felaketi "]
+        tags: ["Hatalı Trafik Sinyali", "F-117", "Thunderbirds", "Nehir Taşması", "PEPCON Felaketi"]
       },
-	  
-	  
-	  
-	  
-	  
-	  
-          
- 
-		{
-          title: "<span class='episode-number'>[004]</span> 1. Sezon 4. Bölüm",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 4 Eylül 2008</p>",
-          thumbnail: "./img/BAYB01S04E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/180085002718619"
-        },
-		{
-          title: "<span class='episode-number'>[005]</span> 1. Sezon 5. Bölüm",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 18 Eylül 2008</p>",
-          thumbnail: "./img/BAYB01S05E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/181008729292913"
-        },
-		{
-          title: "<span class='episode-number'>[006]</span> 1. Sezon 6. Bölüm",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 25 Eylül 2008</p>",
-          thumbnail: "./img/BAYB01S06E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/181339199259866"
-        },
-		{
-          title: "<span class='episode-number'>[008]</span> 1. Sezon 8. Bölüm",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 9 Ekim 2008</p>",
-          thumbnail: "./img/BAYB01S08E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/181996442527475"
-        },
-		{
-          title: "<span class='episode-number'>[009]</span> 1. Sezon 9. Bölüm",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 16 Ekim 2008</p>",
-          thumbnail: "./img/03S13E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.182234122503707/182232992503820"
-        },
-		{
-          title: "<span class='episode-number'>[010]</span> 1. Sezon 10. Bölüm",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 23 Ekim 2008</p>",
-          thumbnail: "./img/BAYB01S10E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/182712842455835"
-        },
-		{
-          title: "<span class='episode-number'>[011]</span> 1. Sezon 11. Bölüm",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 30 Ekim 2008</p>",
-          thumbnail: "./img/BAYB01S11E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/183018689091917"
-        },
-		{
-          title: "<span class='episode-number'>[012]</span> 1. Sezon 12. Bölüm",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 6 Kasım 2008</p>",
-          thumbnail: "./img/BAYB01S12E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/183305559063230"
-        },
-		{
-          title: "<span class='episode-number'>[013]</span> 1. Sezon 13. Bölüm",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 11 Kasım 2008</p>",
-          thumbnail: "./img/BAYB01S13E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/183608905699562"
-        },
-		{
-          title: "<span class='episode-number'>[014]</span> 1. Sezon 14. Bölüm",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 18 Kasım 2008</p>",
-          thumbnail: "./img/BAYB01S14E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/184282662298853"
-        },
-		{
-          title: "<span class='episode-number'>[015]</span> 1. Sezon 15. Bölüm",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 5 Ocak 2009</p>",
-          thumbnail: "./img/BAYB01S15E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/184643098929476"
-        },
-		{
-          title: "<span class='episode-number'>[016]</span> 1. Sezon 16. Bölüm",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Ocak 2009</p>",
-          thumbnail: "./img/BAYB01S16E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/184961355564317"
-        }
-	  
-	  
+	  {
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[001]</span> 1. Sezon 4. Bölüm",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 4 Eylül 2008</p>",
+        thumbnail: "./img/BAYB01S04E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/180085002718619",
+        description: "Kasırgalar bir domuz çiftliğine ve uçak hangarına çarpar. 25 ton stirenle dolu yanan bir tanker kamyonu muazzam bir patlama ve ateş topuyla patlar. Diğer yangınlar ve patlamalar arasında bir Delta II roketi, bir helikopter, batırılan bir gemi ve görünüşe göre helyum yerine hidrojenle doldurulmuş bir sürü balon bulunur. Üç motorlu bir uçak gökyüzünden kayar.",
+        tags: ["Stiren Tankeri", "Deprem", "Delta II Roketi", "Kasırga", "Helikopter"]
+      },
     ],
     seasonYears: {
       1: 2008
