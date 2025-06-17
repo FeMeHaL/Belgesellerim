@@ -221,7 +221,7 @@ const allEpisodes = {
         tags: ["Uçak", "Yangın", "Kasırga", "Lockheed C-130 Hercules", "Helikopter"]
       },
 	  {
-        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[001]</span> 1. Sezon 2. Bölüm",
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[002]</span> 1. Sezon 2. Bölüm",
         date: "<p class=\"episode-date\">İlk Vizyona Girişi : 21 Ağustos 2008</p>",
         thumbnail: "./img/BAYB01S02E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/179062352820884",
@@ -229,7 +229,7 @@ const allEpisodes = {
         tags: ["Uçak", "Köprünün Çökmesi", "Kasırga", "B-2 Bombardıman Uçağı", "Kırıkkale"]
       },
 	  {
-        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[001]</span> 1. Sezon 3. Bölüm",
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[003]</span> 1. Sezon 3. Bölüm",
         date: "<p class=\"episode-date\">İlk Vizyona Girişi : 28 Ağustos 2008</p>",
         thumbnail: "./img/BAYB01S03E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/179792756081177",
@@ -237,7 +237,7 @@ const allEpisodes = {
         tags: ["Hatalı Trafik Sinyali", "F-117", "Uçak", "Nehir Taşması", "PEPCON Felaketi"]
       },
 	  {
-        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[001]</span> 1. Sezon 4. Bölüm",
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[004]</span> 1. Sezon 4. Bölüm",
         date: "<p class=\"episode-date\">İlk Vizyona Girişi : 4 Eylül 2008</p>",
         thumbnail: "./img/BAYB01S04E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/180085002718619",
@@ -245,12 +245,28 @@ const allEpisodes = {
         tags: ["Stiren Tankeri", "Uçak", "Delta II Roketi", "Kasırga", "Helikopter"]
 		},
 		{
-        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[001]</span> 1. Sezon 5. Bölüm",
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[005]</span> 1. Sezon 5. Bölüm",
         date: "<p class=\"episode-date\">İlk Vizyona Girişi : 18 Eylül 2008</p>",
         thumbnail: "./img/BAYB01S05E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/181008729292913",
         description: "Yangınlar tank arabalarını ve asetilen tüpleriyle dolu bir depoyu alevli mermilere dönüştürür. Bir helikopter kazası daha fazla helikopterin kurtarmaya gelmesini sağlar. Diğer kazalar arasında yarış bisikleti, damperli kamyon, tanker, yük treni ve mobilya bisikleti bulunur.",
-        tags: ["Tankeri Patlaması", "Yangın", "Kovalama", "Tayfun", "Helikopter"]
+        tags: ["Tankeri Patlaması", "Yangın", "Kovalamaca", "Tayfun", "Helikopter"]
+		},
+		{
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[006]</span> 1. Sezon 6. Bölüm",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 25 Eylül 2008</p>",
+        thumbnail: "./img/BAYB01S06E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/181339199259866",
+        description: "Yangınlar, patlamalar ve yanıklar bir petrol tankı, bir apartman gazı sızıntısı, bir uçak kazası, bir havai fişek fabrikası ve hatta bir itfaiyeci eğitim tatbikatı sonucunda ortaya çıkar. Nükleer atık konteynerleri giderek daha şiddetli çarpışmalarda çarpışma testine tabi tutulur. Bir polis araç kamerası, önden çarpışmayla sonuçlanan bir araba kovalamacasını kaydeder.",
+        tags: ["Sürat Teknesi", "Patlama ", "Kovalamaca", "Uçak", "Helikopter"]
+		},
+		{
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[008]</span> 1. Sezon 8. Bölüm",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 9 Ekim 2008</p>",
+        thumbnail: "./img/BAYB01S08E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/181996442527475",
+        description: "Hoşnutsuz bir sakin, geçici zırhlı bir buldozerle çılgına döner. Bir mühimmat deposu ve bir gemi dolusu gübre muazzam patlamalara yol açar. Bir çukur bir malikaneyi yutar ve bir Mig 29 Paris Hava Gösterisi'nde düşer. Araba kazaları arasında polis tarafından durdurulan bir araba ve bir yarış arabası yer alır.",
+        tags: ["Texas City Felaketi", "Patlama ", "Trafik Kazası", "Uçak", "Buldozer"]
       }
     ],
     seasonYears: {
