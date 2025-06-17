@@ -218,7 +218,7 @@ const allEpisodes = {
         thumbnail: "./img/BAYB01S01E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/178689442858175",
         description: "Bir mühimmat testinde bir F-18 Hornet ve bir A-4 Skyhawk'a bomba atıyor. Bir rüzgar türbini çılgınca dönüyor, bir helikopterin kuyruk pervanesi hiç dönmüyor ve ikisi de yok oluyor. Bir çamur kayması sakinleri sokakta kovalıyor, bir C-130 roket desteğiyle iyi durumda değil ve kasırgalar en kötüsünü yapıyor.",
-        tags: ["Douglas A-4 Skyhawk", "Yangın", "Kasırga", "Lockheed C-130 Hercules", "Helikopter"]
+        tags: ["Uçak", "Yangın", "Kasırga", "Lockheed C-130 Hercules", "Helikopter"]
       },
 	  {
         title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[001]</span> 1. Sezon 2. Bölüm",
@@ -226,7 +226,7 @@ const allEpisodes = {
         thumbnail: "./img/BAYB01S02E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/179062352820884",
         description: "Bir kasırga ve devrilmiş elektrik hatları arasında sıkışan fırtına avcıları rüzgar ve devasa dolu taşlarıyla vuruluyor. Bir asma köprü çöküyor, bir çekme köprü bir tekneyi parçalıyor ve bir sürat teknesi havalanıyor. Bir B-1 bir evi bombalıyor, milyar dolarlık bir B-2 toz oluyor ve yolcular alevler içindeki bir Çin 737'sinden kaçıyor. Teröristler Türkiye'deki bir kasabanın sakinlerine büyük bir mühimmat fabrikası patlaması ve yangını yaşatıyor.",
-        tags: ["China Airlines Flight 120", "Köprünün Çökmesi", "Kasırga", "B-2 Bombardıman Uçağı", "Kırıkkale"]
+        tags: ["Uçak", "Köprünün Çökmesi", "Kasırga", "B-2 Bombardıman Uçağı", "Kırıkkale"]
       },
 	  {
         title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[001]</span> 1. Sezon 3. Bölüm",
@@ -234,7 +234,7 @@ const allEpisodes = {
         thumbnail: "./img/BAYB01S03E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/179792756081177",
         description: "Dünya, bir benzin istasyonunda ve roket yakıtı tesisindeki büyük patlamalar ve ateş toplarından sallanıyor. Bir Thuderbird'ün F-16'sı ve bir F-117 gizli bombardıman uçağı hava gösterilerinde çarpışıyor. Kafa karıştırıcı trafik ışıkları, bir yarı römorku bir tren kazasında yok olmaya mahkûm ediyor. Evler, şişen bir nehir tarafından yıkanıyor.",
-        tags: ["Hatalı Trafik Sinyali", "F-117", "Thunderbirds", "Nehir Taşması", "PEPCON Felaketi"]
+        tags: ["Hatalı Trafik Sinyali", "F-117", "Uçak", "Nehir Taşması", "PEPCON Felaketi"]
       },
 	  {
         title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[001]</span> 1. Sezon 4. Bölüm",
@@ -242,8 +242,16 @@ const allEpisodes = {
         thumbnail: "./img/BAYB01S04E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/180085002718619",
         description: "Kasırgalar bir domuz çiftliğine ve uçak hangarına çarpar. 25 ton stirenle dolu yanan bir tanker kamyonu muazzam bir patlama ve ateş topuyla patlar. Diğer yangınlar ve patlamalar arasında bir Delta II roketi, bir helikopter, batırılan bir gemi ve görünüşe göre helyum yerine hidrojenle doldurulmuş bir sürü balon bulunur. Üç motorlu bir uçak gökyüzünden kayar.",
-        tags: ["Stiren Tankeri", "Deprem", "Delta II Roketi", "Kasırga", "Helikopter"]
-      },
+        tags: ["Stiren Tankeri", "Uçak", "Delta II Roketi", "Kasırga", "Helikopter"]
+		},
+		{
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[001]</span> 1. Sezon 5. Bölüm",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 18 Eylül 2008</p>",
+        thumbnail: "./img/BAYB01S05E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/181008729292913",
+        description: "Yangınlar tank arabalarını ve asetilen tüpleriyle dolu bir depoyu alevli mermilere dönüştürür. Bir helikopter kazası daha fazla helikopterin kurtarmaya gelmesini sağlar. Diğer kazalar arasında yarış bisikleti, damperli kamyon, tanker, yük treni ve mobilya bisikleti bulunur.",
+        tags: ["Tankeri Patlaması", "Yangın", "Kovalama", "Tayfun", "Helikopter"]
+      }
     ],
     seasonYears: {
       1: 2008
