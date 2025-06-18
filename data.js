@@ -275,6 +275,22 @@ const allEpisodes = {
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.182234122503707/182232992503820",
         description: "Devistasyon, bilinmeyen bir tepkimenin bir hidrojen bombası testinin beklenen verimin dört katını üretmesine neden olmasıyla ortaya çıkar. Uçakların yazılımı arızalandığında İsveçli bir pilot bir değil iki savaş uçağı kazasına karışır. Lav, Hawaii'de bir kasabayı yok eder. Diğer kazalar arasında kaçırılan bir yolcu uçağı, akrobasi yapan bir helikopter ve trafik cezası nedeniyle durdurulan bir araba yer alır.",
         tags: ["Denize Acil İniş", "Uçak", "Lav Akıntısı", "Atom Bombası", "Helikopter"]
+		},
+		{
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[010]</span> 1. Sezon 10. Bölüm",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 23 Ekim 2008</p>",
+        thumbnail: "./img/BAYB01S10E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/182712842455835",
+        description: "İnsanların bir kasırga ve hortumdan dehşete kapıldığı bir yolculuğa katılın. Havai fişek fabrikasında çıkan yangın, bir kasabayı yok ederken geceyi aydınlatır. Jet araba, kanatlı tulum ve sıcak hava balonu gösterileri ters gider. Bir sürat teknesi havalanır ve bir vinç devrilir.",
+        tags: ["Sıcak Hava Balonu", "Wingsuit", "Vinç Çökmesi", "Kasırga", "Tekne Yarışı"]
+		},
+		{
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[011]</span> 1. Sezon 11. Bölüm",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 30 Ekim 2008</p>",
+        thumbnail: "./img/BAYB01S11E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/183018689091917",
+        description: "Çok sayıda kazada, çılgına dönen bir Patton tankı, bir drag yarışçısının çarpışması, kötü planlanmış bir dublörlük yapan bir helikopter, güç kaybı yaşayan bir dublör uçağı, bir zeplin prototipi ve kum tepeciklerinden atlayan bir ATV yer alıyor. Arnavutluk'ta imha edilen bir mühimmat partisi biraz fazla büyük ve ironik bir şekilde önlenmesi amaçlanan yıkıma yol açıyor.",
+        tags: ["Hindenburg Felaketi", "Deprem", "Uçak", "Helikopter", "Vinç Çökmesi"]
       }
     ],
     seasonYears: {
