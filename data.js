@@ -258,7 +258,7 @@ const allEpisodes = {
         thumbnail: "./img/BAYB01S06E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/181339199259866",
         description: "Yangınlar, patlamalar ve yanıklar bir petrol tankı, bir apartman gazı sızıntısı, bir uçak kazası, bir havai fişek fabrikası ve hatta bir itfaiyeci eğitim tatbikatı sonucunda ortaya çıkar. Nükleer atık konteynerleri giderek daha şiddetli çarpışmalarda çarpışma testine tabi tutulur. Bir polis araç kamerası, önden çarpışmayla sonuçlanan bir araba kovalamacasını kaydeder.",
-        tags: ["Sürat Teknesi", "Patlama ", "Kovalamaca", "Uçak", "Helikopter"]
+        tags: ["Sürat Teknesi", "Patlama", "Kovalamaca", "Uçak", "Helikopter"]
 		},
 		{
         title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[008]</span> 1. Sezon 8. Bölüm",
@@ -266,7 +266,15 @@ const allEpisodes = {
         thumbnail: "./img/BAYB01S08E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/181996442527475",
         description: "Hoşnutsuz bir sakin, geçici zırhlı bir buldozerle çılgına döner. Bir mühimmat deposu ve bir gemi dolusu gübre muazzam patlamalara yol açar. Bir çukur bir malikaneyi yutar ve bir Mig 29 Paris Hava Gösterisi'nde düşer. Araba kazaları arasında polis tarafından durdurulan bir araba ve bir yarış arabası yer alır.",
-        tags: ["Texas City Felaketi", "Patlama ", "Trafik Kazası", "Uçak", "Buldozer"]
+        tags: ["Texas City Felaketi", "Patlama", "Trafik Kazası", "Uçak", "Buldozer"]
+		},
+		{
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[009]</span> 1. Sezon 9. Bölüm",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 16 Ekim 2008</p>",
+        thumbnail: "./img/03S13E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.182234122503707/182232992503820",
+        description: "Devistasyon, bilinmeyen bir tepkimenin bir hidrojen bombası testinin beklenen verimin dört katını üretmesine neden olmasıyla ortaya çıkar. Uçakların yazılımı arızalandığında İsveçli bir pilot bir değil iki savaş uçağı kazasına karışır. Lav, Hawaii'de bir kasabayı yok eder. Diğer kazalar arasında kaçırılan bir yolcu uçağı, akrobasi yapan bir helikopter ve trafik cezası nedeniyle durdurulan bir araba yer alır.",
+        tags: ["Denize Acil İniş", "Uçak", "Lav Akıntısı", "Atom Bombası", "Helikopter"]
       }
     ],
     seasonYears: {
