@@ -282,7 +282,7 @@ const allEpisodes = {
         thumbnail: "./img/BAYB01S10E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/182712842455835",
         description: "İnsanların bir kasırga ve hortumdan dehşete kapıldığı bir yolculuğa katılın. Havai fişek fabrikasında çıkan yangın, bir kasabayı yok ederken geceyi aydınlatır. Jet araba, kanatlı tulum ve sıcak hava balonu gösterileri ters gider. Bir sürat teknesi havalanır ve bir vinç devrilir.",
-        tags: ["Sıcak Hava Balonu", "Wingsuit", "Vinç Çökmesi", "Kasırga", "Tekne Yarışı"]
+        tags: ["Sıcak Hava Balonu", "Vinç Çökmesi", "Wingsuit", "Kasırga", "Tekne Yarışı"]
 		},
 		{
         title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[011]</span> 1. Sezon 11. Bölüm",
@@ -291,6 +291,14 @@ const allEpisodes = {
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/183018689091917",
         description: "Çok sayıda kazada, çılgına dönen bir Patton tankı, bir drag yarışçısının çarpışması, kötü planlanmış bir dublörlük yapan bir helikopter, güç kaybı yaşayan bir dublör uçağı, bir zeplin prototipi ve kum tepeciklerinden atlayan bir ATV yer alıyor. Arnavutluk'ta imha edilen bir mühimmat partisi biraz fazla büyük ve ironik bir şekilde önlenmesi amaçlanan yıkıma yol açıyor.",
         tags: ["Hindenburg Felaketi", "Deprem", "Uçak", "Helikopter", "Vinç Çökmesi"]
+		},
+		{
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[012]</span> 1. Sezon 12. Bölüm",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 6 Kasım 2008</p>",
+        thumbnail: "./img/BAYB01S12E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/183305559063230",
+        description: "Birkaç uçak kazasının sıradan nedenleri vardır: bir Sovyet YAK-41 VTOL'nin bir uçak gemisine inişi, bir YAK-38'in VTOL kabiliyetini göstermesi ve vektörlü itme gücünü gösteren oldukça manevra kabiliyetine sahip bir NASA X-31. Tekne kazaları arasında, sürücüsünü su üzerinde kaydıran ve saatte yaklaşık 150 mil hızla yarışan bir sürat teknesi yer alır. Doğa ana, binaları bir çöküntü deliğiyle yutar ve bir kimyasal tesis patlaması devasa bir ateş topu üretir.",
+        tags: ["T2 Laboratuvarları", "Uçak", "Sürat Teknesi", "Tekne Kazası", "Çöküntü"]
       }
     ],
     seasonYears: {
