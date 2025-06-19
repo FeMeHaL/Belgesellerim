@@ -17,7 +17,7 @@ const allEpisodes = {
         tags: ["Uçak", "Bosna Hersek", "1995", "F-16", "Pilot Kurtarma Operasyonu"]
       },
       {
-        title: "<br>KRİTİK ANLAR<br><span class='episode-number'>[005]</span> 1. Sezon 9. Bölüm - (Assault On Entebbe) - Uganda’ya Kaçırılan Uçak",
+        title: "<br>KRİTİK ANLAR<br><span class='episode-number'>[009]</span> 1. Sezon 9. Bölüm - (Assault On Entebbe) - Uganda’ya Kaçırılan Uçak",
         date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Haziran 2007</p>",
         thumbnail: "./img/KA01S09E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1031743588089291",
@@ -298,7 +298,7 @@ const allEpisodes = {
         thumbnail: "./img/BAYB01S12E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/183305559063230",
         description: "Birkaç uçak kazasının sıradan nedenleri vardır: bir Sovyet YAK-41 VTOL'nin bir uçak gemisine inişi, bir YAK-38'in VTOL kabiliyetini göstermesi ve vektörlü itme gücünü gösteren oldukça manevra kabiliyetine sahip bir NASA X-31. Tekne kazaları arasında, sürücüsünü su üzerinde kaydıran ve saatte yaklaşık 150 mil hızla yarışan bir sürat teknesi yer alır. Doğa ana, binaları bir çöküntü deliğiyle yutar ve bir kimyasal tesis patlaması devasa bir ateş topu üretir.",
-        tags: ["T2 Laboratuvarları", "Uçak", "Sürat Teknesi", "Tekne Kazası", "Çöküntü"]
+        tags: ["T2 Laboratuvarları", "Sürat Teknesi", "Uçak", "Tekne Kazası", "Çöküntü"]
 		},
 		{
         title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[013]</span> 1. Sezon 13. Bölüm",
@@ -307,6 +307,14 @@ const allEpisodes = {
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/183608905699562",
         description: "Bir fabrika ölümcül şarapnel parçaları saçıyor, bir motosiklet düşüyor, dokuz katlı bir bina yanıyor ve bir uçak düşüyor, ayrıca otoyol kazaları yaşanıyor.",
         tags: ["Nor'easter Fırtınası", "Uçak", "Roket", "Çığ", "Yangın"]
+		},
+		{
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[014]</span> 1. Sezon 14. Bölüm",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 18 Kasım 2008</p>",
+        thumbnail: "./img/BAYB01S14E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/184282662298853",
+        description: "Bir yarış arabası kaza yapar, şiddetli rüzgarlar nedeniyle çok sayıda ev yıkılır, 70 yaşındaki bir pilot jiroskoplu helikopterle kaza yapar ve hayatta kalır, bir kar arabası dağdan aşağı düşer.",
+        tags: ["Yarış Arabası", "Uçak", "Kovalamaca", "Kasırga", "Yangın"]
       }
     ],
     seasonYears: {
