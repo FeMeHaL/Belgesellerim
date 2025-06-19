@@ -14,7 +14,7 @@ const allEpisodes = {
         date: "<p class=\"episode-date\">İlk Vizyona Girişi : 15 Mayıs 2007</p>",
         thumbnail: "./img/KA01S05E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/506529168665653",
-        tags: ["Uçak", "F16 Uçağının Düşürülmesi", "1995", "Bosna Hersek", "Pilot Kurtarma Operasyonu"]
+        tags: ["Uçak", "Bosna Hersek", "1995", "F-16", "Pilot Kurtarma Operasyonu"]
       },
       {
         title: "<br>KRİTİK ANLAR<br><span class='episode-number'>[005]</span> 1. Sezon 9. Bölüm - (Assault On Entebbe) - Uganda’ya Kaçırılan Uçak",
@@ -45,7 +45,7 @@ const allEpisodes = {
         thumbnail: "./img/NM01S02E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1322528934837042",
         description: "Lorient Denizaltı Üssü, Fransa'nın Lorient kentinde bulunan bir denizaltı deniz üssüydü. 1941'de Alman Kriegsmarine tarafından inşa edildi ve 1943'e kadar genişletilmeye devam etti. Alman yenilgisinden sonra Fransız Donanması tarafından kullanıldı. 1995'te hizmet dışı bırakıldı ve sivil kullanıma dönüştürüldü.",
-        tags: ["Lorient Denizaltı Üssü", "Dom Sığınakları", "1941", "Jacques Stosskopf", "Keroman Denizaltı Müzesi"]
+        tags: ["Denizaltı", "U-bot", "1941", "Torpido", "Denizaltı Müzesi"]
       },
       {
         title: "<br>NAZİLERİN MEGA YAPILARI<br><span class='episode-number'>[003]</span> 1. Sezon 3. Bölüm - (V2 Rocket Bases) - V2 Roket Rampaları/ İntikam Silahları",
@@ -53,7 +53,7 @@ const allEpisodes = {
         thumbnail: "./img/NM01S03E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1031219407729058",
         description: "V2, teknik adı Aggregat -4 ( A4 ) olan, dünyanın ilk uzun menzilli [ 4 ] güdümlü balistik füzesiydi. Sıvı yakıtlı bir roket motoruyla çalışan füze, İkinci Dünya Savaşı sırasında Nazi Almanyası'nda bir intikam silahı olarak geliştirildi ve Müttefiklerin Alman şehirlerini bombalamasına misilleme olarak Müttefik şehirlerine saldırmak üzere görevlendirildi. V2 roketi ayrıca 20 Haziran 1944'te MW 18014'ün dikey fırlatılmasıyla Kármán hattını (uzayın kenarı) geçerek uzaya giden ilk yapay nesne oldu.",
-        tags: ["Roket", "Balistik Füze", "1944", "Mittelwerk", "Peenemünde Ordu Araştırma Merkezi"]
+        tags: ["Roket", "Balistik Füze", "1944", "Mittelwerk", "Peenemünde"]
       }
     ],
     seasonYears: {
@@ -69,7 +69,7 @@ const allEpisodes = {
         thumbnail: "./img/GK01S01E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.122157421844711/122151625178624",
         description: "Kanadalı savaş pilotu George Beurling, savaş pilotu olarak eşsiz becerisiyle stratejik öneme sahip Malta adasını kurtarmaya yardımcı olur. Mükemmel görüşü, havadaki çevikliği, benzeri görülmemiş nişancılığı ve kuralları çiğnemeye istekli olması onu II. Dünya Savaşı'nın en büyük kahramanlarından biri yaptı. Yanında uçan pilotların tanıklıkları ve sürükleyici canlandırmalarla Hava Kahramanları, Kanada'nın en büyük kahramanı George Beurling'in hikayesini aydınlatıcı ayrıntılarla anlatıyor.",
-        tags: ["Uçak", "Kanada", "1942", "Malta", "Spitfire"]
+        tags: ["Uçak", "Kanada", "1942", "Malta Şövalyesi", "Spitfire"]
       },
 	  {
         title: "<br>GÖKLERİN KAHRAMANLARI<br><span class='episode-number'>[002]</span> 1. Sezon 2. Bölüm - (Douglas Bader) - İngiltere Savaşı",
@@ -119,14 +119,6 @@ const allEpisodes = {
         tags: ["Uçak", "A.B.D.", "2011", "Nehre Acil İniş", "US Airways Flight 1549"]
       },
 	  {
-        title: "TRT Belgesel (Unutulmayan Olaylar Programı) / 1963 Ankara Uçak Kazası",
-        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 2008 Yapımı</p>",
-        thumbnail: "./img/AnkaraUlusaUcakKazasi.jpg",
-        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.178085379585248/178081676252285",
-        description: "Havacılık tarihine Ulus Faciası olarak geçen uçak kazası, 1 Şubat 1963'de Lübnan havayolu şirketi Middle East Airlines'a ait uçağın Ankara semalarındayken Türk Hava Kuvvetleri'ne ait nakliye uçağıyla çarpışması sonucu gerçekleşti. Her iki uçak da Ulus semtinde bulunan meskun mahaller üzerindeki farklı noktalara düştü. Kazada yolcu uçağında bulunan 11 yolcu ve 3 mürettebat, askeri uçakta bulunan 3 Türk askerî personeli ve uçakların düştükleri yerlerde bulunan 87 kişi ile beraber toplam 104 kişi hayatını kaybetti.",
-        tags: ["Uçak", "Türkiye", "1963", "Havada Çarpışma", "Ulus Faciası"]
-      },
-	  {
         title: "TRT Belgesel (Ve Sonra Programı) / Isparta Uçak Kazası Sonrası",
         date: "<p class=\"episode-date\">İlk Vizyona Girişi: 12 Eylül 2015</p>",
         thumbnail: "./img/IspartaUcakKazasi.jpg",
@@ -165,6 +157,14 @@ const allEpisodes = {
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177718486288604/177716582955461",
         description: "17 Şubat 1959 Türk Hava Yolları Londra kazası; Türkiye Cumhuriyeti başbakanı Adnan Menderes'in içerisinde bulunduğu Vickers Viscount 794 tipi TC-SEV uçağının Kıbrıs Cumhuriyeti'ni kuracak Londra Antlaşması için İngiltere'ye doğru giderken düşmesi olayıdır.",
         tags: ["Uçak", "İngiltere", "1959", "Londra Antlaşması", "Vickers Viscount 793"]
+      },
+	  {
+        title: "TRT Belgesel (Unutulmayan Olaylar Programı) / 1963 Ankara Uçak Kazası",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi: 2008 Yapımı</p>",
+        thumbnail: "./img/AnkaraUlusaUcakKazasi.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.178085379585248/178081676252285",
+        description: "Havacılık tarihine Ulus Faciası olarak geçen uçak kazası, 1 Şubat 1963'de Lübnan havayolu şirketi Middle East Airlines'a ait uçağın Ankara semalarındayken Türk Hava Kuvvetleri'ne ait nakliye uçağıyla çarpışması sonucu gerçekleşti. Her iki uçak da Ulus semtinde bulunan meskun mahaller üzerindeki farklı noktalara düştü. Kazada yolcu uçağında bulunan 11 yolcu ve 3 mürettebat, askeri uçakta bulunan 3 Türk askerî personeli ve uçakların düştükleri yerlerde bulunan 87 kişi ile beraber toplam 104 kişi hayatını kaybetti.",
+        tags: ["Uçak", "Türkiye", "1963", "Havada Çarpışma", "Ulus Faciası"]
       },
 	  {
         title: "Al Jazeera Türk (Özel Program) / Lockerbie'de Gerçekte Ne Oldu ? <span class='subtitle'>(Alt Yazılı)</span>",
@@ -299,6 +299,14 @@ const allEpisodes = {
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/183305559063230",
         description: "Birkaç uçak kazasının sıradan nedenleri vardır: bir Sovyet YAK-41 VTOL'nin bir uçak gemisine inişi, bir YAK-38'in VTOL kabiliyetini göstermesi ve vektörlü itme gücünü gösteren oldukça manevra kabiliyetine sahip bir NASA X-31. Tekne kazaları arasında, sürücüsünü su üzerinde kaydıran ve saatte yaklaşık 150 mil hızla yarışan bir sürat teknesi yer alır. Doğa ana, binaları bir çöküntü deliğiyle yutar ve bir kimyasal tesis patlaması devasa bir ateş topu üretir.",
         tags: ["T2 Laboratuvarları", "Uçak", "Sürat Teknesi", "Tekne Kazası", "Çöküntü"]
+		},
+		{
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[013]</span> 1. Sezon 13. Bölüm",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 11 Kasım 2008</p>",
+        thumbnail: "./img/BAYB01S13E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/183608905699562",
+        description: "Bir fabrika ölümcül şarapnel parçaları saçıyor, bir motosiklet düşüyor, dokuz katlı bir bina yanıyor ve bir uçak düşüyor, ayrıca otoyol kazaları yaşanıyor.",
+        tags: ["Nor'easter Fırtınası", "Uçak", "Roket", "Çığ", "Yangın"]
       }
     ],
     seasonYears: {
