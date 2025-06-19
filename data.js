@@ -315,10 +315,26 @@ const allEpisodes = {
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/184282662298853",
         description: "Bir yarış arabası kaza yapar, şiddetli rüzgarlar nedeniyle çok sayıda ev yıkılır, 70 yaşındaki bir pilot jiroskoplu helikopterle kaza yapar ve hayatta kalır, bir kar arabası dağdan aşağı düşer.",
         tags: ["Yarış Arabası", "Uçak", "Kovalamaca", "Kasırga", "Yangın"]
+		},
+		{
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[015]</span> 1. Sezon 15. Bölüm",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 5 Ocak 2009</p>",
+        thumbnail: "./img/BAYB01S15E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/184643098929476",
+        description: "Dört katlı bir bina çöküyor, demiryolu geçidi çöküyor, kurtarma helikopteri dağa çıkıyor ve bir motosiklet gösterisi ters gidiyor.",
+        tags: ["Drag Yarışı Kazası", "Yangın", "Kovalamaca", "Vinç Çökmesi", "Helikopter"]
+		},
+		{
+        title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[016]</span> 1. Sezon 16. Bölüm",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Ocak 2009</p>",
+        thumbnail: "./img/BAYB01S16E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/184961355564317",
+        description: "Baja yarış kazaları, tren patlaması, fırtına avcıları tehlikede, kontrolden çıkan cam yıkama platformu işçileri riske atıyor ve bir helikopter düşüyor.",
+        tags: ["Araba Yarışı Kazası", "Yangın", "Kovalamaca", "Kasırga", "Helikopter"]
       }
     ],
     seasonYears: {
-      1: 2008
+      1: "2008-2009",
     }
   },
   
