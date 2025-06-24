@@ -407,6 +407,14 @@ const allEpisodes = {
         description: "25 Temmuz 2000'de Air France Flight 4590'ın Charles de Gaulle Havaalanı'ndan kalkışında görev yapan bir Concorde süpersonik jet. Piste düşen bir McDonnell-Douglas DC-10'dan bir metal parçası Concorde'un lastiğine saplanır ve lastik patlar. Enkaz kanada fırlar, yangına ve Concorde'un Gonesse'deki bir otele çarpmasına neden olur, uçaktaki 100 yolcu ve dokuz mürettebat üyesi ile oteldeki dört kişi daha ölür.",
         tags: ["Uçak", "Metal Parça", "2000", "Concorde", "Fransa"]
        },
+	   {
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[002]</span>  1. Sezon 2. Bölüm - (Tunnel Inferno) - Tünel Cehennemi",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 13 Temmuz 2004</p>",
+        thumbnail: "./img/FA01S02E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.115613429165777/115603215833465",
+        description: "Fransa ile İtalya'yı Mont Blanc'ın altından bağlayan Mont Blanc Tüneli'nde margarin ve un taşıyan bir tır alev aldı; çıkan yangında 39 kişi öldü.",
+        tags: ["Araç Yangını", "Margarin", "1999", "Tünel", "Fransa"]
+       },
     ],
     seasonYears: {
       1: 2004
