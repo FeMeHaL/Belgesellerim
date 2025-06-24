@@ -415,6 +415,46 @@ const allEpisodes = {
         description: "Fransa ile İtalya'yı Mont Blanc'ın altından bağlayan Mont Blanc Tüneli'nde margarin ve un taşıyan bir tır alev aldı; çıkan yangında 39 kişi öldü.",
         tags: ["Araç Yangını", "Margarin", "1999", "Tünel", "Fransa"]
        },
+	   {
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[003]</span> 1. Sezon 3. Bölüm - (The Bomb in Oklahoma City) - Oklahoma City'de Bomba Saldırısı",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 20 Temmuz 2004</p>",
+        thumbnail: "./img/FA01S03E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.131403080920145/131401480920305",
+        description: "Timothy McVeigh'in iki yıl önce Waco Kuşatması'ndan sorumlu tuttuğu ABD hükümetine misilleme olarak McVeigh, Oklahoma City'deki Alfred P. Murrah Federal Binası'nın önüne bomba taşıyan bir kamyon park eder. Dakikalar sonra patlar, binayı yok eder ve 168 kişiyi öldürür.",
+        tags: ["Terör Saldırısı", "Bombalama", "1995", "Oklahoma", "A.B.D."]
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[004]</span> 1. Sezon 4. Bölüm - (Fire on the Star) - Scandinavian Star'da Yangın",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 27 Temmuz 2004</p>",
+        thumbnail: "./img/FA01S04E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.144412632952523/144411626285957",
+        description: "Bir kundakçı, Norveç'in Oslo kentinden yolcu ve arabalarla dolu olan M/S Scandinavian Star adlı yolcu gemisinin 3. güvertesinde yangın çıkardı. Gemideki 158 kişi duman zehirlenmesinden öldü, bir kişi de yaralarından dolayı kaldırıldığı hastanede hayatını kaybetti; toplam ölü sayısı 159'a yükseldi.",
+        tags: ["Gemi Yangını", "Kundaklama", "1990", "FSS Kodu", "Norveç"]
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[005]</span> 1. Sezon 5. Bölüm - (Derailment at Eschede) - Eschede Tren Felaketi",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 3 Ağustos 2004</p>",
+        thumbnail: "./img/FA01S05E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.146048329455620/146043476122772",
+        description: "ICE 1 No. 884 'Wilhelm Konrad Röntgen' yüksek hızlı treninin bir tekerleği Almanya'nın Eschede kentinde seyahat sırasında arızalanır. Tren raydan çıkar ve bir köprüye çarpar, 101 kişi ölür ve 105 kişi yaralanır.",
+        tags: ["Tren Kazası", "Metal Parça", "1998", "Tekerlek Kırığı", "Almanya"]
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[006]</span> 1. Sezon 6. Bölüm - (Wreck of the Sunset Limited) - Sunset Limited'in Enkazı",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 10 Ağustos 2004</p>",
+        thumbnail: "./img/FA01S06E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/146952256031894",
+        description: "Alabama eyaletinin Mobile kenti yakınlarındaki Big Bayou Canot'ta bir dizi mavnadan birinin köprünün desteklerinden birine çarpmasının ardından, Sunset Limited (bir Amtrak treni) köprüyü geçerken raydan çıktı, bunun sonucunda köprü çöktü ve 47 kişi öldü.",
+        tags: ["Tren Kazası", "Raydan Çıkma", "1993", "Büyük Bayou Canot", "A.B.D."]
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[007]</span> 1. Sezon 7. Bölüm - (Meltdown in Chernobyl) - Çernobil'deki Erime",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 17 Ağustos 2004</p>",
+        thumbnail: "./img/FA01S07E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.151200798940373/151194998940953",
+        description: "Çernobil Nükleer Santrali'ndeki patlamada 56 kişi öldü, binlerce kişinin sağlığı tehdit edildi ve büyük bir çevre felaketine yol açıldı.",
+        tags: ["Nükleer Santral", "Radyasyon", "1986", "Patlama", "Ukrayna"]
+        },
     ],
     seasonYears: {
       1: 2004
