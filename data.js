@@ -23,7 +23,7 @@ const allEpisodes = {
         date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Haziran 2007</p>",
         thumbnail: "./img/KA01S09E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/1031743588089291",
-        description: "Tel Aviv'den kalkan Air France 139 sefer sayılı uçak Atina'dan havalanıyor. Birkaç dakika sonra, Filistin Halk Kurtuluş Cephesi - Dış Operasyonlar'dan (PFLP-EO) iki Filistinli ve Alman "Devrimci Hücreleri"nden iki Alman tarafından kaçırılıyor. Rehineler sonunda İsrail Savunma Kuvvetleri'nin özel kuvvetleri birlikleri tarafından Uganda'daki Entebbe Uluslararası Havaalanı'nın eski terminalinden kurtarıldı.",
+        description: "Tel Aviv'den kalkan Air France 139 sefer sayılı uçak Atina'dan havalanıyor. Birkaç dakika sonra, Filistin Halk Kurtuluş Cephesi - Dış Operasyonlar'dan (PFLP-EO) iki Filistinli ve Alman Devrimci Hücrelerinden iki Alman tarafından kaçırılıyor. Rehineler sonunda İsrail Savunma Kuvvetleri'nin özel kuvvetleri birlikleri tarafından Uganda'daki Entebbe Uluslararası Havaalanı'nın eski terminalinden kurtarıldı.",
         tags: ["Uçak", "Uçak Kaçırma", "1976", "Uganda", "Rehine Operasyonu"]
       }
     ],
