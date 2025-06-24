@@ -455,6 +455,22 @@ const allEpisodes = {
         description: "Çernobil Nükleer Santrali'ndeki patlamada 56 kişi öldü, binlerce kişinin sağlığı tehdit edildi ve büyük bir çevre felaketine yol açıldı.",
         tags: ["Nükleer Santral", "Radyasyon", "1986", "Patlama", "Ukrayna"]
         },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[008]</span> 1. Sezon 8. Bölüm - (Inferno in Guadalajara) - Guadalajara'da Cehennem",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 24 Ağustos 2004</p>",
+        thumbnail: "./img/FA01S08E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.162942767766176/162941074433012",
+        description: "Meksika'nın Guadalajara kentindeki sakinlerin kötü kokudan şikayet etmesinden günler sonra, kanalizasyonlarda meydana gelen bir dizi benzin yakıtlı patlama 206 kişiyi öldürdü. Bir soruşturma, kazanın çelik boru hattını aşındıran ve benzinin kanalizasyon sistemine sızmasına neden olan nem üreten yanlış yönlendirilmiş bir su borusundan kaynaklandığını buldu.",
+        tags: ["Yeraltı Patlamaları", "Kanalizasyon", "1992", "Benzin", "Meksika"]
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[009]</span> 1. Sezon 9. Bölüm - (Fire on the Ski Slope) - Kayak Pistinde Yangın",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 31 Ağustos 2004</p>",
+        thumbnail: "./img/FA01S09E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.165319820861804/165318860861900",
+        description: "Avusturya'daki Kaprun Kayak Merkezi'nde bir füniküler treni tünelde ilerlerken alev aldı, 155 kişi öldü; 12 kişi ise yanan trenin yanından geçerek tünelden çıkmayı başardı.",
+        tags: ["Tünel Yangını", "Arızalı Isıtıcı", "2000", "Füniküler Treni", "Avusturya"]
+        },
     ],
     seasonYears: {
       1: 2004
