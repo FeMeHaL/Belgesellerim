@@ -403,7 +403,7 @@ const allEpisodes = {
         title: "<br>FELAKET ANLARI<br><span class='episode-number'>[001]</span>  1. Sezon 1. Bölüm - (Crash of the Concorde) - Concorde Kazası",
         date: "<p class=\"episode-date\">İlk Vizyona Girişi : 6 Temmuz 2004</p>",
         thumbnail: "./img/FA01S01E.jpg",
-        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.111045716289215/111028349624285"
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.111045716289215/111028349624285",
         description: "25 Temmuz 2000'de Air France Flight 4590'ın Charles de Gaulle Havaalanı'ndan kalkışında görev yapan bir Concorde süpersonik jet. Piste düşen bir McDonnell-Douglas DC-10'dan bir metal parçası Concorde'un lastiğine saplanır ve lastik patlar. Enkaz kanada fırlar, yangına ve Concorde'un Gonesse'deki bir otele çarpmasına neden olur, uçaktaki 100 yolcu ve dokuz mürettebat üyesi ile oteldeki dört kişi daha ölür.",
         tags: ["Uçak", "Metal Parça", "2000", "Concorde", "Fransa"]
        },
