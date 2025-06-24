@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8">
-  <title>Dizi Bölümleri</title>
+  <title>Felaket Anları</title> <!-- Sayfanın adını yaz -->
+
+  <!-- Sayfanın stil ayarları -->
   <style>
+    /* Genel gövde stili */
     body {
       margin: 0;
       font-family: sans-serif;
@@ -13,6 +17,7 @@
       flex-wrap: wrap;
     }
 
+    /* Sol menü (sidebar) */
     .sidebar {
       width: 100%;
       max-width: 300px;
@@ -20,9 +25,11 @@
       padding: 20px;
       box-sizing: border-box;
       flex-shrink: 0;
-	  height: auto; 
+      transition: transform 0.3s ease;
+      align-self: flex-start;
     }
 
+    /* Sezon butonları */
     .season-button {
       background-color: #ff4d4d;
       color: #f1f1f1;
@@ -35,6 +42,7 @@
       font-weight: bold;
     }
 
+    /* İçerik alanı */
     .content {
       flex: 1;
       padding: 20px;
@@ -42,20 +50,16 @@
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
-      max-height: 350px;          /* Sabit yükseklik */
     }
 
-    .subtitle {
-      color: red;        /* Kırmızı renk */
-      font-weight: bold; /* Kalın yazı tipi */
+    /* Bölüm numarası */
+    .episode-number {
+      color: purple;
+      font-weight: bold;
+      display: inline;
     }
-	
-	 .episode-number {
-      color: purple;  /* Mor renk */
-      font-weight: bold; /* Kalın yazı tipi */
-      display: inline;  /* Bu sayede sadece span etiketini etkiler */
-    }
-	
+
+    /* Her bir bölüm kutusu */
     .episode {
       background-color: #2b2b2b;
       width: 100%;
@@ -64,73 +68,213 @@
       padding: 10px;
       box-sizing: border-box;
       border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
-     .episode img {
+    /* Bölüm resmi */
+    .episode img {
       width: 100%;
       aspect-ratio: 16 / 9;
       object-fit: cover;
       border-radius: 4px;
       display: block;
       margin: 0 auto;
+	  cursor: pointer;
     }
 
+    /* Açıklama (tooltip) yazısı */
+    .episode-description {
+      font-style: italic;
+      text-align: center;
+      color: #cccccc;
+      margin: 0 0 5px 0;
+    }
+
+    /* Tarih etiketi */
     .episode-date {
       font-weight: bold;
       text-align: center;
-      margin-top: 10px;
+      margin: 0;
+      line-height: 1.2;
     }
 
+    /* Etiket kutusu */
+    .episode-tags {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* Başlık */
     .episode-title {
       color: #4da6ff;
       font-weight: bold;
       cursor: pointer;
       text-align: center;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
-.tag-link {
-  display: inline-block;
-  text-decoration: none;
-  margin-top: 10px;
-}
+    /* Etiket (tag) stilleri */
+    .tag {
+      display: inline-block;
+      background-color: #4da6ff;
+      color: white;
+      border-radius: 20px;
+      padding: 5px 12px;
+      margin: 5px 4px 0 0;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      text-decoration: none;
+    }
 
-.tag-badge {
-  width: 180px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease;
-  background: #fff;
-}
+    .tag:hover {
+      background-color: #1e90ff;
+    }
 
-.tag-badge:hover {
-  transform: scale(1.05);
-}
+    /* Tooltip ikonu için container */
+    .tooltip-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      text-align: center;
+      margin: 0;
+      flex-shrink: 0;
+    }
 
-.tag-badge img {
-  width: 100%;
-  height: 100px;
-  object-fit: cover;
-}
+    /* Tooltip ikon stili */
+    .tooltip-icon {
+      font-size: 20px;
+      color: #fff;
+      background-color: #8B4513;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: 2px solid #6A4E23;
+      font-weight: bold;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
 
-.tag-title {
-  padding: 8px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #333;
-  background-color: #f0f0f0;
-  text-align: center;
-}
+    .tooltip-icon-text {
+      font-size: 14px;
+    }
 
+    .tooltip-and-tags {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      column-gap: 6px;
+      row-gap: 0;
+      margin-top: 0;
+      gap: 6px;
+    }
+
+    /* Tooltip balonu */
+    .tooltip-text {
+      font-size: 16px;
+      font-weight: bold;
+      color: #b87333;
+      padding: 10px 20px;
+      background-color: #dcdcdc;
+      border: 2px solid #b87333;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: auto;
+      margin: 0 auto;
+      text-align: center;
+      display: inline-block;
+      /* boşluk kontrolü */
+      line-height: 1.1;
+      /* satır aralığını daralt */
+    }
+
+    .tooltip-text:hover {
+      background-color: #c4c4c4;
+    }
+
+    /* Balon açıklaması (gizli) */
+    .tooltip-balloon {
+      visibility: hidden;
+      background-color: #b87333;
+      color: #dcdcdc;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 10px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 14px;
+      width: 200px;
+      border: 2px solid #dcdcdc;
+    }
+
+    /* Tooltip görünürlük ayarı */
+    .tooltip-container:active .tooltip-balloon,
+    .tooltip-container:hover .tooltip-balloon {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Arama kutusu container */
+    .search-container {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Arama input */
+    .search-input {
+      padding: 10px;
+      font-size: 16px;
+      width: 80%;
+      max-width: 400px;
+      border: none;
+      border-radius: 8px;
+      background-color: #444;
+      color: white;
+    }
+
+    /* Responsive düzenlemeler */
+    @media (max-width: 768px) {
+      .episode {
+        flex: 1 1 calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .episode {
+        flex: 1 1 100%;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .content {
+        padding: 10px;
+      }
+    }
+
+    /* Video oynatıcı overlay */
     .video-overlay {
+      display: none;
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.9);
-      display: none;
+      background-color: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
       z-index: 999;
@@ -141,257 +285,272 @@
       height: 80%;
     }
 
-    .close-btn {
+    /* Kapatma butonu */
+    .video-overlay .close-btn {
       position: absolute;
       top: 20px;
-      right: 30px;
+      right: 20px;
       font-size: 30px;
       color: white;
       cursor: pointer;
     }
-
-    /* Responsive Ayarlar */
-    @media (max-width: 768px) {
-      .episode {
-        flex: 1 1 calc(50% - 20px); /* Tablet görünümü */
-      }
-    }
-
-    @media (max-width: 480px) {
-      .episode {
-        flex: 1 1 100%; /* Telefon görünümü */
-      }
-
-      .sidebar {
-        width: 100%;
-        max-width: 100%;
-      }
-
-      .content {
-        padding: 10px;
-      }
-    }
-
   </style>
 </head>
+
 <body>
 
-  <div class="sidebar">
-	<button class="season-button" onclick="loadSeason(7)">7. SEZON (2018)</button>
-	<button class="season-button" onclick="loadSeason(6)">6. SEZON (2012)</button>
-	<button class="season-button" onclick="loadSeason(5)">5. SEZON (2012)</button>
-	<button class="season-button" onclick="loadSeason(4)">4. SEZON (2011)</button>
-	<button class="season-button" onclick="loadSeason(3)">3. SEZON (2006-2007)</button>
-	<button class="season-button" onclick="loadSeason(2)">2. SEZON (2005-2006)</button>
-	<button class="season-button" onclick="loadSeason(1)">1. SEZON (2004)</button>
-    <!-- Diğer sezonlar buraya gelecek -->
+  <!-- Sol panel -->
+  <div class="sidebar" id="sidebar">
+    <div class="search-container">
+      <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..."
+        onkeyup="searchEpisodes()">
+    </div>
   </div>
 
-  <div class="content" id="episodeContainer">
-    <!-- Bölümler burada yüklenecek -->
-  </div>
+  <!-- İçerik alanı -->
+  <div class="content" id="episodeContainer"></div>
 
+  <!-- Video oynatıcı -->
   <div class="video-overlay" id="videoOverlay">
     <span class="close-btn" onclick="closeVideo()">×</span>
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
 
-  <script>
-    const episodes = {
-	
-  6: [
-    {
-      title: "<span class='episode-number'>[060]</span> 6. Sezon 3. Bölüm - (Fire in the Cockpit) - Kokpitte Yangın",
-      date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Kasım 2012</p>",
-      thumbnail: "./img/01S03E.jpg",
-      video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.103745097019277/103730617020725",
-	  tag: "<a href='https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/2900952230166820/' target='_blank' title='Uçak Kazası Raporu 1. Sezon 3. Bölüm - (Fire on Board) - Gökyüzünde Yangın' onclick='window.open(this.href, \"_blank\", \"fullscreen=yes, scrollbars=yes\"); return false;'><img src='./img/video-icon.png' alt='Tag Icon' style='width: 35px; height: 35px; margin-right: 10px; vertical-align: middle; float: left;' /></a>"
-    },
-    {
-      title: "<span class='episode-number'>[063]</span> 6. Sezon 6. Bölüm - (Terrified Over Tokyo) - Tokyo'da Korku",
-      date: "<p class=\"episode-date\">İlk Vizyona Girişi : 3 Aralık 2012</p>",
-      thumbnail: "./img/03S03E.jpg",
-      video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.117985882261865/117983385595448"
-    }
-  ],
-	
-	  2: [
-	  {
-          title: "<span class='episode-number'>[014]</span> 2. Sezon 1. Bölüm - (Space Shuttle Columbia) - Uzay Mekiği Columbia",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 28 Haziran 2005</p>",
-          thumbnail: "./img/FA02S01E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177747499619036/177746162952503"
-        },
-		{
-          title: "<span class='episode-number'>[015]</span> 2. Sezon 2. Bölüm - (Alpine Tsunami) - Alplerde Tsunami",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 5 Temmuz 2005</p>",
-          thumbnail: "./img/FA02S02E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.178391306221322/178389146221538"
-        },
-		{
-          title: "<span class='episode-number'>[016]</span> 2. Sezon 3. Bölüm - (Motorway Plane Crash) - Otoyolda Uçak Kazası",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Temmuz 2005</p>",
-          thumbnail: "./img/FA02S03E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/178679052859214"
-        },
-		{
-          title: "<span class='episode-number'>[017]</span> 2. Sezon 4. Bölüm - (Mount St. Helens Eruption) - St. Helens Dağında Volkanik Patlama",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 26 Temmuz 2005</p>",
-          thumbnail: "./img/FA02S04E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.179800989413687/179799016080551"
-        },
-		{
-          title: "<span class='episode-number'>[018]</span> 2. Sezon 5. Bölüm - (Zeebrugge Ferry Disaster) - Zeebrugge Feribot Felaketi",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 16 Ağustos 2005</p>",
-          thumbnail: "./img/FA02S05E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.180095646050888/180091236051329"
-        },
-		{
-          title: "<span class='episode-number'>[019]</span> 2. Sezon 6. Bölüm - (Kobe Earthquake) - Kobe Depremi",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 30 Ağustos 2005</p>",
-          thumbnail: "./img/FA02S06E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.180787939314992/180785402648579"
-        },
-		{
-          title: "<span class='episode-number'>[020]</span> 2. Sezon 7. Bölüm - (Crash Landing at Sioux City) - Sioux City'de Acil İniş",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 13 Eylül 2005</p>",
-          thumbnail: "./img/11S13E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/181024162624703"
-        },
-		{
-          title: "<span class='episode-number'>[021]</span> 2. Sezon 8. Bölüm - (The Bali Bombing) - Bali Bombalaması",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 20 Eylül 2005</p>",
-          thumbnail: "./img/FA02S08E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.181352379258548/181350912592028"
-        },
-		{
-          title: "<span class='episode-number'>[022]</span> 2. Sezon 9. Bölüm - (Hotel Collapse Singapore) - Singapur'da Otel Çöküşü",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 27 Eylül 2005</p>",
-          thumbnail: "./img/FA02S09E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.182008535859599/182004125860040"
-        }
-      ],
-	
-      1: [
-        {
-          title: "<span class='episode-number'>[001]</span> 1. Sezon 1. Bölüm - (Crash of the Concorde) - Concorde Kazası",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 6 Temmuz 2004</p>",
-          thumbnail: "./img/FA01S01E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.111045716289215/111028349624285"
-        },
-		{
-          title: "<span class='episode-number'>[002]</span> 1. Sezon 2. Bölüm - (Tunnel Inferno) - Tünel Cehennemi",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 13 Temmuz 2004</p>",
-          thumbnail: "./img/FA01S02E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.115613429165777/115603215833465"
-        },
-		{
-          title: "<span class='episode-number'>[003]</span> 1. Sezon 3. Bölüm - (The Bomb in Oklahoma City) - Oklahoma City'de Bomba Saldırısı",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 20 Temmuz 2004</p>",
-          thumbnail: "./img/FA01S03E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.131403080920145/131401480920305"
-        },
-		{
-          title: "<span class='episode-number'>[004]</span> 1. Sezon 4. Bölüm - (Fire on the Star) - Scandinavian Star'da Yangın",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 27 Temmuz 2004</p>",
-          thumbnail: "./img/FA01S04E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.144412632952523/144411626285957"
-        },
-		{
-          title: "<span class='episode-number'>[005]</span> 1. Sezon 5. Bölüm - (Derailment at Eschede) - Eschede Tren Felaketi",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 3 Ağustos 2004</p>",
-          thumbnail: "./img/FA01S05E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.146048329455620/146043476122772"
-        },
-		{
-          title: "<span class='episode-number'>[006]</span> 1. Sezon 6. Bölüm - (Wreck of the Sunset Limited) - Sunset Limited'in Enkazı",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 10 Ağustos 2004</p>",
-          thumbnail: "./img/FA01S06E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/146952256031894"
-        },
-		{
-          title: "<span class='episode-number'>[007]</span> 1. Sezon 7. Bölüm - (Meltdown in Chernobyl) - Çernobil'deki Erime",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 17 Ağustos 2004</p>",
-          thumbnail: "./img/FA01S07E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.151200798940373/151194998940953"
-        },
-		{
-          title: "<span class='episode-number'>[008]</span> 1. Sezon 8. Bölüm - (Inferno in Guadalajara) - Guadalajara'da Cehennem",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 24 Ağustos 2004</p>",
-          thumbnail: "./img/FA01S08E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.162942767766176/162941074433012"
-        },
-		{
-          title: "<span class='episode-number'>[009]</span> 1. Sezon 9. Bölüm - (Fire on the Ski Slope) - Kayak Pistinde Yangın",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 31 Ağustos 2004</p>",
-          thumbnail: "./img/FA01S09E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.165319820861804/165318860861900"
-        },
-		{
-          title: "<span class='episode-number'>[010]</span> 1. Sezon 10. Bölüm - (Explosion in the North Sea) - Kuzey Denizi'nde Patlama",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 5 Ekim 2004</p>",
-          thumbnail: "./img/FA01S10E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.166475414079578/166474324079687"
-        },
-		{
-          title: "<span class='episode-number'>[011]</span> 1. Sezon 11. Bölüm - (Flood at Stava Dam) - Stava Barajı'nda Taşkın",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Ekim 2004</p>",
-          thumbnail: "./img/FA01S11E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.175775143149605/175773209816465"
-        },
-		{
-          title: "<span class='episode-number'>[012]</span> 1. Sezon 12. Bölüm - (Collision on the Runway) - Pistte Çarpışma",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 19 Ekim 2004</p>",
-          thumbnail: "./img/FA01S12E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177415876318865/177412952985824"
-        },
-		{
-          title: "<span class='episode-number'>[013]</span> 1. Sezon 13. Bölüm - (Pentagon Plane Crash) - Pentagon Uçak Kazası",
-          date: "<p class=\"episode-date\">İlk Vizyona Girişi : 26 Ekim 2004</p>",
-          thumbnail: "./img/FA01S13E.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177458179647968/177456896314763"
-        }
-      ]
-    };
+  <!-- Bölüm verileri -->
+  <script src="data.js"></script>
 
-    function loadSeason(season) {
+  <!-- Davranışlar (JavaScript) -->
+  <script>
+    let currentSeries = "";
+    let currentSeason = 1;
+
+    const episodes = allEpisodes;
+
+    // Sezon yükleme
+    function loadSeason(season, seriesName) {
+      currentSeries = seriesName;
+      currentSeason = season;
       const container = document.getElementById('episodeContainer');
       container.innerHTML = '';
-      if (!episodes[season]) {
+
+      const seasonEpisodes = episodes[seriesName][season];
+
+      if (!seasonEpisodes || seasonEpisodes.length === 0) {
         container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
         return;
       }
 
-      episodes[season].forEach(ep => {
+      seasonEpisodes.forEach(ep => {
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
         epDiv.innerHTML = `
-          <img src="${ep.thumbnail}" alt="${ep.title}">
-          <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-           ${ep.date}
-           ${ep.tag ? ep.tag : ''}
-           `;
+    <div class="episode-image" onclick="playVideo('${ep.video}')">
+  <img src="${ep.thumbnail}" alt="${ep.title}">
+</div>
+    <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+    <p class="episode-date">${ep.date}</p>
+    <div class="tooltip-and-tags">
+      ${ep.description ? `
+        <div class="tooltip-container">
+          <span class="tooltip-text">Bölüm Konusu</span>
+          <div class="tooltip-balloon">${ep.description}</div>
+        </div>
+      ` : ''}
+      <div class="episode-tags">
+        ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+      </div>
+    </div>
+  `;
         container.appendChild(epDiv);
       });
     }
 
+    // Sezon butonlarını yükle
+    function loadSeasons(seriesName) {
+      const sidebar = document.getElementById('sidebar');
+
+      sidebar.innerHTML = `
+    <div class="search-container">
+      <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
+    </div>
+  `;
+
+      const seasons = Object.keys(episodes[seriesName])
+        .filter(key => !isNaN(key))
+        .map(key => parseInt(key));
+
+      seasons.forEach(season => {
+        const yearText = episodes[seriesName].seasonYears?.[season]
+          ? ` (${episodes[seriesName].seasonYears[season]})` : '';
+
+        const btn = document.createElement('button');
+        btn.className = 'season-button';
+        btn.innerText = `${season}. SEZON${yearText}`;
+        btn.onclick = () => loadSeason(season, seriesName);
+        sidebar.appendChild(btn);
+      });
+    }
+
+    // Dizi listesini yükle
+    function loadDocumentaries() {
+      const sidebar = document.getElementById('sidebar');
+
+      sidebar.innerHTML = `
+    <div class="search-container">
+      <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
+    </div>
+  `;
+
+      for (let series in episodes) {
+        const btn = document.createElement('button');
+        btn.className = 'season-button';
+        btn.innerText = series;
+        btn.onclick = () => {
+          loadSeasons(series);
+          loadSeason(1, series);
+        };
+        sidebar.appendChild(btn);
+      }
+    }
+
+    // Video oynatma
     function playVideo(src) {
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
-      video.src = src;  // Facebook embed linkini buraya ekliyoruz
+
+      if (src.includes("youtube.com")) {
+        const videoId = src.split("v=")[1].split("&")[0];
+        video.src = `https://www.youtube.com/embed/${videoId}`;
+      } else if (src.includes("facebook.com")) {
+        video.src = src;
+      }
+
       overlay.style.display = 'flex';
     }
 
+    // Video kapatma
     function closeVideo() {
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
       overlay.style.display = 'none';
-      video.src = '';  // Videoyu durdurmak için src'i temizliyoruz
+      video.src = '';
     }
 
-    // Sayfa yüklenince 2. sezonu yükle
-    window.onload = () => loadSeason(2);
-  </script>
+    // Etikete tıklanınca arama yap
+    function searchTag(tag) {
+      filterByTag(tag);
+    }
 
+    // Belirli etikete göre filtreleme
+    function filterByTag(tag) {
+      const container = document.getElementById('episodeContainer');
+      container.innerHTML = '';
+
+      const allEpisodesArray = [];
+
+      document.getElementById('sidebar').style.transform = "translateX(-100%)";
+
+      for (let series in episodes) {
+        for (let season in episodes[series]) {
+          if (Array.isArray(episodes[series][season])) {
+            allEpisodesArray.push(...episodes[series][season]);
+          }
+        }
+      }
+
+      const filtered = allEpisodesArray.filter(ep => ep.tags.includes(tag));
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<p>"${tag}" etiketiyle eşleşen bölüm bulunamadı.</p>`;
+        return;
+      }
+
+      filtered.forEach(ep => {
+        const epDiv = document.createElement('div');
+        epDiv.className = 'episode';
+        epDiv.innerHTML = `
+      <div class="episode-image" onclick="playVideo('${ep.video}')">
+	  <img src="${ep.thumbnail}" alt="${ep.title}">
+	  </div>
+
+      <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+      <p class="episode-date">${ep.date}</p>
+      ${ep.description ? `
+        <div class="tooltip-container">
+          <span class="tooltip-text">Bölüm Konusu</span>
+          <div class="tooltip-balloon">${ep.description}</div>
+        </div>
+      ` : ''}
+      <p class="episode-tags">
+        ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+      </p>
+    `;
+        container.appendChild(epDiv);
+      });
+    }
+
+    // Başlığa göre arama
+    function searchEpisodes() {
+      const searchInput = document.getElementById('searchInput').value.toLowerCase();
+      const container = document.getElementById('episodeContainer');
+
+      if (searchInput.trim() === "") {
+        loadSeason(currentSeason, currentSeries);
+        return;
+      }
+
+      container.innerHTML = '';
+
+      const allEpisodesArray = [];
+
+      const seriesData = episodes[currentSeries];
+      for (let season in seriesData) {
+        if (Array.isArray(seriesData[season])) {
+          allEpisodesArray.push(...seriesData[season]);
+        }
+      }
+
+      const filtered = allEpisodesArray.filter(ep =>
+        ep.title.toLowerCase().includes(searchInput)
+      );
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<p>"${searchInput}" ile eşleşen bölüm bulunamadı.</p>`;
+        return;
+      }
+
+      filtered.forEach(ep => {
+        const epDiv = document.createElement('div');
+        epDiv.className = 'episode';
+        epDiv.innerHTML = `
+    <div class="episode-image" onclick="playVideo('${ep.video}')">
+  <img src="${ep.thumbnail}" alt="${ep.title}">
+</div>
+
+    <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+    <p class="episode-date">${ep.date}</p>
+    ${ep.description ? `
+      <div class="tooltip-container">
+        <span class="tooltip-text">Bölüm Konusu</span>
+        <div class="tooltip-balloon">${ep.description}</div>
+      </div>
+    ` : ''}
+    <p class="episode-tags">
+      ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+    </p>
+  `;
+        container.appendChild(epDiv);
+      });
+    }
+
+    // Sayfa ilk açıldığında çalışacak kod
+    window.onload = () => {
+      const defaultSeries = "Felaket Anları"; // Sayfanın adı (dizi adı)
+      loadDocumentaries();
+      loadSeasons(defaultSeries);
+      loadSeason(1, defaultSeries); // Başlangıç sezonu numarası
+    };
+  </script>
 </body>
+
 </html>

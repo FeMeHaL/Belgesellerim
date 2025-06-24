@@ -325,7 +325,7 @@ const allEpisodes = {
         thumbnail: "./img/BAYB01S15E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/184643098929476",
         description: "Dört katlı bir bina çöküyor, demiryolu geçidi çöküyor, kurtarma helikopteri dağa çıkıyor ve bir motosiklet gösterisi ters gidiyor.",
-        tags: ["Drag Yarışı Kazası", "Yangın", "Kovalamaca", "Vinç Çökmesi", "Helikopter"]
+        tags: ["Drag Yarışı", "Vinç Çökmesi", "Yangın", "Kovalamaca", "Helikopter"]
 		},
 		{
         title: "<br>BİR ANDA YERLE BİR<br><span class='episode-number'>[016]</span> 1. Sezon 16. Bölüm",
@@ -348,7 +348,7 @@ const allEpisodes = {
         date: "<p class=\"episode-date\">İlk Vizyona Girişi : 8 Kasım 2005</p>",
         thumbnail: "./img/I91101S01E.jpg",
         video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/162949071098879",
-        description: "Bin Ladin, Suudi Arabistan'da yaşayan başarılı bir inşaat şirketinin sahibi olan zengin Yemenli Muhammed bin Ladin'in oğluydu. Muhammed 1968'de öldüğünde, Usame 30 milyon dolar miras aldı. Genç bir yetişkin olarak Usame, o ülkenin Sovyetler tarafından işgaline karşı savaşmak için bir mücahit olarak Afganistan'a gitmeye gönüllü oldu. Orada Batı karşıtı cihatçı ideoloji tarafından radikalleştirildi ve Arapçada Üs anlamına gelen El Kaide adlı bir askeri örgüt kurdu. 1989'da Sovyetler Birliği'nin dağılmasından sonra Bin Ladin, El Kaide'nin odağını Batı'ya, özellikle de Suudi Arabistan'daki Amerikan birliklerinin varlığına karşı çıkmaya dönüştürdü. ",
+        description: "Bin Ladin, Suudi Arabistan'da yaşayan başarılı bir inşaat şirketinin sahibi olan zengin Yemenli Muhammed bin Ladin'in oğluydu. Muhammed 1968'de öldüğünde, Usame 30 milyon dolar miras aldı. Genç bir yetişkin olarak Usame, o ülkenin Sovyetler tarafından işgaline karşı savaşmak için bir mücahit olarak Afganistan'a gitmeye gönüllü oldu. Orada Batı karşıtı cihatçı ideoloji tarafından radikalleştirildi ve Arapçada Üs anlamına gelen El Kaide adlı bir askeri örgüt kurdu. 1989'da Sovyetler Birliği'nin dağılmasından sonra Bin Ladin, El Kaide'nin odağını Batı'ya, özellikle de Suudi Arabistan'daki Amerikan birliklerinin varlığına karşı çıkmaya dönüştürdü.",
         tags: ["11 Eylül", "El Kaide", "2005", "Terör", "A.B.D."]
        },
 	  {
@@ -395,5 +395,21 @@ const allEpisodes = {
     seasonYears: {
       1: 2004
     }
-  }
+},
+  
+    "Felaket Anları": {
+    1: [
+      {
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[001]</span>  1. Sezon 1. Bölüm - (Crash of the Concorde) - Concorde Kazası",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 6 Temmuz 2004</p>",
+        thumbnail: "./img/FA01S01E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.111045716289215/111028349624285"
+        description: "25 Temmuz 2000'de Air France Flight 4590'ın Charles de Gaulle Havaalanı'ndan kalkışında görev yapan bir Concorde süpersonik jet. Piste düşen bir McDonnell-Douglas DC-10'dan bir metal parçası Concorde'un lastiğine saplanır ve lastik patlar. Enkaz kanada fırlar, yangına ve Concorde'un Gonesse'deki bir otele çarpmasına neden olur, uçaktaki 100 yolcu ve dokuz mürettebat üyesi ile oteldeki dört kişi daha ölür.",
+        tags: ["Uçak", "Metal Parça", "2000", "Concorde", "Fransa"]
+       },
+    ],
+    seasonYears: {
+      1: 2004
+    }
+  },
 };
