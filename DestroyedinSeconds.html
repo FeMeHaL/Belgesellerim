@@ -544,10 +544,8 @@
     }
 
     // Sayfa ilk açıldığında çalışacak kod
-	window.onload = () => {
-  //loadDocumentaries();           // Tüm dizileri sidebar'a yükle (isteğe bağlı)
-  loadSeasons(currentSeries);   // Sezon butonlarını yükle
-  loadSeason(currentSeason, currentSeries); // Ve istediğin sezonu yükle
+window.onload = () => {
+  loadSeasons(currentSeries); // artık bu, otomatik olarak 2. sezonu da yükleyecek
 };
   </script>
 </body>
