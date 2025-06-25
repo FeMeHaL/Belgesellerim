@@ -322,7 +322,7 @@
   <!-- Davranışlar (JavaScript) -->
   <script>
     let currentSeries = "";
-    let currentSeason = 1;
+    let currentSeason = 2;
 
     const episodes = allEpisodes;
 
@@ -407,7 +407,7 @@
         btn.innerText = series;
         btn.onclick = () => {
           loadSeasons(series);
-          loadSeason(1, series);
+          loadSeason(2, series);
         };
         sidebar.appendChild(btn);
       }
