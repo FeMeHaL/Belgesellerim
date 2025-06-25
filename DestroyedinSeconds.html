@@ -366,7 +366,7 @@
     }
 
     // Sezon butonlarını yükle
-    function loadSeasons(seriesName) {
+    function loadSeasons(seriesName, defaultSeason = 2) {
       const sidebar = document.getElementById('sidebar');
 
       sidebar.innerHTML = `
@@ -548,7 +548,7 @@
       const defaultSeries = "Felaket Anları"; // Sayfanın adı (dizi adı)
       loadDocumentaries();
       loadSeasons(defaultSeries);
-      loadSeason(2, defaultSeries); // Başlangıç sezonu numarası
+      loadSeason(defaultSeries, 2); // Başlangıç sezonu numarası
     };
   </script>
 </body>
