@@ -321,7 +321,7 @@
 
   <!-- Davranışlar (JavaScript) -->
   <script>
-    let currentSeries = "";
+    let currentSeries = "Felaket Anları";
     let currentSeason = 2;
 
     const episodes = allEpisodes;
@@ -544,12 +544,11 @@
     }
 
     // Sayfa ilk açıldığında çalışacak kod
-    window.onload = () => {
-      const defaultSeries = "Felaket Anları"; // Sayfanın adı (dizi adı)
-      loadDocumentaries();
-      loadSeasons(defaultSeries);
-      loadSeason(defaultSeries, 2); // Başlangıç sezonu numarası
-    };
+window.onload = () => {
+  loadDocumentaries();           // Tüm dizileri sidebar'a yükle (isteğe bağlı)
+  loadSeasons(currentSeries);   // Sezon butonlarını yükle
+  loadSeason(currentSeason, currentSeries); // Ve istediğin sezonu yükle
+};
   </script>
 </body>
 
