@@ -545,10 +545,9 @@
 
     // Sayfa ilk açıldığında çalışacak kod
     window.onload = () => {
-      const defaultSeries = "Felaket Anları"; // Sayfanın adı (dizi adı)
-      loadDocumentaries();
-      loadSeasons(defaultSeries);
-      loadSeason(2, defaultSeries); // Başlangıç sezonu numarası
+  loadSeasons("Felaket Anları", 2); // Sezon butonlarını yükle (başlangıçta 2. sezon seçili olsun)
+  loadSeason(2, "Felaket Anları"); // 2. sezonu otomatik yükle
+};
     };
   </script>
 </body>
