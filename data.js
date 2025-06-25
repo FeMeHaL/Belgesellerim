@@ -226,9 +226,44 @@ const allEpisodes = {
         description: "İskoçya kıyılarından 110 mil açıkta bulunan ve doğal gaz üretimine dönüştürülen bir petrol platformu olan Piper Alpha'da meydana gelen bir dizi patlama ve yangın, 167 kişinin ölümüne ve platformun çökmesine neden olur.",
         tags: ["Petrol platformu", "Patlama", "1988", "Piper Alpha", "İskoçya"]
         },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[011]</span> 1. Sezon 11. Bölüm - (Flood at Stava Dam) - Stava Barajı'nda Taşkın",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Ekim 2004</p>",
+        thumbnail: "./img/FA01S11E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.175775143149605/175773209816465",
+        description: "İtalya'nın kuzeyindeki Stava köyünün üzerindeki iki barajın çökmesi sonucu meydana gelen toprak kayması ve sel, Stava Nehri vadisinde yaşayan 268 kişinin ölümüne neden oldu.",
+        tags: ["Baraj Çökmesi", "Sel", "1985", "Toprak Kayması", "İtalya"]
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[012]</span> 1. Sezon 12. Bölüm - (Collision on the Runway) - Pistte Çarpışma",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 19 Ekim 2004</p>",
+        thumbnail: "./img/FA01S12E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177415876318865/177412952985824",
+        description: "Kanarya Adaları'ndaki Tenerife Kuzey Havaalanı'nda, sisin içinden kalkış yapmaya çalışan bir Boeing 747 olan KLM Uçuş 4805, hala pistte olan bir diğer Boeing 747 olan Pan Am Uçuş 1736'ya çarpar. Her iki uçak da patlar ve 583 kişi ölür.",
+        tags: ["Uçak", "KLM Uçuş 4805", "1977", "Pan Am Uçuşu 1736", "İspanya"]
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[013]</span> 1. Sezon 13. Bölüm - (Pentagon Plane Crash) - Pentagon Uçak Kazası",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 26 Ekim 2004</p>",
+        thumbnail: "./img/FA01S13E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177458179647968/177456896314763",
+        description: "New York Şehri'ndeki Dünya Ticaret Merkezi, kaçırılan iki uçağın çarpması sonucu yanarken, kaçırılan bir diğer uçak da kasıtlı olarak Pentagon'a uçurulur ve uçaktaki 64 kişi ile yerdeki 125 kişi ölür.",
+        tags: ["11 Eylül", "Uçak", "2001", "El Kaide", "A.B.D."]
+        },
     ],
+	  2: [
+	   {
+      title: "<br>FELAKET ANLARI<br><span class='episode-number'>[014]</span> 2. Sezon 1. Bölüm - (Space Shuttle Columbia) - Uzay Mekiği Columbia",
+      date: "<p class=\"episode-date\">İlk Vizyona Girişi : 28 Haziran 2005</p>",
+      thumbnail: "./img/FA02S01E.jpg",
+      video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177747499619036/177746162952503",
+      description: "Uzay Mekiği Columbia, Kennedy Uzay Merkezi'nden 16 günlük bir görev için havalanırken, yalıtım köpüğünün bir parçası dış yakıt deposundan kopar ve mekiğin sol kanadına zarar verir. Dönüş yolculuğu sırasında Dünya atmosferine girdiğinde, Columbia muazzam ısı altında parçalanır ve mrkikteki yedi astronotun hepsi ölür.",
+      tags: ["Uzay Mekiği", "Patlama", "2003", "Columbia", "A.B.D."]
+      },
+	  ],
     seasonYears: {
       1: 2004
+	  2: "2005-2006",
     }
   },
   
