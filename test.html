@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Dizi B�l�mleri</title>
+  <title>Dizi Bölümleri</title>
   <style>
     body {
       margin: 0;
@@ -20,6 +20,7 @@
       padding: 20px;
       box-sizing: border-box;
       flex-shrink: 0;
+	  height: auto; 
     }
 
     .season-button {
@@ -41,16 +42,17 @@
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
+      max-height: 350px;        /* Sabit yükseklik */
     }
 
     .subtitle {
-      color: red;        /* K�rm�z� renk */
-      font-weight: bold; /* Kal�n yaz� tipi */
+      color: red;        /* Kırmızı renk */
+      font-weight: bold; /* Kalın yazı tipi */
     }
 	
 	 .episode-number {
       color: purple;  /* Mor renk */
-      font-weight: bold; /* Kal�n yaz� tipi */
+      font-weight: bold; /* Kalın yazı tipi */
       display: inline;  /* Bu sayede sadece span etiketini etkiler */
     }
 	
@@ -64,7 +66,7 @@
       border-radius: 8px;
     }
 
-    .episode img {
+     .episode img {
       width: 100%;
       aspect-ratio: 16 / 9;
       object-fit: cover;
@@ -86,6 +88,41 @@
       text-align: center;
       margin-top: 10px;
     }
+
+.tag-link {
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.tag-badge {
+  width: 180px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+  background: #fff;
+}
+
+.tag-badge:hover {
+  transform: scale(1.05);
+}
+
+.tag-badge img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.tag-title {
+  padding: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  background-color: #f0f0f0;
+  text-align: center;
+}
 
     .video-overlay {
       position: fixed;
@@ -116,13 +153,13 @@
     /* Responsive Ayarlar */
     @media (max-width: 768px) {
       .episode {
-        flex: 1 1 calc(50% - 20px); /* Tablet g�r�n�m� */
+        flex: 1 1 calc(50% - 20px); /* Tablet görünümü */
       }
     }
 
     @media (max-width: 480px) {
       .episode {
-        flex: 1 1 100%; /* Telefon g�r�n�m� */
+        flex: 1 1 100%; /* Telefon görünümü */
       }
 
       .sidebar {
@@ -140,28 +177,136 @@
 <body>
 
   <div class="sidebar">
-	<button class="season-button" onclick="loadSeason(1)">TEK B�L�M (2013)</button>
-    <!-- Di�er sezonlar buraya gelecek -->
+	<button class="season-button" onclick="loadSeason(7)">7. SEZON (2018)</button>
+	<button class="season-button" onclick="loadSeason(6)">6. SEZON (2012)</button>
+	<button class="season-button" onclick="loadSeason(5)">5. SEZON (2012)</button>
+	<button class="season-button" onclick="loadSeason(4)">4. SEZON (2011)</button>
+	<button class="season-button" onclick="loadSeason(3)">3. SEZON (2006-2007)</button>
+	<button class="season-button" onclick="loadSeason(2)">2. SEZON (2005-2006)</button>
+	<button class="season-button" onclick="loadSeason(1)">1. SEZON (2004)</button>
+    <!-- Diğer sezonlar buraya gelecek -->
   </div>
 
   <div class="content" id="episodeContainer">
-    <!-- B�l�mler burada y�klenecek -->
+    <!-- Bölümler burada yüklenecek -->
   </div>
 
   <div class="video-overlay" id="videoOverlay">
-    <span class="close-btn" onclick="closeVideo()">�</span>
+    <span class="close-btn" onclick="closeVideo()">×</span>
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
 
   <script>
     const episodes = {
-      1: [
-        {
-          title: "(Killing Kennedy) - Kennedy Suikasti",
-          date: "<p class=\"episode-date\">�lk Vizyona Giri�i : 10 Kas�m 2013</p>",
-          thumbnail: "./img/KillingKennedy2.jpg",
-          video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/183633649030421"
+	
+  6: [
+    {
+      title: "<br>FELAKET ANLARI<br><span class='episode-number'>[060]</span> 6. Sezon 3. Bölüm - (Fire in the Cockpit) - Kokpitte Yangın",
+      date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Kasım 2012</p>",
+      thumbnail: "./img/01S03E.jpg",
+      video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.103745097019277/103730617020725",
+	  tag: "<a href='https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/2900952230166820/' target='_blank' title='Uçak Kazası Raporu 1. Sezon 3. Bölüm - (Fire on Board) - Gökyüzünde Yangın' onclick='window.open(this.href, \"_blank\", \"fullscreen=yes, scrollbars=yes\"); return false;'><img src='./img/video-icon.png' alt='Tag Icon' style='width: 35px; height: 35px; margin-right: 10px; vertical-align: middle; float: left;' /></a>"
+    },
+    {
+      title: "<br>FELAKET ANLARI<br><span class='episode-number'>[063]</span> 6. Sezon 6. Bölüm - (Terrified Over Tokyo) - Tokyo'da Korku",
+      date: "<p class=\"episode-date\">İlk Vizyona Girişi : 3 Aralık 2012</p>",
+      thumbnail: "./img/03S03E.jpg",
+      video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.117985882261865/117983385595448"
+    }
+  ],
+	
+	  2: [
+	  {
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[014]</span> 2. Sezon 1. Bölüm - (Space Shuttle Columbia) - Uzay Mekiği Columbia",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 28 Haziran 2005</p>",
+        thumbnail: "./img/FA02S01E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177747499619036/177746162952503",
+        description: "",
+        tags: ["Uçak", "Metal Parça", "2000", "Concorde", "Fransa"]
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[015]</span> 2. Sezon 2. Bölüm - (Alpine Tsunami) - Alplerde Tsunami",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 5 Temmuz 2005</p>",
+        thumbnail: "./img/FA02S02E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.178391306221322/178389146221538"
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[016]</span> 2. Sezon 3. Bölüm - (Motorway Plane Crash) - Otoyolda Uçak Kazası",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Temmuz 2005</p>",
+        thumbnail: "./img/FA02S03E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/178679052859214"
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[017]</span> 2. Sezon 4. Bölüm - (Mount St. Helens Eruption) - St. Helens Dağında Volkanik Patlama",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 26 Temmuz 2005</p>",
+        thumbnail: "./img/FA02S04E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.179800989413687/179799016080551"
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[018]</span> 2. Sezon 5. Bölüm - (Zeebrugge Ferry Disaster) - Zeebrugge Feribot Felaketi",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 16 Ağustos 2005</p>",
+        thumbnail: "./img/FA02S05E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.180095646050888/180091236051329"
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[019]</span> 2. Sezon 6. Bölüm - (Kobe Earthquake) - Kobe Depremi",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 30 Ağustos 2005</p>",
+        thumbnail: "./img/FA02S06E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.180787939314992/180785402648579"
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[020]</span> 2. Sezon 7. Bölüm - (Crash Landing at Sioux City) - Sioux City'de Acil İniş",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 13 Eylül 2005</p>",
+        thumbnail: "./img/11S13E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/ferhat.polaterce.9/videos/181024162624703"
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[021]</span> 2. Sezon 8. Bölüm - (The Bali Bombing) - Bali Bombalaması",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 20 Eylül 2005</p>",
+        thumbnail: "./img/FA02S08E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.181352379258548/181350912592028"
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[022]</span> 2. Sezon 9. Bölüm - (Hotel Collapse Singapore) - Singapur'da Otel Çöküşü",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 27 Eylül 2005</p>",
+        thumbnail: "./img/FA02S09E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.182008535859599/182004125860040"
         }
+      ],
+	
+      1: [
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[010]</span> 1. Sezon 10. Bölüm - (Explosion in the North Sea) - Kuzey Denizi'nde Patlama",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 5 Ekim 2004</p>",
+        thumbnail: "./img/FA01S10E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.166475414079578/166474324079687",
+        description: "",
+        tags: ["Uçak", "Metal Parça", "2000", "Concorde", "Fransa"]
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[011]</span> 1. Sezon 11. Bölüm - (Flood at Stava Dam) - Stava Barajı'nda Taşkın",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 12 Ekim 2004</p>",
+        thumbnail: "./img/FA01S11E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.175775143149605/175773209816465",
+        description: "",
+        tags: ["Uçak", "Metal Parça", "2000", "Concorde", "Fransa"]
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[012]</span> 1. Sezon 12. Bölüm - (Collision on the Runway) - Pistte Çarpışma",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 19 Ekim 2004</p>",
+        thumbnail: "./img/FA01S12E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177415876318865/177412952985824",
+        description: "",
+        tags: ["Uçak", "Metal Parça", "2000", "Concorde", "Fransa"]
+        },
+		{
+        title: "<br>FELAKET ANLARI<br><span class='episode-number'>[013]</span> 1. Sezon 13. Bölüm - (Pentagon Plane Crash) - Pentagon Uçak Kazası",
+        date: "<p class=\"episode-date\">İlk Vizyona Girişi : 26 Ekim 2004</p>",
+        thumbnail: "./img/FA01S13E.jpg",
+        video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177458179647968/177456896314763",
+        description: "",
+        tags: ["Uçak", "Metal Parça", "2000", "Concorde", "Fransa"]
+        },
       ]
     };
 
@@ -169,7 +314,7 @@
       const container = document.getElementById('episodeContainer');
       container.innerHTML = '';
       if (!episodes[season]) {
-        container.innerHTML = "<p>Bu sezona ait b�l�m bulunamad�.</p>";
+        container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
         return;
       }
 
@@ -177,10 +322,11 @@
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
         epDiv.innerHTML = `
-          <img src="${ep.thumbnail}" alt="${ep.title}">
-          <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
-          <p>${ep.date}</p>
-        `;
+        <img src="${ep.thumbnail}" alt="${ep.title}">
+        <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
+         ${ep.date}
+         ${ep.tag ? ep.tag : ''}
+         `;
         container.appendChild(epDiv);
       });
     }
@@ -196,11 +342,11 @@
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
       overlay.style.display = 'none';
-      video.src = '';  // Videoyu durdurmak i�in src'i temizliyoruz
+      video.src = '';  // Videoyu durdurmak için src'i temizliyoruz
     }
 
-    // Sayfa y�klenince 1. sezonu y�kle
-    window.onload = () => loadSeason(1);
+    // Sayfa yüklenince 2. sezonu yükle
+    window.onload = () => loadSeason(2);
   </script>
 
 </body>
