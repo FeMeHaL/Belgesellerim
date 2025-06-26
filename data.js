@@ -250,7 +250,7 @@ const allEpisodes = {
         description: "New York Şehri'ndeki Dünya Ticaret Merkezi, kaçırılan iki uçağın çarpması sonucu yanarken, kaçırılan bir diğer uçak da kasıtlı olarak Pentagon'a uçurulur ve uçaktaki 64 kişi ile yerdeki 125 kişi ölür.",
         tags: ["11 Eylül", "Uçak", "2001", "El Kaide", "A.B.D."]
         },
-		
+	  ],
 		2: [
 		{
 		title: "<br>FELAKET ANLARI<br><span class='episode-number'>[014]</span> 2. Sezon 1. Bölüm - (Space Shuttle Columbia) - Uzay Mekiği Columbia",
