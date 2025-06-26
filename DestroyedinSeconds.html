@@ -322,7 +322,9 @@
   <!-- Davranışlar (JavaScript) -->
   <script>
     let currentSeries = "";
-    let currentSeason = 2;
+    let currentSeason = 1;
+
+    const episodes = allEpisodes;
 
     // Sezon yükleme
     function loadSeason(season, seriesName) {
@@ -405,7 +407,7 @@
         btn.innerText = series;
         btn.onclick = () => {
           loadSeasons(series);
-          loadSeason(2, series);
+          loadSeason(1, series);
         };
         sidebar.appendChild(btn);
       }
@@ -542,13 +544,12 @@
     }
 
     // Sayfa ilk açıldığında çalışacak kod
-document.addEventListener('DOMContentLoaded', () => {
-    const episodes = allEpisodes;
-    const defaultSeries = "Felaket Anları";
-    const defaultSeason = 2;
-    loadDocumentaries();
-    setTimeout(() => loadSeason(defaultSeason, defaultSeries), 50);
-  });
+    window.onload = () => {
+      const defaultSeries = "Felaket Anları"; // Sayfanın adı (dizi adı)
+      loadDocumentaries();
+      loadSeasons(defaultSeries);
+      loadSeason(2, defaultSeries); // Başlangıç sezonu numarası
+    };
   </script>
 </body>
 
