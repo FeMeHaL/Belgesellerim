@@ -407,7 +407,6 @@
         btn.innerText = series;
         btn.onclick = () => {
           loadSeasons(series);
-          loadSeason(2, series);
         };
         sidebar.appendChild(btn);
       }
@@ -547,7 +546,6 @@
     window.onload = () => {
       const defaultSeries = "Felaket Anları"; // Sayfanın adı (dizi adı)
 	  const defaultSeason = 2;
-      loadDocumentaries();
       loadSeasons(defaultSeries);
       loadSeason(defaultSeason, defaultSeries); // Seçilen sezonu yükle
     };
