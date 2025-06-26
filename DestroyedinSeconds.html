@@ -546,11 +546,11 @@
     window.onload = () => {
       const defaultSeries = "Felaket Anları"; // Sayfanın adı (dizi adı)
 	  const defaultSeason = 2;
-      loadSeasons(defaultSeries);
+      loadDocumentaries();
       // loadSeason'ı 0.1 saniye sonra çağırarak önce sidebar'ı tam çizdiriyoruz
   setTimeout(() => {
     loadSeason(defaultSeason, defaultSeries);
-  }, 100);
+  }, 50);
 };
   </script>
 </body>
