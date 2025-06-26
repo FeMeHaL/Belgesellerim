@@ -546,10 +546,12 @@
     // Sayfa ilk açıldığında çalışacak kod
     window.onload = () => {
       const defaultSeries = "Felaket Anları"; // Sayfanın adı (dizi adı)
+	  const defaultSeason = 2;
       loadDocumentaries();
       loadSeasons(defaultSeries);
-      loadSeason(2, defaultSeries); // Başlangıç sezonu numarası
+      loadSeason(defaultSeason, defaultSeries); // Seçilen sezonu yükle
     };
+};
   </script>
 </body>
 
