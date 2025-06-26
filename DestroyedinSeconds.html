@@ -324,8 +324,6 @@
     let currentSeries = "";
     let currentSeason = 2;
 
-    const episodes = allEpisodes;
-
     // Sezon yükleme
     function loadSeason(season, seriesName) {
       currentSeries = seriesName;
@@ -544,9 +542,13 @@
     }
 
     // Sayfa ilk açıldığında çalışacak kod
-window.onload = () => {
-      loadSeason(2, 'Felaket Anları'); // Burada 2. sezon sabit seçiliyor
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    const episodes = allEpisodes;
+    const defaultSeries = "Felaket Anları";
+    const defaultSeason = 2;
+    loadDocumentaries();
+    setTimeout(() => loadSeason(defaultSeason, defaultSeries), 50);
+  });
   </script>
 </body>
 
