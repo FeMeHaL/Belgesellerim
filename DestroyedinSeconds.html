@@ -547,8 +547,10 @@
       const defaultSeries = "Felaket Anları"; // Sayfanın adı (dizi adı)
 	  const defaultSeason = 2;
       loadSeasons(defaultSeries);
-      loadSeason(defaultSeason, defaultSeries); // Seçilen sezonu yükle
-    };
+      // loadSeason'ı 0.1 saniye sonra çağırarak önce sidebar'ı tam çizdiriyoruz
+  setTimeout(() => {
+    loadSeason(defaultSeason, defaultSeries);
+  }, 100);
 };
   </script>
 </body>
