@@ -145,17 +145,7 @@ const allEpisodes = {
   },
   
     "Felaket Anları": {
-	  2: [
-	   {
-      title: "<br>FELAKET ANLARI<br><span class='episode-number'>[014]</span> 2. Sezon 1. Bölüm - (Space Shuttle Columbia) - Uzay Mekiği Columbia",
-      date: "<p class=\"episode-date\">İlk Vizyona Girişi : 28 Haziran 2005</p>",
-      thumbnail: "./img/FA02S01E.jpg",
-      video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177747499619036/177746162952503",
-      description: "Uzay Mekiği Columbia, Kennedy Uzay Merkezi'nden 16 günlük bir görev için havalanırken, yalıtım köpüğünün bir parçası dış yakıt deposundan kopar ve mekiğin sol kanadına zarar verir. Dönüş yolculuğu sırasında Dünya atmosferine girdiğinde, Columbia muazzam ısı altında parçalanır ve mrkikteki yedi astronotun hepsi ölür.",
-      tags: ["Uzay Mekiği", "Patlama", "2003", "Columbia", "A.B.D."]
-      },
-	  ],
-	      1: [
+		1: [
       {
         title: "<br>FELAKET ANLARI<br><span class='episode-number'>[001]</span>  1. Sezon 1. Bölüm - (Crash of the Concorde) - Concorde Kazası",
         date: "<p class=\"episode-date\">İlk Vizyona Girişi : 6 Temmuz 2004</p>",
@@ -260,6 +250,17 @@ const allEpisodes = {
         description: "New York Şehri'ndeki Dünya Ticaret Merkezi, kaçırılan iki uçağın çarpması sonucu yanarken, kaçırılan bir diğer uçak da kasıtlı olarak Pentagon'a uçurulur ve uçaktaki 64 kişi ile yerdeki 125 kişi ölür.",
         tags: ["11 Eylül", "Uçak", "2001", "El Kaide", "A.B.D."]
         },
+		
+		2: [
+		{
+		title: "<br>FELAKET ANLARI<br><span class='episode-number'>[014]</span> 2. Sezon 1. Bölüm - (Space Shuttle Columbia) - Uzay Mekiği Columbia",
+		date: "<p class=\"episode-date\">İlk Vizyona Girişi : 28 Haziran 2005</p>",
+		thumbnail: "./img/FA02S01E.jpg",
+		video: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100021513607216/videos/pcb.177747499619036/177746162952503",
+		description: "Uzay Mekiği Columbia, Kennedy Uzay Merkezi'nden 16 günlük bir görev için havalanırken, yalıtım köpüğünün bir parçası dış yakıt deposundan kopar ve mekiğin sol kanadına zarar verir. Dönüş yolculuğu sırasında Dünya atmosferine girdiğinde, Columbia muazzam ısı altında parçalanır ve mrkikteki yedi astronotun hepsi ölür.",
+		tags: ["Uzay Mekiği", "Patlama", "2003", "Columbia", "A.B.D."]
+		},
+	  ],
     ],
     seasonYears: {
 	  1: 2004,

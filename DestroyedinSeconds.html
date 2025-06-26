@@ -321,7 +321,7 @@
 
   <!-- Davranışlar (JavaScript) -->
   <script>
-    let currentSeries = "";
+    let currentSeries = "Felaket Anları";
     let currentSeason = 2;
 
     const episodes = allEpisodes;
@@ -389,6 +389,7 @@
         btn.onclick = () => loadSeason(season, seriesName);
         sidebar.appendChild(btn);
       });
+	  loadSeason(defaultSeason, seriesName);
     }
 
     // Dizi listesini yükle
