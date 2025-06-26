@@ -261,7 +261,6 @@ const allEpisodes = {
 		tags: ["Uzay Mekiği", "Patlama", "2003", "Columbia", "A.B.D."]
 		},
 	  ],
-    ],
     seasonYears: {
 	  1: 2004,
 	  2: "2005-2006"
