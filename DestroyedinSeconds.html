@@ -543,14 +543,35 @@
     }
 
     // Sayfa ilk açıldığında çalışacak kod
-    window.onload = () => {
-      const defaultSeries = "Felaket Anları"; // Sayfanın adı (dizi adı)
-	  const defaultSeason = 2;
-      loadDocumentaries();
-      // loadSeason'ı 0.1 saniye sonra çağırarak önce sidebar'ı tam çizdiriyoruz
-  setTimeout(() => {
-    loadSeason(defaultSeason, defaultSeries);
-  }, 50);
+window.onload = () => {
+  const defaultSeries = "Felaket Anları";
+  const defaultSeason = 2;
+
+  // Sidebar'ı temizle ve sezona göre çiz
+  const sidebar = document.getElementById('sidebar');
+
+  // Önce sezona ait arama kutusunu ekle
+  sidebar.innerHTML = `
+    <div class="search-container">
+      <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
+    </div>
+  `;
+
+  // Sezon butonlarını sırayla ekle
+  const seasons = Object.keys(episodes[defaultSeries])
+    .filter(key => !isNaN(key))
+    .map(key => parseInt(key));
+
+  seasons.forEach(season => {
+    const btn = document.createElement('button');
+    btn.className = 'season-button';
+    btn.innerText = `${season}. SEZON`;
+    btn.onclick = () => loadSeason(season, defaultSeries);
+    sidebar.appendChild(btn);
+  });
+
+  // Direkt 2. sezonu yükle
+  loadSeason(defaultSeason, defaultSeries);
 };
   </script>
 </body>
