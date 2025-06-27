@@ -410,6 +410,12 @@
           loadSeason(2, series);
         };
         sidebar.appendChild(btn);
+
+    // 📌 Otomatik olarak ilk seriyi yükle
+    if (series === "Felaket Anları") {
+      loadSeasons(series);
+      loadSeason(2, series);
+    }
       }
     }
 
@@ -545,11 +551,8 @@
 
     // Sayfa ilk açıldığında çalışacak kod
     window.onload = () => {
-      const defaultSeries = "Felaket Anları"; // Sayfanın adı (dizi adı)
-      loadDocumentaries();
-      loadSeasons(defaultSeries);
-      loadSeason(2, defaultSeries); // Başlangıç sezonu numarası
-    };
+  loadDocumentaries(); // Zaten Felaket Anları 2. sezon yükleniyor
+};
   </script>
 </body>
 
