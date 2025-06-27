@@ -551,7 +551,14 @@
 
     // Sayfa ilk açıldığında çalışacak kod
     window.onload = () => {
-  loadDocumentaries(); // Zaten Felaket Anları 2. sezon yükleniyor
+  const defaultSeries = "Felaket Anları";
+  loadDocumentaries(); // Bu hem sezonları hem diziyi yükler
+  setTimeout(() => {
+    loadSeasons(defaultSeries);
+    setTimeout(() => {
+      loadSeason(2, defaultSeries);
+    }, 100);
+  }, 100);
 };
   </script>
 </body>
