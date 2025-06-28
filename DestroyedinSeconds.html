@@ -547,16 +547,25 @@
 
     // Sayfa ilk açıldığında çalışacak kod
 window.onload = () => {
-  const defaultSeries = "Felaket Anları"; // Sayfanın adı (dizi adı)
+  const defaultSeries = "Felaket Anları";
   loadDocumentaries();
   loadSeasons(defaultSeries);
 
-  const allSeasons = Object.keys(allEpisodes[defaultSeries])
+  // Sezon numaralarını al
+  const seasons = Object.keys(allEpisodes[defaultSeries])
     .filter(key => /^\d+$/.test(key))
-    .map(Number);
-  const lastSeason = Math.max(...allSeasons);
-  loadSeason(lastSeason, defaultSeries); // En son sezonu yükle
+    .map(Number)
+    .sort((a,b) => b - a); // büyükten küçüğe sırala
+
+  // İlk elemanı yani en büyük sezonu yükle
+  if (seasons.length > 0) {
+    loadSeason(seasons[0], defaultSeries);
+  } else {
+    // Sezon yoksa 1. sezonu yükle
+    loadSeason(1, defaultSeries);
+  }
 };
+
 
   </script>
 </body>
