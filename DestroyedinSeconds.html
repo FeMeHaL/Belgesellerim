@@ -552,7 +552,7 @@ window.onload = () => {
   loadSeasons(defaultSeries);
 
   const allSeasons = Object.keys(allEpisodes[defaultSeries])
-    .filter(key => !isNaN(key))
+    .filter(key => /^\d+$/.test(key))
     .map(Number);
   const lastSeason = Math.max(...allSeasons);
   loadSeason(lastSeason, defaultSeries); // En son sezonu yükle
