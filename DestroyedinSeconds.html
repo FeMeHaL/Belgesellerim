@@ -321,8 +321,8 @@
 
   <!-- Davranışlar (JavaScript) -->
   <script>
-    let currentSeries = "Felaket Anları";
-    let currentSeason = 2;
+    let currentSeries = "";
+    let currentSeason = 1;
 
     const episodes = allEpisodes;
 
@@ -407,15 +407,9 @@
         btn.innerText = series;
         btn.onclick = () => {
           loadSeasons(series);
-          loadSeason(2, series);
+          loadSeason(1, series);
         };
         sidebar.appendChild(btn);
-
-    // 📌 Otomatik olarak ilk seriyi yükle
-    if (series === "Felaket Anları") {
-      loadSeasons(series);
-      loadSeason(2, series);
-    }
       }
     }
 
@@ -550,16 +544,18 @@
     }
 
     // Sayfa ilk açıldığında çalışacak kod
-    window.onload = () => {
-  const defaultSeries = "Felaket Anları";
-  loadDocumentaries(); // Bu hem sezonları hem diziyi yükler
-  setTimeout(() => {
-    loadSeasons(defaultSeries);
-    setTimeout(() => {
-      loadSeason(2, defaultSeries);
-    }, 100);
-  }, 100);
+window.onload = () => {
+  const defaultSeries = "Felaket Anları"; // Sayfanın adı (dizi adı)
+  loadDocumentaries();
+  loadSeasons(defaultSeries);
+
+  const allSeasons = Object.keys(allEpisodes[defaultSeries])
+    .filter(key => !isNaN(key))
+    .map(Number);
+  const lastSeason = Math.max(...allSeasons);
+  loadSeason(lastSeason, defaultSeries); // En son sezonu yükle
 };
+
   </script>
 </body>
 
