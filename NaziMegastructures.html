@@ -10,25 +10,8 @@
 
 <body>
 
-  <!-- Sol panel -->
-  <div class="sidebar" id="sidebar">
-    <div class="search-container">
-      <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..."
-        onkeyup="searchEpisodes()">
-    </div>
-  </div>
-
-  <!-- İçerik alanı -->
-  <div class="content" id="episodeContainer"></div>
-
-  <!-- Video oynatıcı -->
-  <div class="video-overlay" id="videoOverlay">
-    <span class="close-btn" onclick="closeVideo()">×</span>
-    <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-  </div>
-
-  <!-- Bölüm verileri -->
-  <script src="data.js"></script>
+  <script src="body1.js"></script> <!-- Body içeriği HTML olarak burada yüklenecek -->
+  <script src="data.js"></script> <!-- Bölüm verileri -->
 
   <!-- Davranışlar (JavaScript) -->
   <script>
