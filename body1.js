@@ -1,4 +1,4 @@
-const body1 = `
+document.body.innerHTML = `
   <!-- Sol panel -->
   <div class="sidebar" id="sidebar">
     <div class="search-container">
@@ -16,5 +16,3 @@ const body1 = `
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
 `;
-
-export default body1;
