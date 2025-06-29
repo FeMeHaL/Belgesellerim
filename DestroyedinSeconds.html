@@ -3,9 +3,11 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Felaket Anları</title>
+  <title>Felaket Anları</title> <!-- Sayfanın adını yaz -->
 
+  <!-- Sayfanın stil ayarları -->
   <style>
+    /* Genel gövde stili */
     body {
       margin: 0;
       font-family: sans-serif;
@@ -15,6 +17,7 @@
       flex-wrap: wrap;
     }
 
+    /* Sol menü (sidebar) */
     .sidebar {
       width: 100%;
       max-width: 300px;
@@ -26,6 +29,7 @@
       align-self: flex-start;
     }
 
+    /* Sezon butonları */
     .season-button {
       background-color: #ff4d4d;
       color: #f1f1f1;
@@ -38,6 +42,7 @@
       font-weight: bold;
     }
 
+    /* İçerik alanı */
     .content {
       flex: 1;
       padding: 20px;
@@ -47,12 +52,14 @@
       gap: 20px;
     }
 
+    /* Bölüm numarası */
     .episode-number {
       color: purple;
       font-weight: bold;
       display: inline;
     }
 
+    /* Her bir bölüm kutusu */
     .episode {
       background-color: #2b2b2b;
       width: 100%;
@@ -67,6 +74,7 @@
       align-items: center;
     }
 
+    /* Bölüm resmi */
     .episode img {
       width: 100%;
       aspect-ratio: 16 / 9;
@@ -74,9 +82,10 @@
       border-radius: 4px;
       display: block;
       margin: 0 auto;
-      cursor: pointer;
+	  cursor: pointer;
     }
 
+    /* Açıklama (tooltip) yazısı */
     .episode-description {
       font-style: italic;
       text-align: center;
@@ -84,6 +93,7 @@
       margin: 0 0 5px 0;
     }
 
+    /* Tarih etiketi */
     .episode-date {
       font-weight: bold;
       text-align: center;
@@ -91,6 +101,7 @@
       line-height: 1.2;
     }
 
+    /* Etiket kutusu */
     .episode-tags {
       display: inline-flex;
       flex-wrap: wrap;
@@ -98,6 +109,7 @@
       gap: 6px;
     }
 
+    /* Başlık */
     .episode-title {
       color: #4da6ff;
       font-weight: bold;
@@ -106,6 +118,7 @@
       margin-top: 8px;
     }
 
+    /* Etiket (tag) stilleri */
     .tag {
       display: inline-block;
       background-color: #4da6ff;
@@ -123,6 +136,7 @@
       background-color: #1e90ff;
     }
 
+    /* Tooltip ikonu için container */
     .tooltip-container {
       position: relative;
       display: flex;
@@ -134,6 +148,7 @@
       flex-shrink: 0;
     }
 
+    /* Tooltip ikon stili */
     .tooltip-icon {
       font-size: 20px;
       color: #fff;
@@ -161,6 +176,7 @@
       gap: 6px;
     }
 
+    /* Tooltip balonu */
     .tooltip-text {
       font-size: 16px;
       font-weight: bold;
@@ -175,13 +191,16 @@
       margin: 0 auto;
       text-align: center;
       display: inline-block;
+      /* boşluk kontrolü */
       line-height: 1.1;
+      /* satır aralığını daralt */
     }
 
     .tooltip-text:hover {
       background-color: #c4c4c4;
     }
 
+    /* Balon açıklaması (gizli) */
     .tooltip-balloon {
       visibility: hidden;
       background-color: #b87333;
@@ -201,17 +220,20 @@
       border: 2px solid #dcdcdc;
     }
 
+    /* Tooltip görünürlük ayarı */
     .tooltip-container:active .tooltip-balloon,
     .tooltip-container:hover .tooltip-balloon {
       visibility: visible;
       opacity: 1;
     }
 
+    /* Arama kutusu container */
     .search-container {
       margin-bottom: 20px;
       text-align: center;
     }
 
+    /* Arama input */
     .search-input {
       padding: 10px;
       font-size: 16px;
@@ -223,6 +245,7 @@
       color: white;
     }
 
+    /* Responsive düzenlemeler */
     @media (max-width: 768px) {
       .episode {
         flex: 1 1 calc(50% - 20px);
@@ -243,6 +266,7 @@
       }
     }
 
+    /* Video oynatıcı overlay */
     .video-overlay {
       display: none;
       position: fixed;
@@ -261,6 +285,7 @@
       height: 80%;
     }
 
+    /* Kapatma butonu */
     .video-overlay .close-btn {
       position: absolute;
       top: 20px;
@@ -274,43 +299,60 @@
 
 <body>
 
+  <!-- Sol panel: Bölüm arama ve listeleme yapılacak alan -->
   <div class="sidebar" id="sidebar">
     <div class="search-container">
-      <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
+      <!-- Bölüm başlığı arama için input alanı -->
+      <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..."
+        onkeyup="searchEpisodes()"> <!-- Kullanıcı yazdıkça arama fonksiyonu çağrılır -->
     </div>
   </div>
 
+  <!-- İçerik alanı: Bölümlerin listeleneceği bölüm -->
   <div class="content" id="episodeContainer"></div>
 
+  <!-- Video oynatıcı için üst katman: Video oynatılırken gösterilir -->
   <div class="video-overlay" id="videoOverlay">
+    <!-- Video kapatma butonu -->
     <span class="close-btn" onclick="closeVideo()">×</span>
+    <!-- Video iframe'i -->
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
 
+  <!-- Bölüm verilerini içeren dış js dosyası -->
   <script src="data.js"></script>
 
+  <!-- Ana JavaScript kodları -->
   <script>
-    let currentSeries = "";
-    let currentSeason = 1;
+    // Şu anda hangi dizi ve sezonun açık olduğunu tutar
+    let currentSeries = "Felaket Anları";
+    let currentSeason = 2;
 
+    // data.js dosyasından tüm bölümleri içeren obje
     const episodes = allEpisodes;
 
+    // Sezon ve dizi adı alır, o sezona ait bölümleri yükler ve gösterir
     function loadSeason(season, seriesName) {
-      currentSeries = seriesName;
-      currentSeason = season;
-      const container = document.getElementById('episodeContainer');
-      container.innerHTML = '';
+      currentSeries = seriesName; // Seçilen diziyi kaydet
+      currentSeason = season; // Seçilen sezonu kaydet
+      const container = document.getElementById('episodeContainer'); // Bölümler listelenecek yer
+      container.innerHTML = ''; // Önceki içeriği temizle
 
+      // Sezonun bölümlerini al
       const seasonEpisodes = episodes[seriesName][season];
 
+      // Eğer sezon yoksa veya bölüm yoksa uyarı göster
       if (!seasonEpisodes || seasonEpisodes.length === 0) {
         container.innerHTML = "<p>Bu sezona ait bölüm bulunamadı.</p>";
         return;
       }
 
+      // Her bölüm için bir div oluştur ve içeriği doldur
       seasonEpisodes.forEach(ep => {
         const epDiv = document.createElement('div');
-        epDiv.className = 'episode';
+        epDiv.className = 'episode'; // Stil için class ver
+
+        // Bölüm resmi, başlığı, tarihi, açıklama (varsa), etiketleri oluştur
         epDiv.innerHTML = `
           <div class="episode-image" onclick="playVideo('${ep.video}')">
             <img src="${ep.thumbnail}" alt="${ep.title}">
@@ -329,89 +371,104 @@
             </div>
           </div>
         `;
-        container.appendChild(epDiv);
+        container.appendChild(epDiv); // Bölümü listeye ekle
       });
     }
 
+    // Bir dizi seçildiğinde o dizinin sezon butonlarını sidebar'a yükler
     function loadSeasons(seriesName) {
       const sidebar = document.getElementById('sidebar');
 
+      // Önce arama kutusunu koy
       sidebar.innerHTML = `
         <div class="search-container">
           <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
         </div>
       `;
 
+      // Dizideki sezon numaralarını al (sayısal olanlar)
       const seasons = Object.keys(episodes[seriesName])
         .filter(key => !isNaN(key))
         .map(key => parseInt(key));
 
+      // Her sezon için buton oluştur
       seasons.forEach(season => {
+        // Eğer varsa sezonun yılı parantez içinde gösterilir
         const yearText = episodes[seriesName].seasonYears?.[season]
           ? ` (${episodes[seriesName].seasonYears[season]})` : '';
 
         const btn = document.createElement('button');
         btn.className = 'season-button';
         btn.innerText = `${season}. SEZON${yearText}`;
-        btn.onclick = () => loadSeason(season, seriesName);
+        btn.onclick = () => loadSeason(season, seriesName); // Butona tıklanınca sezon yükle
         sidebar.appendChild(btn);
       });
     }
 
+    // Sidebar'a dizilerin listesini yükler, diziler buton olarak görünür
     function loadDocumentaries() {
       const sidebar = document.getElementById('sidebar');
 
+      // Arama kutusunu tekrar koy
       sidebar.innerHTML = `
         <div class="search-container">
           <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
         </div>
       `;
 
+      // Diziler üzerinde döner
       for (let series in episodes) {
         const btn = document.createElement('button');
         btn.className = 'season-button';
         btn.innerText = series;
         btn.onclick = () => {
-          loadSeasons(series);
-          loadSeason(2, series);  // 2. sezon varsayılan olarak yükleniyor
+          loadSeasons(series); // Dizinin sezonlarını yükle
+          loadSeason(2, series); // Seçili sezonu da aç
         };
         sidebar.appendChild(btn);
       }
     }
 
+    // Video oynatmayı başlatır. Parametre olarak video URL'si alır
     function playVideo(src) {
-      const overlay = document.getElementById('videoOverlay');
-      const video = document.getElementById('episodeVideo');
+      const overlay = document.getElementById('videoOverlay'); // Video overlay'i
+      const video = document.getElementById('episodeVideo'); // iframe video player
 
+      // Eğer video youtube linki ise, embed linkini oluştur
       if (src.includes("youtube.com")) {
         const videoId = src.split("v=")[1].split("&")[0];
         video.src = `https://www.youtube.com/embed/${videoId}`;
       } else if (src.includes("facebook.com")) {
-        video.src = src;
+        video.src = src; // Facebook için direkt link
       }
 
-      overlay.style.display = 'flex';
+      overlay.style.display = 'flex'; // Videoyu göster
     }
 
+    // Video kapatma fonksiyonu
     function closeVideo() {
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
-      overlay.style.display = 'none';
-      video.src = '';
+      overlay.style.display = 'none'; // Overlay gizle
+      video.src = ''; // Videoyu durdur (kaynak sıfırla)
     }
 
+    // Etikete tıklanınca arama yapar
     function searchTag(tag) {
-      filterByTag(tag);
+      filterByTag(tag); // Tag filtresi uygula
     }
 
+    // Etikete göre filtreleme yapar ve sadece o etiketli bölümleri listeler
     function filterByTag(tag) {
       const container = document.getElementById('episodeContainer');
-      container.innerHTML = '';
+      container.innerHTML = ''; // Önceki bölümleri temizle
 
       const allEpisodesArray = [];
 
+      // Sidebar'ı gizle (diziler/sezonlar görünmesin)
       document.getElementById('sidebar').style.transform = "translateX(-100%)";
 
+      // Tüm dizilerde tüm sezonları tek bir diziye toplar
       for (let series in episodes) {
         for (let season in episodes[series]) {
           if (Array.isArray(episodes[series][season])) {
@@ -420,13 +477,16 @@
         }
       }
 
+      // Tag'a göre filtreleme yapar
       const filtered = allEpisodesArray.filter(ep => ep.tags.includes(tag));
 
+      // Eğer filtrelenmiş sonuç yoksa uyarı göster
       if (filtered.length === 0) {
         container.innerHTML = `<p>"${tag}" etiketiyle eşleşen bölüm bulunamadı.</p>`;
         return;
       }
 
+      // Filtrelenmiş bölümleri listeler
       filtered.forEach(ep => {
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
@@ -434,6 +494,7 @@
           <div class="episode-image" onclick="playVideo('${ep.video}')">
             <img src="${ep.thumbnail}" alt="${ep.title}">
           </div>
+
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
           <p class="episode-date">${ep.date}</p>
           ${ep.description ? `
@@ -450,19 +511,22 @@
       });
     }
 
+    // Arama kutusuna yazılan başlığa göre bölümleri filtreler
     function searchEpisodes() {
       const searchInput = document.getElementById('searchInput').value.toLowerCase();
       const container = document.getElementById('episodeContainer');
 
+      // Eğer arama boşsa mevcut sezonu tekrar yükle
       if (searchInput.trim() === "") {
         loadSeason(currentSeason, currentSeries);
         return;
       }
 
-      container.innerHTML = '';
+      container.innerHTML = ''; // Önce temizle
 
       const allEpisodesArray = [];
 
+      // Şu anki dizideki tüm sezonlardan bölümleri alır
       const seriesData = episodes[currentSeries];
       for (let season in seriesData) {
         if (Array.isArray(seriesData[season])) {
@@ -470,15 +534,18 @@
         }
       }
 
+      // Bölüm başlıklarında arama yapar
       const filtered = allEpisodesArray.filter(ep =>
         ep.title.toLowerCase().includes(searchInput)
       );
 
+      // Sonuç yoksa uyarı göster
       if (filtered.length === 0) {
         container.innerHTML = `<p>"${searchInput}" ile eşleşen bölüm bulunamadı.</p>`;
         return;
       }
 
+      // Sonuçları listeler
       filtered.forEach(ep => {
         const epDiv = document.createElement('div');
         epDiv.className = 'episode';
@@ -486,6 +553,7 @@
           <div class="episode-image" onclick="playVideo('${ep.video}')">
             <img src="${ep.thumbnail}" alt="${ep.title}">
           </div>
+
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
           <p class="episode-date">${ep.date}</p>
           ${ep.description ? `
@@ -502,11 +570,15 @@
       });
     }
 
+    // Sayfa yüklendiğinde yapılacak işlemler
     window.onload = () => {
-      const defaultSeries = "Felaket Anları";
-      loadDocumentaries();
+      const defaultSeries = "Felaket Anları"; // Başlangıçta yüklenecek dizi adı
+      loadDocumentaries(); // Dizileri sidebar'a yükle
+      loadSeasons(defaultSeries); // Dizinin sezonlarını yükle
+      loadSeason(2, defaultSeries); // İlk sezonu aç
     };
   </script>
 </body>
+
 
 </html>
