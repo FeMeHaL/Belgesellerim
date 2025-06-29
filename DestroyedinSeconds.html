@@ -294,26 +294,27 @@
     }
 
     function loadDocumentaries() {
-      const sidebar = document.getElementById('sidebar');
-      const searchBox = document.querySelector('.search-container');
+  const sidebar = document.getElementById('sidebar');
 
-      sidebar.innerHTML = '';
-      sidebar.appendChild(searchBox); // Tekrar ekle
+  sidebar.innerHTML = `
+    <div class="search-container">
+      <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
+    </div>`;
 
-      Object.keys(episodes).forEach(series => {
-        const btn = document.createElement('button');
-        btn.className = 'season-button';
-        btn.innerText = series;
-        btn.onclick = () => {
-          // Sol menüde sadece sezon butonları gösterilecek
-          sidebar.innerHTML = '';
-          sidebar.appendChild(searchBox);
-          loadSeasons(series);
-          loadSeason(1, series); // Bu sadece tıklanınca 1. sezon yükler
-        };
-        sidebar.appendChild(btn);
-      });
-    }
+  // Sadece dizi isimlerini buton olarak ekle
+  for (let series in episodes) {
+    const btn = document.createElement('button');
+    btn.className = 'season-button';
+    btn.innerText = series;
+
+    btn.onclick = () => {
+      loadSeasons(series);
+      loadSeason(1, series); // Tıklanınca 1. sezon yüklenecek
+    };
+
+    sidebar.appendChild(btn);
+  }
+}
 
     function playVideo(src) {
       const overlay = document.getElementById('videoOverlay');
@@ -412,12 +413,19 @@
     }
 
     // İlk yüklemede yalnızca 2. sezon yüklenecek
-    window.onload = () => {
-      const defaultSeries = "Felaket Anları";
-      loadDocumentaries();
-      loadSeasons(defaultSeries);
-      loadSeason(2, defaultSeries); // İLK YÜKLEMEDE 2. SEZON!
-    };
+window.onload = () => {
+  const defaultSeries = "Felaket Anları";
+
+  // Sadece butonları ekle, hiçbir sezon yükleme
+  loadDocumentaries();
+
+  // Sezon butonlarını göster ama seçili sezonu otomatik yükleme
+  loadSeasons(defaultSeries);
+
+  // Doğrudan 2. sezonu yükle
+  loadSeason(2, defaultSeries);
+};
+
   </script>
 </body>
 
