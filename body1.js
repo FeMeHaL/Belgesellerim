@@ -1,4 +1,4 @@
-document.body.innerHTML = `
+document.body.innerHTML += `
   <!-- Sol panel -->
   <div class="sidebar" id="sidebar">
     <div class="search-container">
