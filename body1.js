@@ -1,9 +1,9 @@
-document.body.innerHTML += `
+// body1.js
+document.body.innerHTML = `
   <!-- Sol panel -->
   <div class="sidebar" id="sidebar">
     <div class="search-container">
-      <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..."
-        onkeyup="searchEpisodes()">
+      <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
     </div>
   </div>
 

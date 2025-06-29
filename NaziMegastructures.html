@@ -2,27 +2,24 @@
 <html lang="tr">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Nazilerin Mega Yapıları</title> <!-- Sayfanın adını yaz -->
-
-<script src="stilic.js"></script>
+  <meta charset="UTF-8" />
+  <title>Nazilerin Mega Yapıları</title>
+  <script src="stilic.js"></script>
 </head>
 
 <body>
+  <script src="body1.js"></script>
+  <script src="data.js"></script>
+  <script src="season.js"></script>
+  <script src="search.js"></script>
+  <script src="tagFilter.js"></script>
 
-  <script src="body1.js"></script> <!-- Body içeriği HTML olarak burada yüklenecek -->
-  <script src="data.js"></script> <!-- Bölüm verileri -->
-  <script src="season.js"></script> <!-- Seçilen dizi ve sezonun bölümlerini yükler, butonları oluşturur ve video oynatmayı sağlar -->
-  <script src="search.js"></script> <!-- Arama, video oynatma ve dizi listesini yükleyen işlevleri içerir -->
-  <script src="tagFilter.js"></script> <!-- Etiketlere göre filtreleme işlemlerini yapan script -->
-  <script src="body2.js"></script> <!-- Body içeriği kalanalr burada yüklenecek -->
-   
-    // Sayfa ilk açıldığında çalışacak kod
+  <script>
     window.onload = () => {
-      const defaultSeries = "Nazilerin Mega Yapıları"; // Sayfanın adı (dizi adı)
+      const defaultSeries = "Nazilerin Mega Yapıları";
       loadDocumentaries();
       loadSeasons(defaultSeries);
-      loadSeason(1, defaultSeries); // Başlangıç sezonu numarası
+      loadSeason(1, defaultSeries);
     };
   </script>
 </body>
