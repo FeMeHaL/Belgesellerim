@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Felaket Anları</title>
+
   <style>
     body {
       margin: 0;
@@ -46,6 +47,12 @@
       gap: 20px;
     }
 
+    .episode-number {
+      color: purple;
+      font-weight: bold;
+      display: inline;
+    }
+
     .episode {
       background-color: #2b2b2b;
       width: 100%;
@@ -70,6 +77,27 @@
       cursor: pointer;
     }
 
+    .episode-description {
+      font-style: italic;
+      text-align: center;
+      color: #cccccc;
+      margin: 0 0 5px 0;
+    }
+
+    .episode-date {
+      font-weight: bold;
+      text-align: center;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .episode-tags {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+
     .episode-title {
       color: #4da6ff;
       font-weight: bold;
@@ -78,11 +106,21 @@
       margin-top: 8px;
     }
 
-    .episode-date {
-      font-weight: bold;
-      text-align: center;
-      margin: 0;
-      line-height: 1.2;
+    .tag {
+      display: inline-block;
+      background-color: #4da6ff;
+      color: white;
+      border-radius: 20px;
+      padding: 5px 12px;
+      margin: 5px 4px 0 0;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      text-decoration: none;
+    }
+
+    .tag:hover {
+      background-color: #1e90ff;
     }
 
     .tooltip-container {
@@ -94,6 +132,33 @@
       text-align: center;
       margin: 0;
       flex-shrink: 0;
+    }
+
+    .tooltip-icon {
+      font-size: 20px;
+      color: #fff;
+      background-color: #8B4513;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: 2px solid #6A4E23;
+      font-weight: bold;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .tooltip-icon-text {
+      font-size: 14px;
+    }
+
+    .tooltip-and-tags {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      column-gap: 6px;
+      row-gap: 0;
+      margin-top: 0;
+      gap: 6px;
     }
 
     .tooltip-text {
@@ -111,6 +176,10 @@
       text-align: center;
       display: inline-block;
       line-height: 1.1;
+    }
+
+    .tooltip-text:hover {
+      background-color: #c4c4c4;
     }
 
     .tooltip-balloon {
@@ -136,30 +205,6 @@
     .tooltip-container:hover .tooltip-balloon {
       visibility: visible;
       opacity: 1;
-    }
-
-    .episode-tags {
-      display: inline-flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .tag {
-      display: inline-block;
-      background-color: #4da6ff;
-      color: white;
-      border-radius: 20px;
-      padding: 5px 12px;
-      margin: 5px 4px 0 0;
-      font-size: 12px;
-      cursor: pointer;
-      transition: background-color 0.2s;
-      text-decoration: none;
-    }
-
-    .tag:hover {
-      background-color: #1e90ff;
     }
 
     .search-container {
@@ -231,8 +276,7 @@
 
   <div class="sidebar" id="sidebar">
     <div class="search-container">
-      <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..."
-        onkeyup="searchEpisodes()">
+      <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
     </div>
   </div>
 
@@ -243,13 +287,12 @@
     <iframe id="episodeVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
 
-  <!-- 1. Sıra: Data dosyası yüklenir -->
   <script src="data.js"></script>
 
-  <!-- 2. Sıra: Fonksiyonlar tanımlanır -->
   <script>
     let currentSeries = "";
-    let currentSeason = 2;
+    let currentSeason = 1;
+
     const episodes = allEpisodes;
 
     function loadSeason(season, seriesName) {
@@ -274,14 +317,16 @@
           </div>
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
           <p class="episode-date">${ep.date}</p>
-          <div class="tooltip-container">
+          <div class="tooltip-and-tags">
             ${ep.description ? `
-              <span class="tooltip-text">Bölüm Konusu</span>
-              <div class="tooltip-balloon">${ep.description}</div>
+              <div class="tooltip-container">
+                <span class="tooltip-text">Bölüm Konusu</span>
+                <div class="tooltip-balloon">${ep.description}</div>
+              </div>
             ` : ''}
-          </div>
-          <div class="episode-tags">
-            ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+            <div class="episode-tags">
+              ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
+            </div>
           </div>
         `;
         container.appendChild(epDiv);
@@ -290,10 +335,10 @@
 
     function loadSeasons(seriesName) {
       const sidebar = document.getElementById('sidebar');
+
       sidebar.innerHTML = `
         <div class="search-container">
-          <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..."
-            onkeyup="searchEpisodes()">
+          <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
         </div>
       `;
 
@@ -302,9 +347,12 @@
         .map(key => parseInt(key));
 
       seasons.forEach(season => {
+        const yearText = episodes[seriesName].seasonYears?.[season]
+          ? ` (${episodes[seriesName].seasonYears[season]})` : '';
+
         const btn = document.createElement('button');
         btn.className = 'season-button';
-        btn.innerText = `${season}. SEZON`;
+        btn.innerText = `${season}. SEZON${yearText}`;
         btn.onclick = () => loadSeason(season, seriesName);
         sidebar.appendChild(btn);
       });
@@ -312,10 +360,10 @@
 
     function loadDocumentaries() {
       const sidebar = document.getElementById('sidebar');
+
       sidebar.innerHTML = `
         <div class="search-container">
-          <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..."
-            onkeyup="searchEpisodes()">
+          <input type="text" class="search-input" id="searchInput" placeholder="Bölüm başlığı ara..." onkeyup="searchEpisodes()">
         </div>
       `;
 
@@ -325,7 +373,7 @@
         btn.innerText = series;
         btn.onclick = () => {
           loadSeasons(series);
-          loadSeason(2, series);
+          loadSeason(2, series);  // 2. sezon varsayılan olarak yükleniyor
         };
         sidebar.appendChild(btn);
       }
@@ -334,12 +382,14 @@
     function playVideo(src) {
       const overlay = document.getElementById('videoOverlay');
       const video = document.getElementById('episodeVideo');
+
       if (src.includes("youtube.com")) {
         const videoId = src.split("v=")[1].split("&")[0];
         video.src = `https://www.youtube.com/embed/${videoId}`;
-      } else {
+      } else if (src.includes("facebook.com")) {
         video.src = src;
       }
+
       overlay.style.display = 'flex';
     }
 
@@ -351,10 +401,16 @@
     }
 
     function searchTag(tag) {
+      filterByTag(tag);
+    }
+
+    function filterByTag(tag) {
       const container = document.getElementById('episodeContainer');
       container.innerHTML = '';
 
       const allEpisodesArray = [];
+
+      document.getElementById('sidebar').style.transform = "translateX(-100%)";
 
       for (let series in episodes) {
         for (let season in episodes[series]) {
@@ -380,15 +436,15 @@
           </div>
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
           <p class="episode-date">${ep.date}</p>
-          <div class="tooltip-container">
-            ${ep.description ? `
+          ${ep.description ? `
+            <div class="tooltip-container">
               <span class="tooltip-text">Bölüm Konusu</span>
               <div class="tooltip-balloon">${ep.description}</div>
-            ` : ''}
-          </div>
-          <div class="episode-tags">
+            </div>
+          ` : ''}
+          <p class="episode-tags">
             ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
-          </div>
+          </p>
         `;
         container.appendChild(epDiv);
       });
@@ -432,26 +488,23 @@
           </div>
           <p class="episode-title" onclick="playVideo('${ep.video}')">${ep.title}</p>
           <p class="episode-date">${ep.date}</p>
-          <div class="tooltip-container">
-            ${ep.description ? `
+          ${ep.description ? `
+            <div class="tooltip-container">
               <span class="tooltip-text">Bölüm Konusu</span>
               <div class="tooltip-balloon">${ep.description}</div>
-            ` : ''}
-          </div>
-          <div class="episode-tags">
+            </div>
+          ` : ''}
+          <p class="episode-tags">
             ${ep.tags.map(tag => `<a class="tag" onclick="searchTag('${tag}')">${tag}</a>`).join('')}
-          </div>
+          </p>
         `;
         container.appendChild(epDiv);
       });
     }
 
-    // 3. Sıra: sayfa tamamen yüklendikten sonra çağrılan ilk komut
     window.onload = () => {
       const defaultSeries = "Felaket Anları";
-      loadDocumentaries();         // Belgesel isimleri ve butonlar
-      loadSeasons(defaultSeries);  // Sezonları sola yaz
-      loadSeason(2, defaultSeries); // 2. sezonu yükle
+      loadDocumentaries();
     };
   </script>
 </body>
